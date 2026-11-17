@@ -12,7 +12,8 @@ DATA = Path(__file__).resolve().parent.parent / "data"
 COMPANIES_CSV = DATA / "companies.csv"
 CLAIMS_CSV = DATA / "claims.csv"
 
-COMPANY_COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit"]
+ROOT = DATA.parent
+COMPANY_COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo"]
 CLAIM_COLUMNS = ["company", "field", "value", "source_url", "basis", "confidence", "note"]
 
 # The Batch 1 fields from docs/stages.md (stage 2, Pilot).
@@ -57,7 +58,7 @@ def _read(path, expected_columns):
     return rows, []
 
 
-def check_companies(rows, filename="companies.csv"):
+def check_companies(rows, filename="companies.csv", root=ROOT):
     errors = []
     seen = {}
     for row in rows:
@@ -75,6 +76,10 @@ def check_companies(rows, filename="companies.csv"):
             errors.append(f"{where}: website '{row['website']}' is not a valid URL")
         if row["fund"] not in ALLOWED_FUNDS:
             errors.append(f"{where}: fund '{row['fund']}' must be one of {', '.join(ALLOWED_FUNDS)}")
+        if not row["logo"]:
+            errors.append(f"{where}: logo is empty (run scripts/fetch_logos.py, or add the file by hand)")
+        elif not (Path(root) / row["logo"]).is_file():
+            errors.append(f"{where}: logo file '{row['logo']}' does not exist")
         for flag in ("is_highlight", "is_exit"):
             if row[flag] not in ALLOWED_FLAGS:
                 errors.append(f"{where}: {flag} '{row[flag]}' must be TRUE or FALSE")
@@ -115,10 +120,10 @@ def check_claims(rows, company_names, filename="claims.csv"):
     return errors
 
 
-def check_files(companies_path=COMPANIES_CSV, claims_path=CLAIMS_CSV):
+def check_files(companies_path=COMPANIES_CSV, claims_path=CLAIMS_CSV, root=ROOT):
     """Return a list of error messages; empty means everything passes."""
     companies, errors = _read(Path(companies_path), COMPANY_COLUMNS)
-    errors += check_companies(companies, Path(companies_path).name)
+    errors += check_companies(companies, Path(companies_path).name, root)
     claims_path = Path(claims_path)
     if claims_path.exists():
         claims, read_errors = _read(claims_path, CLAIM_COLUMNS)

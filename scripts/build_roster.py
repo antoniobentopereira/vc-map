@@ -22,6 +22,7 @@ class Company:
     fund: str
     is_highlight: bool
     is_exit: bool
+    logo_url: str = ""
 
 
 def _flight_text(html):
@@ -53,6 +54,7 @@ def parse_portfolio(html):
             fund=funds[0],
             is_highlight="highlights" in slugs or bool(previous and previous.is_highlight),
             is_exit="exit" in slugs or bool(previous and previous.is_exit),
+            logo_url=(e.get("image") or {}).get("url", ""),
         )
     for name, funds in funds_seen.values():
         if len(funds) > 1:
@@ -75,14 +77,23 @@ def fetch(url=PORTFOLIO_URL):
         return response.read().decode("utf-8")
 
 
+def _existing_logos(path):
+    """Logo paths already in the CSV, so rebuilding the roster does not erase them."""
+    if not path.exists():
+        return {}
+    with path.open(newline="", encoding="utf-8-sig") as f:
+        return {r["name"].casefold(): r.get("logo", "") for r in csv.DictReader(f)}
+
+
 def write_csv(companies, path=OUTPUT):
     path.parent.mkdir(parents=True, exist_ok=True)
+    logos = _existing_logos(path)
     with path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["name", "website", "fund", "is_highlight", "is_exit"])
+        writer.writerow(["name", "website", "fund", "is_highlight", "is_exit", "logo"])
         for c in companies:
             writer.writerow(
-                [c.name, c.website, c.fund, str(c.is_highlight).upper(), str(c.is_exit).upper()]
+                [c.name, c.website, c.fund, str(c.is_highlight).upper(), str(c.is_exit).upper(), logos.get(c.name.casefold(), "")]
             )
 
 

@@ -13,7 +13,8 @@ from check_data import (  # noqa: E402
 )
 
 ROOT = Path(__file__).resolve().parent.parent
-COMPANIES = ["name,website,fund,is_highlight,is_exit", "Alpha,https://alpha.com,I,FALSE,FALSE"]
+HEADER = "name,website,fund,is_highlight,is_exit,logo"
+COMPANIES = ["name,website,fund,is_highlight,is_exit,logo", "Alpha,https://alpha.com,I,FALSE,FALSE,site/logos/alpha.svg"]
 CLAIMS_HEADER = "company,field,value,source_url,basis,confidence,note"
 
 
@@ -23,11 +24,20 @@ def write(directory, name, lines):
     return path
 
 
+def touch_logos(root, lines):
+    for line in lines[1:]:
+        logo = line.split(",")[-1]
+        if logo:
+            (Path(root) / logo).parent.mkdir(parents=True, exist_ok=True)
+            (Path(root) / logo).write_bytes(b"x")
+
+
 def run(claim_lines, company_lines=COMPANIES):
     with tempfile.TemporaryDirectory() as d:
+        touch_logos(d, company_lines)
         companies = write(d, "companies.csv", company_lines)
         claims = write(d, "claims.csv", [CLAIMS_HEADER, *claim_lines])
-        return check_files(companies, claims)
+        return check_files(companies, claims, d)
 
 
 GOOD = "Alpha,sector,Fintech,https://alpha.com/about,reported,high,"
@@ -83,36 +93,51 @@ class ClaimsTest(unittest.TestCase):
 
     def test_wrong_columns(self):
         with tempfile.TemporaryDirectory() as d:
+            touch_logos(d, COMPANIES)
             companies = write(d, "companies.csv", COMPANIES)
             claims = write(d, "claims.csv", ["company,field,value", "Alpha,sector,Fintech"])
-            errors = check_files(companies, claims)
+            errors = check_files(companies, claims, d)
         self.assertEqual(len(errors), 1)
         self.assertIn("columns must be exactly", errors[0])
 
     def test_missing_claims_file_is_fine(self):
         with tempfile.TemporaryDirectory() as d:
+            touch_logos(d, COMPANIES)
             companies = write(d, "companies.csv", COMPANIES)
-            self.assertEqual(check_files(companies, Path(d) / "claims.csv"), [])
+            self.assertEqual(check_files(companies, Path(d) / "claims.csv", d), [])
 
 
 class CompaniesTest(unittest.TestCase):
     def check(self, *lines):
         with tempfile.TemporaryDirectory() as d:
-            path = write(d, "companies.csv", ["name,website,fund,is_highlight,is_exit", *lines])
-            return check_files(path, Path(d) / "none.csv")
+            path = write(d, "companies.csv", ["name,website,fund,is_highlight,is_exit,logo", *lines])
+            touch_logos(d, ["header", *lines])
+            return check_files(path, Path(d) / "none.csv", d)
+
+    def test_missing_logo_file(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = write(d, "companies.csv", [HEADER, "Alpha,https://a.com,I,FALSE,FALSE,site/logos/alpha.svg"])
+            errors = check_files(path, Path(d) / "none.csv", d)
+        self.assertEqual(len(errors), 1)
+        self.assertIn("logo file 'site/logos/alpha.svg' does not exist", errors[0])
+
+    def test_empty_logo(self):
+        errors = self.check("Alpha,https://a.com,I,FALSE,FALSE,")
+        self.assertEqual(len(errors), 1)
+        self.assertIn("logo is empty", errors[0])
 
     def test_duplicate_company(self):
-        errors = self.check("Alpha,https://a.com,I,FALSE,FALSE", "alpha,https://b.com,II,FALSE,FALSE")
+        errors = self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/alpha.svg", "alpha,https://b.com,II,FALSE,FALSE,site/logos/alpha.svg")
         self.assertEqual(len(errors), 1)
         self.assertIn("duplicate of line 2", errors[0])
 
     def test_invalid_website(self):
-        errors = self.check("Alpha,alpha,I,FALSE,FALSE")
+        errors = self.check("Alpha,alpha,I,FALSE,FALSE,site/logos/alpha.svg")
         self.assertEqual(len(errors), 1)
         self.assertIn("website", errors[0])
 
     def test_bad_fund_and_flag(self):
-        errors = self.check("Alpha,https://a.com,III,yes,FALSE")
+        errors = self.check("Alpha,https://a.com,III,yes,FALSE,site/logos/alpha.svg")
         self.assertEqual(len(errors), 2, errors)
 
 

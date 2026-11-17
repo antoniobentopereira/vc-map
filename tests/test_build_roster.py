@@ -27,6 +27,10 @@ def entry(name, url, *tags):
     }
 
 
+def LOGO(name):
+    return f"/api/media/file/{name.lower()}.svg"
+
+
 class ParsePortfolioTest(unittest.TestCase):
     def test_reads_name_website_fund_and_flags(self):
         html = make_page(
@@ -39,9 +43,9 @@ class ParsePortfolioTest(unittest.TestCase):
         self.assertEqual(
             parse_portfolio(html),
             [
-                Company("Alpha", "https://alpha.com", "I", False, False),
-                Company("Beta", "https://beta.com", "II", True, False),
-                Company("Gamma", "https://gamma.com", "I", False, True),
+                Company("Alpha", "https://alpha.com", "I", False, False, LOGO("Alpha")),
+                Company("Beta", "https://beta.com", "II", True, False, LOGO("Beta")),
+                Company("Gamma", "https://gamma.com", "I", False, True, LOGO("Gamma")),
             ],
         )
 
@@ -54,7 +58,7 @@ class ParsePortfolioTest(unittest.TestCase):
         )
         self.assertEqual(
             parse_portfolio(html),
-            [Company("Alpha", "https://alpha.com", "I", True, False)],
+            [Company("Alpha", "https://alpha.com", "I", True, False, LOGO("Alpha"))],
         )
 
 
@@ -110,7 +114,7 @@ class FundProblemsTest(unittest.TestCase):
 class BuildReportTest(unittest.TestCase):
     def test_states_total_count(self):
         companies = [
-            Company("Alpha", "https://alpha.com", "I", False, False),
+            Company("Alpha", "https://alpha.com", "I", False, False, LOGO("Alpha")),
             Company("Beta", "https://beta.com", "II", False, False),
         ]
         self.assertIn("Total companies: 2", build_report(companies))
