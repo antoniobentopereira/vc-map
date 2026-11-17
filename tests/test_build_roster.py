@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from build_roster import Company, build_report, parse_portfolio  # noqa: E402
+from build_roster import Company, RosterError, build_report, parse_portfolio  # noqa: E402
 
 
 def make_page(companies):
@@ -58,6 +58,55 @@ class ParsePortfolioTest(unittest.TestCase):
         )
 
 
+class FundProblemsTest(unittest.TestCase):
+    def parse_error(self, companies):
+        with self.assertRaises(RosterError) as ctx:
+            parse_portfolio(make_page(companies))
+        return str(ctx.exception)
+
+    def test_entry_tagged_with_both_funds_stops_with_clear_error(self):
+        message = self.parse_error(
+            [
+                entry("Alpha", "https://alpha.com", "fund-1", "fund-2"),
+                entry("Beta", "https://beta.com", "fund-2"),
+            ]
+        )
+        self.assertIn("Alpha", message)
+        self.assertIn("both Fund I and Fund II", message)
+        self.assertNotIn("Beta", message)
+
+    def test_company_listed_separately_in_both_funds_stops_with_clear_error(self):
+        message = self.parse_error(
+            [
+                entry("Alpha", "https://alpha.com", "fund-1"),
+                entry("Alpha", "https://alpha.com", "fund-2"),
+            ]
+        )
+        self.assertIn("Alpha", message)
+        self.assertIn("both Fund I and Fund II", message)
+
+    def test_entry_with_no_fund_stops_with_clear_error(self):
+        message = self.parse_error(
+            [
+                entry("Gamma", "https://gamma.com", "highlights"),
+                entry("Beta", "https://beta.com", "fund-2"),
+            ]
+        )
+        self.assertIn("Gamma", message)
+        self.assertIn("no Fund", message)
+        self.assertNotIn("Beta", message)
+
+    def test_reports_every_problem_at_once(self):
+        message = self.parse_error(
+            [
+                entry("Alpha", "https://alpha.com", "fund-1", "fund-2"),
+                entry("Gamma", "https://gamma.com"),
+            ]
+        )
+        self.assertIn("Alpha", message)
+        self.assertIn("Gamma", message)
+
+
 class BuildReportTest(unittest.TestCase):
     def test_states_total_count(self):
         companies = [
@@ -65,21 +114,6 @@ class BuildReportTest(unittest.TestCase):
             Company("Beta", "https://beta.com", "II", False, False),
         ]
         self.assertIn("Total companies: 2", build_report(companies))
-
-    def test_lists_company_in_both_funds_without_merging(self):
-        companies = [
-            Company("Alpha", "https://alpha.com", "I", False, False),
-            Company("Alpha", "https://alpha.com", "II", False, False),
-            Company("Beta", "https://beta.com", "II", False, False),
-        ]
-        report = build_report(companies)
-        self.assertIn("Alpha (Fund I, Fund II)", report)
-        self.assertNotIn("Beta (", report)
-        self.assertIn("Total companies: 3", report)
-
-    def test_says_so_when_no_company_is_in_both_funds(self):
-        companies = [Company("Beta", "https://beta.com", "II", False, False)]
-        self.assertIn("No company appears in more than one Fund", build_report(companies))
 
 
 if __name__ == "__main__":

@@ -11,6 +11,10 @@ OUTPUT = Path(__file__).resolve().parent.parent / "data" / "companies.csv"
 FUND_BY_SLUG = {"fund-1": "I", "fund-2": "II"}
 
 
+class RosterError(Exception):
+    """The page's Fund data needs a human decision; nothing is written."""
+
+
 @dataclass(frozen=True)
 class Company:
     name: str
@@ -30,34 +34,39 @@ def parse_portfolio(html):
     start = text.index('"companies":[') + len('"companies":')
     entries, _ = json.JSONDecoder().raw_decode(text, start)
     companies = {}
+    problems = []
+    funds_seen = {}
     for e in entries:
         slugs = [c["slug"] for c in e["majorCategories"]]
-        fund = FUND_BY_SLUG[next(s for s in slugs if s in FUND_BY_SLUG)]
-        key = (e["name"].casefold(), fund)
+        funds = sorted({FUND_BY_SLUG[s] for s in slugs if s in FUND_BY_SLUG})
+        if not funds:
+            problems.append(f"{e['name']}: no Fund tag (needs Fund I or Fund II)")
+            continue
+        funds_seen.setdefault(e["name"].casefold(), (e["name"], set()))[1].update(funds)
+        if len(funds) > 1:
+            continue
+        key = (e["name"].casefold(), funds[0])
         previous = companies.get(key)
         companies[key] = Company(
             name=e["name"],
             website=e["url"],
-            fund=fund,
+            fund=funds[0],
             is_highlight="highlights" in slugs or bool(previous and previous.is_highlight),
             is_exit="exit" in slugs or bool(previous and previous.is_exit),
+        )
+    for name, funds in funds_seen.values():
+        if len(funds) > 1:
+            problems.append(f"{name}: appears in both Fund I and Fund II")
+    if problems:
+        raise RosterError(
+            "The portfolio page needs a decision before the roster can be built:\n"
+            + "\n".join(f"  - {p}" for p in problems)
         )
     return list(companies.values())
 
 
 def build_report(companies):
-    funds_by_name = {}
-    for c in companies:
-        funds_by_name.setdefault(c.name.casefold(), (c.name, []))[1].append(c.fund)
-    lines = [f"Total companies: {len(companies)}"]
-    multi = [(n, f) for n, f in funds_by_name.values() if len(set(f)) > 1]
-    if multi:
-        lines.append("Companies in more than one Fund (not merged, resolve by hand):")
-        for name, funds in multi:
-            lines.append(f"  {name} ({', '.join('Fund ' + f for f in funds)})")
-    else:
-        lines.append("No company appears in more than one Fund.")
-    return "\n".join(lines)
+    return f"Total companies: {len(companies)}"
 
 
 def fetch(url=PORTFOLIO_URL):
@@ -78,7 +87,10 @@ def write_csv(companies, path=OUTPUT):
 
 
 def main():
-    companies = parse_portfolio(fetch())
+    try:
+        companies = parse_portfolio(fetch())
+    except RosterError as error:
+        raise SystemExit(f"{error}\nNo file was written.")
     write_csv(companies)
     print(build_report(companies))
     print(f"Wrote {OUTPUT}")
