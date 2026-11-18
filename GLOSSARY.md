@@ -28,12 +28,40 @@ _Avoid_: Sold company
 A person who started a Portfolio company. The Firm's thesis weighs founders heavily, so they will get their own detailed profile later.
 _Avoid_: Entrepreneur, CEO
 
+**Round**:
+One funding event of a Portfolio company, whoever invested: its year, type (pre-seed, seed, Series A and so on, or debt), total size and investors. Recorded whether or not the Firm took part. The **last round** is the latest one that is not debt.
+_Avoid_: Raise, deal
+
 **Investment**:
-One event in which the Firm put money into a Portfolio company. A Portfolio company can have several.
-_Avoid_: Deal, round
+A Round in which the Firm took part. A Portfolio company can have several; the earliest is the **first investment**, and any later one is a **follow-on**.
+_Avoid_: Deal, check
+
+**Sub-sector**:
+A detailed label for what market a Portfolio company serves, such as "Industrial predictive maintenance". Assigned to each company from its own description.
+_Avoid_: Category, vertical
+
+**Sector**:
+A broad group of Sub-sectors, assigned once the whole portfolio has been classified. Defined in one mapping, never per company.
+_Avoid_: Industry, vertical
+
+**HQ**:
+Where a Portfolio company says its headquarters is, as a city and country. Legal incorporation never counts. Recorded both now and at the first investment.
+_Avoid_: Location, domicile
+
+**Status**:
+Whether a Portfolio company is operating: stealth, active, inactive or closed. Being acquired is not a status.
+_Avoid_: State
+
+**Acquisition**:
+A Portfolio company being bought by another company. Recorded with the acquirer and year, separately from Status, because an acquired company may keep operating. Not the same as an Exit, which is the Firm's own listing.
+_Avoid_: Sale, buyout
+
+**Milestone**:
+A dated, non-funding event in a Portfolio company's history (a launch, pivot, new office, HQ move). Milestones and Rounds together make its timeline.
+_Avoid_: Event, history item
 
 **Claim**:
-A single fact about a Portfolio company or an Investment, tied to one Source, with a Basis and a Confidence.
+A single fact about a Portfolio company, tied to one Source, with a Basis and a Confidence. A field holds one value: when Sources conflict, the most likely value is kept and the discarded ones are noted.
 _Avoid_: Data point, fact
 
 **Source**:
@@ -71,7 +99,7 @@ The first Batch, 10 companies, used to validate the process. The owner personall
 _Avoid_: Prototype, test run
 
 **Dataset**:
-The collected Portfolio companies, Investments and Claims. The output of the data-gathering part.
+The collected Portfolio companies, Claims and Rounds, with the exchange rates and the Sub-sector to Sector mapping they rely on. The output of the data-gathering part.
 _Avoid_: Database
 
 **Visualization**:

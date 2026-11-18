@@ -6,6 +6,6 @@
 
 **Status:** ready-for-agent
 
-- [ ] Five companies researched, each with all Batch 1 fields filled or recorded as missing
+- [ ] Five companies researched, each with every field in docs/data-model.md filled or recorded as missing, every Round found, and researched_on set
 - [ ] The check script passes after each company
 - [ ] Notes updated with anything new learned

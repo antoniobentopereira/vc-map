@@ -6,7 +6,7 @@ Data first, visualization second. The CSV files in `data/` are the single source
 `companies` lists every unique Portfolio company (about 130) with name, website, logo file, Fund (I or II), `is_highlight` and `is_exit`. The count matches the official page, duplicates are reported, and the owner has looked through it.
 
 ## 2. Pilot (Batch 1, 10 companies, one at a time)
-All Batch 1 fields are filled: description, sector, location, year founded, investment year, status, round size, co-investors, founder names. Every Claim has a source link, a Basis and a Confidence. The check script passes (required source links, valid URLs, allowed field values, no duplicates), and the owner has reviewed all 10 and given feedback that is folded back into the process.
+Every field in `docs/data-model.md` is filled or recorded as missing: the Claims (description, long description, sub-sector, HQ now and at the first investment, year founded, status, business model, acquisition, founders, markets, accelerators, milestones) and every Round found, with or without Norte. Every Claim and Round has a source link, a Basis and a Confidence, and the company's `researched_on` date is set. The check script passes (required source links, valid URLs, allowed field values and formats, one value per field, USD sizes matching `fx.csv`, no duplicates), and the owner has reviewed all 10 and given feedback that is folded back into the process.
 
 ## 3. Scale-up
 Remaining companies are researched in Batches (bigger once the Pilot works). Each Batch passes the check script and the owner spot-checks a sample. Done when every company in the Roster is covered. The owner may add new fields along the way.

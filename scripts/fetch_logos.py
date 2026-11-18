@@ -21,7 +21,7 @@ EXTENSIONS = {
     "image/gif": "gif",
 }
 MIN_PNG_SIZE = 128
-COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_origin", "logo_source"]
+COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_origin", "logo_source", "researched_on"]
 KEPT_ORIGINS = ("manual", "web-search")
 
 

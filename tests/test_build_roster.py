@@ -1,11 +1,12 @@
 import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from build_roster import Company, RosterError, build_report, parse_portfolio  # noqa: E402
+from build_roster import Company, RosterError, build_report, parse_portfolio, write_csv  # noqa: E402
 
 
 def make_page(companies):
@@ -118,6 +119,25 @@ class BuildReportTest(unittest.TestCase):
             Company("Beta", "https://beta.com", "II", False, False),
         ]
         self.assertIn("Total companies: 2", build_report(companies))
+
+
+class WriteCsvTest(unittest.TestCase):
+    def test_rebuilding_keeps_logo_and_researched_on_columns(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "companies.csv"
+            path.write_text(
+                "name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_on\n"
+                "Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,https://a.com/l.svg,2026-11-18\n",
+                encoding="utf-8",
+            )
+            write_csv([Company("Alpha", "https://a.com", "II", True, False),
+                       Company("Beta", "https://b.com", "I", False, False)], path)
+            lines = path.read_text(encoding="utf-8").splitlines()
+        self.assertEqual(lines, [
+            "name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_on",
+            "Alpha,https://a.com,II,TRUE,FALSE,site/logos/a.svg,manual,https://a.com/l.svg,2026-11-18",
+            "Beta,https://b.com,I,FALSE,FALSE,,,,",
+        ])
 
 
 if __name__ == "__main__":

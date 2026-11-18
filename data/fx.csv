@@ -1,0 +1,8 @@
+currency,year,rate,source_url
+BRL,2019,3.9461,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json
+BRL,2020,5.1578,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json
+BRL,2021,5.3956,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json
+BRL,2022,5.1655,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json
+BRL,2023,4.9953,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json
+BRL,2024,5.3920,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json
+BRL,2025,5.5855,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json

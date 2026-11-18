@@ -1,19 +1,30 @@
 # Pilot notes: Tractian (company 1 of 10)
 
-Researched with web search plus page fetches. 11 claims in `data/claims.csv`; `python scripts/check_data.py` passes.
+Researched 2026-11-18, then redone in the revised data model (`docs/data-model.md`) after the owner's first review. 21 Claims and 7 Rounds; `python scripts/check_data.py` passes.
 
-## What worked
-- The company's own Series D post and About page gave description, sector and location.
-- Brazilian startup press (startupi, startups.com.br) gave the Feb 2021 pre-seed: size, investors, founders.
+## Sources that worked
 
-## Gaps and conflicts
-- **Year founded**: only one passing mention (2019, a Spanish-language column). No company page states it. Medium confidence.
-- **Founders**: sources disagree. Startupi: Marinelli + Lameirinhas. Emprendedor: Vieira + Marinelli. Company pages say "Gabriel Lima". Recorded all three, one row each; owner should confirm.
-- **Round size**: pre-seed is R$2M in startupi but US$500k in an aggregator. Used the press figure.
-- **Several Investments**: Norte invested in pre-seed 2021, seed 2021, Series B 2023, Series C 2024 and Series D 2026. The claims table has no "which investment" column, so only the first Investment is recorded (investment_year, round_size, co_investors) and the follow-ons are in the note. Decision needed for scale-up (Glossary says a company can have several Investments).
-- Multi-value fields (co_investors) are one row with values joined by "; ".
-- Missing data has no row (the check script requires value and source), so gaps live in this file only.
-- Seedtable and the company's seed blog post were blocked (403/404); aggregators were not used as sources.
+- **Company pages**: About page (description, sub-sector) and the Series C and Series D announcements (HQ, investors).
+- **Y Combinator profile**: founding year, batch, current HQ. A good primary source for any YC company.
+- **Brazilian press** (startupi, startups.com.br, InfoMoney, IT Forum, Brazil Journal): one article per Round, with size, lead and investors. Usually the only place a BRL figure appears.
+- **Norte's case post** (norte.ventures/content/tractian-brio): good for the early story (pivot to hardware, how the founders met, Norte's first check during YC), but undated and promotional. Used only for the pivot milestone (Estimated, since the year is deduced) and as background.
+- **BCB SGS series 3694** (annual average PTAX) for BRL rates, from a direct JSON link.
 
-## Status
-Awaiting owner review (ticket 05, third box).
+## Missing or uncertain
+
+- **HQ at first investment**: no 2021 source names a city. Recorded as São Paulo, Estimated, low Confidence (founders from the University of São Paulo, no US office until 2022).
+- **Norte in the Series A (2022) and Series C (2024)**: not named in the announcements, so recorded as FALSE. For the Series C an aggregator lists Norte, so that row has low Confidence. A yes/no column cannot say "unknown"; see the open question below.
+- **BNDES debt (2026, R$120.1M)**: the 2026 annual BRL average is not published yet, so the reported amount is kept and `size_usd` is empty until it is.
+- **Investor names**: the Series D post writes "N47" and "Catalyst"; normalised to Next47 and M&G Catalyst so the same investor matches across Rounds.
+- **Founders**: 2021 articles name two; Brazil Journal (2026) and the Norte post name three. Recorded all three.
+- **Year founded**: settled at 2019 (YC profile, Brazil Journal, InfoMoney).
+- Seedtable returned 403 and one Tractian blog post returned 404; aggregators were not used as Sources.
+
+## Open questions for the owner
+
+- `norte_participated` is TRUE or FALSE. "Norte not named anywhere" is recorded as FALSE with a lower Confidence. Should there be an explicit `unknown`?
+- Milestones exclude funding events, which come from the Rounds instead. Confirm this split for the timeline.
+
+## Effort
+
+Roughly 20 page reads for one well-documented company, most of them for the Rounds. Expect fewer for thin companies, but more searching per fact.

@@ -77,27 +77,28 @@ def fetch(url=PORTFOLIO_URL):
         return response.read().decode("utf-8")
 
 
-LOGO_COLUMNS = ["logo", "logo_origin", "logo_source"]
+# Columns filled by later steps (logos, research), kept as they are when the roster is rebuilt.
+KEPT_COLUMNS = ["logo", "logo_origin", "logo_source", "researched_on"]
 
 
-def _existing_logos(path):
-    """Logo columns already in the CSV, so rebuilding the roster does not erase them."""
+def _existing_kept_columns(path):
+    """Columns filled by later steps already in the CSV, so rebuilding the roster does not erase them."""
     if not path.exists():
         return {}
     with path.open(newline="", encoding="utf-8-sig") as f:
-        return {r["name"].casefold(): [r.get(c, "") or "" for c in LOGO_COLUMNS] for r in csv.DictReader(f)}
+        return {r["name"].casefold(): [r.get(c, "") or "" for c in KEPT_COLUMNS] for r in csv.DictReader(f)}
 
 
 def write_csv(companies, path=OUTPUT):
     path.parent.mkdir(parents=True, exist_ok=True)
-    logos = _existing_logos(path)
+    kept = _existing_kept_columns(path)
     with path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["name", "website", "fund", "is_highlight", "is_exit", *LOGO_COLUMNS])
+        writer.writerow(["name", "website", "fund", "is_highlight", "is_exit", *KEPT_COLUMNS])
         for c in companies:
             writer.writerow(
                 [c.name, c.website, c.fund, str(c.is_highlight).upper(), str(c.is_exit).upper(),
-                 *logos.get(c.name.casefold(), [""] * len(LOGO_COLUMNS))]
+                 *kept.get(c.name.casefold(), [""] * len(KEPT_COLUMNS))]
             )
 
 

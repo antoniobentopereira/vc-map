@@ -1,0 +1,7 @@
+# Every Round gets a row in a rounds table, with sizes in USD converted at annual central-bank rates
+
+Amends ADR 0002, which had only two tables.
+
+The owner wants every Round we can find, whether or not Norte took part, not only Norte's first one. Claims cannot say which Round a fact belongs to, so Rounds get their own table, `data/rounds.csv`: one row per Round with year, type, size, co-investors and whether Norte took part, plus the same Source, Basis, Confidence and note as a Claim. The first investment (the first Norte round), the last round and whether Norte followed on are derived from it (`scripts/derive.py`), never stored, so they cannot drift out of step with the Rounds. The "last round" skips debt, so a credit facility never hides the latest venture round.
+
+Sizes are compared in US dollars, stored as whole numbers. Each row keeps the amount and currency exactly as the Source reports them, next to the converted `size_usd`, so the original is always traceable. Conversion divides by the annual average rate for that currency and year in `data/fx.csv`, from the currency's central bank (BCB PTAX for BRL, Banxico for MXN), and the check script recomputes it. We chose annual averages over the rate on each announcement date: it means one lookup per currency and year instead of one per Round, and the error (up to ~10% in a volatile year) is small next to how much reported round sizes are already rounded. When the current year's average is not published yet, the reported amount is kept and `size_usd` waits for it.

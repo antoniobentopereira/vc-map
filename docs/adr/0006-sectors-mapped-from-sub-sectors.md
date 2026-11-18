@@ -1,0 +1,3 @@
+# Sectors are a mapping from Sub-sectors, not a Claim
+
+Each company gets a detailed Sub-sector as a Claim, sourced from how the company describes itself. The broad Sector is our own grouping, which no Source states, so it is not a Claim: `data/sectors.csv` maps each Sub-sector to its Sector. The groups are decided once the whole portfolio has been classified; until then the Sector column stays empty. Regrouping means editing one file, and every company in a Sub-sector always lands in the same Sector. A Sub-sector must be listed in the mapping before a Claim uses it, which keeps labels reused rather than reworded per company.
