@@ -4,11 +4,11 @@
 
 **Blocked by:** 03 (Check script), 04 (Choose the Pilot's 10 companies).
 
-**Status:** ready-for-human
+**Status:** resolved
 
-The owner's first review (2026-11-18) led to a revised data model (ADRs 0005 to 0007, `docs/data-model.md`); Tractian was redone in it and needs a second look.
+The owner's first review (2026-11-18) led to a revised data model (ADRs 0005 to 0007, `docs/data-model.md`); Tractian was redone in it and the owner approved the result.
 
 - [x] All fields are either filled with a sourced Claim or Round, or recorded as missing
 - [x] The check script passes
-- [ ] The owner has reviewed the company and given feedback (first review done; the revised data needs a second look)
+- [x] The owner has reviewed the company and given feedback (two reviews; the second approved the revised data)
 - [x] Notes on the process and source availability are written down

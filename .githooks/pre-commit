@@ -1,0 +1,5 @@
+#!/bin/sh
+# Runs before every commit: the tests, then the data check. Enable with: git config core.hooksPath .githooks
+set -e
+python -m unittest discover -s tests
+python scripts/check_data.py

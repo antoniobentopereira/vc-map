@@ -1,3 +1,4 @@
+import re
 import sys
 import tempfile
 import unittest
@@ -5,7 +6,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from check_data import check_files, follow_up_companies  # noqa: E402
+from check_data import (  # noqa: E402
+    ALLOWED_BUSINESS_MODELS,
+    ALLOWED_FIELDS,
+    ALLOWED_STATUS,
+    ROUND_TYPES,
+    check_files,
+    follow_up_companies,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 HEADER = "name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_on"
@@ -355,6 +363,28 @@ class RoundsTest(Assertions):
         errors = self.check(round_line(year="2018", reported_amount="", reported_currency="", size_usd=""),
                             claims=[claim("year_founded", "2019")])
         self.assertOneError(errors, "round year 2018 is before year_founded 2019")
+
+
+def undocumented(terms, doc_text):
+    """The terms that docs/data-model.md does not mention (as a whole word)."""
+    return [t for t in terms if not re.search(rf"(?<![\w]){re.escape(t)}(?![\w])", doc_text)]
+
+
+class DocsMatchCodeTest(unittest.TestCase):
+    """docs/data-model.md is the field reference; the allowed values in the script must all appear in it."""
+
+    def test_every_allowed_value_is_documented(self):
+        doc = (ROOT / "docs" / "data-model.md").read_text(encoding="utf-8")
+        for name, terms in {
+            "claim fields": ALLOWED_FIELDS,
+            "round types": ROUND_TYPES,
+            "status values": ALLOWED_STATUS,
+            "business models": ALLOWED_BUSINESS_MODELS,
+        }.items():
+            self.assertEqual(undocumented(terms, doc), [], f"{name} missing from docs/data-model.md")
+
+    def test_a_missing_term_is_reported(self):
+        self.assertEqual(undocumented(["hq", "seed", "series_f_plus"], "`hq` and `seed`"), ["series_f_plus"])
 
 
 class RealDataTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 # 07: Pilot: research companies 6 to 10, one at a time
 
-**What to build:** Batch 1 companies 6 to 10, researched sequentially with the recipe as refined so far. Same rules as ticket 05.
+**What to build:** Batch 1 companies 6 to 10, researched sequentially after reading `docs/data-model.md` and the notes in `.scratch/data-pipeline/notes/`, which hold what the earlier companies taught us. Same rules as ticket 05.
 
 **Blocked by:** 06 (Pilot: companies 2 to 5).
 

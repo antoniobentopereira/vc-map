@@ -67,7 +67,7 @@ Acquisition is recorded separately (`acquirer`, `acquisition_year`). An acquired
 Columns: `company, year, type, reported_amount, reported_currency, size_usd, co_investors, norte_participated, source_url, basis, confidence, note`.
 
 - Record every Round found, whether or not Norte took part. If no evidence of a Round exists, there is no row.
-- `type` is one of `angel`, `pre_seed`, `seed`, `series_a` … `series_e`, `series_f_plus`, `unknown`, `debt`.
+- `type` is one of `angel`, `pre_seed`, `seed`, `series_a`, `series_b`, `series_c`, `series_d`, `series_e`, `series_f_plus`, `unknown`, `debt`.
   - Extensions and bridges take their base type (a seed extension is `seed`), and the note says so.
   - Debt and credit facilities are `debt`. They are recorded, but never count as the last Round.
   - `unknown` only when the Round exists but no Source states its type.

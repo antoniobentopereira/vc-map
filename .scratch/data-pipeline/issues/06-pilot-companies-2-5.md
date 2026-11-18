@@ -1,6 +1,6 @@
 # 06: Pilot: research companies 2 to 5, one at a time
 
-**What to build:** Batch 1 companies 2 to 5, researched sequentially (one company at a time, no sub-agents) using the recipe as corrected by the owner's feedback on company 1. Same rules as ticket 05.
+**What to build:** Batch 1 companies 2 to 5, researched sequentially (one company at a time, no sub-agents) after reading `docs/data-model.md` and the notes in `.scratch/data-pipeline/notes/` (start with `pilot-tractian.md`), which hold what company 1 taught us. Same rules as ticket 05.
 
 **Blocked by:** 05 (Pilot: first company).
 

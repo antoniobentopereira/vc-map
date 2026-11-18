@@ -11,3 +11,11 @@ Default five-label vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, 
 ### Domain docs
 
 Single-context: one `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Testing and checks
+
+Test and data-check commands, and the agreed test seams: `docs/agents/testing.md`.
+
+### Researching a company
+
+Read `docs/data-model.md` (every field and rule) before writing any row to `data/`.
