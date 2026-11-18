@@ -67,7 +67,7 @@ A group of Portfolio companies taken from the Roster and fully researched togeth
 _Avoid_: Wave, chunk
 
 **Pilot**:
-The first Batch, 10 companies, used to validate the process. The owner personally reviews it and gives feedback.
+The first Batch, 10 companies, used to validate the process. The owner personally reviews it and gives feedback. Deliberately mixes well-documented companies with **hard cases** (thin public coverage, non-Brazilian, or an older Exit), so gaps show up before scale-up.
 _Avoid_: Prototype, test run
 
 **Dataset**:
