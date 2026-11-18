@@ -142,6 +142,11 @@ class CompaniesTest(unittest.TestCase):
     def test_norte_source_is_an_error(self):
         self.one("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,https://www.norte.ventures/x.svg", "norte.ventures")
 
+    def test_documented_norte_exception_is_allowed_only_for_listed_companies(self):
+        line = "{},https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,https://www.norte.ventures/x.svg"
+        self.assertEqual(self.check(line.format("Glue")), [])
+        self.one(line.format("Other"), "norte.ventures")
+
     def test_empty_logo_with_leftover_origin_or_source_is_an_error(self):
         self.one("Alpha,https://a.com,I,FALSE,FALSE,,manual,", "logo is empty")
         self.one("Alpha,https://a.com,I,FALSE,FALSE,,,https://a.com/l.svg", "logo is empty")

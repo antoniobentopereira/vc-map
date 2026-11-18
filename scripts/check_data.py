@@ -33,6 +33,9 @@ ALLOWED_CONFIDENCE = ["high", "medium", "low"]
 ALLOWED_FUNDS = ["I", "II"]
 ALLOWED_FLAGS = ["TRUE", "FALSE"]
 ALLOWED_LOGO_ORIGINS = ["company-site", "web-search", "manual"]
+# Documented exception (ADR 0004): no Original logo was found anywhere public, so these companies
+# keep the recolored logo from the Firm's portfolio page. Add a name here only with an ADR note.
+NORTE_LOGO_EXCEPTIONS = {"glue"}
 
 
 def is_valid_url(url):
@@ -75,7 +78,7 @@ def _check_logo(row, where, root):
         )
     if not is_valid_url(source):
         errors.append(f"{where}: logo_source '{source}' is not a valid URL")
-    elif _is_norte_domain(source):
+    elif _is_norte_domain(source) and row["name"].casefold() not in NORTE_LOGO_EXCEPTIONS:
         errors.append(f"{where}: logo_source '{source}' is on norte.ventures (Norte logos are not Original logos)")
     return errors
 
