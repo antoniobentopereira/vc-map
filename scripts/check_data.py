@@ -13,7 +13,7 @@ COMPANIES_CSV = DATA / "companies.csv"
 CLAIMS_CSV = DATA / "claims.csv"
 
 ROOT = DATA.parent
-COMPANY_COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo"]
+COMPANY_COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_origin", "logo_source"]
 CLAIM_COLUMNS = ["company", "field", "value", "source_url", "basis", "confidence", "note"]
 
 # The Batch 1 fields from docs/stages.md (stage 2, Pilot).
@@ -32,6 +32,7 @@ ALLOWED_BASIS = ["reported", "estimated"]
 ALLOWED_CONFIDENCE = ["high", "medium", "low"]
 ALLOWED_FUNDS = ["I", "II"]
 ALLOWED_FLAGS = ["TRUE", "FALSE"]
+ALLOWED_LOGO_ORIGINS = ["company-site", "web-search", "manual"]
 
 
 def is_valid_url(url):
@@ -58,6 +59,37 @@ def _read(path, expected_columns):
     return rows, []
 
 
+def _check_logo(row, where, root):
+    """An empty logo is valid (manual follow-up); a set logo needs a recorded origin and source."""
+    logo, origin, source = row["logo"], row["logo_origin"], row["logo_source"]
+    if not logo:
+        if origin or source:
+            return [f"{where}: logo is empty but logo_origin/logo_source are set (clear them)"]
+        return []
+    errors = []
+    if not (Path(root) / logo).is_file():
+        errors.append(f"{where}: logo file '{logo}' does not exist")
+    if origin not in ALLOWED_LOGO_ORIGINS:
+        errors.append(
+            f"{where}: logo_origin '{origin}' must be one of {', '.join(ALLOWED_LOGO_ORIGINS)}"
+        )
+    if not is_valid_url(source):
+        errors.append(f"{where}: logo_source '{source}' is not a valid URL")
+    elif _is_norte_domain(source):
+        errors.append(f"{where}: logo_source '{source}' is on norte.ventures (Norte logos are not Original logos)")
+    return errors
+
+
+def _is_norte_domain(url):
+    host = (urlparse(url).hostname or "").lower()
+    return host == "norte.ventures" or host.endswith(".norte.ventures")
+
+
+def follow_up_companies(rows):
+    """Names of companies with no logo, for the manual-follow-up list."""
+    return [r["name"] for r in rows if not r["logo"]]
+
+
 def check_companies(rows, filename="companies.csv", root=ROOT):
     errors = []
     seen = {}
@@ -76,10 +108,7 @@ def check_companies(rows, filename="companies.csv", root=ROOT):
             errors.append(f"{where}: website '{row['website']}' is not a valid URL")
         if row["fund"] not in ALLOWED_FUNDS:
             errors.append(f"{where}: fund '{row['fund']}' must be one of {', '.join(ALLOWED_FUNDS)}")
-        if not row["logo"]:
-            errors.append(f"{where}: logo is empty (run scripts/fetch_logos.py, or add the file by hand)")
-        elif not (Path(root) / row["logo"]).is_file():
-            errors.append(f"{where}: logo file '{row['logo']}' does not exist")
+        errors += _check_logo(row, where, root)
         for flag in ("is_highlight", "is_exit"):
             if row[flag] not in ALLOWED_FLAGS:
                 errors.append(f"{where}: {flag} '{row[flag]}' must be TRUE or FALSE")
@@ -139,6 +168,10 @@ def main():
         for e in errors:
             print(f"  - {e}")
         raise SystemExit(1)
+    companies, _ = _read(COMPANIES_CSV, COMPANY_COLUMNS)
+    missing = follow_up_companies(companies)
+    if missing:
+        print(f"{len(missing)} company(ies) without a logo (manual follow-up): {', '.join(missing)}")
     note = "" if CLAIMS_CSV.exists() else " (no claims.csv yet, so no claims were checked)"
     print(f"All checks passed{note}.")
 

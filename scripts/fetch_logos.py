@@ -1,14 +1,17 @@
-"""Download one logo file per Portfolio company into site/logos/."""
+"""Find each Portfolio company's Original logo on its own homepage, into site/logos/.
+
+Only the company's own site is used (never the Firm's portfolio page; see ADR 0004).
+Every logo records where it came from in companies.csv (logo_origin, logo_source).
+"""
 import csv
 import re
+import struct
+import unicodedata
 import urllib.request
-from pathlib import Path
 from dataclasses import dataclass
 from html.parser import HTMLParser
+from pathlib import Path
 from urllib.parse import urljoin
-
-from build_roster import PORTFOLIO_URL, Company, RosterError, parse_portfolio
-import unicodedata
 
 EXTENSIONS = {
     "image/svg+xml": "svg",
@@ -16,9 +19,10 @@ EXTENSIONS = {
     "image/jpeg": "jpg",
     "image/webp": "webp",
     "image/gif": "gif",
-    "image/x-icon": "ico",
-    "image/vnd.microsoft.icon": "ico",
 }
+MIN_PNG_SIZE = 128
+COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_origin", "logo_source"]
+KEPT_ORIGINS = ("manual", "web-search")
 
 
 def slugify(name):
@@ -31,9 +35,6 @@ def logo_filename(name, content_type):
     return f"{slugify(name)}.{extension}"
 
 
-PORTFOLIO_BASE = "https://www.norte.ventures"
-
-
 @dataclass(frozen=True)
 class Logo:
     filename: str
@@ -41,64 +42,94 @@ class Logo:
     source: str
 
 
-class _ImageLinks(HTMLParser):
-    """Collect logo candidates from a page: og:image first, then icons."""
+class _Candidates(HTMLParser):
+    """Collect logo candidates: header logo images, SVG icon links, apple-touch-icons."""
 
     def __init__(self):
         super().__init__()
-        self.og, self.icons = [], []
+        self.header_depth = 0
+        self.header_imgs, self.svg_icons, self.touch_icons = [], [], []
 
     def handle_starttag(self, tag, attrs):
-        a = dict(attrs)
-        if tag == "meta" and a.get("property") == "og:image" and a.get("content"):
-            self.og.append(a["content"])
+        a = {k: (v or "") for k, v in attrs}
+        if tag == "header":
+            self.header_depth += 1
+        elif tag == "img" and self.header_depth and a.get("src"):
+            if any("logo" in a.get(k, "").lower() for k in ("class", "alt", "src")):
+                self.header_imgs.append(a["src"])
         elif tag == "link" and a.get("href"):
-            rel = (a.get("rel") or "").lower().split()
-            if "apple-touch-icon" in rel or "icon" in rel:
-                self.icons.append(a["href"])
+            rel = a.get("rel", "").lower().split()
+            href_path = a["href"].lower().split("?")[0]
+            if "apple-touch-icon" in rel:
+                self.touch_icons.append(a["href"])
+            elif "icon" in rel and (a.get("type") == "image/svg+xml" or href_path.endswith(".svg")):
+                self.svg_icons.append(a["href"])
+
+    def handle_endtag(self, tag):
+        if tag == "header" and self.header_depth:
+            self.header_depth -= 1
 
 
-def _site_candidates(website, fetch):
+def _homepage_candidates(website, fetch):
     try:
         data, _ = fetch(website)
     except OSError:
         return []
-    parser = _ImageLinks()
+    parser = _Candidates()
     parser.feed(data.decode("utf-8", "ignore"))
-    return [urljoin(website, href) for href in parser.og + parser.icons]
+    hrefs = parser.header_imgs + parser.svg_icons + parser.touch_icons
+    return [urljoin(website, href) for href in hrefs]
 
 
-def _try_image(url, fetch):
+def _png_size(data):
+    if data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR" or len(data) < 24:
+        return None
+    return struct.unpack(">II", data[16:24])
+
+
+def _usable_image(url, fetch):
+    """(data, content_type) if the URL is an SVG or a PNG of at least 128 px, else None."""
     try:
         data, content_type = fetch(url)
     except OSError:
         return None
-    if content_type.split(";")[0].strip().lower() not in EXTENSIONS:
-        return None
-    return data, content_type
-
-
-def find_logo(company, fetch):
-    """Try the portfolio page, then the company's own site. None if both fail."""
-    if company.logo_url:
-        url = urljoin(PORTFOLIO_BASE, company.logo_url)
-        found = _try_image(url, fetch)
-        if found:
-            return Logo(logo_filename(company.name, found[1]), found[0], "portfolio page")
-    for url in _site_candidates(company.website, fetch):
-        found = _try_image(url, fetch)
-        if found:
-            return Logo(logo_filename(company.name, found[1]), found[0], f"company site: {url}")
+    kind = content_type.split(";")[0].strip().lower()
+    if kind == "image/svg+xml":
+        return data, kind
+    if kind == "image/png":
+        size = _png_size(data)
+        if size and min(size) >= MIN_PNG_SIZE:
+            return data, kind
     return None
 
 
-def build_logo_report(results):
-    """results: list of (company, Logo | None)."""
-    lines = ["Logo sources:"]
-    lines += [f"  {c.name}: {l.filename} ({l.source})" for c, l in results if l]
-    missing = [c.name for c, l in results if not l]
+def find_logo(name, website, fetch):
+    """The first usable logo on the company's own homepage, or None."""
+    for url in _homepage_candidates(website, fetch):
+        found = _usable_image(url, fetch)
+        if found:
+            return Logo(logo_filename(name, found[1]), found[0], url)
+    return None
+
+
+def needs_fetch(row, file_exists):
+    """Re-runs keep manual/web-search rows and company-site rows whose file is present."""
+    if not row["logo"]:
+        return True
+    origin = row.get("logo_origin", "")
+    if origin in KEPT_ORIGINS:
+        return False
+    if origin == "company-site":
+        return not file_exists
+    return True  # legacy (Norte-derived): no origin recorded
+
+
+def build_logo_report(rows):
+    lines = ["Logo origins:"]
+    lines += [f"  {r['name']}: {r['logo_origin']} ({r['logo_source']})" for r in rows if r["logo"]]
+    missing = [r["name"] for r in rows if not r["logo"]]
     if missing:
-        lines.append(f"No logo found ({len(missing)}):")
+        lines.append(f"Manual follow-up ({len(missing)}): no logo yet")
         lines += [f"  {name}" for name in missing]
     else:
         lines.append("Every company has a logo.")
@@ -116,34 +147,34 @@ def fetch(url):
         return response.read(), response.headers.get("Content-Type", "")
 
 
+def resolve_row(row, root, fetch):
+    """Update one CSV row in place, writing or deleting logo files as needed."""
+    logo_path = root / row["logo"] if row["logo"] else None
+    if not needs_fetch(row, bool(logo_path and logo_path.is_file())):
+        return
+    logo = find_logo(row["name"], row["website"], fetch)
+    if logo:
+        if logo_path and logo_path.is_file() and logo_path.name != logo.filename:
+            logo_path.unlink()
+        (root / "site" / "logos").mkdir(parents=True, exist_ok=True)
+        (root / "site" / "logos" / logo.filename).write_bytes(logo.data)
+        row.update(logo=f"site/logos/{logo.filename}", logo_origin="company-site", logo_source=logo.source)
+    else:
+        if logo_path and logo_path.is_file():
+            logo_path.unlink()
+        row.update(logo="", logo_origin="", logo_source="")
+
+
 def main():
     with COMPANIES_CSV.open(newline="", encoding="utf-8-sig") as f:
-        rows = list(csv.DictReader(f))
-    try:
-        portfolio = {c.name.casefold(): c for c in parse_portfolio(fetch(PORTFOLIO_URL)[0].decode("utf-8"))}
-    except (RosterError, OSError) as error:
-        raise SystemExit(f"Could not read the portfolio page: {error}")
-    LOGO_DIR.mkdir(parents=True, exist_ok=True)
-    results = []
+        rows = [{c: (r.get(c) or "") for c in COLUMNS} for r in csv.DictReader(f)]
     for row in rows:
-        company = portfolio.get(row["name"].casefold()) or Company(
-            row["name"], row["website"], row["fund"], False, False
-        )
-        existing = ROOT / row.get("logo", "") if row.get("logo") else None
-        if existing and existing.is_file():  # keep logos already collected, including hand-added ones
-            results.append((company, Logo(existing.name, b"", "already present")))
-            continue
-        logo = find_logo(company, fetch)
-        if logo:
-            (LOGO_DIR / logo.filename).write_bytes(logo.data)
-            row["logo"] = f"site/logos/{logo.filename}"
-        results.append((company, logo))
+        resolve_row(row, ROOT, fetch)
     with COMPANIES_CSV.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["name", "website", "fund", "is_highlight", "is_exit", "logo"])
+        writer = csv.DictWriter(f, fieldnames=COLUMNS)
         writer.writeheader()
-        for row in rows:
-            writer.writerow({k: row.get(k, "") or "" for k in writer.fieldnames})
-    print(build_logo_report(results))
+        writer.writerows(rows)
+    print(build_logo_report(rows))
 
 
 if __name__ == "__main__":

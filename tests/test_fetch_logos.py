@@ -1,11 +1,13 @@
+import struct
 import sys
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from build_roster import Company  # noqa: E402
-from fetch_logos import Logo, build_logo_report, find_logo, logo_filename  # noqa: E402
+import tempfile  # noqa: E402
+
+from fetch_logos import build_logo_report, find_logo, logo_filename, needs_fetch, resolve_row  # noqa: E402
 
 
 class LogoFilenameTest(unittest.TestCase):
@@ -15,12 +17,18 @@ class LogoFilenameTest(unittest.TestCase):
 
     def test_is_stable_regardless_of_case_and_accents(self):
         self.assertEqual(logo_filename("Açaí Pay", "image/jpeg"), logo_filename("AÇAÍ PAY", "image/jpeg"))
-        self.assertEqual(logo_filename("Açaí Pay", "image/jpeg"), "acai-pay.jpg")
+
+
+def png(width, height=None):
+    height = height or width
+    header = b"\x89PNG\r\n\x1a\n" + struct.pack(">I", 13) + b"IHDR" + struct.pack(">II", width, height) + b"x" * 9
+    return header, "image/png"
+
+
+SVG = (b"<svg xmlns='http://www.w3.org/2000/svg'/>", "image/svg+xml")
 
 
 def fake_web(pages):
-    """A fetch(url) -> (bytes, content_type) backed by a dict; misses raise OSError."""
-
     def fetch(url):
         if url not in pages:
             raise OSError(f"404 {url}")
@@ -29,68 +37,141 @@ def fake_web(pages):
     return fetch
 
 
-ALPHA = Company("Alpha", "https://alpha.com", "I", False, False, "/api/media/file/alpha.svg")
-PNG = (b"png-bytes", "image/png")
-SVG = (b"svg-bytes", "image/svg+xml")
-
-
-def html(body):
+def page(body):
     return (f"<html><head>{body}</head></html>".encode(), "text/html")
 
 
+SITE = "https://alpha.com"
+
+
+def find(pages):
+    return find_logo("Alpha", SITE, fake_web(pages))
+
+
 class FindLogoTest(unittest.TestCase):
-    def test_prefers_the_official_portfolio_page(self):
-        web = fake_web({"https://www.norte.ventures/api/media/file/alpha.svg": SVG})
-        logo = find_logo(ALPHA, web)
-        self.assertEqual((logo.filename, logo.data, logo.source), ("alpha.svg", b"svg-bytes", "portfolio page"))
+    def test_header_img_with_logo_in_src_class_or_alt(self):
+        cases = [
+            ('src="/img/logo.svg"', "https://alpha.com/img/logo.svg"),
+            ('class="site-logo" src="/a.svg"', "https://alpha.com/a.svg"),
+            ('alt="Alpha logo" src="/b.svg"', "https://alpha.com/b.svg"),
+        ]
+        for attrs, src in cases:
+            html = page(f"<header><a><img {attrs}></a></header>")
+            logo = find({SITE: html, src: SVG})
+            self.assertEqual((logo.filename, logo.source), ("alpha.svg", src), attrs)
 
-    def test_falls_back_to_company_site_og_image(self):
-        web = fake_web(
-            {
-                "https://alpha.com": html('<meta property="og:image" content="/img/logo.png">'),
-                "https://alpha.com/img/logo.png": PNG,
-            }
+    def test_ignores_logo_images_outside_the_header(self):
+        html = page('<main><img src="/logo.svg"></main>')
+        self.assertIsNone(find({SITE: html, "https://alpha.com/logo.svg": SVG}))
+
+    def test_svg_icon_link_when_no_header_img(self):
+        html = page('<link rel="icon" type="image/svg+xml" href="/i.svg">')
+        self.assertEqual(find({SITE: html, "https://alpha.com/i.svg": SVG}).source, "https://alpha.com/i.svg")
+
+    def test_apple_touch_icon_last_resort(self):
+        html = page('<link rel="apple-touch-icon" href="/t.png">')
+        self.assertEqual(find({SITE: html, "https://alpha.com/t.png": png(180)}).filename, "alpha.png")
+
+    def test_header_img_beats_icons(self):
+        html = page('<link rel="apple-touch-icon" href="/t.png"><body><header><img src="/logo.svg"></header></body>')
+        web = {SITE: html, "https://alpha.com/logo.svg": SVG, "https://alpha.com/t.png": png(180)}
+        self.assertEqual(find(web).source, "https://alpha.com/logo.svg")
+
+    def test_never_uses_og_image_ico_or_plain_favicon(self):
+        html = page(
+            '<meta property="og:image" content="/og.png"><link rel="icon" href="/f.ico">'
+            '<link rel="shortcut icon" href="/f.png">'
         )
-        logo = find_logo(ALPHA, web)
-        self.assertEqual((logo.filename, logo.source), ("alpha.png", "company site: https://alpha.com/img/logo.png"))
+        web = {
+            SITE: html,
+            "https://alpha.com/og.png": png(600),
+            "https://alpha.com/f.ico": (b"i", "image/x-icon"),
+            "https://alpha.com/f.png": png(256),
+        }
+        self.assertIsNone(find(web))
 
-    def test_falls_back_to_company_site_icon_when_no_og_image(self):
-        web = fake_web(
-            {
-                "https://alpha.com": html('<link rel="apple-touch-icon" href="https://cdn.x/icon.png">'),
-                "https://cdn.x/icon.png": PNG,
-            }
-        )
-        self.assertEqual(find_logo(ALPHA, web).source, "company site: https://cdn.x/icon.png")
+    def test_rejects_png_under_128px_and_tries_next_candidate(self):
+        html = page('<header><img src="/logo.png"></header><link rel="apple-touch-icon" href="/t.png">')
+        web = {SITE: html, "https://alpha.com/logo.png": png(64), "https://alpha.com/t.png": png(180)}
+        self.assertEqual(find(web).source, "https://alpha.com/t.png")
 
-    def test_skips_a_portfolio_logo_that_is_not_an_image(self):
-        web = fake_web(
-            {
-                "https://www.norte.ventures/api/media/file/alpha.svg": html(""),
-                "https://alpha.com": html('<meta property="og:image" content="/l.png">'),
-                "https://alpha.com/l.png": PNG,
-            }
-        )
-        self.assertTrue(find_logo(ALPHA, web).source.startswith("company site"))
+    def test_rejects_non_svg_non_png_and_non_images(self):
+        html = page('<header><img src="/logo.jpg"><img src="/logo2.png"></header>')
+        web = {SITE: html, "https://alpha.com/logo.jpg": (b"j", "image/jpeg"), "https://alpha.com/logo2.png": page("")}
+        self.assertIsNone(find(web))
 
-    def test_returns_none_when_nothing_is_found(self):
-        self.assertIsNone(find_logo(ALPHA, fake_web({})))
+    def test_none_when_site_unreachable(self):
+        self.assertIsNone(find({}))
+
+
+def row(**kw):
+    base = {"name": "Alpha", "logo": "site/logos/alpha.svg", "logo_origin": "", "logo_source": ""}
+    return {**base, **kw}
+
+
+class NeedsFetchTest(unittest.TestCase):
+    def test_legacy_row_without_origin_is_refetched_even_if_file_exists(self):
+        self.assertTrue(needs_fetch(row(), file_exists=True))
+
+    def test_empty_logo_is_fetched(self):
+        self.assertTrue(needs_fetch(row(logo=""), file_exists=False))
+
+    def test_manual_and_web_search_are_kept_even_with_missing_file(self):
+        for origin in ("manual", "web-search"):
+            self.assertFalse(needs_fetch(row(logo_origin=origin, logo_source="https://x.com"), file_exists=False))
+
+    def test_company_site_kept_unless_file_missing(self):
+        r = row(logo_origin="company-site", logo_source="https://alpha.com/l.svg")
+        self.assertFalse(needs_fetch(r, file_exists=True))
+        self.assertTrue(needs_fetch(r, file_exists=False))
+
+
+class ResolveRowTest(unittest.TestCase):
+    def legacy(self, root):
+        (root / "site" / "logos").mkdir(parents=True)
+        (root / "site" / "logos" / "alpha.svg").write_bytes(b"norte")
+        return row(website=SITE)
+
+    def test_legacy_logo_with_nothing_found_is_deleted_and_cleared(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            r = self.legacy(root)
+            resolve_row(r, root, fake_web({}))
+            self.assertEqual((r["logo"], r["logo_origin"], r["logo_source"]), ("", "", ""))
+            self.assertFalse((root / "site" / "logos" / "alpha.svg").exists())
+
+    def test_legacy_logo_is_replaced_and_second_run_changes_nothing(self):
+        web = fake_web({SITE: page('<header><img src="/logo.svg"></header>'), "https://alpha.com/logo.svg": SVG})
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            r = self.legacy(root)
+            resolve_row(r, root, web)
+            self.assertEqual(
+                (r["logo"], r["logo_origin"], r["logo_source"]),
+                ("site/logos/alpha.svg", "company-site", "https://alpha.com/logo.svg"),
+            )
+            self.assertEqual((root / r["logo"]).read_bytes(), SVG[0])
+            before = dict(r)
+            resolve_row(r, root, fake_web({}))
+            self.assertEqual(r, before)
+            self.assertTrue((root / r["logo"]).exists())
 
 
 class ReportTest(unittest.TestCase):
-    def test_lists_each_logo_source_and_names_companies_without_a_logo(self):
-        beta = Company("Beta", "https://beta.com", "II", False, False)
-        report = build_logo_report(
-            [(ALPHA, Logo("alpha.svg", b"", "portfolio page")), (beta, None)]
-        )
-        self.assertIn("Alpha: alpha.svg (portfolio page)", report)
-        self.assertIn("No logo found (1):", report)
-        self.assertIn("Beta", report.split("No logo found")[1])
-        self.assertNotIn("Alpha", report.split("No logo found")[1])
+    def test_lists_origin_per_company_and_companies_without_logo_separately(self):
+        rows = [
+            row(logo_origin="company-site", logo_source="https://alpha.com/l.svg"),
+            row(name="Beta", logo=""),
+        ]
+        report = build_logo_report(rows)
+        self.assertIn("Alpha: company-site", report)
+        self.assertIn("Manual follow-up (1):", report)
+        self.assertIn("Beta", report.split("Manual follow-up")[1])
+        self.assertNotIn("Alpha", report.split("Manual follow-up")[1])
 
     def test_says_so_when_every_company_has_a_logo(self):
-        report = build_logo_report([(ALPHA, Logo("alpha.svg", b"", "portfolio page"))])
-        self.assertIn("Every company has a logo.", report)
+        rows = [row(logo_origin="manual", logo_source="https://x.com")]
+        self.assertIn("Every company has a logo.", build_logo_report(rows))
 
 
 if __name__ == "__main__":

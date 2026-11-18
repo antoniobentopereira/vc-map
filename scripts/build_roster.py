@@ -77,12 +77,15 @@ def fetch(url=PORTFOLIO_URL):
         return response.read().decode("utf-8")
 
 
+LOGO_COLUMNS = ["logo", "logo_origin", "logo_source"]
+
+
 def _existing_logos(path):
-    """Logo paths already in the CSV, so rebuilding the roster does not erase them."""
+    """Logo columns already in the CSV, so rebuilding the roster does not erase them."""
     if not path.exists():
         return {}
     with path.open(newline="", encoding="utf-8-sig") as f:
-        return {r["name"].casefold(): r.get("logo", "") for r in csv.DictReader(f)}
+        return {r["name"].casefold(): [r.get(c, "") or "" for c in LOGO_COLUMNS] for r in csv.DictReader(f)}
 
 
 def write_csv(companies, path=OUTPUT):
@@ -90,10 +93,11 @@ def write_csv(companies, path=OUTPUT):
     logos = _existing_logos(path)
     with path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["name", "website", "fund", "is_highlight", "is_exit", "logo"])
+        writer.writerow(["name", "website", "fund", "is_highlight", "is_exit", *LOGO_COLUMNS])
         for c in companies:
             writer.writerow(
-                [c.name, c.website, c.fund, str(c.is_highlight).upper(), str(c.is_exit).upper(), logos.get(c.name.casefold(), "")]
+                [c.name, c.website, c.fund, str(c.is_highlight).upper(), str(c.is_exit).upper(),
+                 *logos.get(c.name.casefold(), [""] * len(LOGO_COLUMNS))]
             )
 
 

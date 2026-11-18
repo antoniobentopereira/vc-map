@@ -10,11 +10,12 @@ from check_data import (  # noqa: E402
     check_claims,
     check_companies,
     check_files,
+    follow_up_companies,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
-HEADER = "name,website,fund,is_highlight,is_exit,logo"
-COMPANIES = ["name,website,fund,is_highlight,is_exit,logo", "Alpha,https://alpha.com,I,FALSE,FALSE,site/logos/alpha.svg"]
+HEADER = "name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source"
+COMPANIES = [HEADER, "Alpha,https://alpha.com,I,FALSE,FALSE,site/logos/alpha.svg,company-site,https://alpha.com/logo.svg"]
 CLAIMS_HEADER = "company,field,value,source_url,basis,confidence,note"
 
 
@@ -26,7 +27,7 @@ def write(directory, name, lines):
 
 def touch_logos(root, lines):
     for line in lines[1:]:
-        logo = line.split(",")[-1]
+        logo = line.split(",")[5]
         if logo:
             (Path(root) / logo).parent.mkdir(parents=True, exist_ok=True)
             (Path(root) / logo).write_bytes(b"x")
@@ -110,34 +111,53 @@ class ClaimsTest(unittest.TestCase):
 class CompaniesTest(unittest.TestCase):
     def check(self, *lines):
         with tempfile.TemporaryDirectory() as d:
-            path = write(d, "companies.csv", ["name,website,fund,is_highlight,is_exit,logo", *lines])
+            path = write(d, "companies.csv", [HEADER, *lines])
             touch_logos(d, ["header", *lines])
             return check_files(path, Path(d) / "none.csv", d)
 
     def test_missing_logo_file(self):
         with tempfile.TemporaryDirectory() as d:
-            path = write(d, "companies.csv", [HEADER, "Alpha,https://a.com,I,FALSE,FALSE,site/logos/alpha.svg"])
+            path = write(d, "companies.csv", [HEADER, "Alpha,https://a.com,I,FALSE,FALSE,site/logos/alpha.svg,manual,https://a.com/p"])
             errors = check_files(path, Path(d) / "none.csv", d)
         self.assertEqual(len(errors), 1)
         self.assertIn("logo file 'site/logos/alpha.svg' does not exist", errors[0])
 
-    def test_empty_logo(self):
-        errors = self.check("Alpha,https://a.com,I,FALSE,FALSE,")
-        self.assertEqual(len(errors), 1)
-        self.assertIn("logo is empty", errors[0])
+    def test_empty_logo_is_valid_and_listed_for_follow_up(self):
+        self.assertEqual(self.check("Alpha,https://a.com,I,FALSE,FALSE,,,"), [])
+        self.assertEqual(follow_up_companies([{"name": "Alpha", "logo": ""}, {"name": "B", "logo": "x"}]), ["Alpha"])
+
+    def one(self, line, fragment):
+        errors = self.check(line)
+        self.assertEqual(len(errors), 1, errors)
+        self.assertIn(fragment, errors[0])
+
+    def test_set_logo_needs_valid_origin(self):
+        self.one("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,,https://a.com/l.svg", "logo_origin")
+        self.one("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,norte,https://a.com/l.svg", "logo_origin 'norte'")
+
+    def test_set_logo_needs_valid_source_url(self):
+        self.one("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,", "logo_source")
+        self.one("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,not a url", "logo_source")
+
+    def test_norte_source_is_an_error(self):
+        self.one("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,https://www.norte.ventures/x.svg", "norte.ventures")
+
+    def test_empty_logo_with_leftover_origin_or_source_is_an_error(self):
+        self.one("Alpha,https://a.com,I,FALSE,FALSE,,manual,", "logo is empty")
+        self.one("Alpha,https://a.com,I,FALSE,FALSE,,,https://a.com/l.svg", "logo is empty")
 
     def test_duplicate_company(self):
-        errors = self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/alpha.svg", "alpha,https://b.com,II,FALSE,FALSE,site/logos/alpha.svg")
+        errors = self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/alpha.svg,manual,https://a.com/p", "alpha,https://b.com,II,FALSE,FALSE,site/logos/alpha.svg,manual,https://a.com/p")
         self.assertEqual(len(errors), 1)
         self.assertIn("duplicate of line 2", errors[0])
 
     def test_invalid_website(self):
-        errors = self.check("Alpha,alpha,I,FALSE,FALSE,site/logos/alpha.svg")
+        errors = self.check("Alpha,alpha,I,FALSE,FALSE,site/logos/alpha.svg,manual,https://a.com/p")
         self.assertEqual(len(errors), 1)
         self.assertIn("website", errors[0])
 
     def test_bad_fund_and_flag(self):
-        errors = self.check("Alpha,https://a.com,III,yes,FALSE,site/logos/alpha.svg")
+        errors = self.check("Alpha,https://a.com,III,yes,FALSE,site/logos/alpha.svg,manual,https://a.com/p")
         self.assertEqual(len(errors), 2, errors)
 
 
