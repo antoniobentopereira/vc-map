@@ -61,12 +61,9 @@
   .tl-item::before { content: ""; position: absolute; left: -20px; top: 12px; width: 10px; height: 10px; border-radius: 50%;
     background: var(--paper); border: 2px solid var(--ink); }
   .tl-item .when { font-size: 12px; color: var(--muted); padding-top: 2px; }
-  .tl-item.round { background: var(--ink); color: var(--paper); }
-  .tl-item.round::before { border-radius: 0; background: var(--ink); left: -20px; }
-  .tl-item.round .when, .tl-item.round .note { color: #c9c9b8; }
-  .tl-item.round .val.uncertain { color: var(--ink); }
-  .tl-item.round .badge { color: #c9c9b8; border-color: #c9c9b8; }
-  .tl-item.round .badge.est, .tl-item.round .badge.low { color: #8a5a00; border-color: #b7791f; }
+  .tl-item.round { background: #e6e6db; border-left: 3px solid var(--ink); }
+  .tl-item.round::before { border-radius: 0; background: var(--ink); }
+  .tl-item.round .when { font-weight: 600; color: var(--ink); }
   .legend { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; }
   .legend .badge { margin-left: 0; }
   header .legend { flex-basis: 100%; }
