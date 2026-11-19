@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "scripts"))
-from derive import first_investment, follow_on, last_round  # noqa: E402  (one definition of each view)
+from derive import _order, first_investment, follow_on, last_round  # noqa: E402  (one definition of each view)
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
@@ -42,7 +42,7 @@ def build():
             "logo": f"../../{logo}" if logo and (ROOT / logo).is_file() else "",
             "researched_on": company["researched_on"],
             "claims": rows["claims"],
-            "rounds": rows["rounds"],
+            "rounds": sorted(rows["rounds"], key=_order),  # year, then stage
             "derived": {
                 "first_investment": first_investment(rows["rounds"]),
                 "last_round": last_round(rows["rounds"]),

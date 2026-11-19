@@ -149,14 +149,16 @@ function evidence(row) {
   return { uncertain, nodes: out, note };
 }
 
+const valueSpan = (ev, text) => el("span", { className: "val" + (ev.uncertain ? " uncertain" : "") }, text);
+const typeLabel = (type) => type.replace(/_/g, " ");
+
 const NONE_RECORDED = new Set(["acquirer", "acquisition_year"]);
 
 // One classification for every field slot: reported / uncertain / not found / not researched.
 function fieldView(profile, field, row, text) {
   if (row) {
     const ev = evidence(row);
-    return el("span", {}, el("span", { className: "val" + (ev.uncertain ? " uncertain" : "") }, text ?? row.value),
-      ...ev.nodes, ev.note);
+    return el("span", {}, valueSpan(ev, text ?? row.value), ...ev.nodes, ev.note);
   }
   if (NONE_RECORDED.has(field)) return el("span", { className: "val empty" }, "none recorded (not acquired, or not found)");
   if (profile.researched_on) {
@@ -177,7 +179,7 @@ function listBox(profile, title, field) {
 }
 
 const usd = (n) => (n === "" || n == null ? "?" : "US$" + Number(n).toLocaleString("en-US"));
-const roundLabel = (r) => (r ? r.type.replace(/_/g, " ") + " " + r.year : "none");
+const roundLabel = (r) => (r ? typeLabel(r.type) + " " + r.year : "none");
 
 function roundsBox(profile) {
   const box = el("div", { className: "box" }, el("div", { className: "label" }, "Investment Rounds"));
@@ -193,14 +195,13 @@ function roundsBox(profile) {
   if (!d.first_investment) box.append(el("span", { className: "flag" }, "No Norte round recorded"));
   const table = el("table", { className: "rounds" },
     el("tr", {}, ...["Type", "Year", "Size (USD)", "Norte"].map((h) => el("th", { className: "label" }, h))));
-  const sorted = [...rounds].sort((a, b) => Number(a.year) - Number(b.year));
-  for (const r of sorted) {
+  for (const r of rounds) { // already in year, then stage order (build_data.py)
     const ev = evidence(r);
     table.append(el("tr", { className: "main" },
-      el("td", {}, r.type.replace(/_/g, " ")), el("td", {}, r.year),
-      el("td", {}, el("span", { className: "val" + (ev.uncertain ? " uncertain" : "") }, usd(r.size_usd)), ...ev.nodes),
+      el("td", {}, typeLabel(r.type)), el("td", {}, r.year),
+      el("td", {}, valueSpan(ev, usd(r.size_usd)), ...ev.nodes),
       el("td", {}, r.norte_participated === "TRUE" ? "yes" : "no")));
-    const reported = r.reported_amount ? Number(r.reported_amount).toLocaleString("en-US") + " " + r.reported_currency : "amount not reported";
+    const reported = r.reported_amount ? [Number(r.reported_amount).toLocaleString("en-US"), r.reported_currency].filter(Boolean).join(" ") : "amount not reported";
     table.append(el("tr", { className: "detail" }, el("td", { colSpan: 4 },
       reported + " · " + (r.co_investors || "no co-investors listed"), ev.note)));
   }
@@ -245,14 +246,13 @@ function timelineBox(profile) {
       line.append(el("div", { className: "tl-year" }, year || "Undated"));
     }
     const ev = evidence(e.row);
-    const cls = "val" + (ev.uncertain ? " uncertain" : "");
     if (e.kind === "round") {
-      const label = "Round: " + e.row.type.replace(/_/g, " ") + (e.row.size_usd ? " · " + usd(e.row.size_usd) : "");
+      const label = "Round: " + typeLabel(e.row.type) + (e.row.size_usd ? " · " + usd(e.row.size_usd) : "");
       line.append(el("div", { className: "tl-item round" }, el("span", { className: "when" }, "Round"),
-        el("span", {}, el("span", { className: cls }, label), ...ev.nodes, ev.note)));
+        el("span", {}, valueSpan(ev, label), ...ev.nodes, ev.note)));
     } else {
       line.append(el("div", { className: "tl-item milestone" }, el("span", { className: "when" }, e.date || "no date"),
-        el("span", {}, el("span", { className: cls }, e.text), ...ev.nodes, ev.note)));
+        el("span", {}, valueSpan(ev, e.text), ...ev.nodes, ev.note)));
     }
   }
   box.append(line);
@@ -310,13 +310,16 @@ function select(index) {
 }
 
 function current() {
-  const name = decodeURIComponent(location.hash.slice(1));
+  let name = "";
+  try { name = decodeURIComponent(location.hash.slice(1)); } catch (e) { /* malformed hash: fall back to the first company */ }
   const i = profiles.findIndex((p) => p.name === name);
   return i < 0 ? 0 : i;
 }
 
 function show() {
   const i = current();
+  const wanted = "#" + encodeURIComponent(profiles[i].name);
+  if (location.hash !== wanted) history.replaceState(null, "", wanted); // keep the address true to what is shown
   render(profiles[i]);
   $("search").value = "";
   $("search").placeholder = profiles[i].name;
@@ -327,7 +330,12 @@ if (!profiles.length) {
 } else {
   $("companies").append(...profiles.map((p) => el("option", { value: p.name })));
   $("search").addEventListener("change", () => {
-    const i = profiles.findIndex((p) => p.name.toLowerCase() === $("search").value.trim().toLowerCase());
+    const q = $("search").value.trim().toLowerCase();
+    let i = profiles.findIndex((p) => p.name.toLowerCase() === q);
+    if (i < 0) { // a unique partial match also selects
+      const hits = profiles.filter((p) => q && p.name.toLowerCase().includes(q));
+      if (hits.length === 1) i = profiles.indexOf(hits[0]);
+    }
     if (i >= 0) select(i); else $("search").value = "";
   });
   $("prev").addEventListener("click", () => select(current() - 1));
