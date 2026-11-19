@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Company profile</title>
+<style>
+  :root { --ink: #1c1c14; --paper: #f1f1ea; --muted: #6b6b5c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 system-ui, sans-serif; }
+  .label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  header { display: flex; align-items: center; gap: 20px; padding: 20px 32px; border-bottom: 1px solid var(--ink); }
+  .logo { width: 64px; height: 64px; border: 1px solid var(--ink); border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; overflow: hidden; background: #fff; flex: none;
+    color: var(--muted); font-size: 11px; }
+  .logo img { max-width: 80%; max-height: 80%; }
+  h1 { margin: 0; font-size: 34px; }
+  .tag { display: inline-block; border: 1px solid var(--ink); padding: 1px 8px; font-size: 11px;
+    letter-spacing: .08em; text-transform: uppercase; vertical-align: middle; margin-left: 10px; }
+  .picker { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+  .picker input { font: inherit; padding: 6px 10px; border: 1px solid var(--ink); background: var(--paper); width: 260px; }
+  .picker button { font: inherit; border: 1px solid var(--ink); background: var(--paper); padding: 6px 12px; cursor: pointer; }
+  main { padding: 24px 32px; max-width: 1000px; }
+  .short { font: italic 24px/1.35 Georgia, serif; margin: 6px 0 24px; }
+  .box { border: 1px solid var(--ink); padding: 14px 16px; margin-bottom: 24px; }
+  .facts { display: grid; grid-template-columns: 200px 1fr; gap: 8px 16px; margin: 8px 0 0; }
+  .facts dt { align-self: center; }
+  .facts dd { margin: 0; }
+  .empty { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" id="logo"></div>
+  <h1><span id="name"></span><span class="tag" id="status" hidden></span></h1>
+  <div class="picker">
+    <button id="prev" title="Previous company">&larr;</button>
+    <input id="search" list="companies" placeholder="Search companies..." autocomplete="off">
+    <datalist id="companies"></datalist>
+    <button id="next" title="Next company">&rarr;</button>
+  </div>
+</header>
+<main id="profile"></main>
+<script src="data.js"></script>
+<script>
+const data = window.PROFILE_DATA;
+const profiles = data ? data.profiles : [];
+const $ = (id) => document.getElementById(id);
+
+function el(tag, props = {}, ...children) {
+  const node = Object.assign(document.createElement(tag), props);
+  node.append(...children);
+  return node;
+}
+
+function value(profile, field) {
+  const c = profile.claims.find((row) => row.field === field);
+  return c ? c.value : "";
+}
+
+function factValue(text) {
+  return text ? el("span", {}, text) : el("span", { className: "empty" }, "—");
+}
+
+function render(profile) {
+  const main = $("profile");
+  main.replaceChildren();
+  $("name").textContent = profile.name;
+  $("logo").replaceChildren(profile.logo ? el("img", { src: profile.logo, alt: profile.name }) : "no logo");
+  const status = value(profile, "status");
+  $("status").hidden = !status;
+  $("status").textContent = status;
+  document.title = profile.name + " – Company profile";
+
+  main.append(el("div", { className: "label" }, "Short description"),
+    el("p", { className: "short" }, value(profile, "description") || "—"));
+
+  const subSector = value(profile, "sub_sector");
+  const sector = subSector ? data.sectors[subSector] || "" : "";
+  const facts = [
+    ["Sub-sector and Sector", [subSector, sector].filter(Boolean).join(" · ")],
+    ["Status", status],
+    ["Business model", value(profile, "business_model")],
+    ["Year founded", value(profile, "year_founded")],
+    ["HQ now", value(profile, "hq")],
+    ["HQ at first investment", value(profile, "hq_at_first_investment")],
+    ["Acquirer", value(profile, "acquirer")],
+    ["Acquisition year", value(profile, "acquisition_year")],
+  ];
+  const dl = el("dl", { className: "facts" });
+  for (const [label, text] of facts) {
+    dl.append(el("dt", { className: "label" }, label), el("dd", {}, factValue(text)));
+  }
+  main.append(el("div", { className: "box" }, el("div", { className: "label" }, "Facts"), dl));
+
+  main.append(el("div", { className: "box" }, el("div", { className: "label" }, "Long description"),
+    el("p", {}, value(profile, "long_description") || "—")));
+}
+
+function select(index) {
+  const i = (index + profiles.length) % profiles.length;
+  location.hash = encodeURIComponent(profiles[i].name);
+}
+
+function current() {
+  const name = decodeURIComponent(location.hash.slice(1));
+  const i = profiles.findIndex((p) => p.name === name);
+  return i < 0 ? 0 : i;
+}
+
+function show() {
+  const i = current();
+  render(profiles[i]);
+  $("search").value = "";
+  $("search").placeholder = profiles[i].name;
+}
+
+if (!profiles.length) {
+  $("profile").textContent = "No data. Run: python tools/profile-viewer/build_data.py";
+} else {
+  $("companies").append(...profiles.map((p) => el("option", { value: p.name })));
+  $("search").addEventListener("change", () => {
+    const i = profiles.findIndex((p) => p.name.toLowerCase() === $("search").value.trim().toLowerCase());
+    if (i >= 0) select(i); else $("search").value = "";
+  });
+  $("prev").addEventListener("click", () => select(current() - 1));
+  $("next").addEventListener("click", () => select(current() + 1));
+  window.addEventListener("hashchange", show);
+  show();
+}
+</script>
+</body>
+</html>
