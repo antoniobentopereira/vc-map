@@ -170,10 +170,7 @@ function roundsBox(profile) {
   const box = el("div", { className: "box" }, el("div", { className: "label" }, "Investment Rounds"));
   const rounds = profile.rounds;
   if (!rounds.length) {
-    const missing = profile.researched_on
-      ? el("span", { className: "val notfound" }, "NOT FOUND (as of " + profile.researched_on + ")")
-      : el("span", { className: "val notresearched" }, "NOT RESEARCHED");
-    box.append(el("div", { className: "stack" }, missing));
+    box.append(el("div", { className: "stack" }, fieldView(profile, "rounds")));
     return box;
   }
   const d = profile.derived;
