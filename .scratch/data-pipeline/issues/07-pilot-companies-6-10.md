@@ -4,8 +4,8 @@
 
 **Blocked by:** 06 (Pilot: companies 2 to 5).
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Five companies researched, each with every field in docs/data-model.md filled or recorded as missing, every Round found, and researched_on set
-- [ ] The check script passes after each company
-- [ ] Notes updated with anything new learned
+- [x] Five companies researched, each with every field in docs/data-model.md filled or recorded as missing, every Round found, and researched_on set
+- [x] The check script passes after each company
+- [x] Notes updated with anything new learned
