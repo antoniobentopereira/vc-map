@@ -19,7 +19,18 @@
   .picker { margin-left: auto; display: flex; gap: 6px; align-items: center; }
   .picker input { font: inherit; padding: 6px 10px; border: 1px solid var(--ink); background: var(--paper); width: 260px; }
   .picker button { font: inherit; border: 1px solid var(--ink); background: var(--paper); padding: 6px 12px; cursor: pointer; }
-  main { padding: 24px 32px; max-width: 1000px; }
+  main { padding: 24px 32px; max-width: 1300px; }
+  .cols { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 0 32px; align-items: start; }
+  .stack { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .item { border: 1px solid var(--ink); padding: 6px 10px; background: #fff; }
+  .rounds { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+  .rounds th { text-align: left; font-weight: normal; }
+  .rounds td, .rounds th { padding: 4px 8px 4px 0; }
+  .rounds tr.main td { border-top: 1px solid var(--ink); padding-top: 8px; }
+  .rounds tr.detail td { color: var(--muted); font-size: 12px; padding-bottom: 8px; }
+  .summary { margin: 8px 0 0; font-size: 13px; }
+  .flag { display: inline-block; margin-top: 8px; border: 1px solid #b42318; color: #b42318; background: #fdeceb;
+    padding: 2px 8px; font-size: 12px; font-weight: 600; }
   .short .badge, .short .src, .short .srcpanel { font-family: system-ui, sans-serif; font-style: normal; }
   .short { font: italic 24px/1.35 Georgia, serif; margin: 6px 0 24px; }
   .box { border: 1px solid var(--ink); padding: 14px 16px; margin-bottom: 24px; }
@@ -141,6 +152,52 @@ function fieldView(profile, field, row, text) {
   return el("span", { className: "val notresearched" }, "NOT RESEARCHED");
 }
 
+function listBox(profile, title, field) {
+  const rows = profile.claims.filter((r) => r.field === field);
+  const stack = el("div", { className: "stack" });
+  if (rows.length) {
+    for (const row of rows) stack.append(el("div", { className: "item" }, fieldView(profile, field, row)));
+  } else {
+    stack.append(fieldView(profile, field));
+  }
+  return el("div", { className: "box" }, el("div", { className: "label" }, title), stack);
+}
+
+const usd = (n) => (n === "" || n == null ? "?" : "US$" + Number(n).toLocaleString("en-US"));
+const roundLabel = (r) => (r ? r.type.replace(/_/g, " ") + " " + r.year : "none");
+
+function roundsBox(profile) {
+  const box = el("div", { className: "box" }, el("div", { className: "label" }, "Investment Rounds"));
+  const rounds = profile.rounds;
+  if (!rounds.length) {
+    const missing = profile.researched_on
+      ? el("span", { className: "val notfound" }, "NOT FOUND (as of " + profile.researched_on + ")")
+      : el("span", { className: "val notresearched" }, "NOT RESEARCHED");
+    box.append(el("div", { className: "stack" }, missing));
+    return box;
+  }
+  const d = profile.derived;
+  box.append(el("p", { className: "summary" },
+    "First investment: " + roundLabel(d.first_investment) + " · Last round: " + roundLabel(d.last_round) +
+    " · Follow-on: " + (d.follow_on === null ? "n/a" : d.follow_on ? "yes" : "no")));
+  if (!d.first_investment) box.append(el("span", { className: "flag" }, "No Norte round recorded"));
+  const table = el("table", { className: "rounds" },
+    el("tr", {}, ...["Type", "Year", "Size (USD)", "Norte"].map((h) => el("th", { className: "label" }, h))));
+  const sorted = [...rounds].sort((a, b) => Number(a.year) - Number(b.year));
+  for (const r of sorted) {
+    const ev = evidence(r);
+    table.append(el("tr", { className: "main" },
+      el("td", {}, r.type.replace(/_/g, " ")), el("td", {}, r.year),
+      el("td", {}, el("span", { className: "val" + (ev.uncertain ? " uncertain" : "") }, usd(r.size_usd)), ...ev.nodes),
+      el("td", {}, r.norte_participated === "TRUE" ? "yes" : "no")));
+    const reported = r.reported_amount ? Number(r.reported_amount).toLocaleString("en-US") + " " + r.reported_currency : "amount not reported";
+    table.append(el("tr", { className: "detail" }, el("td", { colSpan: 4 },
+      reported + " · " + (r.co_investors || "no co-investors listed"), ev.note)));
+  }
+  box.append(table);
+  return box;
+}
+
 function render(profile) {
   const main = $("profile");
   main.replaceChildren();
@@ -156,7 +213,8 @@ function render(profile) {
       "NOT RESEARCHED: this company has no researched_on date. Missing fields below are unchecked, not findings."));
   }
 
-  main.append(el("div", { className: "label" }, "Short description"),
+  const left = el("div", {}), right = el("div", {});
+  left.append(el("div", { className: "label" }, "Short description"),
     el("p", { className: "short" }, fieldView(profile, "description", claim(profile, "description"))));
 
   const subRow = claim(profile, "sub_sector");
@@ -172,10 +230,15 @@ function render(profile) {
     dl.append(el("dt", { className: "label" }, label),
       el("dd", {}, fieldView(profile, field, row || claim(profile, field), text)));
   }
-  main.append(el("div", { className: "box" }, el("div", { className: "label" }, "Facts"), dl));
+  left.append(el("div", { className: "box" }, el("div", { className: "label" }, "Facts"), dl));
 
-  main.append(el("div", { className: "box" }, el("div", { className: "label" }, "Long description"),
+  left.append(el("div", { className: "box" }, el("div", { className: "label" }, "Long description"),
     el("p", {}, fieldView(profile, "long_description", claim(profile, "long_description")))));
+
+  right.append(listBox(profile, "Founders", "founder"));
+  right.append(roundsBox(profile));
+  right.append(listBox(profile, "Markets", "market"), listBox(profile, "Accelerators", "accelerator"));
+  main.append(el("div", { className: "cols" }, left, right));
 }
 
 function select(index) {

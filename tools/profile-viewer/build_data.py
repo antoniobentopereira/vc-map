@@ -8,6 +8,9 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "scripts"))
+from derive import first_investment, follow_on, last_round  # noqa: E402  (one definition of each view)
+
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 DATA = ROOT / "data"
@@ -40,6 +43,11 @@ def build():
             "researched_on": company["researched_on"],
             "claims": rows["claims"],
             "rounds": rows["rounds"],
+            "derived": {
+                "first_investment": first_investment(rows["rounds"]),
+                "last_round": last_round(rows["rounds"]),
+                "follow_on": follow_on(rows["rounds"]),
+            },
         })
     return {"profiles": profiles, "sectors": sectors}
 
