@@ -72,6 +72,14 @@
   .completeness b { font-weight: 600; }
   .completeness.unresearched { color: #b42318; font-weight: 600; }
   .banner.check ul { margin: 6px 0 0; padding-left: 20px; font-weight: 400; }
+  details.howto { margin-top: 4px; font-size: 12px; }
+  details.howto summary { cursor: pointer; color: var(--muted); }
+  details.howto pre { margin: 6px 0; padding: 6px 8px; background: #fff; border: 1px solid var(--ink);
+    white-space: pre-wrap; word-break: break-all; font: 12px/1.4 ui-monospace, Consolas, monospace; }
+  details.howto button { font: inherit; font-size: 11px; border: 1px solid var(--ink); background: var(--paper); padding: 0 6px; cursor: pointer; }
+  details.howto ul { margin: 4px 0; padding-left: 18px; }
+  .record { grid-template-columns: 160px 1fr; }
+  .record dd { overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -156,17 +164,77 @@ const typeLabel = (type) => type.replace(/_/g, " ");
 
 const NONE_RECORDED = new Set(["acquirer", "acquisition_year"]);
 
+
+const csvCell = (v) => (/[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v);
+
+const CLAIM_COLUMNS_HELP = "source_url: one valid http(s) link · basis: reported (a Source states it) or estimated (note says why) · " +
+  "confidence: high, medium or low · values stay on one line";
+
+// What each claim field expects (docs/data-model.md); allowed values come from build_data.py / sectors.csv.
+function fieldHelp(field) {
+  const a = data.allowed || {};
+  const subs = Object.keys(data.sectors || {});
+  const help = {
+    description: ["One or two sentences on what the company does, in our own words."],
+    long_description: ["One paragraph on product, customers and business model, from one Source."],
+    sub_sector: ["Must already be listed in sectors.csv (add it there first if new). Listed: " + (subs.join("; ") || "none yet")],
+    hq: ["City, Country (country name in English). Where the company says its HQ is, never legal incorporation."],
+    hq_at_first_investment: ["City, Country, as HQ when Norte first invested."],
+    year_founded: ["A four-digit year, such as 2019."],
+    status: ["One of: " + (a.status || []).join(", ") + ". stealth = operating, not launched; active = activity in the last ~18 months " +
+      "(usually estimated); inactive = no recent activity, no confirmed shutdown (estimated, low or medium); closed = a Source confirms shutdown (reported)."],
+    business_model: ["One of: " + (a.business_models || []).join(", ") + "."],
+    acquirer: ["Who acquired the company. Leave out if it was not acquired."],
+    acquisition_year: ["A four-digit year, not before year_founded. Leave out if not acquired."],
+    founder: ["One Founder's name per row."],
+    market: ["One country per row where the company operates or sells (English name)."],
+    accelerator: ["One programme per row, such as Y Combinator (batch goes in the note)."],
+    milestone: ["date: event. The date is 2021, 2021-03 or 2021-03-19. Non-funding events only (launches, pivots, offices, HQ moves); Rounds go in rounds.csv."],
+  };
+  return help[field] || [];
+}
+
+// Collapsed "How to add this": a pre-filled CSV line with a copy button plus the expected format.
+function howTo(file, line, lines) {
+  const pre = el("pre", {}, line);
+  return el("details", { className: "howto" }, el("summary", {}, "How to add this"),
+    el("div", {}, "Add this line to data/" + file + ", then fill in the empty values: ",
+      el("button", { type: "button", onclick: (e) => copyText(line, e.target) }, "Copy")),
+    pre, el("ul", {}, ...lines.map((t) => el("li", {}, t))));
+}
+
+function claimTemplate(profile, field) {
+  const line = [profile.name, field, "", "", "", "", ""].map(csvCell).join(",");
+  return howTo("claims.csv", line, [...fieldHelp(field), CLAIM_COLUMNS_HELP,
+    "Columns: company, field, value, source_url, basis, confidence, note"]);
+}
+
+function roundTemplate(profile) {
+  const a = data.allowed || {};
+  const line = [profile.name, "", "", "", "", "", "", "", "", "", "", ""].map(csvCell).join(",");
+  return howTo("rounds.csv", line, [
+    "Columns: company, year, type, reported_amount, reported_currency, size_usd, co_investors, norte_participated, source_url, basis, confidence, note",
+    "type: " + (a.round_types || []).join(", ") + " (extensions and bridges take their base type; debt never counts as the last Round)",
+    "reported_amount and reported_currency: the total size as the Source reports it, a whole number and a code such as BRL; size_usd is that in whole US dollars at the fx.csv rate (leave all three empty if undisclosed)",
+    "co_investors: everyone but Norte, separated by '; ', with (lead) or (co-lead) after the name",
+    "norte_participated: TRUE or FALSE",
+    "One row per Round: same company, year and type is rejected",
+    "source_url, basis (reported or estimated), confidence (high, medium, low) and one-line rules as for claims",
+  ]);
+}
+
 // One classification for every field slot: reported / uncertain / not found / not researched.
 function fieldView(profile, field, row, text) {
   if (row) {
     const ev = evidence(row);
     return el("span", {}, valueSpan(ev, text ?? row.value), ...ev.nodes, ev.note);
   }
-  if (NONE_RECORDED.has(field)) return el("span", { className: "val empty" }, "none recorded (not acquired, or not found)");
+  const gap = (node) => el("span", {}, node, field === "rounds" ? roundTemplate(profile) : claimTemplate(profile, field));
+  if (NONE_RECORDED.has(field)) return gap(el("span", { className: "val empty" }, "none recorded (not acquired, or not found)"));
   if (profile.researched_on) {
-    return el("span", { className: "val notfound" }, "NOT FOUND (as of " + profile.researched_on + ")");
+    return gap(el("span", { className: "val notfound" }, "NOT FOUND (as of " + profile.researched_on + ")"));
   }
-  return el("span", { className: "val notresearched" }, "NOT RESEARCHED");
+  return gap(el("span", { className: "val notresearched" }, "NOT RESEARCHED"));
 }
 
 // Slots counted: the 8 single-value fields (acquirer and acquisition_year excluded, as they are
@@ -277,6 +345,26 @@ function timelineBox(profile) {
   return box;
 }
 
+
+// Every company-level column from companies.csv, with a placeholder when empty.
+function recordBox(profile) {
+  const r = profile.record || {};
+  const none = (t) => el("span", { className: "val empty" }, t);
+  const plain = (v, t) => (v ? v : none(t));
+  const link = (url) => (url ? el("span", {}, /^https?:\/\//i.test(url) ? el("a", { href: url, target: "_blank", rel: "noopener" }, url) : url) : none("not set"));
+  const flag = (v) => (v === "TRUE" ? "yes" : v === "FALSE" ? "no" : none("not set"));
+  const rows = [
+    ["Website", link(r.website)], ["Fund", plain(r.fund, "not set")],
+    ["Highlight", flag(r.is_highlight)], ["Exit", flag(r.is_exit)],
+    ["Logo", plain(r.logo, "no logo") ], ["Logo origin", plain(r.logo_origin, "not set")],
+    ["Logo source", link(r.logo_source)],
+    ["Researched on", profile.researched_on || el("span", { className: "val notresearched" }, "NOT RESEARCHED")],
+  ];
+  const dl = el("dl", { className: "facts record" });
+  for (const [label, node] of rows) dl.append(el("dt", { className: "label" }, label), el("dd", {}, node));
+  return el("div", { className: "box" }, el("div", { className: "label" }, "Record details"), dl);
+}
+
 function render(profile) {
   const main = $("profile");
   main.replaceChildren();
@@ -324,6 +412,7 @@ function render(profile) {
     el("p", {}, fieldView(profile, "long_description", claim(profile, "long_description")))));
 
   left.append(timelineBox(profile));
+  left.append(recordBox(profile));
 
   right.append(listBox(profile, "Founders", "founder"));
   right.append(roundsBox(profile));

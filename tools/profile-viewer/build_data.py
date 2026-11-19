@@ -10,7 +10,10 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "scripts"))
-from check_data import CLAIM_COLUMNS, COMPANY_COLUMNS, ROUND_COLUMNS, _read, check_files  # noqa: E402
+from check_data import (  # noqa: E402
+    ALLOWED_BUSINESS_MODELS, ALLOWED_LOGO_ORIGINS, ALLOWED_STATUS, CLAIM_COLUMNS, COMPANY_COLUMNS, ROUND_COLUMNS,
+    ROUND_TYPES, _read, check_files,
+)
 from derive import _order, first_investment, follow_on, last_round  # noqa: E402  (one definition of each view)
 
 HERE = Path(__file__).resolve().parent
@@ -67,6 +70,8 @@ def build():
             "name": company["name"],
             "logo": f"../../{logo}" if logo and (ROOT / logo).is_file() else "",
             "researched_on": company["researched_on"],
+            "record": {key: company[key] for key in ("website", "fund", "is_highlight", "is_exit", "logo",
+                                                      "logo_origin", "logo_source")},
             "check_errors": findings.get(company["name"], []),
             "claims": rows["claims"],
             "rounds": sorted(rows["rounds"], key=_order),  # year, then stage
@@ -76,7 +81,10 @@ def build():
                 "follow_on": follow_on(rows["rounds"]),
             },
         })
-    return {"profiles": profiles, "sectors": sectors, "check_general": general}
+    # allowed values come from the check script, so the gap templates cannot drift from the rules
+    allowed = {"round_types": ROUND_TYPES, "status": ALLOWED_STATUS, "business_models": ALLOWED_BUSINESS_MODELS,
+               "logo_origins": ALLOWED_LOGO_ORIGINS}
+    return {"profiles": profiles, "sectors": sectors, "allowed": allowed, "check_general": general}
 
 
 def main():
