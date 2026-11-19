@@ -20,12 +20,33 @@
   .picker input { font: inherit; padding: 6px 10px; border: 1px solid var(--ink); background: var(--paper); width: 260px; }
   .picker button { font: inherit; border: 1px solid var(--ink); background: var(--paper); padding: 6px 12px; cursor: pointer; }
   main { padding: 24px 32px; max-width: 1000px; }
+  .short .badge, .short .src, .short .srcpanel { font-family: system-ui, sans-serif; font-style: normal; }
   .short { font: italic 24px/1.35 Georgia, serif; margin: 6px 0 24px; }
   .box { border: 1px solid var(--ink); padding: 14px 16px; margin-bottom: 24px; }
   .facts { display: grid; grid-template-columns: 200px 1fr; gap: 8px 16px; margin: 8px 0 0; }
   .facts dt { align-self: center; }
   .facts dd { margin: 0; }
   .empty { color: var(--muted); }
+  .val { display: inline-block; padding: 2px 8px; border: 1px solid transparent; }
+  .val.uncertain { border: 1px dashed #b7791f; background: #fbf3df; }
+  .val.notfound { border: 1px solid #b42318; color: #b42318; background: #fdeceb; }
+  .val.notresearched { border: 2px solid #b42318; color: #b42318; background: transparent; }
+  .badge { display: inline-block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 0 6px; margin-left: 6px; border: 1px solid var(--muted); color: var(--muted); vertical-align: middle; }
+  .badge.est, .badge.low { border-color: #b7791f; color: #8a5a00; background: #fbf3df; }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-left: 6px; vertical-align: middle; }
+  .dot.high { background: #2f9e44; } .dot.medium { background: #e6b800; } .dot.low { background: #d92d20; }
+  .src { font: inherit; font-size: 11px; margin-left: 6px; padding: 0 6px; border: 1px solid var(--ink);
+    background: var(--paper); cursor: pointer; vertical-align: middle; }
+  .srcpanel { display: inline-flex; gap: 6px; align-items: center; margin-left: 6px; font-size: 12px; color: var(--muted); }
+  .srcpanel[hidden] { display: none; }
+  .srcpanel button { font: inherit; font-size: 11px; border: 1px solid var(--ink); background: #fff; padding: 0 6px; cursor: pointer; }
+  .note { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .banner { border: 2px solid #b42318; color: #b42318; padding: 10px 16px; margin-bottom: 24px; font-weight: 600; }
+  .legend { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; }
+  .legend .badge { margin-left: 0; }
+  header .legend { flex-basis: 100%; }
+  header { flex-wrap: wrap; }
 </style>
 </head>
 <body>
@@ -37,6 +58,17 @@
     <input id="search" list="companies" placeholder="Search companies..." autocomplete="off">
     <datalist id="companies"></datalist>
     <button id="next" title="Next company">&rarr;</button>
+  </div>
+  <div class="legend">
+    <span><span class="dot high" style="margin:0"></span> high</span>
+    <span><span class="dot medium" style="margin:0"></span> medium</span>
+    <span><span class="dot low" style="margin:0"></span> low confidence</span>
+    <span><span class="val uncertain" style="padding:0 6px">value</span> uncertain: estimated or low</span>
+    <span><span class="badge">reported</span> a Source states it</span>
+    <span><span class="badge est">EST</span> estimated (we deduced it)</span>
+    <span><span class="badge low">LOW</span> low confidence</span>
+    <span><span class="val notfound" style="padding:0 6px">NOT FOUND</span> researched, nothing public</span>
+    <span><span class="val notresearched" style="padding:0 6px">NOT RESEARCHED</span> not yet researched</span>
   </div>
 </header>
 <main id="profile"></main>
@@ -52,13 +84,61 @@ function el(tag, props = {}, ...children) {
   return node;
 }
 
+function claim(profile, field) {
+  return profile.claims.find((row) => row.field === field);
+}
+
 function value(profile, field) {
-  const c = profile.claims.find((row) => row.field === field);
+  const c = claim(profile, field);
   return c ? c.value : "";
 }
 
-function factValue(text) {
-  return text ? el("span", {}, text) : el("span", { className: "empty" }, "—");
+function copyText(text, button) {
+  const done = () => { const old = button.textContent; button.textContent = "Copied"; setTimeout(() => (button.textContent = old), 1200); };
+  if (navigator.clipboard && window.isSecureContext !== false) navigator.clipboard.writeText(text).then(done, () => { button.textContent = "Copy failed"; });
+  else { const t = el("textarea", { value: text }); document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); done(); }
+}
+
+// Source button: reveals Open (new tab) and Copy; the URL itself is never printed.
+function sourceButton(url) {
+  if (!url) return document.createDocumentFragment();
+  const wrap = el("span", {});
+  const btn = el("button", { className: "src", type: "button", title: "Show source" }, "source");
+  const panel = el("span", { className: "srcpanel", hidden: true },
+    el("button", { type: "button", onclick: () => /^https?:\/\//i.test(url) && window.open(url, "_blank", "noopener") }, "Open"),
+    el("button", { type: "button", onclick: (e) => copyText(url, e.target) }, "Copy"));
+  btn.addEventListener("click", () => { panel.hidden = !panel.hidden; });
+  wrap.append(btn, panel);
+  return wrap;
+}
+
+// Evidence shown on any row-backed value: confidence dot, Basis, note, source button.
+function evidence(row) {
+  const uncertain = row.basis === "estimated" || row.confidence === "low";
+  const out = [];
+  if (row.confidence) out.push(el("span", { className: "dot " + row.confidence, title: row.confidence + " confidence" }));
+  out.push(el("span", { className: "badge" }, row.basis || "no basis"));
+  if (row.basis === "estimated") out.push(el("span", { className: "badge est" }, "EST"));
+  if (row.confidence === "low") out.push(el("span", { className: "badge low" }, "LOW"));
+  out.push(sourceButton(row.source_url));
+  const note = row.note ? el("span", { className: "note" }, row.note) : "";
+  return { uncertain, nodes: out, note };
+}
+
+const NONE_RECORDED = new Set(["acquirer", "acquisition_year"]);
+
+// One classification for every field slot: reported / uncertain / not found / not researched.
+function fieldView(profile, field, row, text) {
+  if (row) {
+    const ev = evidence(row);
+    return el("span", {}, el("span", { className: "val" + (ev.uncertain ? " uncertain" : "") }, text ?? row.value),
+      ...ev.nodes, ev.note);
+  }
+  if (NONE_RECORDED.has(field)) return el("span", { className: "val empty" }, "none recorded (not acquired, or not found)");
+  if (profile.researched_on) {
+    return el("span", { className: "val notfound" }, "NOT FOUND (as of " + profile.researched_on + ")");
+  }
+  return el("span", { className: "val notresearched" }, "NOT RESEARCHED");
 }
 
 function render(profile) {
@@ -71,29 +151,31 @@ function render(profile) {
   $("status").textContent = status;
   document.title = profile.name + " – Company profile";
 
-  main.append(el("div", { className: "label" }, "Short description"),
-    el("p", { className: "short" }, value(profile, "description") || "—"));
+  if (!profile.researched_on) {
+    main.append(el("div", { className: "banner" },
+      "NOT RESEARCHED: this company has no researched_on date. Missing fields below are unchecked, not findings."));
+  }
 
-  const subSector = value(profile, "sub_sector");
-  const sector = subSector ? data.sectors[subSector] || "" : "";
+  main.append(el("div", { className: "label" }, "Short description"),
+    el("p", { className: "short" }, fieldView(profile, "description", claim(profile, "description"))));
+
+  const subRow = claim(profile, "sub_sector");
+  const sector = subRow ? data.sectors[subRow.value] || "" : "";
   const facts = [
-    ["Sub-sector and Sector", [subSector, sector].filter(Boolean).join(" · ")],
-    ["Status", status],
-    ["Business model", value(profile, "business_model")],
-    ["Year founded", value(profile, "year_founded")],
-    ["HQ now", value(profile, "hq")],
-    ["HQ at first investment", value(profile, "hq_at_first_investment")],
-    ["Acquirer", value(profile, "acquirer")],
-    ["Acquisition year", value(profile, "acquisition_year")],
+    ["Sub-sector and Sector", "sub_sector", subRow, subRow && [subRow.value, sector].filter(Boolean).join(" · ")],
+    ["Status", "status"], ["Business model", "business_model"], ["Year founded", "year_founded"],
+    ["HQ now", "hq"], ["HQ at first investment", "hq_at_first_investment"],
+    ["Acquirer", "acquirer"], ["Acquisition year", "acquisition_year"],
   ];
   const dl = el("dl", { className: "facts" });
-  for (const [label, text] of facts) {
-    dl.append(el("dt", { className: "label" }, label), el("dd", {}, factValue(text)));
+  for (const [label, field, row, text] of facts) {
+    dl.append(el("dt", { className: "label" }, label),
+      el("dd", {}, fieldView(profile, field, row || claim(profile, field), text)));
   }
   main.append(el("div", { className: "box" }, el("div", { className: "label" }, "Facts"), dl));
 
   main.append(el("div", { className: "box" }, el("div", { className: "label" }, "Long description"),
-    el("p", {}, value(profile, "long_description") || "—")));
+    el("p", {}, fieldView(profile, "long_description", claim(profile, "long_description")))));
 }
 
 function select(index) {
