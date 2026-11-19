@@ -54,6 +54,19 @@
   .srcpanel button { font: inherit; font-size: 11px; border: 1px solid var(--ink); background: #fff; padding: 0 6px; cursor: pointer; }
   .note { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
   .banner { border: 2px solid #b42318; color: #b42318; padding: 10px 16px; margin-bottom: 24px; font-weight: 600; }
+  .timeline { margin-top: 8px; border-left: 2px solid var(--ink); padding-left: 0; }
+  .tl-year { font: 700 20px/1 Georgia, serif; margin: 16px 0 6px -2px; padding-left: 14px; border-left: 2px solid var(--ink); }
+  .tl-year:first-child { margin-top: 0; }
+  .tl-item { position: relative; margin: 0 0 8px 14px; padding: 4px 10px; display: grid; grid-template-columns: 84px 1fr; gap: 0 10px; }
+  .tl-item::before { content: ""; position: absolute; left: -20px; top: 12px; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--ink); }
+  .tl-item .when { font-size: 12px; color: var(--muted); padding-top: 2px; }
+  .tl-item.round { background: var(--ink); color: var(--paper); }
+  .tl-item.round::before { border-radius: 0; background: var(--ink); left: -20px; }
+  .tl-item.round .when, .tl-item.round .note { color: #c9c9b8; }
+  .tl-item.round .val.uncertain { color: var(--ink); }
+  .tl-item.round .badge { color: #c9c9b8; border-color: #c9c9b8; }
+  .tl-item.round .badge.est, .tl-item.round .badge.low { color: #8a5a00; border-color: #b7791f; }
   .legend { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; }
   .legend .badge { margin-left: 0; }
   header .legend { flex-basis: 100%; }
@@ -195,6 +208,57 @@ function roundsBox(profile) {
   return box;
 }
 
+// Milestone value is "date: event"; the date is 2021, 2021-03 or 2021-03-19.
+function parseMilestone(row) {
+  const m = /^(\d{4}(?:-\d{2}(?:-\d{2})?)?):\s*([\s\S]*)$/.exec(row.value);
+  return m ? { date: m[1], text: m[2] } : { date: "", text: row.value };
+}
+
+// Within a year, dated items (month or day) come before year-only items; Rounds are year-only.
+function timelineEntries(profile) {
+  const entries = [];
+  for (const row of profile.claims.filter((r) => r.field === "milestone")) {
+    const { date, text } = parseMilestone(row);
+    entries.push({ kind: "milestone", year: date.slice(0, 4), date, text, row });
+  }
+  for (const row of profile.rounds) entries.push({ kind: "round", year: row.year, date: row.year, row });
+  const rank = (e) => (e.kind === "round" ? 2 : e.date.length > 4 ? 0 : 1);
+  return entries
+    .map((e, i) => ({ e, i }))
+    .sort((a, b) => (a.e.year || "9999").localeCompare(b.e.year || "9999") ||
+      rank(a.e) - rank(b.e) || a.e.date.localeCompare(b.e.date) || a.i - b.i)
+    .map((x) => x.e);
+}
+
+function timelineBox(profile) {
+  const box = el("div", { className: "box" }, el("div", { className: "label" }, "History"));
+  const entries = timelineEntries(profile);
+  if (!entries.length) {
+    box.append(el("div", { className: "stack" }, fieldView(profile, "milestone")));
+    return box;
+  }
+  const line = el("div", { className: "timeline" });
+  let year = null;
+  for (const e of entries) {
+    if (e.year !== year) {
+      year = e.year;
+      line.append(el("div", { className: "tl-year" }, year || "Undated"));
+    }
+    const ev = evidence(e.row);
+    const cls = "val" + (ev.uncertain ? " uncertain" : "");
+    if (e.kind === "round") {
+      const label = "Round: " + e.row.type.replace(/_/g, " ") + (e.row.size_usd ? " · " + usd(e.row.size_usd) : "");
+      line.append(el("div", { className: "tl-item round" }, el("span", { className: "when" }, "Round"),
+        el("span", {}, el("span", { className: cls }, label), ...ev.nodes, ev.note)));
+    } else {
+      line.append(el("div", { className: "tl-item milestone" }, el("span", { className: "when" }, e.date || "no date"),
+        el("span", {}, el("span", { className: cls }, e.text), ...ev.nodes, ev.note)));
+    }
+  }
+  box.append(line);
+  return box;
+}
+
 function render(profile) {
   const main = $("profile");
   main.replaceChildren();
@@ -231,6 +295,8 @@ function render(profile) {
 
   left.append(el("div", { className: "box" }, el("div", { className: "label" }, "Long description"),
     el("p", {}, fieldView(profile, "long_description", claim(profile, "long_description")))));
+
+  left.append(timelineBox(profile));
 
   right.append(listBox(profile, "Founders", "founder"));
   right.append(roundsBox(profile));
