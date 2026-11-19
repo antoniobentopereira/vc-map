@@ -39,12 +39,12 @@
   .facts dd { margin: 0; }
   .empty { color: var(--muted); }
   .val { display: inline-block; padding: 2px 8px; border: 1px solid transparent; }
-  .val.uncertain { border: 1px dashed #b7791f; background: #fbf3df; }
+  .val.uncertain { border: 1px dashed #d4bf94; background: #f7f2e6; }
   .val.notfound { border: 1px solid #b42318; color: #b42318; background: #fdeceb; }
   .val.notresearched { border: 2px solid #b42318; color: #b42318; background: transparent; }
   .badge { display: inline-block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
     padding: 0 6px; margin-left: 6px; border: 1px solid var(--muted); color: var(--muted); vertical-align: middle; }
-  .badge.est, .badge.low { border-color: #b7791f; color: #8a5a00; background: #fbf3df; }
+  .badge.est, .badge.low { border-color: #d4bf94; color: #85703f; background: #f7f2e6; }
   .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-left: 6px; vertical-align: middle; }
   .dot.high { background: #2f9e44; } .dot.medium { background: #e6b800; } .dot.low { background: #d92d20; }
   .src { font: inherit; font-size: 11px; margin-left: 6px; padding: 0 6px; border: 1px solid var(--ink);
@@ -57,8 +57,8 @@
   .timeline { margin-top: 8px; border-left: 2px solid var(--ink); padding-left: 0; }
   .tl-year { font: 700 20px/1 Georgia, serif; margin: 16px 0 6px -2px; padding-left: 14px; border-left: 2px solid var(--ink); }
   .tl-year:first-child { margin-top: 0; }
-  .tl-item { position: relative; margin: 0 0 8px 14px; padding: 4px 10px; display: grid; grid-template-columns: 84px 1fr; gap: 0 10px; }
-  .tl-item::before { content: ""; position: absolute; left: -20px; top: 12px; width: 10px; height: 10px; border-radius: 50%;
+  .tl-item { position: relative; margin: 0 0 16px 14px; padding: 8px 12px; display: grid; grid-template-columns: 84px 1fr; gap: 0 10px; }
+  .tl-item::before { content: ""; position: absolute; left: -20px; top: 16px; width: 10px; height: 10px; border-radius: 50%;
     background: var(--paper); border: 2px solid var(--ink); }
   .tl-item .when { font-size: 12px; color: var(--muted); padding-top: 2px; }
   .tl-item.round { background: #e6e6db; border-left: 3px solid var(--ink); }
