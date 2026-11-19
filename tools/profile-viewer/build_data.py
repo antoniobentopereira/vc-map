@@ -5,10 +5,12 @@ The page loads data.js as a script, because a file:// page cannot fetch CSVs.
 """
 import csv
 import json
+import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "scripts"))
+from check_data import CLAIM_COLUMNS, COMPANY_COLUMNS, ROUND_COLUMNS, _read, check_files  # noqa: E402
 from derive import _order, first_investment, follow_on, last_round  # noqa: E402  (one definition of each view)
 
 HERE = Path(__file__).resolve().parent
@@ -22,6 +24,29 @@ def read(name):
         return list(csv.DictReader(f))
 
 
+def check_findings():
+    """Run the existing data check; return ({company: [messages]}, [dataset-wide messages]).
+
+    check_files reports "<file> line N: ..." without the company, so each message is
+    attributed through the row on that line. Messages with no line are dataset-wide.
+    """
+    owners = {}
+    for filename, columns in (("companies.csv", COMPANY_COLUMNS), ("claims.csv", CLAIM_COLUMNS),
+                              ("rounds.csv", ROUND_COLUMNS)):
+        rows, _ = _read(DATA / filename, columns)
+        for row in rows:
+            owners[(filename, row["_line"])] = row["name" if filename == "companies.csv" else "company"]
+    by_company, general = {}, []
+    for message in check_files(DATA, ROOT):
+        m = re.match(r"(\S+\.csv) line (\d+):", message)
+        owner = owners.get((m.group(1), int(m.group(2)))) if m else None
+        if owner:
+            by_company.setdefault(owner, []).append(message)
+        else:
+            general.append(message)
+    return by_company, general
+
+
 def build():
     companies = read("companies.csv")
     sectors = {r["sub_sector"]: r["sector"] for r in read("sectors.csv")}
@@ -31,6 +56,7 @@ def build():
         for row in read(f"{kind}.csv"):
             rows_by_company.setdefault(row["company"], {"claims": [], "rounds": []})[kind].append(row)
 
+    findings, general = check_findings()
     profiles = []
     for company in companies:  # roster order
         rows = rows_by_company.get(company["name"], {"claims": [], "rounds": []})
@@ -41,6 +67,7 @@ def build():
             "name": company["name"],
             "logo": f"../../{logo}" if logo and (ROOT / logo).is_file() else "",
             "researched_on": company["researched_on"],
+            "check_errors": findings.get(company["name"], []),
             "claims": rows["claims"],
             "rounds": sorted(rows["rounds"], key=_order),  # year, then stage
             "derived": {
@@ -49,7 +76,7 @@ def build():
                 "follow_on": follow_on(rows["rounds"]),
             },
         })
-    return {"profiles": profiles, "sectors": sectors}
+    return {"profiles": profiles, "sectors": sectors, "check_general": general}
 
 
 def main():

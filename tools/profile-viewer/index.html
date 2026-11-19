@@ -68,12 +68,17 @@
   .legend .badge { margin-left: 0; }
   header .legend { flex-basis: 100%; }
   header { flex-wrap: wrap; }
+  .completeness { font-size: 13px; margin-top: 4px; }
+  .completeness b { font-weight: 600; }
+  .completeness.unresearched { color: #b42318; font-weight: 600; }
+  .banner.check ul { margin: 6px 0 0; padding-left: 20px; font-weight: 400; }
 </style>
 </head>
 <body>
 <header>
   <div class="logo" id="logo"></div>
-  <h1><span id="name"></span><span class="tag" id="status" hidden></span></h1>
+  <div><h1><span id="name"></span><span class="tag" id="status" hidden></span></h1>
+    <div class="completeness" id="completeness"></div></div>
   <div class="picker">
     <button id="prev" title="Previous company">&larr;</button>
     <input id="search" list="companies" placeholder="Search companies..." autocomplete="off">
@@ -162,6 +167,22 @@ function fieldView(profile, field, row, text) {
     return el("span", { className: "val notfound" }, "NOT FOUND (as of " + profile.researched_on + ")");
   }
   return el("span", { className: "val notresearched" }, "NOT RESEARCHED");
+}
+
+// Slots counted: the 8 single-value fields (acquirer and acquisition_year excluded, as they are
+// often legitimately absent), the 4 list fields (filled if one row) and Rounds. Denominator: 13.
+const COUNTED_FIELDS = ["description", "long_description", "sub_sector", "hq", "hq_at_first_investment",
+  "year_founded", "status", "business_model", "founder", "market", "accelerator", "milestone"];
+
+function completeness(profile) {
+  if (!profile.researched_on) return "not researched";
+  const slots = COUNTED_FIELDS.map((f) => profile.claims.filter((r) => r.field === f))
+    .concat([profile.rounds]);
+  const filled = slots.filter((rows) => rows.length).length;
+  // uncertain values count as filled; a slot is uncertain if every row in it is estimated or low
+  const uncertain = slots.filter((rows) => rows.length &&
+    rows.every((r) => r.basis === "estimated" || r.confidence === "low")).length;
+  return filled + " / " + slots.length + " filled, " + uncertain + " uncertain, " + (slots.length - filled) + " not found";
 }
 
 function listBox(profile, title, field) {
@@ -265,6 +286,15 @@ function render(profile) {
   $("status").hidden = !status;
   $("status").textContent = status;
   document.title = profile.name + " – Company profile";
+  const comp = $("completeness");
+  comp.textContent = completeness(profile);
+  comp.className = "completeness" + (profile.researched_on ? "" : " unresearched");
+
+  const errors = (profile.check_errors || []).concat(data.check_general || []);
+  if (errors.length) {
+    main.append(el("div", { className: "banner check" }, "Data check: " + errors.length + " problem(s)",
+      el("ul", {}, ...errors.map((e) => el("li", {}, e)))));
+  }
 
   if (!profile.researched_on) {
     main.append(el("div", { className: "banner" },
