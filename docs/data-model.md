@@ -14,13 +14,15 @@ The Dataset is a set of CSV files in `data/`, edited by hand. `python scripts/ch
 
 `researched_on` is the date (`2026-11-18`) a company was last fully researched. If it is set, a field with no row means "not publicly available as of that date". If it is empty, the company has not been researched yet.
 
+Renamed companies: Norte's portfolio page may still link an old domain. Zivo was Comp (`trycomp.io`) and Attach Media Partners was Supercompany (`supercompany.io`); each is one company, listed once under its current name.
+
 ## claims.csv
 
 Columns: `company, field, value, source_url, basis, confidence, note`.
 
 Rules for every Claim:
 
-- One Source link per Claim, valid http(s).
+- One Source link per Claim, valid http(s). For company registry facts (Brazil's CNPJ data: opening date, registered address, administrators), the lookup URL `https://brasilapi.com.br/api/cnpj/v1/<cnpj>` is an accepted Source; it need not be an exact page about the fact. The registered seat is not the HQ unless the company also says so, so use it as Estimated. A LinkedIn company page, profile or post is also accepted when its content was actually read, by the owner or through Linked API (ADR 0010; the note says "via Linked API" and the date). A company page's "Founded" year is set by the page admin and is often the page's creation year, so it never sets `year_founded` on its own; a founder's start date in that company, from their profile, can (Estimated).
 - `basis` is `reported` (a Source states it) or `estimated` (we deduced it; the reasoning goes in `note`).
 - `confidence` is `high`, `medium` or `low`.
 - Values stay on one line, and descriptions are written in our own words (short quotes only).
@@ -36,7 +38,7 @@ Rules for every Claim:
 | `sub_sector` | A detailed label, such as `Industrial predictive maintenance`. It must be listed in `sectors.csv` first, so labels are reused rather than reworded. |
 | `hq` | Current headquarters, as `City, Country` (country name in English). HQ is where the company says its headquarters is; legal incorporation (such as a US holding company) never counts. |
 | `hq_at_first_investment` | HQ when Norte first invested, same format. |
-| `year_founded` | A four-digit year. |
+| `year_founded` | A four-digit year: the start of work, the earliest year the company itself counts as a working company. It can precede legal registration; give the registration date in the note when it differs. |
 | `status` | Operating status (table below). |
 | `business_model` | `b2b`, `b2c` or `b2b2c`. |
 | `acquirer` | Who acquired the company, if it was acquired. |
@@ -46,10 +48,10 @@ Rules for every Claim:
 
 | Field | Value |
 |---|---|
-| `founder` | One Founder's name. |
+| `founder` | One Founder's name: a person who started the company. Someone who joined later, or who co-founded only a later holding company or restructuring, is not a Founder (a leadership change can be a Milestone). |
 | `market` | One country where the company operates or sells. |
 | `accelerator` | One accelerator programme, such as `Y Combinator` (batch in the note). |
-| `milestone` | `date: event`, where the date is `2021`, `2021-03` or `2021-03-19`. Milestones are non-funding events (launches, pivots, offices, HQ moves); Rounds come from `rounds.csv`, and the site puts both on one timeline. |
+| `milestone` | `date: event`, where the date is `2021`, `2021-03` or `2021-03-19`. Milestones are non-funding events that tell the company's story (launches, pivots, offices, HQ moves, accelerators, acquisitions it makes, key hires); Rounds come from `rounds.csv`, and the site puts both on one timeline. Corporate housekeeping (legal registration, holding companies, restructurings) is not a Milestone. |
 
 ### Status
 
@@ -74,7 +76,7 @@ Columns: `company, year, type, reported_amount, reported_currency, size_usd, co_
 - Size: `reported_amount` and `reported_currency` are the total Round size as the chosen Source reports it (a whole number and a code such as `BRL` or `USD`). `size_usd` is that amount in whole US dollars, divided by the `fx.csv` rate for that currency and year and rounded; the check script recomputes it. If the size is not disclosed, all three stay empty. If the year's annual average is not published yet, `size_usd` alone stays empty until it is.
 - **One row per Round.** A second row with the same company, year and type is rejected; weigh conflicting figures and put the discarded ones in the note. Debt and `unknown` Rounds are told apart by amount, since a company can take several in one year.
 - `co_investors`: everyone else in the Round except Norte, separated by `; `, with `(lead)` or `(co-lead)` after the name. Use one name per investor across all Rounds (`Next47`, even where a Source writes `N47`) and note the Source's spelling.
-- `norte_participated`: `TRUE` or `FALSE`. If Norte is not named in any Source for a Round, record `FALSE` with a lower Confidence and say so in the note.
+- `norte_participated`: `TRUE`, `FALSE` or `UNKNOWN`. `TRUE` when a Source names Norte in the Round. `FALSE` only when a Source lists the Round's investors (or says who took part) and Norte is not among them, and no other Source places Norte there. `UNKNOWN` when the Sources do not settle it (Norte not named in a partial list, or an aggregator lists Norte without a Round); the note says what was found. Never use `FALSE` for "not named".
 - Same Source, Basis, Confidence and one-line rules as Claims.
 
 ### Derived views (not stored)
@@ -83,7 +85,9 @@ Columns: `company, year, type, reported_amount, reported_currency, size_usd, co_
 
 - **First investment** (the first Norte round): the earliest Round with `norte_participated` TRUE. Its year, type, size and co-investors are the investment year, round type, round size and co-investors.
 - **Last round:** the latest Round that is not `debt`, whether or not Norte took part.
-- **Follow-on** (`norte_follow_on` on the site): TRUE if Norte took part in more than one Round, FALSE if in one, unknown if in none recorded.
+- **Follow-on** (`norte_follow_on` on the site): TRUE if Norte took part in more than one Round, FALSE if in one and no other Round is `UNKNOWN`, unknown if in none recorded or if an `UNKNOWN` Round could still change the answer.
+
+An `UNKNOWN` Round is never counted as an Investment. If one comes before the first investment, the real first investment may be earlier than the derived one.
 
 Rounds are ordered by year, then by stage within a year. A Round of `unknown` type has no stage, so within its year it comes before every known stage. The last Round can be the same as the first investment.
 

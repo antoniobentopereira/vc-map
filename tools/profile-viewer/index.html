@@ -217,7 +217,7 @@ function roundTemplate(profile) {
     "type: " + (a.round_types || []).join(", ") + " (extensions and bridges take their base type; debt never counts as the last Round)",
     "reported_amount and reported_currency: the total size as the Source reports it, a whole number and a code such as BRL; size_usd is that in whole US dollars at the fx.csv rate (leave all three empty if undisclosed)",
     "co_investors: everyone but Norte, separated by '; ', with (lead) or (co-lead) after the name",
-    "norte_participated: TRUE or FALSE",
+    "norte_participated: TRUE, FALSE or UNKNOWN",
     "One row per Round: same company, year and type is rejected",
     "source_url, basis (reported or estimated), confidence (high, medium, low) and one-line rules as for claims",
   ]);
@@ -286,7 +286,7 @@ function roundsBox(profile) {
     table.append(el("tr", { className: "main" },
       el("td", {}, typeLabel(r.type)), el("td", {}, r.year),
       el("td", {}, valueSpan(ev, usd(r.size_usd)), ...ev.nodes),
-      el("td", {}, r.norte_participated === "TRUE" ? "yes" : "no")));
+      el("td", {}, r.norte_participated === "TRUE" ? "yes" : r.norte_participated === "FALSE" ? "no" : "unknown")));
     const reported = r.reported_amount ? [Number(r.reported_amount).toLocaleString("en-US"), r.reported_currency].filter(Boolean).join(" ") : "amount not reported";
     table.append(el("tr", { className: "detail" }, el("td", { colSpan: 4 },
       reported + " · " + (r.co_investors || "no co-investors listed"), ev.note)));

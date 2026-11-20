@@ -25,7 +25,7 @@ A Portfolio company the Firm lists as having left its portfolio (acquired or sol
 _Avoid_: Sold company
 
 **Founder**:
-A person who started a Portfolio company. The Firm's thesis weighs founders heavily, so they will get their own detailed profile later.
+A person who started a Portfolio company. Someone who joined later, or who co-founded only a later holding company, is not a Founder. The Firm's thesis weighs founders heavily, so they will get their own detailed profile later.
 _Avoid_: Entrepreneur, CEO
 
 **Round**:
@@ -33,7 +33,7 @@ One funding event of a Portfolio company, whoever invested: its year, type (pre-
 _Avoid_: Raise, deal
 
 **Investment**:
-A Round in which the Firm took part. A Portfolio company can have several; the earliest is the **first investment**, and any later one is a **follow-on**.
+A Round in which the Firm took part. A Portfolio company can have several; the earliest is the **first investment**, and any later one is a **follow-on**. Whether the Firm took part in a Round is true, false or unknown: the Firm is rarely named in press, so "not named" is unknown, never false.
 _Avoid_: Deal, check
 
 **Sub-sector**:
@@ -57,7 +57,7 @@ A Portfolio company being bought by another company. Recorded with the acquirer 
 _Avoid_: Sale, buyout
 
 **Milestone**:
-A dated, non-funding event in a Portfolio company's history (a launch, pivot, new office, HQ move). Milestones and Rounds together make its timeline.
+A dated, non-funding event that tells a Portfolio company's story (a launch, pivot, new office, HQ move, accelerator, acquisition it makes). Legal registration and holding-company restructurings are not Milestones. Milestones and Rounds together make its timeline.
 _Avoid_: Event, history item
 
 **Claim**:
@@ -91,7 +91,7 @@ The complete list of Portfolio companies, before any detail is gathered about th
 _Avoid_: Master list
 
 **Batch**:
-A group of Portfolio companies taken from the Roster and fully researched together.
+A group of Portfolio companies taken from the Roster and fully researched, one company after another. The owner sets its size.
 _Avoid_: Wave, chunk
 
 **Pilot**:

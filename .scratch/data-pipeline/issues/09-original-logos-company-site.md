@@ -26,8 +26,8 @@
 - The check script: an empty `logo` is valid and listed for manual follow-up; a set `logo` needs a valid `logo_origin` and a valid-URL `logo_source`; `logo_source` on a `norte.ventures` domain is an error; an empty `logo` with leftover origin or source is an error.
 - The report lists, per company, the origin of its logo, and separately every company still without a logo.
 
-- [ ] `companies.csv` has `logo_origin` and `logo_source`; `check_data.py` enforces the rules above, each caught by a deliberate-mistake sample
-- [ ] The script no longer reads logos from the portfolio page
-- [ ] No legacy Norte logo remains in `site/logos/` or in the CSV
-- [ ] Every remaining logo has a valid origin and source; the manual-follow-up report lists the rest
-- [ ] Re-running the script changes nothing when all rows are already resolved
+- [x] `companies.csv` has `logo_origin` and `logo_source`; `check_data.py` enforces the rules above, each caught by a deliberate-mistake sample
+- [x] The script no longer reads logos from the portfolio page
+- [x] No legacy Norte logo remains in `site/logos/` or in the CSV
+- [x] Every remaining logo has a valid origin and source; the manual-follow-up report lists the rest
+- [x] Re-running the script changes nothing when all rows are already resolved

@@ -15,7 +15,7 @@
 - A cheap sub-agent compares each candidate with the old Norte logo as a sanity check (same company?). The Norte logos are extracted from git history (commit 44e3f3b) into the scratchpad folder, outside `site/` and uncommitted, and discarded afterwards. A Norte logo is never kept or used as a fallback.
 - Re-runs of the logo script keep these `web-search` rows.
 
-- [ ] Every company that had no logo after ticket 09 is either resolved with a `web-search` logo or listed for manual follow-up
-- [ ] Every new logo has `logo_origin=web-search` and a `logo_source` URL; `check_data.py` passes
-- [ ] No Norte logo is in `site/logos/` or the CSV
-- [ ] The final manual-follow-up list is handed to the owner
+- [x] Every company that had no logo after ticket 09 is either resolved with a `web-search` logo or listed for manual follow-up
+- [x] Every new logo has `logo_origin=web-search` and a `logo_source` URL; `check_data.py` passes
+- [x] No Norte logo is in `site/logos/` or the CSV
+- [x] The final manual-follow-up list is handed to the owner

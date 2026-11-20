@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 from check_data import (  # noqa: E402
     ALLOWED_BUSINESS_MODELS,
     ALLOWED_FIELDS,
+    ALLOWED_NORTE,
     ALLOWED_STATUS,
     ROUND_TYPES,
     check_files,
@@ -333,7 +334,11 @@ class RoundsTest(Assertions):
         self.one(round_line(type="Series A"), "type 'Series A' must be one of angel, pre_seed")
         self.one(round_line(type="bridge"), "type 'bridge'")
         self.one(round_line(year="21"), "year '21'")
-        self.one(round_line(norte_participated="yes"), "norte_participated 'yes' must be TRUE or FALSE")
+        self.one(round_line(norte_participated="yes"), "norte_participated 'yes' must be TRUE, FALSE or UNKNOWN")
+
+    def test_norte_participation_can_be_unknown(self):
+        for flag in ("TRUE", "FALSE", "UNKNOWN"):
+            self.assertEqual(self.check(round_line(norte_participated=flag)), [], flag)
 
     def test_company_source_basis_confidence(self):
         self.one(round_line(company="Ghost"), "unknown company 'Ghost'")
@@ -380,6 +385,7 @@ class DocsMatchCodeTest(unittest.TestCase):
             "round types": ROUND_TYPES,
             "status values": ALLOWED_STATUS,
             "business models": ALLOWED_BUSINESS_MODELS,
+            "Norte participation values": ALLOWED_NORTE,
         }.items():
             self.assertEqual(undocumented(terms, doc), [], f"{name} missing from docs/data-model.md")
 

@@ -59,6 +59,7 @@ ALLOWED_BASIS = ["reported", "estimated"]
 ALLOWED_CONFIDENCE = ["high", "medium", "low"]
 ALLOWED_FUNDS = ["I", "II"]
 ALLOWED_FLAGS = ["TRUE", "FALSE"]
+ALLOWED_NORTE = ["TRUE", "FALSE", "UNKNOWN"]
 ALLOWED_LOGO_ORIGINS = ["company-site", "web-search", "manual"]
 # Documented exception (ADR 0004): no Original logo was found anywhere public, so these companies
 # keep the recolored logo from the Firm's portfolio page. Add a name here only with an ADR note.
@@ -380,8 +381,8 @@ def check_rounds(rows, company_names, filename="rounds.csv", fx_rows=()):
         errors += [f"{where}: {e}" for e in _check_amount(row, rates)]
         if _has_line_break(row["co_investors"]):
             errors.append(f"{where}: co_investors has a line break (separate names with '; ')")
-        if row["norte_participated"] not in ALLOWED_FLAGS:
-            errors.append(f"{where}: norte_participated '{row['norte_participated']}' must be TRUE or FALSE")
+        if row["norte_participated"] not in ALLOWED_NORTE:
+            errors.append(f"{where}: norte_participated '{row['norte_participated']}' must be TRUE, FALSE or UNKNOWN")
         errors += _check_sourcing(row, where, "round")
         # One row per Round. A company can take several debt facilities, or Rounds of unknown type, in
         # one year, so those are told apart by amount.

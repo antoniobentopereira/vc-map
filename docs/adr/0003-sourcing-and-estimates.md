@@ -1,3 +1,5 @@
 # Any free source is allowed; estimates are allowed but always labelled
 
+Amended by ADR 0010: one paid service, Linked API, is used for LinkedIn as the last research step.
+
 Data comes from publicly available sources (official site, company sites, press); nothing is paid for, and for now we do not rely on paid platforms or free trials. Information we cannot find publicly is clearly recorded as missing. If free-trial platforms are used in the future, the owner has decided not to check their reuse terms. Where a fact is not published, we may deduce it. Such a Claim has Basis "estimated", carries its reasoning in the note, and is shown on the site in a visibly different colour, so wrong-looking guesses never pass as reported facts. Every Claim gets a Confidence. The owner reviews the Pilot personally; later Batches are not verified one by one. The site states it is unofficial and unaffiliated with Norte Ventures and shows logos with a removal-on-request notice.

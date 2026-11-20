@@ -14,3 +14,4 @@ Tests go at these public seams and nowhere else, so `/tdd` need not ask again. T
 - **`first_investment`, `last_round`, `follow_on`** in `scripts/derive.py`: the views derived from a company's Rounds.
 - **`write_csv`** in `scripts/build_roster.py`: rebuilding the roster keeps the columns later steps filled in.
 - **`docs/data-model.md`**: a test checks that every value the check script allows is named in it.
+- **`check_workflow`, `build_workflow`** in `scripts/linkedin.py`: the Linked API client refuses any workflow with an action that is not a read, and every command builds an allowed workflow. `run` hands back the `workflowId` of a parked workflow and prints it on stderr as soon as it starts (tested with `_request` replaced by a fake). No test calls the real API.

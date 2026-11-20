@@ -8,7 +8,9 @@ from derive import first_investment, follow_on, last_round  # noqa: E402
 
 
 def round_row(year, round_type, norte=False):
-    return {"year": str(year), "type": round_type, "norte_participated": "TRUE" if norte else "FALSE"}
+    """norte is True, False or "UNKNOWN"."""
+    flag = norte if norte == "UNKNOWN" else ("TRUE" if norte else "FALSE")
+    return {"year": str(year), "type": round_type, "norte_participated": flag}
 
 
 class FirstInvestmentTest(unittest.TestCase):
@@ -52,6 +54,16 @@ class FollowOnTest(unittest.TestCase):
 
     def test_unknown_when_no_recorded_round_has_norte(self):
         self.assertIsNone(follow_on([round_row(2023, "series_b")]))
+
+    def test_unknown_participation_is_not_an_investment(self):
+        rounds = [round_row(2023, "seed", "UNKNOWN"), round_row(2026, "series_a", True)]
+        self.assertEqual(first_investment(rounds), round_row(2026, "series_a", True))
+        self.assertIsNone(first_investment([round_row(2023, "seed", "UNKNOWN")]))
+
+    def test_one_investment_is_not_a_no_while_another_round_is_unknown(self):
+        self.assertIsNone(follow_on([round_row(2021, "seed", True), round_row(2023, "series_b", "UNKNOWN")]))
+        self.assertIs(follow_on([round_row(2021, "seed", True), round_row(2022, "series_a", True), round_row(2023, "series_b", "UNKNOWN")]), True)
+        self.assertIs(follow_on([round_row(2021, "seed", True), round_row(2023, "series_b")]), False)
 
 
 if __name__ == "__main__":

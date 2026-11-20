@@ -30,6 +30,11 @@ def last_round(rounds):
 
 
 def follow_on(rounds):
-    """True if Norte took part in more than one Round, False if in one, None if in none recorded."""
+    """True if Norte took part in more than one Round, False if in exactly one and no other Round is
+    UNKNOWN, None otherwise (none recorded, or one that an UNKNOWN Round could still turn into a yes)."""
     investments = _investments(rounds)
-    return len(investments) > 1 if investments else None
+    if len(investments) > 1:
+        return True
+    if not investments or any(r["norte_participated"] == "UNKNOWN" for r in rounds):
+        return None
+    return False

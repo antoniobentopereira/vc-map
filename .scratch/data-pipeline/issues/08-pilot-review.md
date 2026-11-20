@@ -4,9 +4,11 @@
 
 **Blocked by:** 07 (Pilot: companies 6 to 10), 09 (Original logos from company sites), 10 (Original logos: search-assisted pass).
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] All 10 companies reviewed by the owner
-- [ ] Research recipe written down from what was learned
-- [ ] Field list, glossary and stages doc updated
-- [ ] Size of the first Scale-up Batch decided
+Items 2 and 3 were written on 2026-11-19 from the Pilot and the search experiment (`.scratch/data-pipeline/notes/search-experiment.md`): `docs/research-recipe.md`, the updated `docs/data-model.md`, `GLOSSARY.md` and `docs/stages.md`, and ADR 0009. Ticket 11 proves the sub-agent workflow the recipe and stages doc describe.
+
+- [x] All 10 companies reviewed by the owner
+- [x] Research recipe written down from what was learned
+- [x] Field list, glossary and stages doc updated
+- [x] Size of the first Scale-up Batch decided
