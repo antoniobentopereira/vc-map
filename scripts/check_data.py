@@ -39,6 +39,7 @@ CURRENCY = re.compile(r"[A-Z]{3}")
 SINGLE_VALUE_FIELDS = [
     "description",
     "long_description",
+    "investment_thesis",
     "sub_sector",
     "hq",
     "hq_at_first_investment",

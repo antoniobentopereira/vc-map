@@ -52,9 +52,14 @@ class BuildWorkflowTest(unittest.TestCase):
         for command, args in cases:
             self.assertEqual(check_workflow(build_workflow(command, args)), [], command)
 
-    def test_founders_looks_for_founder_titles_in_english_and_portuguese(self):
-        children = build_workflow("founders", {"url": "https://www.linkedin.com/company/x"})["then"]
-        self.assertEqual(sorted(c["filter"]["position"] for c in children), ["Founder", "Fundador"])
+    def test_founders_uses_one_employees_action_and_a_chosen_title(self):
+        # Linked API rejects two actions of the same type in one `then` array (invalidWorkflow).
+        url = "https://www.linkedin.com/company/x"
+        default = build_workflow("founders", {"url": url})["then"]
+        self.assertIsInstance(default, dict)
+        self.assertEqual(default["filter"]["position"], "Founder")
+        portuguese = build_workflow("founders", {"url": url, "position": "Fundador"})["then"]
+        self.assertEqual(portuguese["filter"]["position"], "Fundador")
 
     def test_optional_parts_are_left_out(self):
         self.assertNotIn("then", build_workflow("company", {"url": "https://www.linkedin.com/company/x", "posts": 0}))

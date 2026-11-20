@@ -12,7 +12,7 @@ Tokens come from two environment variables and are never written to the repo:
 Usage (prints the workflow completion as JSON):
   python scripts/linkedin.py check
   python scripts/linkedin.py company <company-url> [--posts N]
-  python scripts/linkedin.py founders <company-url>
+  python scripts/linkedin.py founders <company-url> [--position Fundador]
   python scripts/linkedin.py person <person-url> [--experience] [--posts N] [--since ISO-TIME]
   python scripts/linkedin.py search-companies "<term>" [--limit N]
   python scripts/linkedin.py search-posts "<term>" [--mentioning "Norte Ventures"] [--limit N]
@@ -76,10 +76,11 @@ def build_workflow(command, args):
             workflow["then"] = {"actionType": "st.retrieveCompanyPosts", "limit": args["posts"]}
         return workflow
     if command == "founders":
-        return {"actionType": "st.openCompanyPage", "companyUrl": args["url"], "basicInfo": True, "then": [
-            {"actionType": "st.retrieveCompanyEmployees", "label": title.lower(), "limit": 10, "filter": {"position": title}}
-            for title in ("Founder", "Fundador")
-        ]}
+        # One title per run: Linked API rejects two actions of the same type in one `then` array
+        # (invalidWorkflow, tested 2026-11-20), so the Portuguese title is a second run with --position Fundador.
+        title = args.get("position") or "Founder"
+        return {"actionType": "st.openCompanyPage", "companyUrl": args["url"], "basicInfo": True, "then": {
+            "actionType": "st.retrieveCompanyEmployees", "limit": 10, "filter": {"position": title}}}
     if command == "person":
         workflow = {"actionType": "st.openPersonPage", "personUrl": args["url"], "basicInfo": True}
         children = []
@@ -169,7 +170,9 @@ def main(argv=None):
     company = sub.add_parser("company")
     company.add_argument("url")
     company.add_argument("--posts", type=int, default=0)
-    sub.add_parser("founders").add_argument("url")
+    founders = sub.add_parser("founders")
+    founders.add_argument("url")
+    founders.add_argument("--position", default="Founder")
     person = sub.add_parser("person")
     person.add_argument("url")
     person.add_argument("--experience", action="store_true")

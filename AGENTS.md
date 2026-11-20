@@ -18,4 +18,6 @@ Test and data-check commands, and the agreed test seams: `docs/agents/testing.md
 
 ### Researching a company
 
+To research a Batch, use the `research-companies` skill (`.claude/skills/research-companies/`): `/research-companies 5`, `/research-companies Tempo, CredAluga`.
+
 Read `docs/data-model.md` (every field and rule) before writing any row to `data/`, and `docs/research-recipe.md` (where to look, in what order, and when to stop) before researching. LinkedIn is read only through `python scripts/linkedin.py` (Linked API, read-only, last resort; ADR 0010), never directly.

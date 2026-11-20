@@ -176,7 +176,8 @@ function fieldHelp(field) {
   const subs = Object.keys(data.sectors || {});
   const help = {
     description: ["One or two sentences on what the company does, in our own words."],
-    long_description: ["One paragraph on product, customers and business model, from one Source."],
+    long_description: ["The profile in our own words, about 1,500 to 4,500 characters when sources allow: product, customers, business model, origin story, traction, direction. Main source in source_url, others in the note."],
+    investment_thesis: ["Why it is worth backing, in our own words: problem, logic, market size and reachable share, what is different, why it fits Norte, risks. Estimated, with the reasoning and market arithmetic in the note."],
     sub_sector: ["Must already be listed in sectors.csv (add it there first if new). Listed: " + (subs.join("; ") || "none yet")],
     hq: ["City, Country (country name in English). Where the company says its HQ is, never legal incorporation."],
     hq_at_first_investment: ["City, Country, as HQ when Norte first invested."],
@@ -189,7 +190,7 @@ function fieldHelp(field) {
     founder: ["One Founder's name per row."],
     market: ["One country per row where the company operates or sells (English name)."],
     accelerator: ["One programme per row, such as Y Combinator (batch goes in the note)."],
-    milestone: ["date: event. The date is 2021, 2021-03 or 2021-03-19. Non-funding events only (launches, pivots, offices, HQ moves); Rounds go in rounds.csv."],
+    milestone: ["date: event. The date is 2021, 2021-03 or 2021-03-19. Non-funding events only, one or two sentences each saying why it mattered; aim for 8 to 15 when sources allow. Rounds go in rounds.csv."],
   };
   return help[field] || [];
 }
@@ -239,7 +240,7 @@ function fieldView(profile, field, row, text) {
 
 // Slots counted: the 8 single-value fields (acquirer and acquisition_year excluded, as they are
 // often legitimately absent), the 4 list fields (filled if one row) and Rounds. Denominator: 13.
-const COUNTED_FIELDS = ["description", "long_description", "sub_sector", "hq", "hq_at_first_investment",
+const COUNTED_FIELDS = ["description", "long_description", "investment_thesis", "sub_sector", "hq", "hq_at_first_investment",
   "year_founded", "status", "business_model", "founder", "market", "accelerator", "milestone"];
 
 function completeness(profile) {
@@ -410,6 +411,9 @@ function render(profile) {
 
   left.append(el("div", { className: "box" }, el("div", { className: "label" }, "Long description"),
     el("p", {}, fieldView(profile, "long_description", claim(profile, "long_description")))));
+
+  left.append(el("div", { className: "box" }, el("div", { className: "label" }, "Investment thesis"),
+    el("p", {}, fieldView(profile, "investment_thesis", claim(profile, "investment_thesis")))));
 
   left.append(timelineBox(profile));
   left.append(recordBox(profile));

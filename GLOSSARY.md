@@ -56,8 +56,12 @@ _Avoid_: State
 A Portfolio company being bought by another company. Recorded with the acquirer and year, separately from Status, because an acquired company may keep operating. Not the same as an Exit, which is the Firm's own listing.
 _Avoid_: Sale, buyout
 
+**Investment thesis**:
+Our reasoned case for why a Portfolio company is worth backing: the problem, the logic of the business, the market and its reachable share, what makes it different, why it fits Norte, and the risks. It is mostly deduced, so it is an estimated Claim with its reasoning in the note, and it never states Norte's own reasoning as fact unless a Source says so.
+_Avoid_: Pitch, rationale
+
 **Milestone**:
-A dated, non-funding event that tells a Portfolio company's story (a launch, pivot, new office, HQ move, accelerator, acquisition it makes). Legal registration and holding-company restructurings are not Milestones. Milestones and Rounds together make its timeline.
+A dated, non-funding event that tells a Portfolio company's story (a launch, pivot, new office, HQ move, accelerator, acquisition it makes, big customer, traction mark), written as a sentence or two that says why it mattered. Legal registration and holding-company restructurings are not Milestones. Milestones and Rounds together make its timeline.
 _Avoid_: Event, history item
 
 **Claim**:

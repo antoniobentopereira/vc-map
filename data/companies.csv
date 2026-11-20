@@ -2,11 +2,11 @@ name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_o
 NG.CASH,https://ng.cash,I,TRUE,FALSE,site/logos/ng-cash.png,company-site,https://cdn.prod.website-files.com/677d2671cb3b8b73c5c62129/67b87b450971fd19e0318082_NG.CASH%20FavIcon%20(1).png,2026-11-19
 CredAluga,https://credaluga.com.br,II,FALSE,FALSE,site/logos/credaluga.png,company-site,https://credaluga.com.br/wp-content/uploads/2024/06/FAVICON-300x300.png,2026-11-19
 Flieber,https://flieber.com,I,FALSE,FALSE,site/logos/flieber.svg,company-site,https://www.flieber.com/hubfs/flieber-2026/flieber-logo.svg,2026-11-19
-Tempo,https://seutempo.com,II,FALSE,FALSE,site/logos/tempo.svg,manual,https://www.seutempo.com/images/Tempo_Horizontal.svg,
-Gatekeeper,https://gatekeeperx.com,II,FALSE,FALSE,site/logos/gatekeeper.png,manual,https://colombiafintech.co/wp-content/uploads/2025/12/gatekeeper-x-logo.png,
-Nomo,https://nomo.com.br,I,FALSE,TRUE,site/logos/nomo.svg,company-site,https://nomo.com.br/favicon.svg?v=20251223,
-Kanastra,https://kanastra.com.br,I,TRUE,FALSE,site/logos/kanastra.svg,company-site,https://kanastra.com.br/favicon.svg,
-Dolado,https://dolado.com.br,I,FALSE,FALSE,site/logos/dolado.png,manual,https://www.dolado.com.br/src/logo-azul.png,
+Tempo,https://seutempo.com,II,FALSE,FALSE,site/logos/tempo.svg,manual,https://www.seutempo.com/images/Tempo_Horizontal.svg,2026-11-20
+Gatekeeper,https://gatekeeperx.com,II,FALSE,FALSE,site/logos/gatekeeper.png,manual,https://colombiafintech.co/wp-content/uploads/2025/12/gatekeeper-x-logo.png,2026-11-20
+Nomo,https://nomo.com.br,I,FALSE,TRUE,site/logos/nomo.svg,company-site,https://nomo.com.br/favicon.svg?v=20251223,2026-11-20
+Kanastra,https://kanastra.com.br,I,TRUE,FALSE,site/logos/kanastra.svg,company-site,https://kanastra.com.br/favicon.svg,2026-11-20
+Dolado,https://dolado.com.br,I,FALSE,FALSE,site/logos/dolado.png,manual,https://www.dolado.com.br/src/logo-azul.png,2026-11-20
 Ume,https://ume.com.br,I,TRUE,FALSE,site/logos/ume.svg,company-site,https://www.ume.com.br/wp-content/plugins/theme-blocks/assets/images/header/logo-ume.svg,
 Nexa,https://nexafinance.com.br,II,TRUE,FALSE,site/logos/nexa.svg,company-site,https://nexafinance.com.br/assets/nexa-symbol-boreal.svg,
 Flash,https://flashapp.com.br,I,TRUE,FALSE,site/logos/flash.svg,company-site,https://flashapp.com.br/hubfs/Menu%20site/logo-flash-menu.svg,

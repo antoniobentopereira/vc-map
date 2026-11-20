@@ -193,6 +193,12 @@ class ClaimsTest(Assertions):
         self.assertOneError(errors, "second 'description' for Alpha", line=3)
         self.assertIn("weigh the sources", errors[0])
 
+    def test_investment_thesis_is_a_single_value_field(self):
+        thesis = 'Alpha,investment_thesis,"Why it works.",https://a.com,estimated,medium,Reasoned from the market size.'
+        self.assertEqual(run(claims=[GOOD, thesis]), [])
+        errors = run(claims=[GOOD, thesis, thesis.replace("Why it works.", "Another view.")])
+        self.assertOneError(errors, "second 'investment_thesis' for Alpha", line=4)
+
 
 def claim(field, value):
     return f'Alpha,{field},"{value}",https://a.com,reported,high,'
