@@ -78,6 +78,18 @@ Plain fetches of LinkedIn return 403 (tested 2026-11-19), and search snippets ar
 - **Registries beyond Brazil are not tried yet.** Yuno, Pomelo and Morado have no registry data; HQ came from press datelines, which disagreed for Yuno.
 - **Registry partners that are not founders.** A foreign LLC (Baze: Slice, LLC; ZAX: ZAXAPP HOLDING LLC) or a partner who joined later (Elvenworks: Maurizio De Franciscis) is a lead for a Round or an investor, not a `founder`.
 
+## Lessons from Batch 4 (2026-11-24)
+
+- **Exame and other sites that return compressed bytes:** a plain Python fetch gives garbage, but `curl -sL --compressed -A "Mozilla/5.0" <url>` returns the article (Buser's Series B and the 2022 Exame piece). Use it before giving up on an Exame page; the article's `published_time` or `datePublished` meta gives the date.
+- **Inline links hide names:** when a page is turned into text one tag per line, the names that are links (investors, products) vanish from the sentence. Remove inline tags (a, strong, em, span) and break lines only on block tags, so "liderada pelo [fundo]" keeps the fund's name.
+- **A round with a complete investor list that omits Norte is `FALSE`; an aggregator or a company page that lists Norte without a Round never settles it.** Buser, Bia and deco each have Norte only in aggregator lists: all their Rounds are `FALSE` or `UNKNOWN`, none `TRUE`. Do not fix this with more search: Linked API `search-posts ... --mentioning "Norte Ventures"` found no round post for deco, Buser or Bia (one event post tagging Bia and Norte for Bia).
+- **Linked API `search-companies`:** the name alone returned the company page for Vetto ("Vetto AI"), Omni Saúde, Bia, Robbin and Destaxa (5 of 6), each in under two minutes; "deco cx" returned `[]`. The location of a name-only match is Medium, since namesakes exist.
+- **Registry through minhareceita.org** worked for 3 of 3 CNPJs (Omni, Buser, Trybe; Vetto, deco, Robbin and Destaxa had no CNPJ on the pages read, so no registry check). Take the CNPJ from the terms of use or privacy policy (Trybe, Omni) or the footer (Buser).
+- **Companies that renamed:** Vetto is Start Carreiras; the older press uses the old name. Search both names, and put the old name in the long description. The rename date may not be public.
+- **Round sizes in two currencies:** when sources give R$15M, US$5M and US$3.1M for one round (Destaxa's seed), check which figure matches the others at the year's average rate (R$15M is US$2.9M), keep that one and write the rest in the note.
+- **Non-Brazilian companies (Bia, Colombia):** LatamList, Forbes Colombia, Portafolio and Ecosistema Startup are readable and carry Series and bridge rounds; no registry was tried.
+- **Search-summary numbers:** Oxford Economics (Scale AI market) and CB Insights lists appeared only in search summaries; they stayed in the note as leads, not Sources.
+
 ## Long description and milestones (the story)
 
 The long description and the milestones are the company's story, and they are written from what steps 1 to 6 read, plus a few reads aimed at the story itself. They are meant to be long and readable (see `docs/data-model.md` for the target sizes), so collect material while you research instead of writing from memory at the end.
