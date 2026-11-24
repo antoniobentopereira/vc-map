@@ -49,7 +49,7 @@ def parse_portfolio(html):
         key = (e["name"].casefold(), funds[0])
         previous = companies.get(key)
         companies[key] = Company(
-            name=e["name"],
+            name=e["name"].strip(),
             website=e["url"],
             fund=funds[0],
             is_highlight="highlights" in slugs or bool(previous and previous.is_highlight),
