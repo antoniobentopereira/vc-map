@@ -117,3 +117,15 @@ The company's rows added to `data/` (any new sub-sector to `sectors.csv` and FX 
 ## What it costs
 
 The Pilot took about 20 page reads for Tractian, 15 to 20 for companies 2 to 5, and 8 to 12 for companies 6 to 10. The registry step is cheap when the CNPJ is in the footer (2 reads) and expensive when it is not (about 9 for Carbonext). Plan 10 to 20 reads per company for the facts, plus about 5 to 10 more for the story (long description and milestones) and about 3 to 6 for the investment thesis (market size and competitors). Step 7 adds at most 4 Linked API workflows, each taking from about 20 seconds to several minutes, queued one at a time on the owner's account.
+
+## Lessons from Batch 5 (2026-11-24)
+
+- **A one-page site is not a dead end, but it is not the story either (Igual):** the site gave the product and job titles but no founders, and Linked API `founders <company-url>` failed again (`st.openCompanyPage`, over 30 minutes). Stanford CodeX TechIndex (`techindex.law.stanford.edu/companies/<name>`) and StartupsBR are readable for year, city and customer type of legal-tech and Brazilian startups; try them when the press has nothing. Do not guess the sector from the name (a first search for Igual assumed "equal pay").
+- **A company's own funding post is the best list of investors:** Vaas's seed blog names every investor and angel, so Norte is `FALSE` there; Forbes Argentina's complete list does the same for Henry's Series A. Aggregators that list Norte for those rounds stay unused.
+- **"Norte Capital" again:** Startups.com.br (2022 and 2026) writes it for Salú's seed while Brazil Journal writes "Norte Ventures"; treat it as Norte and say so in the note.
+- **Rounds the types do not cover:** a "pre-Series B" takes `series_a` if it follows a Series A and the company plans a Series B (180° Insurance); its debt part is a separate `debt` row and a strategic extension by one investor is `unknown`, with Norte `FALSE` only because the extension names that investor alone.
+- **Announcement currency vs. year average:** when a round is announced in USD and the BRL figure at the year average differs (180°: R$177M would give US$34M), keep the announced currency and say why.
+- **The 2026 BRL average is not in `fx.csv` yet:** Backchannel's seed (R$25M, 2026) has no `size_usd`; add the rate when Banco Central publishes it.
+- **Registry change of administrators as a closing signal:** minhareceita showed Senior's executives at Salú from 2026-09-04, which is evidence that the acquisition closed (an inference; the note says so).
+- **Single-source investor lists:** a Spanish blog (Ecosistema Startup) was the only page that named Norte for Refer's seed. It is readable, so the Round is `TRUE`, but with Confidence low and the note saying the other articles do not list investors.
+- **Name-only `search-companies` again:** it found the page for Patagon AI, Backchannel, Igual, Salú and Vaas (Vaas returned a page with no location); "Refer Lia AI career agent" returned `[]`. A run for "soyHenry" returned the Henry school page. Each took 2-20 minutes; run it in the background and write the other rows meanwhile.
