@@ -1,9 +1,9 @@
 name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_on
 NG.CASH,https://ng.cash,I,TRUE,FALSE,site/logos/ng-cash.png,company-site,https://cdn.prod.website-files.com/677d2671cb3b8b73c5c62129/67b87b450971fd19e0318082_NG.CASH%20FavIcon%20(1).png,2026-11-19
 CredAluga,https://credaluga.com.br,II,FALSE,FALSE,site/logos/credaluga.png,company-site,https://credaluga.com.br/wp-content/uploads/2024/06/FAVICON-300x300.png,2026-11-19
-Flieber,https://flieber.com,I,FALSE,FALSE,site/logos/flieber.svg,company-site,https://www.flieber.com/hubfs/flieber-2026/flieber-logo.svg,2026-11-19
-Tempo,https://seutempo.com,II,FALSE,FALSE,site/logos/tempo.svg,manual,https://www.seutempo.com/images/Tempo_Horizontal.svg,2026-11-20
-Gatekeeper,https://gatekeeperx.com,II,FALSE,FALSE,site/logos/gatekeeper.png,manual,https://colombiafintech.co/wp-content/uploads/2025/12/gatekeeper-x-logo.png,2026-11-20
+Flieber,https://flieber.com,I,FALSE,FALSE,site/logos/flieber.svg,company-site,https://www.flieber.com/hubfs/flieber-2026/flieber-logo.svg,2026-11-25
+Tempo,https://seutempo.com,II,FALSE,FALSE,site/logos/tempo.svg,manual,https://www.seutempo.com/images/Tempo_Horizontal.svg,2026-11-25
+Gatekeeper,https://gatekeeperx.com,II,FALSE,FALSE,site/logos/gatekeeper.png,manual,https://colombiafintech.co/wp-content/uploads/2025/12/gatekeeper-x-logo.png,2026-11-25
 Nomo,https://nomo.com.br,I,FALSE,TRUE,site/logos/nomo.svg,company-site,https://nomo.com.br/favicon.svg?v=20251223,2026-11-20
 Kanastra,https://kanastra.com.br,I,TRUE,FALSE,site/logos/kanastra.svg,company-site,https://kanastra.com.br/favicon.svg,2026-11-20
 Dolado,https://dolado.com.br,I,FALSE,FALSE,site/logos/dolado.png,manual,https://www.dolado.com.br/src/logo-azul.png,2026-11-20
@@ -125,7 +125,7 @@ Sempre+,https://sempre-mais.com/,II,FALSE,FALSE,site/logos/sempre.svg,company-si
 Strattum,https://strattum.ai/,II,FALSE,FALSE,site/logos/strattum.svg,manual,https://www.strattum.ai/brand/strattum-lockup-ink.svg,2026-11-24
 Taicor,https://taicor.ai/,II,FALSE,FALSE,site/logos/taicor.jpeg,manual,https://media.licdn.com/dms/image/v2/D4D0BAQFhOSHDla5oJQ/company-logo_200_200/B4DZ.kHoGvI4AE-/0/1785164891042/taicor_logo?e=1796860800&v=beta&t=I-FBE7D1_7nOPQXylmRRwf5r7EbRY5fRYO0xIQvfzzU,2026-11-25
 Backline,https://backline.inc/,II,FALSE,FALSE,site/logos/backline.svg,company-site,https://backline.inc/favicon.svg,2026-11-24
-Khal,https://khal.ai/,II,FALSE,FALSE,site/logos/khal.svg,company-site,https://khal.ai/icon.svg?icon.3f8587e6.svg,2026-11-24
+Khal,https://khal.ai/,II,FALSE,FALSE,site/logos/khal.svg,company-site,https://khal.ai/icon.svg?icon.3f8587e6.svg,2026-11-25
 Fina,https://www.finapartner.com/,II,FALSE,FALSE,site/logos/fina.png,company-site,https://www.finapartner.com/images/logo.png,2026-11-24
 Quantum,https://www.linkedin.com/company/qntco/,II,FALSE,FALSE,site/logos/quantum.jpeg,manual,https://media.licdn.com/dms/image/v2/D4D0BAQF2tMi4ah_BSQ/company-logo_200_200/B4DaC2na6mGYAE-/0/1789770182638?e=1796860800&v=beta&t=9PCQpB1eIcsATMObZ9M6XGD8xKipcQBcv8oCChbnjJA,2026-11-24
 Glue,https://useglue.ai/,II,FALSE,FALSE,site/logos/glue.png,manual,https://www.norte.ventures/api/media/file/glue_off.png,2026-11-24

@@ -266,3 +266,10 @@ The Pilot took about 20 page reads for Tractian, 15 to 20 for companies 2 to 5, 
 - **A Finsiders or other article about a similarly described company (Tess AI for Taicor) is a namesake in the topic, not in the name.** Check the company name in the article before using it.
 - **Customers are often not public.** Five searches (name, domain, founders, "client", "case") found none for Taicor; say so in the long description rather than guess.
 - **Budget:** two Linked API workflows per company were enough when the owner supplied the profile URLs or the page named them.
+
+## Lessons from the owner-leads pass (2026-11-25: Khal, Flieber, Tempo, Gatekeeper)
+
+- **Owner knowledge that no page states is a lead, not a Source.** Tempo's São Paulo HQ (a personal confirmation) got no `hq` row; the recipe's source rule needs a page. A Crunchbase URL from the owner is still unreadable (403): only a PDF export counts.
+- **Founder profiles upgrade a Claim from medium to high.** Gatekeeper's two co-founders were already named on the company page; their own profiles (role and start month) made them Reported, high. A founder's start at KHAL (2026-01) post-dates the 2022 legal entity, so Khal's new founder is medium.
+- **The company page's `location` can hold the headcount range** (Tempo: "2-10 funcionários"); it is not an HQ.
+- **Owner screenshots of an aggregator count as a read page** (Flieber's Crunchbase Financial Details): cite the Crunchbase URL, say in the note they are the owner's screenshots. An investor table that gives Norte per round and whose rows add up to the round's investor count (Series A: 5 of 5) is enough for `TRUE`, Confidence medium; a table cut off by "Show More" that lists Norte under two same-type rounds (Flieber's 2019 and 2020 seeds) leaves both `UNKNOWN`.
