@@ -222,3 +222,13 @@ The Pilot took about 20 page reads for Tractian, 15 to 20 for companies 2 to 5, 
 - **Cloudflare-blocked company site (strattum.ai):** go straight to the press; Startups.com.br, LatamList, Mixvale and Startupi were all readable and agreed on the round.
 - **A Linked API `search-companies` can hang for an hour** (Nash) and block the account's queue; queue the other names in a separate script and do not wait.
 - **A Brazilian AI infra company's market anchor was missing:** no independent count of large Brazilian firms was readable (IBGE pages returned nothing useful); thesis numbers were labelled assumptions with Confidence low.
+
+## Lessons from Batch 14 (2026-11-24)
+
+- **The Batch can be smaller than the count asked.** Only four companies still had no `researched_on` (Khal, Fina, Quantum, Glue); say so and research those.
+- **A portfolio link to LinkedIn is the company's only address (Quantum).** The company's site did not answer; `company <linkedin-url>` returned description, São Paulo, website and a 2026 page year in under two minutes, and a web search for the product's sector words ("supermercados", "Bluesoft") found the press that web searches by the bare name did not. Quantum is a roll-up: its founders are the group's leader, not the acquired companies' founders.
+- **A stealth company's founders can be confirmed only by their own profiles.** For Glue, a web search with `allowed_domains: ["linkedin.com"]` and the person's name returned the profile URL, and `person --experience` showed "Co-Founder, Stealth" with start dates; the profile did not name Glue, so the founders are Estimated with Low confidence and the note says what the link rests on.
+- **A company page names its founder differently from the registry (Khal).** The registry administrator since the opening date (Felipe Rosa) is the founder of the legal entity; the company's own post calls another administrator (since 2026-04-28) "founder of KHAL". Record both with the reason in each note.
+- **Quoted prior rounds without a year are not Rounds (Fina's US$100,000 and US$350,000).** They stay in the long description and the note.
+- **Dealroom News, Bloomberg Línea, LatamList, Ecosistema Startup, LatAm Fintech and El Referente were readable for a Venezuelan company**; Linked API `search-companies "Fina Partner"` found its page (location Caracas). Same-year founding dates conflicted (2023 vs 2024): keep the company's own date and write the other in the note.
+- **Readable market anchors this Batch:** E-Consulting contact-center revenue (TI Inside, 2019), ABRAS 2026 ranking (Central do Varejo), Fedecámaras company count (Panamá América, 2018), Escola Exchange accounting benchmark (Sitecontabil). No current Venezuelan SME count was readable.
