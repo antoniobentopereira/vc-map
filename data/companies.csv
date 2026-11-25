@@ -5,7 +5,7 @@ Flieber,https://flieber.com,I,FALSE,FALSE,site/logos/flieber.svg,company-site,ht
 Tempo,https://seutempo.com,II,FALSE,FALSE,site/logos/tempo.svg,manual,https://www.seutempo.com/images/Tempo_Horizontal.svg,2026-11-25
 Gatekeeper,https://gatekeeperx.com,II,FALSE,FALSE,site/logos/gatekeeper.png,manual,https://colombiafintech.co/wp-content/uploads/2025/12/gatekeeper-x-logo.png,2026-11-25
 Nomo,https://nomo.com.br,I,FALSE,TRUE,site/logos/nomo.svg,company-site,https://nomo.com.br/favicon.svg?v=20251223,2026-11-20
-Kanastra,https://kanastra.com.br,I,TRUE,FALSE,site/logos/kanastra.svg,company-site,https://kanastra.com.br/favicon.svg,2026-11-20
+Kanastra,https://kanastra.com.br,I,TRUE,FALSE,site/logos/kanastra.svg,company-site,https://kanastra.com.br/favicon.svg,2026-11-25
 Dolado,https://dolado.com.br,I,FALSE,FALSE,site/logos/dolado.png,manual,https://www.dolado.com.br/src/logo-azul.png,2026-11-20
 Ume,https://ume.com.br,I,TRUE,FALSE,site/logos/ume.svg,company-site,https://www.ume.com.br/wp-content/plugins/theme-blocks/assets/images/header/logo-ume.svg,2026-11-20
 Nexa,https://nexafinance.com.br,II,TRUE,FALSE,site/logos/nexa.svg,company-site,https://nexafinance.com.br/assets/nexa-symbol-boreal.svg,2026-11-20
@@ -30,9 +30,9 @@ Jota,https://jota.ai,II,TRUE,FALSE,site/logos/jota.svg,company-site,https://jota
 Nomad,https://nomadglobal.com,I,TRUE,FALSE,site/logos/nomad.png,manual,https://latamlist.com/wp-content/uploads/2023/08/Untitled-design-3.png,2026-11-24
 Kovi,https://kovi.com.br,I,TRUE,FALSE,site/logos/kovi.jpeg,manual,https://media.licdn.com/dms/image/v2/D4D0BAQEMJZEMzmFkfg/company-logo_200_200/company-logo_200_200/0/1665428412263/kovi_logo?e=2147483647&v=beta&t=32uKWuYEo4UQzS96q2rGeU96ZYGDLLzFdxmcYKIIXfY,2026-11-24
 Nekt,https://nekt.ai,II,FALSE,FALSE,site/logos/nekt.png,company-site,https://cdn.prod.website-files.com/65f1ba24bec70068a8838fc6/660edb19b06e1858d54d001a_nekt%20-%20favicon%20large%20(1).png,2026-11-24
-Liti,https://litisaude.com.br,I,FALSE,FALSE,site/logos/liti.png,company-site,https://assets.liti.com.br/logo/Logo-liti-favicon.png,2026-11-24
-Alchemy,https://usealchemy.io/,I,FALSE,FALSE,site/logos/alchemy.svg,company-site,https://usealchemy.io/favicon.svg,2026-11-24
-Null Platform,https://nullplatform.io,I,FALSE,FALSE,site/logos/null-platform.png,company-site,https://nullplatform.io/favicon/apple-touch-icon.png,2026-11-24
+Liti,https://litisaude.com.br,I,FALSE,FALSE,site/logos/liti.png,company-site,https://assets.liti.com.br/logo/Logo-liti-favicon.png,2026-11-25
+Alchemy,https://usealchemy.io/,I,FALSE,FALSE,site/logos/alchemy.svg,company-site,https://usealchemy.io/favicon.svg,2026-11-25
+Null Platform,https://nullplatform.io,I,FALSE,FALSE,site/logos/null-platform.png,company-site,https://nullplatform.io/favicon/apple-touch-icon.png,2026-11-25
 ComunicaIn,https://comunica.in,I,FALSE,FALSE,site/logos/comunicain.svg,company-site,https://comunica.in/logo-comunica.svg,2026-11-24
 Kamino,https://kamino.com.br,I,FALSE,FALSE,site/logos/kamino.png,company-site,https://kamino.com.br/apple-icon.png?555f8dbd18085de7,2026-11-24
 Ximple,https://ximple.co,II,FALSE,FALSE,site/logos/ximple.svg,company-site,https://ximple.co/wp-content/uploads/2024/03/ximple_logotype_1.svg,2026-11-24
@@ -61,7 +61,7 @@ Igual,https://igual.com,I,FALSE,FALSE,site/logos/igual.svg,manual,https://www.ig
 180° Insurance,https://180s.com.br,I,TRUE,FALSE,site/logos/180.svg,manual,https://180s.com.br/wp-content/uploads/2025/12/logo-branco-180.svg,2026-11-24
 Henry,https://soyhenry.com,I,FALSE,FALSE,site/logos/henry.svg,company-site,https://soyhenry.com/images/inspo/header/henry-logo.svg?dpl=dpl_7gFNB7EXCDjm8X6ZrN64q3G2TUw2,2026-11-24
 Salu,https://salu.com.vc,I,FALSE,TRUE,site/logos/salu.svg,company-site,https://salu.com.vc/icon.svg?icon.2ux1xpcq7xge7.svg,2026-11-24
-Vaas,https://getvaas.com,I,FALSE,FALSE,site/logos/vaas.jpeg,manual,https://colombiafintech.co/wp-content/uploads/2025/04/Captura20de20Pantalla202023-06-1220a20las205234920pm-1024x471.png,2026-11-24
+Vaas,https://getvaas.com,I,FALSE,FALSE,site/logos/vaas.jpeg,manual,https://colombiafintech.co/wp-content/uploads/2025/04/Captura20de20Pantalla202023-06-1220a20las205234920pm-1024x471.png,2026-11-25
 Refer,https://cardinalrefer.com,II,FALSE,FALSE,site/logos/refer.png,company-site,https://cardinalrefer.com/apple-touch-icon.png,2026-11-24
 Malga,https://malga.io,I,FALSE,FALSE,site/logos/malga.svg,company-site,https://framerusercontent.com/images/RCJrp2vevjBXuaHKMXTVaRYZlo.svg,2026-11-24
 tapi,https://tapi.la,I,TRUE,FALSE,site/logos/tapi.svg,company-site,https://tapi.la/wp-content/uploads/2024/07/Logo-nuevo.svg,2026-11-18
