@@ -1,0 +1,31 @@
+# Story pass (2026-11-25): Kapso, Kayro
+
+Both companies already had `researched_on` (Batch 12, 2026-11-24), so this was a story pass with the owner's observations as leads. `researched_on` set to 2026-11-25 for both. `python scripts/check_data.py` and `python -m unittest discover -s tests` (107 tests) pass. No new Round, sub-sector or FX rate. Norte over the 1 recorded Round (Kapso seed 2026): TRUE 1, FALSE 0, UNKNOWN 0; Kayro has no Round.
+
+## Linked API (all through `scripts/linkedin.py`)
+
+Kayro (4 workflows): `person` joaohts `wf-48c40300-1838-4b91-b499-e8c8d24057fd`; `person` paulo-chade `wf-c8ca8272-ba06-4021-a1e3-f526227ad0f3`; `person` antonio-matarazzo-affonso-ferreira-93486a255 `wf-855bbbec-0e71-43e3-be58-44ea4db1117b`; `search-companies "Kayro"` `wf-be1ba189-d0c7-4a89-bd9b-d2269a02ca6e` (page `linkedin.com/company/kayro-ia`, São Paulo, SP; its URN matches the company link on the founders' profiles). All completed in a few minutes each.
+
+Kapso (3 workflows): `person` andres-matte `wf-d6e69062-cf82-4306-aab3-6a67b13180a8`; `search-companies "Kapso"` `wf-581398ce-880d-4149-9439-7088918d0f1b` (page found, location null); `company linkedin.com/company/kapso` `wf-b27cc374-a1f8-43be-aae6-ff72340fc07e` (3 employees, yearFounded 2024, location and headquarters null, jobsCount 0). The profile URL came from a web search restricted to linkedin.com.
+
+## Kapso
+
+- **Reads:** kapso.ai home, /about, /blog, /privacy, /terms; blog posts chat-sdk-adapter (2026-06-02) and product-updates-feb-12; Vercel changelog (2026-06-23); a third-party guide (justbeingresourceful.com, 2026-11-09). Earlier reads (seed post, Dealroom News, SignalBase) unchanged.
+- **Fields added or changed:** `year_founded` 2024 (Estimated, medium: Andrés Matte's Founder role starts 2024-04, after Platanus ended 2023-09; the company page also says 2024), `hq` Santiago, Chile (Estimated, low), long description (extended, 4,218 characters), thesis (second audience, team, risks), four milestones (2024-04, 2026-02, 2026-06, 2026-11).
+- **Owner's observations:** (1) market = developers and B2B teams building on WhatsApp, plus agent users via ChatGPT: supported by the site and the guide (MCP server works in Claude, ChatGPT, Cursor, Codex; a personal-agent plugin); the guide's own caveats (Meta's rule from 2026-01-15 on general-purpose chatbots) limit the consumer side, and a third-party summary said ChatGPT needs a business plan, which we did not read, so it is not stated. (2) Year 2024: confirmed. (3) HQ in Chile, home office, three Chilean people: partly supported. The company page says 3 employees and the privacy policy says an affiliated team in Chile (Kapso SpA) does engineering, operations and support, but the same policy says Kapso is "based in the United States" and the entity is Kapso, Inc., Delaware (a Wilmington registered-agent address, which never counts as HQ). So HQ is Estimated from the founder's Santiago location, with Low confidence, and both sides are in the note. "All Chilean" and "home office" cannot be read from a page and are written as the owner's reading. (4) Long-open hiring for a 4th person: not verified (page jobsCount 0; no job post found by search); kept in the long description and thesis labelled as unverified, with the observation that Norte's recruiting help would matter (our reading).
+- **Markets:** no row. The product is global (a 3-billion-user claim, developers "from all over the world", a user store in Korea, users in Latin America and Europe) and the data model wants one country per row; no source ties sales to a named country except one Korean store.
+- **Gaps:** registry date of Kapso, Inc. and Kapso SpA (no US or Chilean registry tried), city of HQ stated by the company, lead investor of the seed, revenue, any earlier Round (a 2024-25 pre-seed is plausible given Platanus, but no page says so).
+- **Leads to verify:** hiring posts for a 4th employee; ChatGPT plan requirements and an official Kapso page for the ChatGPT connector (kapso.com/whatsapp-mcp-server was cited by the guide but not read); "all Chilean" (profiles of the other two employees not opened).
+
+## Kayro
+
+- **Reads:** usekayro.ai home and /copiloto-de-vendas (earlier), the footer's CNPJ 62.623.254/0001-13 through minhareceita.org (BrasilAPI cited), three founder profiles and the company search via Linked API. Web searches for the founders' names found only namesakes (startup-seeker `kayro~ai` is a Paris consultancy; the LinkedIn search found the same one, `kayro.ai`).
+- **Fields added or changed:** three `founder` rows (Reported, medium: Antonio Matarazzo Affonso Ferreira, CEO; Paulo Chade; João Henrique Santos), `year_founded` 2026 (Estimated, medium), long description (3,324 characters), thesis (founders added to fit and risks; Confidence stays low), two milestones (2026-04 and 2026-08).
+- **Year conflict:** the registry shows the Brazilian entity, Datacado Ltda, opened on 2025-09-09 with Antonio Matarazzo and Paulo Souza Chade as administrators from that day; Kayro, LLC (a US company) joined as partner on 2026-08-07. The profiles date the Kayro roles to 2026-04 (Antonio, Paulo) and 2026-08 (João), and Paulo was at Enter until 2026-04. We keep 2026, the owner's reading too, and say the legal company is older. Kayro, LLC is a lead for a first outside round (the recipe's LLC rule), not a Round.
+- **Harvard (owner's lead):** only João's profile shows it (Course Assistant at Harvard University, 2023-08 to 2025-05; CS50, Math 1A, Math 21b). Antonio's profile shows FGV's entrepreneurship league and WebHorse, Paulo's shows Enter, Ant Group, BTG, Gandaya. Education sections are not returned by `person --experience`, so a shared Harvard link is unverified; the long description says so.
+- **Gaps:** customers, revenue, funding, Norte's participation (no Round, so no row), the date the Kayro brand started inside Datacado, the registry's explanation for the name Datacado.
+- **Leads to verify:** Harvard link among the three; WebHorse figures (Antonio's claim); Kayro, LLC's role (US holding or investor); Canals and Anchr as competitors (summary only, from Batch 12).
+
+## Recipe changes
+
+Added to `docs/research-recipe.md` under "Lessons from the Kapso and Kayro story pass".
