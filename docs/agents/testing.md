@@ -21,4 +21,5 @@ Tests go at these public seams and nowhere else, so `/tdd` need not ask again. T
 - **Lens layout** (TypeScript, Vitest): a pure function from companies, Lens and viewport to one target per Logo dot plus the stage height.
 - **Routes** (TypeScript, Vitest): hash address to app state and back; unknown or unbuilt addresses resolve to Float.
 - Physics feel, Pixi rendering and Svelte views are not unit-tested; they are checked in the browser at about 1500px and 320px with the `run` skill.
+- `npm run typecheck` does not check `.svelte` files (svelte-check does not yet support TypeScript 7), so keep Svelte components thin.
 - **`check_workflow`, `build_workflow`** in `scripts/linkedin.py`: the Linked API client refuses any workflow with an action that is not a read, and every command builds an allowed workflow. `run` hands back the `workflowId` of a parked workflow and prints it on stderr as soon as it starts (tested with `_request` replaced by a fake). No test calls the real API.

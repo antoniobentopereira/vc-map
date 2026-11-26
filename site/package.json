@@ -10,8 +10,10 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.2",
     "d3-force": "^3.0.1",
-    "pixi.js": "^8.23.0"
+    "pixi.js": "^8.23.0",
+    "svelte": "^5.59.2"
   },
   "devDependencies": {
     "@types/d3-force": "^3.0.10",

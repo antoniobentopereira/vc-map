@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
 import { readFileSync, writeFileSync } from "node:fs";
 import { defineConfig, type Plugin } from "vite";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 
 // TEMPORARY, dev server only: the tuning panel's "Make default" posts its values here and they are
 // written into the `physics` and `dot` objects of src/engine/config.ts. Remove with src/tune.ts.
@@ -43,7 +44,7 @@ function tuneDefaults(): Plugin {
 // Relative base so the built folder works from any sub-path (ADR 0001).
 export default defineConfig({
   base: "./",
-  plugins: [tuneDefaults()],
+  plugins: [svelte(), tuneDefaults()],
   server: { host: true },
   // vmThreads: the default pool fails to find the suite on Node 26 / Windows.
   test: { include: ["src/**/*.test.ts"], pool: "vmThreads" },
