@@ -35,274 +35,112 @@
 <svelte:window onpointerdown={onWindowPointerDown} onkeydown={onWindowKey} />
 
 <header class="top" bind:this={topBar}>
-  <h1 class="title">VC Map</h1>
-  <div class="menu-wrap" bind:this={menuWrap}>
-    <button
-      class="menu-trigger"
-      aria-haspopup="true"
-      aria-expanded={menuOpen}
-      aria-controls="views-menu"
-      onclick={() => (menuOpen = !menuOpen)}
-    >
-      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-      Views
-    </button>
-    {#if menuOpen}
-      <div class="menu" id="views-menu">
-        <ul>
+  <div class="mark">VC Map <span class="sub">Norte portfolio</span></div>
+  <div class="actions">
+    <div class="menu-wrap" bind:this={menuWrap}>
+      <button
+        class="btn"
+        aria-haspopup="true"
+        aria-expanded={menuOpen}
+        aria-controls="views-menu"
+        onclick={() => (menuOpen = !menuOpen)}
+      >Views ▾</button>
+      {#if menuOpen}
+        <div class="menu" id="views-menu">
           {#each VIEWS as view (view.id)}
-            <li>
-              <button class="menu-item" disabled={!view.built}>
-                <span>{view.label}</span>
-                {#if !view.built}<small>soon</small>{/if}
-              </button>
-            </li>
+            <button class="menu-item" disabled={!view.built} title={view.built ? undefined : "Coming soon"}>
+              <span>{view.label}</span>
+              {#if !view.built}<span class="soon">soon</span>{/if}
+            </button>
           {/each}
-        </ul>
-        <label class="receipts">
-          <input type="checkbox" disabled />
-          <span>Receipts</span>
-          <small>soon</small>
-        </label>
-      </div>
-    {/if}
+          <hr />
+          <label class="menu-item toggle" title="Coming soon">
+            <span><input type="checkbox" disabled /> Receipts</span>
+            <span class="soon">soon</span>
+          </label>
+        </div>
+      {/if}
+    </div>
+    <button class="btn play" disabled title="Quiz coming soon">▶ Play</button>
+    <!-- Opens the About panel in ticket 03. -->
+    <button class="btn icon" aria-label="About this project" title="About">?</button>
   </div>
-  <span class="spacer"></span>
-  <button class="play" disabled title="Quiz: coming soon">
-    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor" /></svg>
-    Play
-  </button>
-  <!-- Opens the About panel in ticket 03. -->
-  <button class="help" aria-label="About this project" title="About">?</button>
 </header>
 
 <div class="bottom" bind:this={bottomBars}>
-  <nav class="lenses" aria-label="Lenses">
-    <ul>
-      {#each LENSES as lens (lens.id)}
-        <li>
-          <button
-            class="pill"
-            class:active={lens.built && lens.id === activeLens}
-            disabled={!lens.built}
-            aria-current={lens.id === activeLens ? "true" : undefined}
-            title={lens.built ? undefined : "Coming soon"}
-            onclick={() => onLens(lens.id)}
-          >
-            {lens.label}
-            {#if !lens.built}<small>soon</small>{/if}
-          </button>
-        </li>
-      {/each}
-    </ul>
+  <nav class="pills" aria-label="Lenses">
+    {#each LENSES as lens (lens.id)}
+      <button
+        class="pill"
+        class:on={lens.built && lens.id === activeLens}
+        disabled={!lens.built}
+        aria-current={lens.id === activeLens ? "true" : undefined}
+        title={lens.built ? undefined : "Coming soon"}
+        onclick={() => onLens(lens.id)}
+      >{lens.label}</button>
+    {/each}
   </nav>
-  <footer class="footer">
+  <footer class="foot">
     <span>Unofficial project · not affiliated with Norte Ventures</span>
     <span class="desktop-note">works best on desktop</span>
   </footer>
 </div>
 
 <style>
-  button {
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-  }
-  button:disabled {
-    cursor: default;
-  }
-  small {
-    font-size: 0.7em;
-    opacity: 0.8;
-    letter-spacing: 0.02em;
-  }
+  button { font: inherit; color: inherit; }
 
-  .top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 5;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    background: var(--cream);
-    border-bottom: 1px solid color-mix(in srgb, var(--brown) 18%, transparent);
-  }
-  .title {
-    margin: 0;
-    font-size: 1.15rem;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-  .spacer {
-    flex: 1;
-  }
+  /* No boxed bars: the controls float over the canvas and the dots wander around them (via insets). */
+  .top, .bottom { position: fixed; left: 0; right: 0; z-index: 5; pointer-events: none; }
+  .top > *, .bottom > * { pointer-events: auto; }
+  .top { top: 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px; }
+  .mark { font-weight: 700; font-size: 20px; letter-spacing: -0.02em; white-space: nowrap; }
+  .sub { font-weight: 400; font-size: 14px; color: var(--soft); margin-left: 6px; }
+  .actions { display: flex; align-items: center; gap: 10px; }
 
-  .menu-wrap {
-    position: relative;
+  .btn {
+    background: var(--cream); border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 14px; cursor: pointer; font-size: 14px; white-space: nowrap;
   }
-  .menu-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 7px 14px;
-    border: 1.5px solid var(--brown);
-    border-radius: 999px;
-    background: transparent;
-    font-weight: 600;
-  }
-  .menu-trigger:hover,
-  .menu-trigger[aria-expanded="true"] {
-    background: var(--yellow);
-  }
+  .btn:hover:not(:disabled) { border-color: var(--brown); }
+  .btn.icon { width: 34px; padding: 7px 0; }
+  .btn.play { background: var(--brown); color: var(--cream); border-color: var(--brown); font-weight: 600; }
+  .btn:disabled, .pill:disabled, .menu-item:disabled { opacity: 0.38; cursor: not-allowed; }
+  .btn.play:disabled { opacity: 0.3; }
+
+  .menu-wrap { position: relative; }
   .menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    width: min(280px, calc(100vw - 28px));
-    box-sizing: border-box;
-    padding: 6px;
-    background: var(--cream);
-    border: 1.5px solid var(--brown);
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(70, 37, 0, 0.18);
-  }
-  .menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    position: absolute; top: calc(100% + 6px); right: 0; width: min(280px, calc(100vw - 24px)); max-height: 70vh; overflow: auto;
+    background: var(--cream); border: 1px solid var(--line); border-radius: 14px; padding: 6px;
+    box-shadow: 0 10px 30px rgba(70, 37, 0, 0.12);
   }
   .menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 9px 10px;
-    border: 0;
-    border-radius: 8px;
-    background: transparent;
-    text-align: left;
+    display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left;
+    background: none; border: 0; border-radius: 9px; padding: 8px 10px; cursor: pointer; font-size: 14px;
   }
-  .menu-item:disabled {
-    opacity: 0.45;
-  }
-  .receipts {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-    padding: 9px 10px;
-    border-top: 1px solid color-mix(in srgb, var(--brown) 18%, transparent);
-    opacity: 0.45;
-  }
-  .receipts small {
-    margin-left: auto;
-  }
+  .menu-item:hover:not(:disabled) { background: rgba(70, 37, 0, 0.06); }
+  .toggle { opacity: 0.45; cursor: not-allowed; }
+  .menu hr { border: 0; border-top: 1px solid var(--line); margin: 6px 4px; }
+  .soon { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 8px; color: var(--soft); }
 
-  .play {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 14px;
-    border: 1.5px solid var(--yellow);
-    border-radius: 999px;
-    background: var(--yellow);
-    font-weight: 600;
+  .bottom { bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding-bottom: 10px; }
+  .pills {
+    max-width: calc(100vw - 32px); display: flex; gap: 4px; padding: 5px; overflow-x: auto; scrollbar-width: none;
+    background: var(--cream); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 6px 24px rgba(70, 37, 0, 0.08);
   }
-  .play:disabled {
-    opacity: 0.4;
-  }
-  .help {
-    width: 34px;
-    height: 34px;
-    flex: none;
-    border: 1.5px solid var(--brown);
-    border-radius: 50%;
-    background: transparent;
-    font-weight: 700;
-  }
-  .help:hover {
-    background: var(--yellow);
-  }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { border: 0; background: none; border-radius: 999px; padding: 8px 14px; cursor: pointer; font-size: 14px; white-space: nowrap; }
+  .pill:hover:not(:disabled):not(.on) { background: rgba(70, 37, 0, 0.06); }
+  .on { background: var(--brown) !important; color: var(--cream) !important; }
 
-  .bottom {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 5;
-    background: var(--cream);
-    border-top: 1px solid color-mix(in srgb, var(--brown) 18%, transparent);
-  }
-  .lenses {
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 10px 14px 6px;
-  }
-  .lenses::-webkit-scrollbar {
-    display: none;
-  }
-  .lenses ul {
-    display: flex;
-    gap: 8px;
-    width: max-content;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-  }
-  .pill {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 6px;
-    padding: 7px 14px;
-    border: 1.5px solid var(--brown);
-    border-radius: 999px;
-    background: transparent;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .pill:not(:disabled):hover {
-    background: var(--yellow);
-  }
-  .pill.active {
-    background: var(--brown);
-    color: var(--cream);
-  }
-  .pill:disabled {
-    opacity: 0.4;
-    border-style: dashed;
-  }
-  .footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2px 10px;
-    padding: 2px 14px 8px;
-    font-size: 0.72rem;
-    opacity: 0.7;
-  }
-  .desktop-note::before {
-    content: "·";
-    margin-right: 10px;
-  }
+  .foot { font-size: 11px; color: var(--soft); text-align: center; padding: 0 16px; pointer-events: none; }
+  .desktop-note::before { content: "·"; margin: 0 6px 0 4px; }
 
-  @media (max-width: 480px) {
-    .top {
-      padding: 8px 10px;
-      gap: 6px;
-    }
-    .title {
-      font-size: 1rem;
-    }
-    .menu-trigger,
-    .play {
-      padding: 6px 10px;
-    }
-    .desktop-note::before {
-      content: none;
-    }
+  @media (max-width: 640px) {
+    .top { padding: 10px 12px; }
+    .sub, .desktop-note::before { display: none; }
+    .actions { gap: 6px; }
+    .actions .btn { padding: 7px 10px; }
+    .actions .btn.icon { padding: 7px 0; }
+    .pills { width: calc(100vw - 32px); }
   }
 </style>
