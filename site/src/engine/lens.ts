@@ -107,15 +107,16 @@ function layoutSector(keys: string[], viewport: Viewport): LensLayout {
     }
     contentHeight = y - gap;
   } else {
-    // One row, every ball beside the next in Sector order. If that is wider than the screen the stage extends to
+    // One row, biggest Sector on the left. If that is wider than the screen the stage extends to
     // the right and the view pans. The balls share one center line, the tallest one with its title centered vertically.
-    const widths = groups.map((g) => blockWidth(g, 1));
+    const row = [...groups].sort((a, b) => members.get(b)!.length - members.get(a)!.length); // biggest first (stable)
+    const widths = row.map((g) => blockWidth(g, 1));
     const rowWidth = widths.reduce((sum, w) => sum + w, 0) + gap * (groups.length - 1) + SIDE_MARGIN * 2;
     stageW = Math.max(W, rowWidth);
     const tallest = Math.max(...groups.map((g) => ballRadius(members.get(g)!.length, 1)));
     const axis = H / 2 + TITLE_BLOCK / 2;
     let x = (stageW - (rowWidth - SIDE_MARGIN * 2)) / 2;
-    groups.forEach((g, i) => {
+    row.forEach((g, i) => {
       centers.set(g, { x: x + widths[i] / 2, y: axis });
       x += widths[i] + gap;
     });

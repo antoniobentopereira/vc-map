@@ -98,6 +98,12 @@ describe("Sector Lens layout", () => {
     expect(bars.top + free / 2).toBeCloseTo((blockTop + blockBottom) / 2, 0);
   });
 
+  it("orders the desktop row from the biggest Sector on the left to the smallest on the right", () => {
+    const { balls } = layoutLens("sector", companies, desktop);
+    const byX = [...balls].sort((a, b) => a.x - b.x).map((b) => b.radius);
+    expect(byX).toEqual([...byX].sort((a, b) => b - a));
+  });
+
   it("stacks the phone balls in one column", () => {
     const { balls } = layoutLens("sector", companies, phone);
     expect(new Set(balls.map((b) => b.x)).size).toBe(1);
