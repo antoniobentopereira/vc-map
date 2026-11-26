@@ -33,6 +33,23 @@ class BuildSiteDataTest(unittest.TestCase):
             [("alpha", "Alpha", "I", "logos/alpha.svg"), ("beta-co", "Beta Co.", "II", "logos/beta.png")],
         )
 
+    def test_logo_points_to_the_circle_when_one_exists_and_to_the_raw_logo_otherwise(self):
+        with tempfile.TemporaryDirectory() as d:
+            make_data(d, [ALPHA.replace(".svg,,company-site", ".svg,#ffffff,company-site"), BETA])
+            circle = Path(d) / "site" / "logos" / "circles" / "alpha.webp"
+            circle.parent.mkdir(parents=True)
+            circle.write_bytes(b"x")
+            logos = [c["logo"] for c in build(d, d)["companies"]]
+        self.assertEqual(logos, ["logos/circles/alpha.webp", "logos/beta.png"])
+
+    def test_logo_without_a_hex_fill_keeps_the_raw_logo_even_if_a_circle_file_exists(self):
+        with tempfile.TemporaryDirectory() as d:
+            make_data(d, [ALPHA])  # logo_background is empty
+            circle = Path(d) / "site" / "logos" / "circles" / "alpha.webp"
+            circle.parent.mkdir(parents=True)
+            circle.write_bytes(b"x")
+            self.assertEqual(build(d, d)["companies"][0]["logo"], "logos/alpha.svg")
+
     def test_website_comes_from_the_roster(self):
         self.assertEqual([c["website"] for c in self.build([ALPHA, BETA])["companies"]], ["https://alpha.com", "https://beta.com"])
 

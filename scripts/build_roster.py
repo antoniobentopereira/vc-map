@@ -78,7 +78,7 @@ def fetch(url=PORTFOLIO_URL):
 
 
 # Columns filled by later steps (logos, research), kept as they are when the roster is rebuilt.
-KEPT_COLUMNS = ["logo", "logo_background", "logo_origin", "logo_source", "researched_on"]
+KEPT_COLUMNS = ["logo", "logo_background", "logo_origin", "logo_source", "researched_on", "logo_crop"]
 
 
 def _existing_kept_columns(path):

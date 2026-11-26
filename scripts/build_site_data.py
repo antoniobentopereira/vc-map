@@ -14,6 +14,7 @@ from pathlib import Path
 
 from check_data import CLAIM_COLUMNS, COMPANY_COLUMNS, DATA, ROOT, ROUND_COLUMNS, SECTOR_COLUMNS, _read, _read_optional, check_files
 from derive import first_investment, follow_on, in_order
+from logo_circle import circle_path, has_circle_choice
 
 OUTPUT = ROOT / "site" / "src" / "data" / "companies.json"
 
@@ -105,13 +106,20 @@ def build(data=DATA, root=ROOT):
     slugs = _unique_slugs([r["name"] for r in rows])
     return {
         "companies": [
-            _company(slug, r, claims, round_rows, sector_of)
+            _company(slug, r, claims, round_rows, sector_of, root)
             for slug, r in zip(slugs, rows)
         ]
     }
 
 
-def _company(slug, r, claims, round_rows, sector_of):
+def _logo(row, root):
+    """The logo circle when one has been built, otherwise the raw logo; relative to the site folder."""
+    if has_circle_choice(row) and (Path(root) / circle_path(row["logo"])).is_file():
+        return circle_path(row["logo"]).as_posix().removeprefix("site/")
+    return row["logo"].removeprefix("site/")
+
+
+def _company(slug, r, claims, round_rows, sector_of, root):
     mine = [c for c in claims if c["company"] == r["name"]]
     own_rounds = in_order(x for x in round_rows if x["company"] == r["name"])
     first = first_investment(own_rounds)
@@ -121,7 +129,7 @@ def _company(slug, r, claims, round_rows, sector_of):
         "fund": r["fund"],
         "website": r["website"],
         # The site is served from its own folder, so the repo's "site/" prefix is dropped.
-        "logo": r["logo"].removeprefix("site/"),
+        "logo": _logo(r, root),
         "fields": _fields(mine, sector_of),
         "lists": _lists(mine),
         "rounds": [_round(x) for x in own_rounds],

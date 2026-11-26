@@ -140,6 +140,27 @@ class ResolveRowTest(unittest.TestCase):
             self.assertEqual((r["logo"], r["logo_origin"], r["logo_source"]), ("", "", ""))
             self.assertFalse((root / "site" / "logos" / "alpha.svg").exists())
 
+    def test_replacing_a_logo_clears_the_crop_and_background_and_drops_the_old_circle(self):
+        web = fake_web({SITE: page('<header><img src="/logo.svg"></header>'), "https://alpha.com/logo.svg": SVG})
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            r = self.legacy(root)
+            r.update(logo_background="#ffffff", logo_crop="0,0,1,1")
+            circle = root / "site" / "logos" / "circles" / "alpha.webp"
+            circle.parent.mkdir(parents=True)
+            circle.write_bytes(b"old")
+            resolve_row(r, root, web)
+            self.assertEqual((r["logo_background"], r["logo_crop"]), ("", ""))
+            self.assertFalse(circle.exists())
+
+    def test_removing_a_logo_clears_the_crop_too(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            r = self.legacy(root)
+            r.update(logo_background="#ffffff", logo_crop="0,0,1,1")
+            resolve_row(r, root, fake_web({}))
+            self.assertEqual((r["logo_background"], r["logo_crop"]), ("", ""))
+
     def test_legacy_logo_is_replaced_and_second_run_changes_nothing(self):
         web = fake_web({SITE: page('<header><img src="/logo.svg"></header>'), "https://alpha.com/logo.svg": SVG})
         with tempfile.TemporaryDirectory() as d:

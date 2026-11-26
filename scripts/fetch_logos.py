@@ -21,7 +21,7 @@ EXTENSIONS = {
     "image/gif": "gif",
 }
 MIN_PNG_SIZE = 128
-COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_background", "logo_origin", "logo_source", "researched_on"]
+COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_background", "logo_origin", "logo_source", "researched_on", "logo_crop"]
 KEPT_ORIGINS = ("manual", "web-search")
 
 
@@ -147,6 +147,12 @@ def fetch(url):
         return response.read(), response.headers.get("Content-Type", "")
 
 
+def _remove_circle(root, logo):
+    """A replaced logo leaves its old circle behind; the circle is rebuilt from the new logo's choices."""
+    if logo:
+        (root / "site" / "logos" / "circles" / f"{Path(logo).stem}.webp").unlink(missing_ok=True)
+
+
 def resolve_row(row, root, fetch):
     """Update one CSV row in place, writing or deleting logo files as needed."""
     logo_path = root / row["logo"] if row["logo"] else None
@@ -156,13 +162,15 @@ def resolve_row(row, root, fetch):
     if logo:
         if logo_path and logo_path.is_file() and logo_path.name != logo.filename:
             logo_path.unlink()
+        _remove_circle(root, row["logo"])
         (root / "site" / "logos").mkdir(parents=True, exist_ok=True)
         (root / "site" / "logos" / logo.filename).write_bytes(logo.data)
-        row.update(logo=f"site/logos/{logo.filename}", logo_background="", logo_origin="company-site", logo_source=logo.source)
+        row.update(logo=f"site/logos/{logo.filename}", logo_background="", logo_crop="", logo_origin="company-site", logo_source=logo.source)
     else:
         if logo_path and logo_path.is_file():
             logo_path.unlink()
-        row.update(logo="", logo_background="", logo_origin="", logo_source="")
+        _remove_circle(root, row["logo"])
+        row.update(logo="", logo_background="", logo_crop="", logo_origin="", logo_source="")
 
 
 def main():

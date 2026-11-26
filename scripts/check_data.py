@@ -16,7 +16,7 @@ CLAIMS_CSV = DATA / "claims.csv"
 
 ROOT = DATA.parent
 COMPANY_COLUMNS = [
-    "name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_background", "logo_origin", "logo_source", "researched_on",
+    "name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_background", "logo_origin", "logo_source", "researched_on", "logo_crop",
 ]
 CLAIM_COLUMNS = ["company", "field", "value", "source_url", "basis", "confidence", "note"]
 SECTOR_COLUMNS = ["sub_sector", "sector"]
@@ -62,8 +62,10 @@ ALLOWED_FUNDS = ["I", "II"]
 ALLOWED_FLAGS = ["TRUE", "FALSE"]
 ALLOWED_NORTE = ["TRUE", "FALSE", "UNKNOWN"]
 ALLOWED_LOGO_ORIGINS = ["company-site", "web-search", "manual"]
-# Which page background the logo is legible on (set by tools/logo-viewer); empty means not reviewed yet.
+# The circle's fill is a "#rrggbb" color (set by the logo studio, ADR 0015). The old words (which page
+# background the logo is legible on) stay valid until every logo is confirmed; empty means not reviewed yet.
 ALLOWED_LOGO_BACKGROUNDS = ["dark", "light", "both"]
+LOGO_COLOR = re.compile(r"#[0-9a-fA-F]{6}")
 # Documented exception (ADR 0004): no Original logo was found anywhere public, so these companies
 # keep the recolored logo from the Firm's portfolio page. Add a name here only with an ADR note.
 NORTE_LOGO_EXCEPTIONS = {"glue"}
@@ -95,18 +97,31 @@ def _read(path, expected_columns):
     return rows, []
 
 
+def _is_crop(text):
+    """x,y,w,h as fractions of the source image: a box with area that stays inside it."""
+    parts = text.split(",")
+    try:
+        x, y, w, h = (float(p) for p in parts)
+    except ValueError:
+        return False
+    return len(parts) == 4 and min(x, y) >= 0 and w > 0 and h > 0 and x + w <= 1 + 1e-9 and y + h <= 1 + 1e-9
+
+
 def _check_logo(row, where, root):
     """An empty logo is valid (manual follow-up); a set logo needs a recorded origin and source."""
     logo, origin, source = row["logo"], row["logo_origin"], row["logo_source"]
     if not logo:
-        if origin or source or row["logo_background"]:
-            return [f"{where}: logo is empty but logo_origin/logo_source/logo_background are set (clear them)"]
+        if origin or source or row["logo_background"] or row["logo_crop"]:
+            return [f"{where}: logo is empty but logo_origin/logo_source/logo_background/logo_crop are set (clear them)"]
         return []
     errors = []
-    if row["logo_background"] and row["logo_background"] not in ALLOWED_LOGO_BACKGROUNDS:
+    background = row["logo_background"]
+    if background and background not in ALLOWED_LOGO_BACKGROUNDS and not LOGO_COLOR.fullmatch(background):
         errors.append(
-            f"{where}: logo_background '{row['logo_background']}' must be one of {', '.join(ALLOWED_LOGO_BACKGROUNDS)} or empty"
+            f"{where}: logo_background '{background}' must be #rrggbb, one of {', '.join(ALLOWED_LOGO_BACKGROUNDS)}, or empty"
         )
+    if row["logo_crop"] and not _is_crop(row["logo_crop"]):
+        errors.append(f"{where}: logo_crop '{row['logo_crop']}' must be four fractions from 0 to 1 as x,y,w,h")
     if not (Path(root) / logo).is_file():
         errors.append(f"{where}: logo file '{logo}' does not exist")
     if origin not in ALLOWED_LOGO_ORIGINS:

@@ -11,8 +11,8 @@ import { hashOf, parseHash, type Route } from "./routes";
 import { LENSES, VIEWS } from "./shell/shell-data";
 import { nav } from "./shell/nav.svelte";
 
-// Logo files live in site/logos/; Vite hashes and copies them into the build with relative URLs.
-const logoUrls = import.meta.glob<string>("../logos/*", { eager: true, query: "?url", import: "default" });
+// Logo files live in site/logos/ (circles in site/logos/circles/); Vite hashes and copies them into the build with relative URLs.
+const logoUrls = import.meta.glob<string>(["../logos/*", "../logos/circles/*"], { eager: true, query: "?url", import: "default" });
 const logoUrl = (path: string) => logoUrls[`../${path}`] ?? "";
 
 const host = document.getElementById("stage")!;

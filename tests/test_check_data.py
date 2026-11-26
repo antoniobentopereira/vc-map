@@ -18,7 +18,7 @@ from check_data import (
 )
 
 ROOT = Path(__file__).resolve().parent.parent
-HEADER = "name,website,fund,is_highlight,is_exit,logo,logo_background,logo_origin,logo_source,researched_on"
+HEADER = "name,website,fund,is_highlight,is_exit,logo,logo_background,logo_origin,logo_source,researched_on,logo_crop"
 ALPHA = "Alpha,https://alpha.com,I,FALSE,FALSE,site/logos/alpha.svg,,company-site,https://alpha.com/logo.svg,"
 HEADERS = {
     "claims": "company,field,value,source_url,basis,confidence,note",
@@ -77,6 +77,22 @@ class CompaniesTest(Assertions):
         for value in ("dark", "light", "both", ""):
             self.assertEqual(self.check(ALPHA.replace(".svg,,company-site", f".svg,{value},company-site")), [])
         self.assertOneError(self.check(ALPHA.replace(".svg,,company-site", ".svg,grey,company-site")), "logo_background 'grey'")
+
+    def test_logo_background_accepts_a_hex_color(self):
+        self.assertEqual(self.check(ALPHA.replace(".svg,,company-site", ".svg,#1a2B3c,company-site")), [])
+        for bad in ("#fff", "1a2b3c", "#12345g"):
+            self.assertOneError(self.check(ALPHA.replace(".svg,,company-site", f".svg,{bad},company-site")), "logo_background")
+
+    def test_logo_crop_is_four_fractions(self):
+        def with_crop(value):
+            return ALPHA + (f',"{value}"' if "," in value else "," + value)
+        for good in ("0,0,1,1", "0.1,0.2,0.5,0.6", ""):
+            self.assertEqual(self.check(with_crop(good)), [], good)
+        for bad in ("0,0,1", "0,0,1,1,1", "a,b,c,d", "0,0,0,1", "0.5,0,0.6,1", "-0.1,0,1,1", "0,0,1.5,1"):
+            self.assertOneError(self.check(with_crop(bad)), "logo_crop", None)
+
+    def test_logo_crop_without_logo_is_an_error(self):
+        self.assertOneError(self.check('Alpha,https://a.com,I,FALSE,FALSE,,,,,,"0,0,1,1"'), "logo is empty")
 
     def test_logo_background_without_logo_is_an_error(self):
         self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,dark,,,"), "logo is empty")
