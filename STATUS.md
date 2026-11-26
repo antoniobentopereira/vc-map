@@ -11,6 +11,8 @@ Stage 4, Visualization v1 (definition of done in `docs/stages.md`). Stages 1 to 
 3. `tools/logo-studio/` (replaces `tools/logo-viewer/`), then all logos confirmed (ADR 0015).
 4. Real `site/`: done so far: Vite project, first data-to-JSON script, engine and Float on raw logos (ticket 01). Still to do: shell, Company card and profile, sync command.
 
+5. Revisit the design of the Company profile page (`site/src/shell/Profile.svelte`): v1 is functional, not designed. Owner wants to rework it.
+
 ## Decisions (one line each)
 - Stack: Vite + TypeScript, Svelte, PixiJS, d3-force, Matter.js (games only), GSAP, d3-geo. Breaks mysite's rules on purpose (ADR 0014).
 - `site/` is source, `site/dist/` is output, copied to mysite by an explicit sync command (ADR 0001).

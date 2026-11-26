@@ -131,7 +131,7 @@
   .page { position: fixed; inset: 0; z-index: 15; overflow-y: auto; background: var(--cream); }
   article { box-sizing: border-box; max-width: 720px; margin: 0 auto; padding: 18px 20px 64px; font-size: 16px; line-height: 1.55; }
   .back {
-    background: none; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; cursor: pointer;
+    position: sticky; top: 12px; z-index: 1; background: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; cursor: pointer;
     font: inherit; font-size: 14px; color: inherit;
   }
   .back:hover { border-color: var(--brown); }
