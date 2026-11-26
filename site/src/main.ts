@@ -4,6 +4,8 @@ import data from "./data/companies.json";
 import { mount } from "svelte";
 import Shell from "./shell/Shell.svelte";
 import Card from "./shell/Card.svelte";
+import Profile from "./shell/Profile.svelte";
+import Roster from "./shell/Roster.svelte";
 import type { Insets, LensId } from "./engine/lens";
 import { hashOf, parseHash, type Route } from "./routes";
 import { LENSES, VIEWS } from "./shell/shell-data";
@@ -33,7 +35,8 @@ const closeCard = () => {
 };
 const apply = (route: Route) => {
   if (nav.card) closeCard();
-  // Views and Company profiles arrive with their own tickets; until then the dots keep floating.
+  // Views arrive with their own tickets; until then the dots keep floating. A Company profile covers the page.
+  nav.company = route.kind === "company" ? route.slug : null;
   if (route.kind === "lens") {
     nav.lens = route.id;
     if (ready) engine.setLens(route.id as LensId);
@@ -74,8 +77,28 @@ mount(Card, {
     },
     logoUrl,
     onClose: closeCard,
+    onOpen: (slug: string) => go({ kind: "company", slug }),
   },
 });
+
+// The Company profile: a full page at #/company/<slug>; the way back returns to the Lens it was opened from.
+mount(Profile, {
+  target: document.getElementById("profile")!,
+  props: {
+    get company() {
+      return data.companies.find((c) => c.slug === nav.company);
+    },
+    logoUrl,
+    onBack: () => go({ kind: "lens", id: nav.lens }),
+  },
+});
+mount(Roster, { target: document.getElementById("roster")!, props: { companies: data.companies } });
+
+// A shared profile link shows at once, without waiting for the engine.
+nav.company = (() => {
+  const route = parseHash(location.hash, known);
+  return route.kind === "company" ? route.slug : null;
+})();
 
 new ResizeObserver(fit).observe(host);
 

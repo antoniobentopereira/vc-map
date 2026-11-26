@@ -82,6 +82,92 @@ class BuildSiteDataTest(unittest.TestCase):
         company = self.build_with([ALPHA], [])
         self.assertEqual(company["fields"], {})
 
+    def build_full(self, claims=(), rounds=()):
+        with tempfile.TemporaryDirectory() as d:
+            make_data(d, [ALPHA])
+            write(d, "claims.csv", [HEADERS["claims"], *claims])
+            write(d, "rounds.csv", [HEADERS["rounds"], *rounds])
+            return build(d, d)["companies"][0]
+
+    def test_profile_single_value_fields_carry_provenance(self):
+        company = self.build_full(
+            [
+                "Alpha,long_description,A long story.,https://alpha.com/a,reported,high,",
+                "Alpha,investment_thesis,Why it works.,https://alpha.com/b,estimated,medium,Deduced.",
+                "Alpha,acquisition_year,2024,https://alpha.com/c,reported,high,",
+                "Alpha,hq,\"Sao Paulo, Brazil\",https://alpha.com/d,reported,high,",
+            ]
+        )
+        fields = company["fields"]
+        self.assertEqual(fields["investment_thesis"], {"value": "Why it works.", "basis": "estimated", "confidence": "medium", "source": "https://alpha.com/b"})
+        self.assertEqual(fields["acquisition_year"]["value"], 2024)
+        self.assertEqual(fields["hq"]["value"], "Sao Paulo, Brazil")
+        self.assertEqual(fields["long_description"]["value"], "A long story.")
+
+    def test_list_fields_are_lists_of_fields_in_file_order(self):
+        company = self.build_full(
+            [
+                "Alpha,founder,Ana,https://alpha.com/a,reported,high,",
+                "Alpha,founder,Bo,https://alpha.com/b,estimated,low,Deduced.",
+                "Alpha,market,Brazil,https://alpha.com/c,reported,high,",
+                "Alpha,accelerator,Y Combinator,https://alpha.com/d,reported,high,",
+            ]
+        )
+        self.assertEqual([f["value"] for f in company["lists"]["founders"]], ["Ana", "Bo"])
+        self.assertEqual(company["lists"]["founders"][1], {"value": "Bo", "basis": "estimated", "confidence": "low", "source": "https://alpha.com/b"})
+        self.assertEqual([f["value"] for f in company["lists"]["markets"]], ["Brazil"])
+        self.assertEqual([f["value"] for f in company["lists"]["accelerators"]], ["Y Combinator"])
+
+    def test_milestones_split_into_date_and_event_and_sort_by_date(self):
+        company = self.build_full(
+            [
+                "Alpha,milestone,2021-03: Joined an accelerator.,https://alpha.com/a,reported,high,",
+                "Alpha,milestone,2019: Founded.,https://alpha.com/b,reported,high,",
+            ]
+        )
+        self.assertEqual(
+            [(m["date"], m["value"]) for m in company["lists"]["milestones"]],
+            [("2019", "Founded."), ("2021-03", "Joined an accelerator.")],
+        )
+        self.assertEqual(company["lists"]["milestones"][0]["source"], "https://alpha.com/b")
+
+    def test_lists_are_empty_and_rounds_empty_when_nothing_found(self):
+        company = self.build_full()
+        self.assertEqual(company["lists"], {"founders": [], "markets": [], "accelerators": [], "milestones": []})
+        self.assertEqual(company["rounds"], [])
+        self.assertIsNone(company["first_investment"])
+        self.assertIsNone(company["follow_on"])
+
+    def test_rounds_carry_own_provenance_usd_size_and_norte_participation(self):
+        company = self.build_full(
+            rounds=[
+                "Alpha,2022,seed,1000,USD,1000,Fund X (lead),FALSE,https://alpha.com/r1,reported,high,",
+                "Alpha,2021,pre_seed,,,,,TRUE,https://alpha.com/r0,estimated,low,Deduced.",
+                "Alpha,2023,series_a,,,,,UNKNOWN,https://alpha.com/r2,reported,medium,",
+            ]
+        )
+        self.assertEqual(
+            company["rounds"],
+            [
+                {"year": 2021, "type": "pre_seed", "size_usd": None, "norte": True, "co_investors": [],
+                 "basis": "estimated", "confidence": "low", "source": "https://alpha.com/r0"},
+                {"year": 2022, "type": "seed", "size_usd": 1000, "norte": False, "co_investors": ["Fund X (lead)"],
+                 "basis": "reported", "confidence": "high", "source": "https://alpha.com/r1"},
+                {"year": 2023, "type": "series_a", "size_usd": None, "norte": None, "co_investors": [],
+                 "basis": "reported", "confidence": "medium", "source": "https://alpha.com/r2"},
+            ],
+        )
+
+    def test_first_investment_and_follow_on_come_from_the_derived_views(self):
+        company = self.build_full(
+            rounds=[
+                "Alpha,2021,seed,,,,,TRUE,https://alpha.com/r0,reported,high,",
+                "Alpha,2022,series_a,,,,,TRUE,https://alpha.com/r1,reported,high,",
+            ]
+        )
+        self.assertEqual((company["first_investment"]["year"], company["first_investment"]["type"]), (2021, "seed"))
+        self.assertIs(company["follow_on"], True)
+
     def test_refuses_to_build_when_the_check_fails(self):
         with tempfile.TemporaryDirectory() as d:
             make_data(d, [ALPHA.replace("site/logos/alpha.svg", "site/logos/missing.svg")])

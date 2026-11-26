@@ -13,6 +13,11 @@ def _order(round_):
     return int(round_["year"]), stage
 
 
+def in_order(rounds):
+    """The Rounds, earliest first."""
+    return sorted(rounds, key=_order)
+
+
 def _investments(rounds):
     return sorted((r for r in rounds if r["norte_participated"] == "TRUE"), key=_order)
 

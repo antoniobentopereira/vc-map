@@ -1,14 +1,14 @@
 <script lang="ts">
   import { NOT_AVAILABLE, type Field } from "./card-data";
 
-  let { field, number = false }: { field: Field | undefined; number?: boolean } = $props();
+  let { field, number = false, block = false }: { field: Field | undefined; number?: boolean; block?: boolean } = $props();
   let open = $state(false);
 </script>
 
 {#if !field}
   <span class="missing">{NOT_AVAILABLE}</span>
 {:else}
-  <span class="fact" role="presentation" onmouseleave={() => (open = false)}>
+  <span class="fact" class:block role="presentation" onmouseleave={() => (open = false)}>
     <button
       class="value"
       class:est={field.basis === "estimated"}
@@ -29,7 +29,9 @@
 
 <style>
   .fact { position: relative; }
+  .fact.block { display: block; }
   .value { all: unset; cursor: pointer; }
+  .block .value { display: block; white-space: pre-line; }
   .value:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; border-radius: 3px; }
   /* The Estimated convention (see the About panel): muted brown, dotted underline, ≈ before numbers. */
   .est { color: var(--soft); text-decoration: underline dotted; text-decoration-color: var(--soft); text-underline-offset: 3px; }

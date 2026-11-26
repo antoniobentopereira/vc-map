@@ -6,16 +6,16 @@ Spec: `.scratch/visualization-v1/spec.md`
 
 **Blocked by:** 03, 05
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] The site data builder carries:
+- [x] The site data builder carries:
   - every single-value and list field as `{value, basis, confidence, source}`;
   - Rounds, each with its own provenance, its USD size and Norte's participation (true, false or unknown);
   - first investment and follow-on, from the existing derived views.
   - Notes are not shipped.
-- [ ] The builder refuses to write the data file when the data check fails.
-- [ ] Builder seam tests cover all of the above with small CSVs.
-- [ ] The profile shows, in order:
+- [x] The builder refuses to write the data file when the data check fails.
+- [x] Builder seam tests cover all of the above with small CSVs.
+- [x] The profile shows, in order:
   1. header: logo, name, Status, description;
   2. facts: Sector and Sub-sector, Status, business model, year founded, HQ now and at the first investment, Fund, and acquirer and acquisition year when acquired;
   3. long description;
@@ -23,7 +23,7 @@ Spec: `.scratch/visualization-v1/spec.md`
   5. Founders, markets and accelerators;
   6. one timeline of Milestones and Rounds, with Rounds styled differently;
   7. record details: website and Fund.
-- [ ] Every value links to its Source, Estimated values use the convention, and empty fields read "not publicly available".
-- [ ] There is a way back to the dots, and a shared `#/company/<slug>` link opens straight on the profile.
-- [ ] A visually hidden, keyboard-reachable list of every company links to each profile.
-- [ ] Reads well at 320px. Checked in the browser.
+- [x] Every value links to its Source, Estimated values use the convention, and empty fields read "not publicly available".
+- [x] There is a way back to the dots, and a shared `#/company/<slug>` link opens straight on the profile.
+- [x] A visually hidden, keyboard-reachable list of every company links to each profile.
+- [x] Reads well at 320px. Checked in the browser.

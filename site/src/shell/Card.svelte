@@ -2,11 +2,12 @@
   import type { Field } from "./card-data";
   import Fact from "./Fact.svelte";
 
-  type CardCompany = { name: string; website: string; logo: string; fund: string; fields: Record<string, Field | undefined> };
-  let { company, logoUrl, onClose }: {
+  type CardCompany = { slug: string; name: string; website: string; logo: string; fund: string; fields: Record<string, Field | undefined> };
+  let { company, logoUrl, onClose, onOpen }: {
     company: CardCompany | undefined;
     logoUrl: (path: string) => string;
     onClose: () => void;
+    onOpen: (slug: string) => void;
   } = $props();
 
   let closeBtn = $state<HTMLButtonElement>();
@@ -36,7 +37,7 @@
         <div><dt>Site</dt><dd><a href={company.website} target="_blank" rel="noopener noreferrer">Website ↗</a></dd></div>
       {/if}
     </dl>
-    <button class="open" disabled title="Coming soon">Open full card <span class="soon">soon</span></button>
+    <button class="open" onclick={() => onOpen(company.slug)}>Open full card</button>
   </div>
 </div>
 {/if}
@@ -70,6 +71,4 @@
     width: 100%; background: var(--brown); color: var(--cream); border: 0; border-radius: 999px; padding: 9px 14px;
     font: inherit; font-weight: 600; font-size: 14px; cursor: pointer;
   }
-  .open:disabled { opacity: 0.38; cursor: not-allowed; }
-  .soon { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 6px; font-weight: 400; }
 </style>
