@@ -112,16 +112,16 @@
 
   .menu-wrap { position: relative; }
   .menu {
-    position: absolute; top: calc(100% + 6px); right: 0; width: min(280px, calc(100vw - 24px)); max-height: 70vh; overflow: auto;
+    position: absolute; top: calc(100% + 6px); right: 0; width: min(280px, calc(100vw - 24px)); max-height: 70vh; overflow-x: hidden; overflow-y: auto;
     background: var(--cream); border: 1px solid var(--line); border-radius: 14px; padding: 6px;
     box-shadow: 0 10px 30px rgba(70, 37, 0, 0.12);
   }
   .menu-item {
-    display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left;
+    display: flex; align-items: center; justify-content: space-between; width: 100%; box-sizing: border-box; text-align: left;
     background: none; border: 0; border-radius: 9px; padding: 8px 10px; cursor: pointer; font-size: 14px;
   }
   .menu-item:hover:not(:disabled) { background: rgba(70, 37, 0, 0.06); }
-  .toggle { opacity: 0.45; cursor: not-allowed; }
+  .toggle { opacity: 0.45; cursor: not-allowed; box-sizing: border-box; }
   .menu hr { border: 0; border-top: 1px solid var(--line); margin: 6px 4px; }
   .soon { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 8px; color: var(--soft); }
 

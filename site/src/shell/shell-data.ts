@@ -6,6 +6,7 @@ export type ViewEntry = { id: string; label: string; built: boolean };
 
 export const LENSES: LensEntry[] = [
   { id: "float", label: "Float", built: true },
+  { id: "fund", label: "Fund", built: true },
   { id: "sector", label: "Sector", built: false },
   { id: "status", label: "Status", built: false },
   { id: "country", label: "Country", built: false },

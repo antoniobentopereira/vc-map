@@ -21,6 +21,7 @@ Stage 4, Visualization v1 (definition of done in `docs/stages.md`). Stages 1 to 
 - Site JSON carries value, Basis, Confidence and Source for every field (for Receipts mode later).
 - Hash URLs for every Lens, View and Company profile.
 - Float is the default Lens. The shell shows every idea, unbuilt ones greyed out.
+- Lenses built: Float, Fund (two balls, Fund I and Fund II). Sector is next, after its mapping.
 - Shell: bottom pill bar for Lenses (scrolls sideways on phones); top-bar menu holding a flat list of Views (Investors is one entry) and the Receipts toggle; standalone `?` for About. Dots stay clear of the bars.
 - Engine is plain TypeScript behind a small interface; Svelte owns shell, card, profile, About (ADR 0014).
 - Footer: unofficial notice plus a small "works best on desktop" note.

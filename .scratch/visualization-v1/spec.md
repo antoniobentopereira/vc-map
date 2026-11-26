@@ -1,4 +1,4 @@
-# Spec: Visualization v1 (Float home, Sector Lens, navigation shell, Company card and profile)
+# Spec: Visualization v1 (Float home, Fund and Sector Lenses, navigation shell, Company card and profile)
 
 **Status:** ready-for-agent
 
@@ -13,7 +13,8 @@ Three things stand in the way of a first public release. Logos come in uneven sh
 A first public release of the Visualization, served as a static folder under antoniobento.me:
 
 - **Home is the Float Lens.** All 130 Logo dots drift around the screen like gas atoms, bump into each other softly and move away from the cursor. Each dot is a uniform circle showing the company's Original logo on a chosen fill color.
-- **The Sector Lens is the first grouped Lens.** Choosing it animates every Logo dot into one floating ball per Sector, each with an icon and a title. Choosing Float releases them back to drifting. On phones, the balls stack into a vertically scrollable stage.
+- **The Fund Lens is the first grouped Lens** (built from the prototype's Fund stand-in, 2026-11-26): one titled ball per Fund (Fund I, Fund II), each title with its company count. It needs no Sector mapping, so it ships before the Sector Lens and proves the grouped-Lens transition.
+- **The Sector Lens is the second grouped Lens.** Choosing it animates every Logo dot into one floating ball per Sector, each with an icon and a title. Choosing Float releases them back to drifting. On phones, the balls stack into a vertically scrollable stage.
 - **The full navigation shell is in place from day one.** It has a bottom pill bar of every Lens, a top bar with a navigation menu of every View plus the Receipts toggle, a Play button and a `?` About button. Everything not built yet is visible but greyed out, so visitors see where the project is heading.
 - **Clicking a Logo dot** stops it and opens a small, centered **Company card**. From the card, "Open full card" leads to a first-version **Company profile** with everything the Dataset knows about that company.
 - **Estimated values always look different** from Reported ones, by one consistent convention that the About panel explains.
@@ -131,7 +132,8 @@ Supporting work that comes with it:
 - Matter.js and GSAP are not used in v1. They are added only when a View first needs them.
 - A **route** module maps hash addresses to app state and back. Addresses are `#/` (Float), `#/<lens>`, `#/<view>` and `#/company/<slug>`. Unknown or unbuilt addresses resolve to Float. The browser history follows navigation.
 - A **Lens** is a pure layout function. It takes the companies, the viewport and the device class, and returns one target per Logo dot plus a stage height. Float returns no targets and keeps the stage height equal to the viewport. Grouped Lenses may return a stage taller than the viewport on phones, which becomes a vertically scrollable stage. Float never scrolls. A Lens also returns its decorations (for Sector: each ball's icon and title and where they sit), which the engine draws.
-- **The Sector Lens** is the one grouped Lens in v1:
+- **The Fund Lens** is a grouped Lens in v1: one ball per Fund, titled "Fund I · 79" (Fund and company count), no icon. Balls sit side by side on a wide viewport and stacked on a tall one; dots lie on a sunflower spiral around each ball's center, and titles fade in once the dots have mostly arrived. Like the prototype, the stage is the viewport on phones (no scrolling yet).
+- **The Sector Lens** is the other grouped Lens in v1:
   - one ball per Sector, sized to the number of companies it holds;
   - balls packed so they don't overlap one another or the bars;
   - an icon and title above each ball;
@@ -161,7 +163,7 @@ Supporting work that comes with it:
   ```
 
 ### Shell layout (prototype verdict: layout A, borrowing C's menu)
-- The **bottom pill bar** lists every Lens. Float and Sector are enabled; the rest are greyed with a "coming soon" hint. On phones it scrolls sideways.
+- The **bottom pill bar** lists every Lens. Float and Fund are enabled (Sector once it is built); the rest are greyed with a "coming soon" hint. On phones it scrolls sideways.
 - The **top bar** holds the project title, a prominent navigation menu trigger, the Play button (disabled) and a standalone `?` About button. The menu holds a flat list of every View (Investors is one entry), with all unbuilt ones greyed, and the Receipts toggle (disabled).
 - The **footer** has one small line: "Unofficial project · not affiliated with Norte Ventures", plus a short "works best on desktop" note.
 - The shell reports its bar heights to the engine as insets, so dots stay clear of the bars.
@@ -238,7 +240,7 @@ Supporting work that comes with it:
   2. **The site data builder** (new): it writes one entry per company; it includes `{value, basis, confidence, source}` per field; Sectors come from the mapping; missing fields are absent; Rounds include Norte's participation; first investment and follow-on match the existing derived views; notes are not shipped; it refuses to run when the check fails.
   3. **The logo circle renderer** (new), tested on tiny generated images: the corners are transparent; the fill sits behind the mark; a wide mark is fitted inside the circle and a square mark covers it; the same inputs always give the same output. The studio's save path is tested like the logo viewer's CSV write: only the owned columns change, and the write is atomic.
 - **TypeScript seams** use Vitest, a new dev dependency:
-  4. **Lens layout**: every Logo dot gets exactly one target; Float keeps the stage height equal to the viewport. For Sector, tests check that:
+  4. **Lens layout**: every Logo dot gets exactly one target; Float keeps the stage height equal to the viewport. For Fund, tests check one titled ball per Fund with its count, side by side on desktop and stacked on a phone. For Sector, tests check that:
      - each dot lands in its own Sector's ball;
      - balls don't overlap one another or the insets;
      - every Sector gets exactly one title;
@@ -249,7 +251,7 @@ Supporting work that comes with it:
 
 ## Out of Scope
 
-- Every Lens other than Float and Sector, and the Sector Lens's second level (Sub-sector balls). Status, Country, Founding year, Money raised, Employee count and Business model appear in the shell, greyed out.
+- Every Lens other than Float, Fund and Sector, and the Sector Lens's second level (Sub-sector balls). Status, Country, Founding year, Money raised, Employee count and Business model appear in the shell, greyed out.
 - Every View: Norte Timeline, Investors, Theme Explorer, How early does Norte get in?, Exit Wall, Founder graph. They appear in the menu, greyed out.
 - The Quiz. Play is shown, disabled.
 - Receipts mode. The toggle is shown, disabled, but the data file already carries what it needs.

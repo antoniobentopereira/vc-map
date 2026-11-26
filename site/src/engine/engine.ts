@@ -1,12 +1,12 @@
 // The engine: PixiJS stage + a d3-force simulation that never cools. Plain TypeScript, no Svelte.
 // Float = random-walk drift + soft collisions + cursor push + soft walls. A Lens sets per-dot
 // targets the simulation pulls toward (none for Float).
-import { Application, Assets, Circle, Container, Graphics, Rectangle, Sprite, Texture } from "pixi.js";
+import { Application, Assets, Circle, Container, Graphics, Rectangle, Sprite, Text, Texture } from "pixi.js";
 import { forceCollide, forceSimulation, type Simulation, type SimulationNodeDatum } from "d3-force";
 import { dot, physics, tokens } from "./config";
-import { deviceOf, layoutLens, type Insets, type LensId, type Point, type Viewport } from "./lens";
+import { deviceOf, layoutLens, type Decoration, type Insets, type LensId, type Point, type Viewport } from "./lens";
 
-export type EngineCompany = { slug: string; name: string; logoUrl: string };
+export type EngineCompany = { slug: string; name: string; logoUrl: string; fund: string };
 
 type Node = SimulationNodeDatum & {
   company: EngineCompany;
@@ -37,6 +37,7 @@ export class Engine {
   private stageHeightPx = 1;
   private radius: number = dot.radiusDesktop;
   private dots = new Container();
+  private titles = new Container(); // Lens decorations, above the dots
 
   /** Called when a Logo dot is clicked (the dot has already been paused). */
   onDotClick: (slug: string) => void = () => {};
@@ -51,7 +52,7 @@ export class Engine {
       autoDensity: true,
     });
     host.appendChild(this.app.canvas);
-    this.app.stage.addChild(this.dots);
+    this.app.stage.addChild(this.dots, this.titles);
 
     this.sim = forceSimulation<Node>([])
       .alpha(1)
@@ -178,7 +179,7 @@ export class Engine {
   /** Switch Lens. Float releases the dots back to where they were; a grouped Lens pulls them to targets. */
   setLens(lens: LensId, relayout = false) {
     if (lens === this.lens && !relayout) return;
-    const layout = layoutLens(lens, this.nodes.length, this.viewport);
+    const layout = layoutLens(lens, this.nodes.map((n) => n.company), this.viewport);
     this.stageHeightPx = layout.stageHeight;
     if (!relayout) {
       this.lensStart = performance.now();
@@ -193,6 +194,29 @@ export class Engine {
       }
     });
     this.lens = lens;
+    this.drawTitles(layout.decorations, relayout);
+  }
+
+  /** Ball titles fade in once the dots have mostly arrived (immediately when only re-laying out). */
+  private drawTitles(decorations: Decoration[], relayout: boolean) {
+    for (const old of this.titles.removeChildren()) old.destroy();
+    const start = performance.now() + (relayout ? -Infinity : physics.transitionMs * 0.5);
+    for (const d of decorations) {
+      const text = new Text({
+        text: d.text,
+        style: { fontFamily: "Bricolage Grotesque", fontSize: 15, fontWeight: "600", fill: tokens.brown },
+      });
+      text.anchor.set(0.5, 1);
+      text.position.set(d.x, d.y);
+      text.alpha = 0;
+      this.titles.addChild(text);
+      const fade = () => {
+        if (text.destroyed) return;
+        text.alpha = clamp((performance.now() - start) / 400, 0, 1);
+        if (text.alpha < 1) requestAnimationFrame(fade);
+      };
+      fade();
+    }
   }
 
   /** Stop one dot where it is and mark it selected. */

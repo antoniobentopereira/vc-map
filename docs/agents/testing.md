@@ -18,7 +18,7 @@ Tests go at these public seams and nowhere else, so `/tdd` need not ask again. T
 - **`docs/data-model.md`**: a test checks that every value the check script allows is named in it.
 - **The site data builder** (Python): `data/` in, the site's one JSON file out. Tests check the contract with small CSVs in a temp folder: `{value, basis, confidence, source}` per field, Sector from the mapping, missing fields absent, Rounds with Norte's participation, refusal when the check fails.
 - **The logo circle renderer** (Python): source image + `logo_crop` + `logo_background` in, a 512px circle out. Tested on tiny generated images (transparent corners, fill behind the mark, wordmarks fitted, same inputs give the same output). The logo studio's save goes through it.
-- **Lens layout** (TypeScript, Vitest): a pure function from companies, Lens and viewport to one target per Logo dot plus the stage height.
+- **Lens layout** (TypeScript, Vitest): a pure function from companies, Lens and viewport to one target per Logo dot, the stage height and the ball titles (Float and Fund so far).
 - **Routes** (TypeScript, Vitest): hash address to app state and back; unknown or unbuilt addresses resolve to Float.
 - Physics feel, Pixi rendering and Svelte views are not unit-tested; they are checked in the browser at about 1500px and 320px with the `run` skill.
 - `npm run typecheck` does not check `.svelte` files (svelte-check does not yet support TypeScript 7), so keep Svelte components thin.

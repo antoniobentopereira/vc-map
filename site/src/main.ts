@@ -62,7 +62,7 @@ new ResizeObserver(fit).observe(host);
 
 await document.fonts.load('600 15px "Bricolage Grotesque"').catch(() => {});
 await engine.init(host);
-await engine.load(data.companies.map((c) => ({ slug: c.slug, name: c.name, logoUrl: logoUrl(c.logo) })));
+await engine.load(data.companies.map((c) => ({ slug: c.slug, name: c.name, logoUrl: logoUrl(c.logo), fund: c.fund })));
 ready = true;
 fit();
 {

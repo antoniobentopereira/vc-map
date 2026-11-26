@@ -117,7 +117,7 @@ One Portfolio company's mark on the canvas, shown as its Original logo. Every Le
 _Avoid_: Dot, bubble, node
 
 **Lens**:
-One way of arranging every Logo dot on the canvas, such as by Sector or by Status. Switching Lens moves the dots from their current place to their new one.
+One way of arranging every Logo dot on the canvas, such as by Fund, Sector or Status. Switching Lens moves the dots from their current place to their new one.
 _Avoid_: Layout, view, mode
 
 **Company card**:
