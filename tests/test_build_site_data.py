@@ -33,6 +33,9 @@ class BuildSiteDataTest(unittest.TestCase):
             [("alpha", "Alpha", "I", "logos/alpha.svg"), ("beta-co", "Beta Co.", "II", "logos/beta.png")],
         )
 
+    def test_website_comes_from_the_roster(self):
+        self.assertEqual([c["website"] for c in self.build([ALPHA, BETA])["companies"]], ["https://alpha.com", "https://beta.com"])
+
     def test_slugs_are_ascii_and_unique(self):
         accents = BETA.replace("Beta Co.", "Açaí & Café!").replace("beta.png", "cafe.png")
         self.assertEqual(self.build([accents])["companies"][0]["slug"], "acai-cafe")

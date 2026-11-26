@@ -69,6 +69,7 @@ def build(data=DATA, root=ROOT):
                 "slug": slug,
                 "name": r["name"],
                 "fund": r["fund"],
+                "website": r["website"],
                 # The site is served from its own folder, so the repo's "site/" prefix is dropped.
                 "logo": r["logo"].removeprefix("site/"),
                 "fields": _card_fields([c for c in claims if c["company"] == r["name"]], sector_of),

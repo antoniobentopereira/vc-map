@@ -2,7 +2,7 @@
   import type { Field } from "./card-data";
   import Fact from "./Fact.svelte";
 
-  type CardCompany = { name: string; logo: string; fund: string; fields: Record<string, Field | undefined> };
+  type CardCompany = { name: string; website: string; logo: string; fund: string; fields: Record<string, Field | undefined> };
   let { company, logoUrl, onClose }: {
     company: CardCompany | undefined;
     logoUrl: (path: string) => string;
@@ -32,6 +32,9 @@
     <dl>
       <div><dt>Founded</dt><dd><Fact field={company.fields.year_founded} number /></dd></div>
       <div><dt>Fund</dt><dd>Fund {company.fund}</dd></div>
+      {#if company.website}
+        <div><dt>Site</dt><dd><a href={company.website} target="_blank" rel="noopener noreferrer">Website ↗</a></dd></div>
+      {/if}
     </dl>
     <button class="open" disabled title="Coming soon">Open full card <span class="soon">soon</span></button>
   </div>
@@ -57,6 +60,7 @@
   dl div { display: flex; flex-direction: column; gap: 2px; }
   dt { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--soft); }
   dd { margin: 0; }
+  dd a { color: inherit; text-underline-offset: 3px; }
   .close {
     position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; border-radius: 999px; cursor: pointer;
     background: none; border: 1px solid var(--line); color: inherit; font: inherit; font-size: 20px; line-height: 1;

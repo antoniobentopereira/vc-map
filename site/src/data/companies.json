@@ -4,6 +4,7 @@
    "slug": "ng-cash",
    "name": "NG.CASH",
    "fund": "I",
+   "website": "https://ng.cash",
    "logo": "logos/ng-cash.png",
    "fields": {
     "description": {
@@ -30,6 +31,7 @@
    "slug": "credaluga",
    "name": "CredAluga",
    "fund": "II",
+   "website": "https://credaluga.com.br",
    "logo": "logos/credaluga.png",
    "fields": {
     "description": {
@@ -56,6 +58,7 @@
    "slug": "flieber",
    "name": "Flieber",
    "fund": "I",
+   "website": "https://flieber.com",
    "logo": "logos/flieber.svg",
    "fields": {
     "description": {
@@ -82,6 +85,7 @@
    "slug": "tempo",
    "name": "Tempo",
    "fund": "II",
+   "website": "https://seutempo.com",
    "logo": "logos/tempo.svg",
    "fields": {
     "description": {
@@ -108,6 +112,7 @@
    "slug": "gatekeeper",
    "name": "Gatekeeper",
    "fund": "II",
+   "website": "https://gatekeeperx.com",
    "logo": "logos/gatekeeper.png",
    "fields": {
     "description": {
@@ -134,6 +139,7 @@
    "slug": "nomo",
    "name": "Nomo",
    "fund": "I",
+   "website": "https://nomo.com.br",
    "logo": "logos/nomo.svg",
    "fields": {
     "description": {
@@ -160,6 +166,7 @@
    "slug": "kanastra",
    "name": "Kanastra",
    "fund": "I",
+   "website": "https://kanastra.com.br",
    "logo": "logos/kanastra.svg",
    "fields": {
     "description": {
@@ -186,6 +193,7 @@
    "slug": "dolado",
    "name": "Dolado",
    "fund": "I",
+   "website": "https://dolado.com.br",
    "logo": "logos/dolado.png",
    "fields": {
     "description": {
@@ -212,6 +220,7 @@
    "slug": "ume",
    "name": "Ume",
    "fund": "I",
+   "website": "https://ume.com.br",
    "logo": "logos/ume.svg",
    "fields": {
     "description": {
@@ -238,6 +247,7 @@
    "slug": "nexa",
    "name": "Nexa",
    "fund": "II",
+   "website": "https://nexafinance.com.br",
    "logo": "logos/nexa.svg",
    "fields": {
     "description": {
@@ -264,6 +274,7 @@
    "slug": "flash",
    "name": "Flash",
    "fund": "I",
+   "website": "https://flashapp.com.br",
    "logo": "logos/flash.svg",
    "fields": {
     "description": {
@@ -290,6 +301,7 @@
    "slug": "syntage",
    "name": "Syntage",
    "fund": "I",
+   "website": "https://syntage.com",
    "logo": "logos/syntage.svg",
    "fields": {
     "description": {
@@ -316,6 +328,7 @@
    "slug": "unxpose",
    "name": "Unxpose",
    "fund": "I",
+   "website": "https://unxpose.com/en/",
    "logo": "logos/unxpose.png",
    "fields": {
     "description": {
@@ -342,6 +355,7 @@
    "slug": "iniciador",
    "name": "Iniciador",
    "fund": "II",
+   "website": "https://iniciador.com.br",
    "logo": "logos/iniciador.png",
    "fields": {
     "description": {
@@ -368,6 +382,7 @@
    "slug": "carbonext",
    "name": "Carbonext",
    "fund": "I",
+   "website": "https://carbonext.com.br",
    "logo": "logos/carbonext.svg",
    "fields": {
     "description": {
@@ -394,6 +409,7 @@
    "slug": "better-drinks",
    "name": "Better Drinks",
    "fund": "I",
+   "website": "https://betterdrinks.com",
    "logo": "logos/better-drinks.png",
    "fields": {
     "description": {
@@ -420,6 +436,7 @@
    "slug": "cubbo",
    "name": "Cubbo",
    "fund": "I",
+   "website": "https://cubbo.com",
    "logo": "logos/cubbo.png",
    "fields": {
     "description": {
@@ -446,6 +463,7 @@
    "slug": "tractian",
    "name": "Tractian",
    "fund": "I",
+   "website": "https://tractian.com",
    "logo": "logos/tractian.svg",
    "fields": {
     "description": {
@@ -472,6 +490,7 @@
    "slug": "frizata",
    "name": "Frizata",
    "fund": "I",
+   "website": "https://frizata.com",
    "logo": "logos/frizata.svg",
    "fields": {
     "description": {
@@ -498,6 +517,7 @@
    "slug": "lerian",
    "name": "Lerian",
    "fund": "II",
+   "website": "https://lerian.studio/",
    "logo": "logos/lerian.png",
    "fields": {
     "description": {
@@ -524,6 +544,7 @@
    "slug": "crown",
    "name": "Crown",
    "fund": "II",
+   "website": "https://brl.xyz",
    "logo": "logos/crown.png",
    "fields": {
     "description": {
@@ -550,6 +571,7 @@
    "slug": "newtail",
    "name": "Newtail",
    "fund": "I",
+   "website": "https://newtail.com.br",
    "logo": "logos/newtail.svg",
    "fields": {
     "description": {
@@ -576,6 +598,7 @@
    "slug": "pier",
    "name": "Pier",
    "fund": "I",
+   "website": "https://pier.digital",
    "logo": "logos/pier.png",
    "fields": {
     "description": {
@@ -602,6 +625,7 @@
    "slug": "iorq",
    "name": "IORQ",
    "fund": "II",
+   "website": "https://iorq.com.br",
    "logo": "logos/iorq.png",
    "fields": {
     "description": {
@@ -628,6 +652,7 @@
    "slug": "the-coffee",
    "name": "The Coffee",
    "fund": "I",
+   "website": "https://thecoffee.jp",
    "logo": "logos/the_coffee.webp",
    "fields": {
     "description": {
@@ -654,6 +679,7 @@
    "slug": "bhub",
    "name": "BHub",
    "fund": "I",
+   "website": "https://bhub.ai",
    "logo": "logos/bhub.png",
    "fields": {
     "description": {
@@ -680,6 +706,7 @@
    "slug": "stark-bank",
    "name": "Stark Bank",
    "fund": "I",
+   "website": "https://starkbank.com",
    "logo": "logos/starkbank.png",
    "fields": {
     "description": {
@@ -706,6 +733,7 @@
    "slug": "jota",
    "name": "Jota",
    "fund": "II",
+   "website": "https://jota.ai",
    "logo": "logos/jota.svg",
    "fields": {
     "description": {
@@ -732,6 +760,7 @@
    "slug": "nomad",
    "name": "Nomad",
    "fund": "I",
+   "website": "https://nomadglobal.com",
    "logo": "logos/nomad.png",
    "fields": {
     "description": {
@@ -758,6 +787,7 @@
    "slug": "kovi",
    "name": "Kovi",
    "fund": "I",
+   "website": "https://kovi.com.br",
    "logo": "logos/kovi.jpeg",
    "fields": {
     "description": {
@@ -784,6 +814,7 @@
    "slug": "nekt",
    "name": "Nekt",
    "fund": "II",
+   "website": "https://nekt.ai",
    "logo": "logos/nekt.png",
    "fields": {
     "description": {
@@ -810,6 +841,7 @@
    "slug": "liti",
    "name": "Liti",
    "fund": "I",
+   "website": "https://litisaude.com.br",
    "logo": "logos/liti.png",
    "fields": {
     "description": {
@@ -836,6 +868,7 @@
    "slug": "alchemy",
    "name": "Alchemy",
    "fund": "I",
+   "website": "https://usealchemy.io/",
    "logo": "logos/alchemy.svg",
    "fields": {
     "description": {
@@ -862,6 +895,7 @@
    "slug": "null-platform",
    "name": "Null Platform",
    "fund": "I",
+   "website": "https://nullplatform.io",
    "logo": "logos/null-platform.png",
    "fields": {
     "description": {
@@ -888,6 +922,7 @@
    "slug": "comunicain",
    "name": "ComunicaIn",
    "fund": "I",
+   "website": "https://comunica.in",
    "logo": "logos/comunicain.svg",
    "fields": {
     "description": {
@@ -914,6 +949,7 @@
    "slug": "kamino",
    "name": "Kamino",
    "fund": "I",
+   "website": "https://kamino.com.br",
    "logo": "logos/kamino.png",
    "fields": {
     "description": {
@@ -940,6 +976,7 @@
    "slug": "ximple",
    "name": "Ximple",
    "fund": "II",
+   "website": "https://ximple.co",
    "logo": "logos/ximple.svg",
    "fields": {
     "description": {
@@ -966,6 +1003,7 @@
    "slug": "zax",
    "name": "ZAX",
    "fund": "I",
+   "website": "https://zaxapp.com.br",
    "logo": "logos/zax.png",
    "fields": {
     "description": {
@@ -992,6 +1030,7 @@
    "slug": "yuno",
    "name": "Yuno",
    "fund": "I",
+   "website": "https://y.uno",
    "logo": "logos/yuno.png",
    "fields": {
     "description": {
@@ -1018,6 +1057,7 @@
    "slug": "baze",
    "name": "Baze",
    "fund": "II",
+   "website": "https://www.suabaze.com",
    "logo": "logos/baze.jpeg",
    "fields": {
     "description": {
@@ -1044,6 +1084,7 @@
    "slug": "pomelo",
    "name": "Pomelo",
    "fund": "I",
+   "website": "https://pomelo.la",
    "logo": "logos/pomelo.png",
    "fields": {
     "description": {
@@ -1070,6 +1111,7 @@
    "slug": "lemon-energia",
    "name": "Lemon Energia",
    "fund": "I",
+   "website": "https://lemon.energy",
    "logo": "logos/lemonenergia.png",
    "fields": {
     "description": {
@@ -1096,6 +1138,7 @@
    "slug": "morado",
    "name": "Morado",
    "fund": "I",
+   "website": "https://moradocolombia.com",
    "logo": "logos/morado.png",
    "fields": {
     "description": {
@@ -1122,6 +1165,7 @@
    "slug": "stay",
    "name": "Stay",
    "fund": "II",
+   "website": "https://stay.com.br",
    "logo": "logos/stay.svg",
    "fields": {
     "description": {
@@ -1148,6 +1192,7 @@
    "slug": "skelt",
    "name": "Skelt",
    "fund": "I",
+   "website": "https://skelt.com.br",
    "logo": "logos/skelt.png",
    "fields": {
     "description": {
@@ -1174,6 +1219,7 @@
    "slug": "loopi",
    "name": "Loopi",
    "fund": "I",
+   "website": "https://loopipay.com",
    "logo": "logos/loopi.jpeg",
    "fields": {
     "description": {
@@ -1200,6 +1246,7 @@
    "slug": "elvenworks",
    "name": "Elvenworks",
    "fund": "I",
+   "website": "https://elven.works",
    "logo": "logos/elvenworks.png",
    "fields": {
     "description": {
@@ -1226,6 +1273,7 @@
    "slug": "dr-jones",
    "name": "Dr. Jones",
    "fund": "I",
+   "website": "https://drjones.com.br",
    "logo": "logos/drjones.png",
    "fields": {
     "description": {
@@ -1252,6 +1300,7 @@
    "slug": "vetto",
    "name": "Vetto",
    "fund": "II",
+   "website": "https://www.vetto.ai/talent",
    "logo": "logos/vetto.svg",
    "fields": {
     "description": {
@@ -1278,6 +1327,7 @@
    "slug": "omni-saude",
    "name": "Omni Saúde",
    "fund": "II",
+   "website": "https://omnisaude.app",
    "logo": "logos/omni-saude.png",
    "fields": {
     "description": {
@@ -1304,6 +1354,7 @@
    "slug": "deco",
    "name": "deco",
    "fund": "II",
+   "website": "https://www.decocms.com/",
    "logo": "logos/deco.jpeg",
    "fields": {
     "description": {
@@ -1330,6 +1381,7 @@
    "slug": "buser",
    "name": "Buser",
    "fund": "I",
+   "website": "https://buser.com.br",
    "logo": "logos/buser.png",
    "fields": {
     "description": {
@@ -1356,6 +1408,7 @@
    "slug": "bia",
    "name": "Bia",
    "fund": "I",
+   "website": "https://bia.app",
    "logo": "logos/bia.png",
    "fields": {
     "description": {
@@ -1382,6 +1435,7 @@
    "slug": "robbin",
    "name": "Robbin",
    "fund": "I",
+   "website": "https://robbin.com.br",
    "logo": "logos/robbin.svg",
    "fields": {
     "description": {
@@ -1408,6 +1462,7 @@
    "slug": "trybe",
    "name": "Trybe",
    "fund": "I",
+   "website": "https://betrybe.com",
    "logo": "logos/trybe.png",
    "fields": {
     "description": {
@@ -1434,6 +1489,7 @@
    "slug": "destaxa",
    "name": "Destaxa",
    "fund": "I",
+   "website": "https://destaxa.com.br",
    "logo": "logos/destaxa.png",
    "fields": {
     "description": {
@@ -1460,6 +1516,7 @@
    "slug": "patagon-ai",
    "name": "Patagon AI",
    "fund": "II",
+   "website": "https://patagon.ai",
    "logo": "logos/patagon.png",
    "fields": {
     "description": {
@@ -1486,6 +1543,7 @@
    "slug": "backchannel",
    "name": "Backchannel",
    "fund": "II",
+   "website": "https://backchannel.com.br",
    "logo": "logos/backchannel.png",
    "fields": {
     "description": {
@@ -1512,6 +1570,7 @@
    "slug": "igual",
    "name": "Igual",
    "fund": "I",
+   "website": "https://igual.com",
    "logo": "logos/igual.svg",
    "fields": {
     "description": {
@@ -1538,6 +1597,7 @@
    "slug": "180-insurance",
    "name": "180° Insurance",
    "fund": "I",
+   "website": "https://180s.com.br",
    "logo": "logos/180.svg",
    "fields": {
     "description": {
@@ -1564,6 +1624,7 @@
    "slug": "henry",
    "name": "Henry",
    "fund": "I",
+   "website": "https://soyhenry.com",
    "logo": "logos/henry.svg",
    "fields": {
     "description": {
@@ -1590,6 +1651,7 @@
    "slug": "salu",
    "name": "Salu",
    "fund": "I",
+   "website": "https://salu.com.vc",
    "logo": "logos/salu.svg",
    "fields": {
     "description": {
@@ -1616,6 +1678,7 @@
    "slug": "vaas",
    "name": "Vaas",
    "fund": "I",
+   "website": "https://getvaas.com",
    "logo": "logos/vaas.jpeg",
    "fields": {
     "description": {
@@ -1642,6 +1705,7 @@
    "slug": "refer",
    "name": "Refer",
    "fund": "II",
+   "website": "https://cardinalrefer.com",
    "logo": "logos/refer.png",
    "fields": {
     "description": {
@@ -1668,6 +1732,7 @@
    "slug": "malga",
    "name": "Malga",
    "fund": "I",
+   "website": "https://malga.io",
    "logo": "logos/malga.svg",
    "fields": {
     "description": {
@@ -1694,6 +1759,7 @@
    "slug": "tapi",
    "name": "tapi",
    "fund": "I",
+   "website": "https://tapi.la",
    "logo": "logos/tapi.svg",
    "fields": {
     "description": {
@@ -1720,6 +1786,7 @@
    "slug": "cayena",
    "name": "Cayena",
    "fund": "I",
+   "website": "https://cayena.com",
    "logo": "logos/cayena.png",
    "fields": {
     "description": {
@@ -1746,6 +1813,7 @@
    "slug": "quansa",
    "name": "Quansa",
    "fund": "I",
+   "website": "https://quansa.io",
    "logo": "logos/quansa.png",
    "fields": {
     "description": {
@@ -1772,6 +1840,7 @@
    "slug": "sanii",
    "name": "Sanii",
    "fund": "I",
+   "website": "https://sanii.com.br",
    "logo": "logos/sanii.png",
    "fields": {
     "description": {
@@ -1798,6 +1867,7 @@
    "slug": "vendah",
    "name": "Vendah",
    "fund": "I",
+   "website": "https://vendah.com.br",
    "logo": "logos/vendah.png",
    "fields": {
     "description": {
@@ -1824,6 +1894,7 @@
    "slug": "jitter",
    "name": "Jitter",
    "fund": "I",
+   "website": "https://jitter.video",
    "logo": "logos/jitter.png",
    "fields": {
     "description": {
@@ -1850,6 +1921,7 @@
    "slug": "norma",
    "name": "Norma",
    "fund": "II",
+   "website": "https://www.norma.com.br/",
    "logo": "logos/norma.svg",
    "fields": {
     "description": {
@@ -1876,6 +1948,7 @@
    "slug": "caveo",
    "name": "Caveo",
    "fund": "II",
+   "website": "https://caveo.com.br",
    "logo": "logos/caveo.png",
    "fields": {
     "description": {
@@ -1902,6 +1975,7 @@
    "slug": "level-ai",
    "name": "Level AI",
    "fund": "I",
+   "website": "https://levelai.com.br/",
    "logo": "logos/level-ai.png",
    "fields": {
     "description": {
@@ -1928,6 +2002,7 @@
    "slug": "jusfy",
    "name": "Jusfy",
    "fund": "I",
+   "website": "https://jusfy.com.br",
    "logo": "logos/jusfy.png",
    "fields": {
     "description": {
@@ -1954,6 +2029,7 @@
    "slug": "elevva",
    "name": "Elevva",
    "fund": "I",
+   "website": "https://elevva.co",
    "logo": "logos/elevva.webp",
    "fields": {
     "description": {
@@ -1980,6 +2056,7 @@
    "slug": "botcity",
    "name": "BotCity",
    "fund": "I",
+   "website": "https://botcity.dev",
    "logo": "logos/botcity.png",
    "fields": {
     "description": {
@@ -2006,6 +2083,7 @@
    "slug": "hyperplane",
    "name": "Hyperplane",
    "fund": "I",
+   "website": "https://hyperplane.ai",
    "logo": "logos/hyperplane.jpeg",
    "fields": {
     "description": {
@@ -2032,6 +2110,7 @@
    "slug": "doji",
    "name": "Doji",
    "fund": "I",
+   "website": "https://doji.co",
    "logo": "logos/doji.svg",
    "fields": {
     "description": {
@@ -2058,6 +2137,7 @@
    "slug": "mecanizou",
    "name": "Mecanizou",
    "fund": "I",
+   "website": "https://mecanizou.com",
    "logo": "logos/mecanizou.svg",
    "fields": {
     "description": {
@@ -2084,6 +2164,7 @@
    "slug": "osana-salud",
    "name": "Osana Salud",
    "fund": "I",
+   "website": "https://osanasalud.com",
    "logo": "logos/osana.png",
    "fields": {
     "description": {
@@ -2110,6 +2191,7 @@
    "slug": "suridata",
    "name": "Suridata",
    "fund": "I",
+   "website": "https://suridata.com.br",
    "logo": "logos/suridata.jpeg",
    "fields": {
     "description": {
@@ -2136,6 +2218,7 @@
    "slug": "brendi",
    "name": "Brendi",
    "fund": "II",
+   "website": "https://brendi.com.br",
    "logo": "logos/brendi.png",
    "fields": {
     "description": {
@@ -2162,6 +2245,7 @@
    "slug": "avra",
    "name": "Avra",
    "fund": "II",
+   "website": "https://avra.ai",
    "logo": "logos/avra.svg",
    "fields": {
     "description": {
@@ -2188,6 +2272,7 @@
    "slug": "musa",
    "name": "Musa",
    "fund": "I",
+   "website": "https://musa.co",
    "logo": "logos/musa.png",
    "fields": {
     "description": {
@@ -2214,6 +2299,7 @@
    "slug": "attach-media-partners",
    "name": "Attach Media Partners",
    "fund": "I",
+   "website": "https://www.attachmp.com",
    "logo": "logos/amp.png",
    "fields": {
     "description": {
@@ -2240,6 +2326,7 @@
    "slug": "assis",
    "name": "Assis",
    "fund": "I",
+   "website": "https://assis.co",
    "logo": "logos/assis.svg",
    "fields": {
     "description": {
@@ -2266,6 +2353,7 @@
    "slug": "zivo",
    "name": "Zivo",
    "fund": "I",
+   "website": "https://zivo.ai",
    "logo": "logos/zivo.png",
    "fields": {
     "description": {
@@ -2292,6 +2380,7 @@
    "slug": "aravita",
    "name": "Aravita",
    "fund": "I",
+   "website": "https://aravita.com",
    "logo": "logos/aravita.png",
    "fields": {
     "description": {
@@ -2318,6 +2407,7 @@
    "slug": "capa",
    "name": "Capa",
    "fund": "II",
+   "website": "https://capa.fi",
    "logo": "logos/capa.png",
    "fields": {
     "description": {
@@ -2344,6 +2434,7 @@
    "slug": "arcca-franquias",
    "name": "Arcca Franquias",
    "fund": "I",
+   "website": "https://arcca.io",
    "logo": "logos/arcca.png",
    "fields": {
     "description": {
@@ -2370,6 +2461,7 @@
    "slug": "hashdex",
    "name": "Hashdex",
    "fund": "I",
+   "website": "https://hashdex.com",
    "logo": "logos/hashdex.svg",
    "fields": {
     "description": {
@@ -2396,6 +2488,7 @@
    "slug": "idwall",
    "name": "idwall",
    "fund": "I",
+   "website": "https://idwall.co",
    "logo": "logos/idwall.svg",
    "fields": {
     "description": {
@@ -2422,6 +2515,7 @@
    "slug": "isa-health",
    "name": "Isa Health",
    "fund": "I",
+   "website": "https://isalab.com.br",
    "logo": "logos/isasaude.png",
    "fields": {
     "description": {
@@ -2448,6 +2542,7 @@
    "slug": "lexter",
    "name": "Lexter",
    "fund": "I",
+   "website": "https://lexter.ai",
    "logo": "logos/lexter.svg",
    "fields": {
     "description": {
@@ -2474,6 +2569,7 @@
    "slug": "winnin",
    "name": "Winnin",
    "fund": "I",
+   "website": "https://winnin.com",
    "logo": "logos/winnin.svg",
    "fields": {
     "description": {
@@ -2500,6 +2596,7 @@
    "slug": "alude",
    "name": "Alude",
    "fund": "I",
+   "website": "https://alude.com.br",
    "logo": "logos/alude.svg",
    "fields": {
     "description": {
@@ -2526,6 +2623,7 @@
    "slug": "kolors",
    "name": "Kolors",
    "fund": "I",
+   "website": "https://kolors.com.mx",
    "logo": "logos/kolors.svg",
    "fields": {
     "description": {
@@ -2552,6 +2650,7 @@
    "slug": "cannect",
    "name": "Cannect",
    "fund": "I",
+   "website": "https://cannect.com.br",
    "logo": "logos/cannect.svg",
    "fields": {
     "description": {
@@ -2578,6 +2677,7 @@
    "slug": "gabriel",
    "name": "Gabriel",
    "fund": "I",
+   "website": "https://gabriel.com.br",
    "logo": "logos/gabriel.svg",
    "fields": {
     "description": {
@@ -2604,6 +2704,7 @@
    "slug": "menta",
    "name": "Menta",
    "fund": "I",
+   "website": "https://menta.global",
    "logo": "logos/menta.png",
    "fields": {
     "description": {
@@ -2630,6 +2731,7 @@
    "slug": "neofin",
    "name": "Neofin",
    "fund": "I",
+   "website": "https://neofin.com.br",
    "logo": "logos/neofin.png",
    "fields": {
     "description": {
@@ -2656,6 +2758,7 @@
    "slug": "decade",
    "name": "Decade",
    "fund": "II",
+   "website": "https://decade.com/",
    "logo": "logos/decade.svg",
    "fields": {
     "description": {
@@ -2682,6 +2785,7 @@
    "slug": "flow",
    "name": "Flow",
    "fund": "II",
+   "website": "https://flowcredi.com.br/",
    "logo": "logos/flow.svg",
    "fields": {
     "description": {
@@ -2708,6 +2812,7 @@
    "slug": "aro",
    "name": "Aro",
    "fund": "II",
+   "website": "https://aro.ia.br/",
    "logo": "logos/aro.png",
    "fields": {
     "description": {
@@ -2734,6 +2839,7 @@
    "slug": "fly-media",
    "name": "Fly Media",
    "fund": "II",
+   "website": "https://flymedia.ai/",
    "logo": "logos/flymedia.jpeg",
    "fields": {
     "description": {
@@ -2760,6 +2866,7 @@
    "slug": "inner-ai",
    "name": "Inner AI",
    "fund": "II",
+   "website": "https://www.innerai.com/",
    "logo": "logos/inner-ai.png",
    "fields": {
     "description": {
@@ -2786,6 +2893,7 @@
    "slug": "bond",
    "name": "Bond",
    "fund": "II",
+   "website": "https://bond.com.br/",
    "logo": "logos/bond.svg",
    "fields": {
     "description": {
@@ -2812,6 +2920,7 @@
    "slug": "maggu",
    "name": "Maggu",
    "fund": "II",
+   "website": "https://maggu.ai/",
    "logo": "logos/maggu.png",
    "fields": {
     "description": {
@@ -2838,6 +2947,7 @@
    "slug": "legiti",
    "name": "Legiti",
    "fund": "I",
+   "website": "https://kaszek.com/company/legiti/",
    "logo": "logos/legiti.png",
    "fields": {
     "description": {
@@ -2864,6 +2974,7 @@
    "slug": "core-ai",
    "name": "Core AI",
    "fund": "II",
+   "website": "https://coreai.com.br/",
    "logo": "logos/coreai.jpeg",
    "fields": {
     "description": {
@@ -2890,6 +3001,7 @@
    "slug": "datamint",
    "name": "Datamint",
    "fund": "II",
+   "website": "https://datamint.com.br/",
    "logo": "logos/datamint.png",
    "fields": {
     "description": {
@@ -2916,6 +3028,7 @@
    "slug": "palomma",
    "name": "Palomma",
    "fund": "II",
+   "website": "https://www.palomma.com/es",
    "logo": "logos/palomma.png",
    "fields": {
     "description": {
@@ -2942,6 +3055,7 @@
    "slug": "oasis",
    "name": "Oasis",
    "fund": "II",
+   "website": "https://joinoasis.com/",
    "logo": "logos/oasis.png",
    "fields": {
     "description": {
@@ -2968,6 +3082,7 @@
    "slug": "akash",
    "name": "Akash",
    "fund": "II",
+   "website": "https://akash.earth/",
    "logo": "logos/akash.svg",
    "fields": {
     "description": {
@@ -2994,6 +3109,7 @@
    "slug": "asteras",
    "name": "Asteras",
    "fund": "II",
+   "website": "https://asteraslab.com/",
    "logo": "logos/asteras.svg",
    "fields": {
     "description": {
@@ -3020,6 +3136,7 @@
    "slug": "cartsy",
    "name": "Cartsy",
    "fund": "II",
+   "website": "https://cartsy.com/",
    "logo": "logos/cartsy.png",
    "fields": {
     "description": {
@@ -3046,6 +3163,7 @@
    "slug": "hedix",
    "name": "Hedix",
    "fund": "II",
+   "website": "https://hedix.com.br/",
    "logo": "logos/hedix.svg",
    "fields": {
     "description": {
@@ -3072,6 +3190,7 @@
    "slug": "kapso",
    "name": "Kapso",
    "fund": "II",
+   "website": "https://kapso.ai/",
    "logo": "logos/kapso.png",
    "fields": {
     "description": {
@@ -3098,6 +3217,7 @@
    "slug": "kayro",
    "name": "Kayro",
    "fund": "II",
+   "website": "https://usekayro.ai/",
    "logo": "logos/kayro.svg",
    "fields": {
     "description": {
@@ -3124,6 +3244,7 @@
    "slug": "manor",
    "name": "Manor",
    "fund": "II",
+   "website": "https://manor.com.br/",
    "logo": "logos/manor.png",
    "fields": {
     "description": {
@@ -3150,6 +3271,7 @@
    "slug": "nash",
    "name": "Nash",
    "fund": "II",
+   "website": "https://nashadm.com.br/",
    "logo": "logos/nash.png",
    "fields": {
     "description": {
@@ -3176,6 +3298,7 @@
    "slug": "sempre",
    "name": "Sempre+",
    "fund": "II",
+   "website": "https://sempre-mais.com/",
    "logo": "logos/sempre.svg",
    "fields": {
     "description": {
@@ -3202,6 +3325,7 @@
    "slug": "strattum",
    "name": "Strattum",
    "fund": "II",
+   "website": "https://strattum.ai/",
    "logo": "logos/strattum.svg",
    "fields": {
     "description": {
@@ -3228,6 +3352,7 @@
    "slug": "taicor",
    "name": "Taicor",
    "fund": "II",
+   "website": "https://taicor.ai/",
    "logo": "logos/taicor.jpeg",
    "fields": {
     "description": {
@@ -3254,6 +3379,7 @@
    "slug": "backline",
    "name": "Backline",
    "fund": "II",
+   "website": "https://backline.inc/",
    "logo": "logos/backline.svg",
    "fields": {
     "description": {
@@ -3280,6 +3406,7 @@
    "slug": "khal",
    "name": "Khal",
    "fund": "II",
+   "website": "https://khal.ai/",
    "logo": "logos/khal.svg",
    "fields": {
     "description": {
@@ -3306,6 +3433,7 @@
    "slug": "fina",
    "name": "Fina",
    "fund": "II",
+   "website": "https://www.finapartner.com/",
    "logo": "logos/fina.png",
    "fields": {
     "description": {
@@ -3332,6 +3460,7 @@
    "slug": "quantum",
    "name": "Quantum",
    "fund": "II",
+   "website": "https://www.linkedin.com/company/qntco/",
    "logo": "logos/quantum.jpeg",
    "fields": {
     "description": {
@@ -3358,6 +3487,7 @@
    "slug": "glue",
    "name": "Glue",
    "fund": "II",
+   "website": "https://useglue.ai/",
    "logo": "logos/glue.png",
    "fields": {
     "description": {
