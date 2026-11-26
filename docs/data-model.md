@@ -8,7 +8,7 @@ The Dataset is a set of CSV files in `data/`, edited by hand. `python scripts/ch
 | `claims.csv` | Claim (one fact about a company) | Research |
 | `rounds.csv` | Round (any funding event, with or without Norte) | Research |
 | `fx.csv` | Currency and year (annual average rate) | Research, when a Round needs it |
-| `sectors.csv` | Sub-sector, mapped to its Sector | Research adds sub-sectors; Sectors are assigned after the whole portfolio is classified |
+| `sectors.csv` | Sub-sector, mapped to its Sector | Research adds sub-sectors; every one must have a Sector |
 
 ## companies.csv
 
@@ -100,4 +100,4 @@ Columns: `currency, year, rate, source_url`. `rate` is the annual average, in un
 
 ## sectors.csv
 
-Columns: `sub_sector, sector`. Each sub-sector appears once. `sector` stays empty until the whole portfolio is classified; then sub-sectors are grouped into broader Sectors here, in one place.
+Columns: `sub_sector, sector`. Each sub-sector appears once. `sector` is required: every sub-sector belongs to one of the broader Sectors, grouped here in one place. A new sub-sector needs a Sector when it is added (reuse an existing one where it fits). The Sector list and icons for the Sector Lens are in `site/src/sectors.ts`.

@@ -258,8 +258,8 @@ class ClaimValueTest(Assertions):
 
 
 class SectorsTest(Assertions):
-    def test_sub_sector_listed_with_or_without_a_sector_passes(self):
-        sectors = ["Industrial AI,", "Payments,Fintech"]
+    def test_sub_sector_listed_with_a_sector_passes(self):
+        sectors = ["Industrial AI,Industry", "Payments,Fintech"]
         self.assertEqual(run(claims=[claim("sub_sector", "Industrial AI")], sectors=sectors), [])
 
     def test_sub_sector_missing_from_sectors_file(self):
@@ -269,9 +269,12 @@ class SectorsTest(Assertions):
     def test_sub_sector_needs_a_sectors_file(self):
         self.assertOneError(run(claims=[claim("sub_sector", "Industrial AI")]), "is not in sectors.csv")
 
+    def test_sub_sector_without_a_sector_fails(self):
+        self.assertOneError(run(sectors=["Payments,"]), "sectors.csv line 2: sector is empty ('Payments')")
+
     def test_sectors_file_rows(self):
         self.assertOneError(run(sectors=[",Fintech"]), "sectors.csv line 2: sub_sector is empty")
-        self.assertOneError(run(sectors=["Payments,Fintech", "payments,"]), "sectors.csv line 3: duplicate of line 2")
+        self.assertOneError(run(sectors=["Payments,Fintech", "payments,Fintech"]), "sectors.csv line 3: duplicate of line 2")
 
 
 FX = "BRL,2021,5.3956,https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json"

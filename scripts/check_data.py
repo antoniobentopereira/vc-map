@@ -288,7 +288,7 @@ def check_claims(rows, company_names, filename="claims.csv", sub_sectors=()):
 
 
 def check_sectors(rows, filename="sectors.csv"):
-    """Each sub-sector appears once; its sector may stay empty until the portfolio is classified."""
+    """Each sub-sector appears once and has a sector."""
     errors = []
     seen = {}
     for row in rows:
@@ -296,6 +296,8 @@ def check_sectors(rows, filename="sectors.csv"):
         if not row["sub_sector"]:
             errors.append(f"{where}: sub_sector is empty")
             continue
+        if not row["sector"]:
+            errors.append(f"{where}: sector is empty ('{row['sub_sector']}')")
         key = row["sub_sector"].casefold()
         if key in seen:
             errors.append(f"{where}: duplicate of line {seen[key]} ('{row['sub_sector']}')")
