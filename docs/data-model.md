@@ -17,7 +17,7 @@ The Dataset is a set of CSV files in `data/`, edited by hand. `python scripts/ch
 - `logo_crop` is the crop box on the raw logo as four fractions of the image from 0 to 1, `x,y,w,h` (left, top, width, height), for example `0.1,0.2,0.5,0.5`. The box must stay inside the image. Empty means the whole image.
 - `logo_background` is the fill behind the mark in the logo circle, as `#rrggbb`. Older rows still use the previous meaning, which page background the logo is legible on: `dark`, `light` or `both`; those stay valid until every logo is confirmed. Empty means not reviewed yet.
 
-`python scripts/logo_circle.py` rebuilds every circle (512px WebP in `site/logos/circles/`) from the raw logo and these two columns; rows without a `#rrggbb` fill get none, and the site falls back to the raw logo clipped to a circle.
+`python scripts/logo_circle.py` rebuilds every circle (512px WebP in `site/logos/circles/`) from the raw logo and these two columns; SVG logos need PyMuPDF (`pip install pymupdf`); rows without a `#rrggbb` fill get none, and the site falls back to the raw logo clipped to a circle.
 
 `researched_on` is the date (`2026-11-18`) a company was last fully researched. If it is set, a field with no row means "not publicly available as of that date". If it is empty, the company has not been researched yet.
 

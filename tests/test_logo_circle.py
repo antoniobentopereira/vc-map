@@ -7,7 +7,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from logo_circle import SIZE, circle_path, parse_crop, rebuild, render_circle  # noqa: E402
+from logo_circle import SIZE, circle_path, open_logo, parse_crop, rebuild, render_circle  # noqa: E402
 
 WHITE = "#ffffff"
 RED = (255, 0, 0, 255)
@@ -69,7 +69,7 @@ class RenderCircleTest(unittest.TestCase):
                 {"name": "Beta", "logo": "site/logos/beta.png", "logo_background": "dark", "logo_crop": ""},
                 {"name": "Alpha", "logo": "site/logos/beta.png", "logo_background": "#000000", "logo_crop": ""},
             ]
-            built, _, failed = rebuild(rows, root)
+            built, failed = rebuild(rows, root)
             self.assertEqual(built, ["Alpha"])
             self.assertEqual(len(failed), 1)
             self.assertTrue(failed[0].startswith("Bad"))
@@ -77,6 +77,18 @@ class RenderCircleTest(unittest.TestCase):
     def test_a_tiny_crop_still_renders(self):
         out = render_circle(solid(100, 100), (0.1, 0.1, 0.0001, 0.5), WHITE)
         self.assertEqual(out.size, (SIZE, SIZE))
+
+
+class OpenLogoTest(unittest.TestCase):
+    def test_svg_is_rasterized_with_transparency(self):
+        svg = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20"><rect width="20" height="20" fill="#ff0000"/></svg>'
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "a.svg"
+            path.write_text(svg, encoding="utf-8")
+            image = open_logo(path).convert("RGBA")
+        self.assertEqual(image.size, (1024, 512))
+        self.assertEqual(image.getpixel((100, 256)), RED)
+        self.assertEqual(image.getpixel((900, 256))[3], 0)
 
 
 class ParseCropTest(unittest.TestCase):
@@ -97,8 +109,8 @@ class RebuildTest(unittest.TestCase):
                 {"name": "Beta", "logo": "site/logos/beta.png", "logo_background": "dark", "logo_crop": ""},
                 {"name": "Gamma", "logo": "", "logo_background": "", "logo_crop": ""},
             ]
-            built, skipped, failed = rebuild(rows, root)
-            self.assertEqual((built, skipped, failed), (["Alpha"], [], []))
+            built, failed = rebuild(rows, root)
+            self.assertEqual((built, failed), (["Alpha"], []))
             with Image.open(root / circle_path("site/logos/alpha.png")) as circle:
                 self.assertEqual(circle.size, (SIZE, SIZE))
             self.assertFalse((root / circle_path("site/logos/beta.png")).exists())

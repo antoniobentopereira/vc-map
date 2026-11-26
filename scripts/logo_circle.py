@@ -1,7 +1,7 @@
 """Render a Portfolio company's logo circle from its Original logo (ADR 0015).
 
 `render_circle(image, crop, background)` is the one renderer; `main()` rebuilds every circle from
-data/companies.csv (`logo_crop`, `logo_background`). Needs Pillow (imported only when rendering); SVG logos also need cairosvg.
+data/companies.csv (`logo_crop`, `logo_background`). Needs Pillow and PyMuPDF (imported only when rendering); SVG logos also need PyMuPDF.
 """
 import csv
 import io
@@ -71,15 +71,16 @@ def save_circle(image, path):
 
 
 def open_logo(path):
-    """The logo as an image, or None when it cannot be read (an SVG without cairosvg)."""
+    """The logo as an image; SVGs are rasterized (about 1024px on the long side) with PyMuPDF."""
     from PIL import Image
 
     if path.suffix.lower() == ".svg":
-        try:
-            import cairosvg
-        except ImportError:
-            return None
-        return Image.open(io.BytesIO(cairosvg.svg2png(url=str(path), output_width=1024)))
+        import pymupdf
+
+        page = pymupdf.open(path)[0]
+        scale = 1024 / max(page.rect.width, page.rect.height)
+        pixmap = page.get_pixmap(matrix=pymupdf.Matrix(scale, scale), alpha=True)
+        return Image.open(io.BytesIO(pixmap.tobytes("png")))
     return Image.open(path)
 
 
@@ -91,8 +92,8 @@ def has_circle_choice(row):
 def rebuild(rows, root=ROOT):
     """Regenerate the circle of every row with a `#rrggbb` logo_background and delete the circles of the others.
 
-    Returns (built, skipped, failed) company names: skipped are SVGs without cairosvg, failed could not be rendered."""
-    built, skipped, failed = [], [], []
+    Returns (built, failed): failed names come with the reason."""
+    built, failed = [], []
     for row in rows:
         if not has_circle_choice(row):
             if row["logo"]:
@@ -100,23 +101,18 @@ def rebuild(rows, root=ROOT):
             continue
         try:
             image = open_logo(root / row["logo"])
-            if image is None:
-                skipped.append(row["name"])
-                continue
             save_circle(render_circle(image, parse_crop(row.get("logo_crop", "")), row["logo_background"]), root / circle_path(row["logo"]))
             built.append(row["name"])
         except Exception as error:  # one bad logo must not stop the rest
             failed.append(f"{row['name']} ({error})")
-    return built, skipped, failed
+    return built, failed
 
 
 def main():
     with COMPANIES_CSV.open(newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
-    built, skipped, failed = rebuild(rows)
+    built, failed = rebuild(rows)
     print(f"Rebuilt {len(built)} logo circle(s).")
-    if skipped:
-        print(f"Skipped {len(skipped)} SVG logo(s) (install cairosvg to render them): {', '.join(skipped)}")
     if failed:
         print(f"Failed {len(failed)}: {'; '.join(failed)}")
         raise SystemExit(1)
