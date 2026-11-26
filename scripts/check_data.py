@@ -62,9 +62,7 @@ ALLOWED_FUNDS = ["I", "II"]
 ALLOWED_FLAGS = ["TRUE", "FALSE"]
 ALLOWED_NORTE = ["TRUE", "FALSE", "UNKNOWN"]
 ALLOWED_LOGO_ORIGINS = ["company-site", "web-search", "manual"]
-# The circle's fill is a "#rrggbb" color (set by the logo studio, ADR 0015). The old words (which page
-# background the logo is legible on) stay valid until every logo is confirmed; empty means not reviewed yet.
-ALLOWED_LOGO_BACKGROUNDS = ["dark", "light", "both"]
+# The circle's fill is a "#rrggbb" color (set by the logo studio, ADR 0015); empty means not reviewed yet.
 LOGO_COLOR = re.compile(r"#[0-9a-fA-F]{6}")
 # Documented exception (ADR 0004): no Original logo was found anywhere public, so these companies
 # keep the recolored logo from the Firm's portfolio page. Add a name here only with an ADR note.
@@ -118,10 +116,8 @@ def _check_logo(row, where, root):
         return []
     errors = []
     background = row["logo_background"]
-    if background and background not in ALLOWED_LOGO_BACKGROUNDS and not LOGO_COLOR.fullmatch(background):
-        errors.append(
-            f"{where}: logo_background '{background}' must be #rrggbb, one of {', '.join(ALLOWED_LOGO_BACKGROUNDS)}, or empty"
-        )
+    if background and not LOGO_COLOR.fullmatch(background):
+        errors.append(f"{where}: logo_background '{background}' must be #rrggbb or empty")
     if row["logo_crop"] and not _is_crop(row["logo_crop"]):
         errors.append(f"{where}: logo_crop '{row['logo_crop']}' must be four fractions as x,y,w,h (a box of at most 3x the image that overlaps it)")
     if not (Path(root) / logo).is_file():

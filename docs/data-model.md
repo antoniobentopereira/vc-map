@@ -15,7 +15,7 @@ The Dataset is a set of CSV files in `data/`, edited by hand. `python scripts/ch
 `logo_crop` and `logo_background` are the two choices the logo studio saves for each logo (ADR 0015); never set them by hand or in research. Both are cleared whenever the logo file is replaced, and a company with no logo cannot have either.
 
 - `logo_crop` is the crop box on the raw logo as four fractions of the image, `x,y,w,h` (left, top, width, height), for example `0.1,0.2,0.5,0.5`. The box may extend past the image's edges (for example `-0.25,-0.25,1.5,1.5`), which adds transparent padding around an oversized logo; it must overlap the image and be at most 3 times its size. Empty means the whole image.
-- `logo_background` is the fill behind the mark in the logo circle, as `#rrggbb`. Older rows still use the previous meaning, which page background the logo is legible on: `dark`, `light` or `both`; those stay valid until every logo is confirmed. Empty means not reviewed yet.
+- `logo_background` is the fill behind the mark in the logo circle, as `#rrggbb`. Empty means not reviewed yet; the old words `dark`, `light` and `both` are no longer accepted.
 
 `python scripts/logo_circle.py` rebuilds every circle (512px WebP in `site/logos/circles/`) from the raw logo and these two columns; SVG logos need PyMuPDF (`pip install pymupdf`); rows without a `#rrggbb` fill get none, and the site falls back to the raw logo clipped to a circle.
 

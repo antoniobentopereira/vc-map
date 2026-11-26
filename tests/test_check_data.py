@@ -7,7 +7,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from check_data import (
-    ALLOWED_LOGO_BACKGROUNDS,  # noqa: E402
     ALLOWED_BUSINESS_MODELS,
     ALLOWED_FIELDS,
     ALLOWED_NORTE,
@@ -74,9 +73,9 @@ class CompaniesTest(Assertions):
         self.assertEqual(self.check(ALPHA), [])
 
     def test_logo_background_values(self):
-        for value in ("dark", "light", "both", ""):
-            self.assertEqual(self.check(ALPHA.replace(".svg,,company-site", f".svg,{value},company-site")), [])
-        self.assertOneError(self.check(ALPHA.replace(".svg,,company-site", ".svg,grey,company-site")), "logo_background 'grey'")
+        self.assertEqual(self.check(ALPHA), [])  # empty: not reviewed yet
+        for value in ("dark", "light", "both", "grey"):
+            self.assertOneError(self.check(ALPHA.replace(".svg,,company-site", f".svg,{value},company-site")), f"logo_background '{value}'")
 
     def test_logo_background_accepts_a_hex_color(self):
         self.assertEqual(self.check(ALPHA.replace(".svg,,company-site", ".svg,#1a2B3c,company-site")), [])
@@ -95,7 +94,7 @@ class CompaniesTest(Assertions):
         self.assertOneError(self.check('Alpha,https://a.com,I,FALSE,FALSE,,,,,,"0,0,1,1"'), "logo is empty")
 
     def test_logo_background_without_logo_is_an_error(self):
-        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,dark,,,"), "logo is empty")
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,#ffffff,,,"), "logo is empty")
 
     def test_missing_logo_file(self):
         with tempfile.TemporaryDirectory() as d:
@@ -418,7 +417,6 @@ class DocsMatchCodeTest(unittest.TestCase):
             "claim fields": ALLOWED_FIELDS,
             "round types": ROUND_TYPES,
             "status values": ALLOWED_STATUS,
-            "logo backgrounds": ALLOWED_LOGO_BACKGROUNDS,
             "business models": ALLOWED_BUSINESS_MODELS,
             "Norte participation values": ALLOWED_NORTE,
         }.items():
