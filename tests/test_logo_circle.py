@@ -49,6 +49,12 @@ class RenderCircleTest(unittest.TestCase):
         out = render_circle(source, (0, 0, 0.5, 1), WHITE)
         self.assertEqual(out.getpixel((SIZE // 2, SIZE // 2)), RED)
 
+    def test_crop_past_the_edges_adds_padding_around_the_mark(self):
+        padded = render_circle(solid(100, 100), (-0.5, -0.5, 2, 2), WHITE)
+        self.assertEqual(padded.getpixel((SIZE // 2, SIZE // 2)), RED)
+        self.assertEqual(padded.getpixel((SIZE // 2, 40)), (255, 255, 255, 255))  # fill where the mark used to reach the rim
+        self.assertEqual(padded.getpixel((SIZE // 2, SIZE // 4 + 12)), RED)  # the mark now spans half the circle
+
     def test_same_inputs_give_the_same_output(self):
         a = render_circle(solid(300, 100), (0, 0, 1, 1), "#123456")
         b = render_circle(solid(300, 100), (0, 0, 1, 1), "#123456")

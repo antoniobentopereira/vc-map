@@ -36,7 +36,7 @@ def save_choice(name, crop, background, path=COMPANIES_CSV, root=ROOT):
     if not LOGO_COLOR.fullmatch(background):
         raise ValueError(f"fill '{background}' must be #rrggbb")
     if crop and not _is_crop(crop):
-        raise ValueError(f"crop '{crop}' must be four fractions from 0 to 1 as x,y,w,h")
+        raise ValueError(f"crop '{crop}' must be four fractions as x,y,w,h, overlapping the image")
     rows = read_rows(path)
     target = next((r for r in rows if r["name"] == name and r["logo"]), None)
     if target is None:

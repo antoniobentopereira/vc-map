@@ -7,7 +7,7 @@ A throwaway local page that walks through each logo in four steps and saves the 
 
 For each logo:
 
-1. **Crop**: drag a box over the raw logo to strip padding and borders (double-click resets).
+1. **Crop**: drag a box over the raw logo to strip padding and borders (double-click resets). The "Breathing room" slider shrinks the mark inside the circle by growing the crop box past the image edges, for oversized logos with no padding of their own.
 2. **Fill**: pick a preset (white, cream, Norte brown, black) or click the cropped logo to sample a color. The first suggestion comes from the old `logo_background` word: `dark` suggests black, `light` or `both` suggest white.
 3. **Preview**: the circle on the cream surface with its ring, large and at the real desktop and phone dot sizes, updating live.
 4. **Confirm**: writes `logo_crop` and `logo_background` (`#rrggbb`) to `data/companies.csv` (atomically, no other column) and renders the circle into `site/logos/circles/`. Then it moves to the next logo not yet confirmed.

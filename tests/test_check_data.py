@@ -86,9 +86,9 @@ class CompaniesTest(Assertions):
     def test_logo_crop_is_four_fractions(self):
         def with_crop(value):
             return ALPHA + (f',"{value}"' if "," in value else "," + value)
-        for good in ("0,0,1,1", "0.1,0.2,0.5,0.6", ""):
+        for good in ("0,0,1,1", "0.1,0.2,0.5,0.6", "-0.25,-0.25,1.5,1.5", ""):
             self.assertEqual(self.check(with_crop(good)), [], good)
-        for bad in ("0,0,1", "0,0,1,1,1", "a,b,c,d", "0,0,0,1", "0.5,0,0.6,1", "-0.1,0,1,1", "0,0,1.5,1"):
+        for bad in ("0,0,1", "0,0,1,1,1", "a,b,c,d", "0,0,0,1", "2,0,1,1", "-1,0,1,1", "0,0,4,1"):
             self.assertOneError(self.check(with_crop(bad)), "logo_crop", None)
 
     def test_logo_crop_without_logo_is_an_error(self):

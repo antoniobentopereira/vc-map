@@ -98,13 +98,15 @@ def _read(path, expected_columns):
 
 
 def _is_crop(text):
-    """x,y,w,h as fractions of the source image: a box with area that stays inside it."""
+    """x,y,w,h as fractions of the source image: a box with area, at most 3x the image, that overlaps it.
+
+    It may extend past the image's edges: that is the padding added around an oversized logo."""
     parts = text.split(",")
     try:
         x, y, w, h = (float(p) for p in parts)
     except ValueError:
         return False
-    return len(parts) == 4 and min(x, y) >= 0 and w > 0 and h > 0 and x + w <= 1 + 1e-9 and y + h <= 1 + 1e-9
+    return len(parts) == 4 and 0 < w <= 3 and 0 < h <= 3 and x < 1 and y < 1 and x + w > 0 and y + h > 0
 
 
 def _check_logo(row, where, root):
@@ -121,7 +123,7 @@ def _check_logo(row, where, root):
             f"{where}: logo_background '{background}' must be #rrggbb, one of {', '.join(ALLOWED_LOGO_BACKGROUNDS)}, or empty"
         )
     if row["logo_crop"] and not _is_crop(row["logo_crop"]):
-        errors.append(f"{where}: logo_crop '{row['logo_crop']}' must be four fractions from 0 to 1 as x,y,w,h")
+        errors.append(f"{where}: logo_crop '{row['logo_crop']}' must be four fractions as x,y,w,h (a box of at most 3x the image that overlaps it)")
     if not (Path(root) / logo).is_file():
         errors.append(f"{where}: logo file '{logo}' does not exist")
     if origin not in ALLOWED_LOGO_ORIGINS:

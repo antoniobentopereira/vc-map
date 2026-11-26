@@ -61,7 +61,7 @@ class SaveChoiceTest(unittest.TestCase):
 
     def test_refuses_bad_input_and_leaves_the_file_alone(self):
         before = self.csv.read_bytes()
-        for name, crop, color in [("Alpha", "0,0,2,1", "#ffffff"), ("Alpha", "", "white"), ("Alpha", "", "dark"),
+        for name, crop, color in [("Alpha", "0,0,4,1", "#ffffff"), ("Alpha", "", "white"), ("Alpha", "", "dark"),
                                   ("Nobody", "", "#ffffff"), ("Beta", "", "#ffffff")]:
             with self.assertRaises(ValueError, msg=(name, crop, color)):
                 studio.save_choice(name, crop, color, self.csv, self.root)
