@@ -5,7 +5,7 @@
    "name": "NG.CASH",
    "fund": "I",
    "website": "https://ng.cash",
-   "logo": "logos/ng-cash.png",
+   "logo": "logos/circles/ng-cash.webp",
    "fields": {
     "description": {
      "value": "Brazilian digital account for teenagers and young adults, with Pix, a prepaid Mastercard, savings and an allowance feature in one app.",
@@ -290,7 +290,7 @@
    "name": "CredAluga",
    "fund": "II",
    "website": "https://credaluga.com.br",
-   "logo": "logos/credaluga.png",
+   "logo": "logos/circles/credaluga.webp",
    "fields": {
     "description": {
      "value": "Brazilian fintech that sells rental guarantees through real estate agencies, replacing the traditional guarantor (fiador) with a fully digital product.",
@@ -481,7 +481,7 @@
    "name": "Flieber",
    "fund": "I",
    "website": "https://flieber.com",
-   "logo": "logos/flieber.svg",
+   "logo": "logos/flieber.png",
    "fields": {
     "description": {
      "value": "Software for multichannel commerce brands that connects sales channels, forecasts demand and recommends inventory replenishment, usable in its app, Slack, Google Sheets or through AI tools.",
@@ -661,7 +661,7 @@
    "name": "Tempo",
    "fund": "II",
    "website": "https://seutempo.com",
-   "logo": "logos/tempo.svg",
+   "logo": "logos/tempo.png",
    "fields": {
     "description": {
      "value": "A personal assistant service on WhatsApp where human assistants, helped by AI, pay bills, book appointments, buy tickets and run daily errands for affluent Brazilian families on a monthly subscription.",
@@ -817,7 +817,7 @@
    "name": "Gatekeeper",
    "fund": "II",
    "website": "https://gatekeeperx.com",
-   "logo": "logos/gatekeeper.png",
+   "logo": "logos/circles/gatekeeper.webp",
    "fields": {
     "description": {
      "value": "An AI-native platform that lets banks, fintechs and online merchants detect and stop fraud and money laundering in real time, while approving more legitimate customers.",
@@ -983,7 +983,7 @@
    "name": "Nomo",
    "fund": "I",
    "website": "https://nomo.com.br",
-   "logo": "logos/nomo.svg",
+   "logo": "logos/nomo.png",
    "fields": {
     "description": {
      "value": "A telecom technology company that started as a 100% digital mobile operator in Brazil and now sells digital platforms (apps, plans, billing and portability) to mobile and broadband operators.",
@@ -1212,7 +1212,7 @@
    "name": "Kanastra",
    "fund": "I",
    "website": "https://kanastra.com.br",
-   "logo": "logos/kanastra.svg",
+   "logo": "logos/kanastra.png",
    "fields": {
     "description": {
      "value": "A technology and back-office platform for Brazil's private credit market, running fund administration and custody, securitisation and banking services for FIDCs and other structured products.",
@@ -1448,7 +1448,7 @@
    "name": "Dolado",
    "fund": "I",
    "website": "https://dolado.com.br",
-   "logo": "logos/dolado.png",
+   "logo": "logos/circles/dolado.webp",
    "fields": {
     "description": {
      "value": "A Brazilian commerce-technology company that started by digitising and restocking small shops and now runs an ecosystem that helps brands and sellers grow on marketplaces, with sales programmes, management software and logistics.",
@@ -1644,7 +1644,7 @@
    "name": "Ume",
    "fund": "I",
    "website": "https://ume.com.br",
-   "logo": "logos/ume.svg",
+   "logo": "logos/ume.png",
    "fields": {
     "description": {
      "value": "Brazilian credit-infrastructure company that lets retailers and other businesses offer their own consumer credit under their own brand, covering funding, risk models, Pix payments and AI-run collections.",
@@ -1946,7 +1946,7 @@
    "name": "Nexa",
    "fund": "II",
    "website": "https://nexafinance.com.br",
-   "logo": "logos/nexa.svg",
+   "logo": "logos/nexa.png",
    "fields": {
     "description": {
      "value": "Brazilian fintech whose platform lets investment advisers and family offices create tailor-made investment products from fractions of fixed-income and credit assets, using tokenisation and AI.",
@@ -2142,7 +2142,7 @@
    "name": "Flash",
    "fund": "I",
    "website": "https://flashapp.com.br",
-   "logo": "logos/flash.svg",
+   "logo": "logos/flash.png",
    "fields": {
     "description": {
      "value": "Brazilian company that offers employers a single platform for flexible employee benefits, HR management and corporate expenses, with a card and app that let workers choose how to spend their benefits budget.",
@@ -2403,7 +2403,7 @@
    "name": "Syntage",
    "fund": "I",
    "website": "https://syntage.com",
-   "logo": "logos/syntage.svg",
+   "logo": "logos/syntage.png",
    "fields": {
     "description": {
      "value": "Mexican business-data platform that gives lenders and fintechs API access, with customer consent, to small businesses' tax, financial and company data, for credit-risk analysis, factoring and KYB/KYC.",
@@ -2548,7 +2548,7 @@
    "name": "Unxpose",
    "fund": "I",
    "website": "https://unxpose.com/en/",
-   "logo": "logos/unxpose.png",
+   "logo": "logos/circles/unxpose.webp",
    "fields": {
     "description": {
      "value": "Brazilian cybersecurity company with a self-service platform that scans a company's domains, websites, servers and cloud accounts, finds weaknesses and guides their fix, without installing agents.",
@@ -2694,7 +2694,7 @@
    "name": "Iniciador",
    "fund": "II",
    "website": "https://iniciador.com.br",
-   "logo": "logos/iniciador.png",
+   "logo": "logos/circles/iniciador.webp",
    "fields": {
     "description": {
      "value": "Brazilian infrastructure company for Open Finance and Pix: it runs the regulatory side of Open Finance for banks and fintechs and lets them initiate Pix payments, including the new Pix modes (biometrics, tap to pay, recurring), earning a fee per successful transaction.",
@@ -2885,7 +2885,7 @@
    "name": "Carbonext",
    "fund": "I",
    "website": "https://carbonext.com.br",
-   "logo": "logos/carbonext.svg",
+   "logo": "logos/carbonext.png",
    "fields": {
     "description": {
      "value": "Brazilian developer of forest carbon-credit projects, mainly REDD+ in the Amazon, that sells the credits to companies and individuals and helps companies measure and offset their emissions.",
@@ -3057,7 +3057,7 @@
    "name": "Better Drinks",
    "fund": "I",
    "website": "https://betterdrinks.com",
-   "logo": "logos/better-drinks.png",
+   "logo": "logos/circles/better-drinks.webp",
    "fields": {
     "description": {
      "value": "Brazilian beverage group that holds niche brands (Praya beer, Mamba canned water, Baer-Mate mate soft drinks), now backed by Heineken's production and distribution through Heineken SPIN.",
@@ -3264,7 +3264,7 @@
    "name": "Cubbo",
    "fund": "I",
    "website": "https://cubbo.com",
-   "logo": "logos/cubbo.png",
+   "logo": "logos/circles/cubbo.webp",
    "fields": {
     "description": {
      "value": "E-commerce logistics company that runs urban warehouses and its own software to store, pack and deliver online brands' orders in Mexico and Brazil, with pick-up points, B2B distribution and cross-border import services.",
@@ -3463,7 +3463,7 @@
    "name": "Tractian",
    "fund": "I",
    "website": "https://tractian.com",
-   "logo": "logos/tractian.svg",
+   "logo": "logos/tractian.png",
    "fields": {
     "description": {
      "value": "Industrial AI company whose sensors and software watch the health of factory machines, diagnosing problems early so plants avoid unplanned downtime.",
@@ -3781,7 +3781,7 @@
    "name": "Frizata",
    "fund": "I",
    "website": "https://frizata.com",
-   "logo": "logos/frizata.svg",
+   "logo": "logos/frizata.png",
    "fields": {
     "description": {
      "value": "Argentine frozen-food company that makes flexitarian ready meals in its own factory and sells them directly to consumers online with home delivery; it has also sold in Brazil, Chile and the United States and now focuses on Argentina.",
@@ -3967,7 +3967,7 @@
    "name": "Lerian",
    "fund": "II",
    "website": "https://lerian.studio/",
-   "logo": "logos/lerian.png",
+   "logo": "logos/circles/lerian.webp",
    "fields": {
     "description": {
      "value": "Brazilian maker of open-source financial infrastructure: Midaz, a ledger for core banking, plus modules for onboarding, risk, reporting and reconciliation, sold to fintechs and financial institutions, earning from hosting, features and services.",
@@ -4162,7 +4162,7 @@
    "name": "Crown",
    "fund": "II",
    "website": "https://brl.xyz",
-   "logo": "logos/crown.png",
+   "logo": "logos/circles/crown.webp",
    "fields": {
     "description": {
      "value": "Crown issues BRLV, a Brazilian real stablecoin fully backed by federal government bonds and held in a bankruptcy-remote structure, and sells institutions FX, savings and settlement services built on it.",
@@ -4346,7 +4346,7 @@
    "name": "Newtail",
    "fund": "I",
    "website": "https://newtail.com.br",
-   "logo": "logos/newtail.svg",
+   "logo": "logos/newtail.png",
    "fields": {
     "description": {
      "value": "Newtail was a Rio de Janeiro retail media platform that let e-commerce retailers sell ad space (sponsored products, banners, video) to brands; VTEX bought it in January 2025.",
@@ -4524,7 +4524,7 @@
    "name": "Pier",
    "fund": "I",
    "website": "https://pier.digital",
-   "logo": "logos/pier.png",
+   "logo": "logos/circles/pier.webp",
    "fields": {
     "description": {
      "value": "Pier is a São Paulo digital insurer selling cell-phone and car insurance online, with AI-driven underwriting and instant claims payouts; in 2025 it had revenue above R$250 million.",
@@ -4746,7 +4746,7 @@
    "name": "IORQ",
    "fund": "II",
    "website": "https://iorq.com.br",
-   "logo": "logos/iorq.png",
+   "logo": "logos/circles/iorq.webp",
    "fields": {
     "description": {
      "value": "IORQ is a São Paulo credit platform that originates and funds corporate credit through its own managed funds and gives companies white-label tools to run credit and embedded finance, founded by iFood and Nomad co-founder Patrick Sigrist.",
@@ -4907,7 +4907,7 @@
    "name": "The Coffee",
    "fund": "I",
    "website": "https://thecoffee.jp",
-   "logo": "logos/the_coffee.webp",
+   "logo": "logos/circles/the_coffee.webp",
    "fields": {
     "description": {
      "value": "The Coffee is a Curitiba-born chain of tiny, minimalist, cashless coffee shops inspired by Japan, sold mostly through franchises in Brazil and abroad.",
@@ -5154,7 +5154,7 @@
    "name": "BHub",
    "fund": "I",
    "website": "https://bhub.ai",
-   "logo": "logos/bhub.png",
+   "logo": "logos/circles/bhub.webp",
    "fields": {
     "description": {
      "value": "BHub is a São Paulo back-office-as-a-service company that offers accounting, tax and financial management by subscription and grows by buying accounting firms.",
@@ -5403,7 +5403,7 @@
    "name": "Stark Bank",
    "fund": "I",
    "website": "https://starkbank.com",
-   "logo": "logos/starkbank.png",
+   "logo": "logos/circles/starkbank.webp",
    "fields": {
     "description": {
      "value": "Stark Bank is a São Paulo payment institution and bank-like platform for mid-sized and large companies, offering accounts, Pix, cards, collections, credit and digital fixed income through its own infrastructure and APIs.",
@@ -5612,7 +5612,7 @@
    "name": "Jota",
    "fund": "II",
    "website": "https://jota.ai",
-   "logo": "logos/jota.svg",
+   "logo": "logos/jota.png",
    "fields": {
     "description": {
      "value": "AI financial assistant for small businesses and self-employed people that runs inside WhatsApp and its own app, handling payments, charges and money management by text, voice or photo.",
@@ -5812,7 +5812,7 @@
    "name": "Nomad",
    "fund": "I",
    "website": "https://nomadglobal.com",
-   "logo": "logos/nomad.png",
+   "logo": "logos/circles/nomad.webp",
    "fields": {
     "description": {
      "value": "Nomad is a São Paulo fintech that gives Brazilians a US-dollar or euro account, an international card, a Brazilian credit card and a global investing platform.",
@@ -6045,7 +6045,7 @@
    "name": "Kovi",
    "fund": "I",
    "website": "https://kovi.com.br",
-   "logo": "logos/kovi.jpeg",
+   "logo": "logos/circles/kovi.webp",
    "fields": {
     "description": {
      "value": "Kovi rents cars to ride-hailing drivers in Brazil and Mexico, with taxes, maintenance, protection and assistance included and no credit check; Moove bought it in 2025.",
@@ -6311,7 +6311,7 @@
    "name": "Nekt",
    "fund": "II",
    "website": "https://nekt.ai",
-   "logo": "logos/nekt.png",
+   "logo": "logos/circles/nekt.webp",
    "fields": {
     "description": {
      "value": "Nekt is a Brazilian data platform that connects a company's data sources, organises them in its own cloud and serves them to analysts, BI tools and AI agents, aimed at growing mid-sized companies.",
@@ -6528,7 +6528,7 @@
    "name": "Liti",
    "fund": "I",
    "website": "https://litisaude.com.br",
-   "logo": "logos/liti.png",
+   "logo": "logos/circles/liti.webp",
    "fields": {
     "description": {
      "value": "Liti is a Brazilian online clinic that follows overweight and obese patients with doctors, dietitians and an app, including prescription of GLP-1 weight-loss medication.",
@@ -6702,7 +6702,7 @@
    "name": "Alchemy",
    "fund": "I",
    "website": "https://usealchemy.io/",
-   "logo": "logos/alchemy.svg",
+   "logo": "logos/alchemy.png",
    "fields": {
     "description": {
      "value": "Alchemy sells an AI-native ERP for accounting and finance to fast-growing technology and service companies, in which agents capture, classify, post and reconcile documents and executives can operate it from Claude, ChatGPT or Gemini.",
@@ -6821,7 +6821,7 @@
    "name": "Null Platform",
    "fund": "I",
    "website": "https://nullplatform.io",
-   "logo": "logos/null-platform.png",
+   "logo": "logos/circles/null-platform.webp",
    "fields": {
     "description": {
      "value": "nullplatform is an internal developer platform for large companies that lets developers and AI agents deploy through self-service while platform, security and finance teams enforce governance.",
@@ -6974,7 +6974,7 @@
    "name": "ComunicaIn",
    "fund": "I",
    "website": "https://comunica.in",
-   "logo": "logos/comunicain.svg",
+   "logo": "logos/comunicain.png",
    "fields": {
     "description": {
      "value": "Comunica.In sells large companies a platform, and now an AI agent, to plan, send and measure internal communication to all employees.",
@@ -7128,7 +7128,7 @@
    "name": "Kamino",
    "fund": "I",
    "website": "https://kamino.com.br",
-   "logo": "logos/kamino.png",
+   "logo": "logos/circles/kamino.webp",
    "fields": {
     "description": {
      "value": "Kamino is a Brazilian financial-management platform for mid-sized companies, combining payments, collection, automatic bank reconciliation, reporting, a business account and cards, with an AI financial agent.",
@@ -7333,7 +7333,7 @@
    "name": "Ximple",
    "fund": "II",
    "website": "https://ximple.co",
-   "logo": "logos/ximple.svg",
+   "logo": "logos/ximple.png",
    "fields": {
     "description": {
      "value": "Ximple is a Mexican digital lender that gives direct and catalogue sellers working-capital loans and a payout card, and lets them distribute credit to their customers.",
@@ -7489,7 +7489,7 @@
    "name": "ZAX",
    "fund": "I",
    "website": "https://zaxapp.com.br",
-   "logo": "logos/zax.png",
+   "logo": "logos/circles/zax.webp",
    "fields": {
     "description": {
      "value": "ZAX is a São Paulo marketplace where small shop owners and resellers buy clothing and accessories at wholesale prices straight from suppliers in the Brás, Bom Retiro and other fashion districts, with freight and payment handled on the platform.",
@@ -7671,7 +7671,7 @@
    "name": "Yuno",
    "fund": "I",
    "website": "https://y.uno",
-   "logo": "logos/yuno.png",
+   "logo": "logos/circles/yuno.webp",
    "fields": {
     "description": {
      "value": "Yuno is a payments orchestration platform: one API that lets large merchants, banks and wallets accept payments, payouts, fraud checks and stablecoins across more than 1,000 payment methods in 190+ countries, with smart routing and AI agents to raise approval rates.",
@@ -7995,7 +7995,7 @@
    "name": "Baze",
    "fund": "II",
    "website": "https://www.suabaze.com",
-   "logo": "logos/baze.jpeg",
+   "logo": "logos/circles/baze.webp",
    "fields": {
     "description": {
      "value": "Baze offers the \"Linha Baze\", a revolving credit line in Brazil secured by the customer's property or vehicle: opened once, reused as it is repaid, at rates from CDI plus 0.7% a month, entirely through an app.",
@@ -8101,7 +8101,7 @@
    "name": "Pomelo",
    "fund": "I",
    "website": "https://pomelo.la",
-   "logo": "logos/pomelo.png",
+   "logo": "logos/circles/pomelo.webp",
    "fields": {
     "description": {
      "value": "Pomelo is an Argentine payments-infrastructure company that lets banks, fintechs and large companies issue and process prepaid, debit and credit cards across Latin America through one API, including its own network licences (BIN sponsorship).",
@@ -8394,7 +8394,7 @@
    "name": "Lemon Energia",
    "fund": "I",
    "website": "https://lemon.energy",
-   "logo": "logos/lemonenergia.png",
+   "logo": "logos/circles/lemonenergia.webp",
    "fields": {
     "description": {
      "value": "Lemon connects clean-energy plants (mostly solar) to small businesses, condominiums and households in Brazil: customers receive energy credits on their grid bill, save on electricity and need no installation or upfront cost.",
@@ -8619,7 +8619,7 @@
    "name": "Morado",
    "fund": "I",
    "website": "https://moradocolombia.com",
-   "logo": "logos/morado.png",
+   "logo": "logos/circles/morado.webp",
    "fields": {
     "description": {
      "value": "Morado is a Colombian fintech that sells beauty products and credit to hair salons, barbershops and nail studios, financing their supplier purchases at 30, 60 or 90 days through an app and WhatsApp.",
@@ -8783,7 +8783,7 @@
    "name": "Stay",
    "fund": "II",
    "website": "https://stay.com.br",
-   "logo": "logos/stay.svg",
+   "logo": "logos/stay.png",
    "fields": {
     "description": {
      "value": "Brazilian fintech that offers companies private pension plans and other financial-wellbeing benefits for their employees, with onboarding and plan management done through WhatsApp.",
@@ -8962,7 +8962,7 @@
    "name": "Skelt",
    "fund": "I",
    "website": "https://skelt.com.br",
-   "logo": "logos/skelt.png",
+   "logo": "logos/circles/skelt.webp",
    "fields": {
     "description": {
      "value": "Skelt is a Curitiba cosmetics group, known for Brazil's leading self-tanning brand Skelt and for the affordable dermocosmetics brand Creamy, sold online, in its own stores and through pharmacies.",
@@ -9131,7 +9131,7 @@
    "name": "Loopi",
    "fund": "I",
    "website": "https://loopipay.com",
-   "logo": "logos/loopi.jpeg",
+   "logo": "logos/circles/loopi.webp",
    "fields": {
     "description": {
      "value": "Loopi is a São Paulo fintech that gives medium-sized companies their own platform to offer early payment of supplier invoices (receivables anticipation), with invoice validation, digital assignment and accounting handled by Loopi; it began as a social-commerce app and a crypto on-ramp.",
@@ -9309,7 +9309,7 @@
    "name": "Elvenworks",
    "fund": "I",
    "website": "https://elven.works",
-   "logo": "logos/elvenworks.png",
+   "logo": "logos/circles/elvenworks.webp",
    "fields": {
     "description": {
      "value": "Elven (Elvenworks) is a Brazilian reliability company that sells an observability and incident-management platform, plus SRE, DevOps and FinOps consulting and a 24x7 operations centre, billed in reais with data kept in Brazil.",
@@ -9463,7 +9463,7 @@
    "name": "Dr. Jones",
    "fund": "I",
    "website": "https://drjones.com.br",
-   "logo": "logos/drjones.png",
+   "logo": "logos/circles/drjones.webp",
    "fields": {
     "description": {
      "value": "Dr. Jones is a Brazilian men's grooming brand (razors by subscription, shampoo, shaving foam, face scrub and body gels), sold online and, since 2023, through retailers; Grupo Boticário bought it in 2022.",
@@ -9672,7 +9672,7 @@
    "name": "Vetto",
    "fund": "II",
    "website": "https://www.vetto.ai/talent",
-   "logo": "logos/vetto.svg",
+   "logo": "logos/vetto.png",
    "fields": {
     "description": {
      "value": "AI data company that designs expert-written training tasks, feedback loops and benchmarks for frontier AI labs, using a paid network of remote specialists. It began as the Brazilian student-careers platform Start Carreiras.",
@@ -9859,7 +9859,7 @@
    "name": "Omni Saúde",
    "fund": "II",
    "website": "https://omnisaude.app",
-   "logo": "logos/omni-saude.png",
+   "logo": "logos/circles/omni-saude.webp",
    "fields": {
     "description": {
      "value": "Digital prescription-drug benefit for companies: employees buy medicines at any pharmacy in Brazil through an app, with AI prescription checks and Pix payment, and employers get a health-management dashboard.",
@@ -10078,7 +10078,7 @@
    "name": "deco",
    "fund": "II",
    "website": "https://www.decocms.com/",
-   "logo": "logos/deco.jpeg",
+   "logo": "logos/circles/deco.webp",
    "fields": {
     "description": {
      "value": "Operates online stores and apps for retailers using senior engineers, AI agents and its own software, charging for the results it delivers. Started as the deco.cx website builder for developers.",
@@ -10246,7 +10246,7 @@
    "name": "Buser",
    "fund": "I",
    "website": "https://buser.com.br",
-   "logo": "logos/buser.png",
+   "logo": "logos/circles/buser.webp",
    "fields": {
     "description": {
      "value": "Brazilian app for intercity bus travel: it pools travellers to charter executive buses, resells tickets from over 150 bus companies and now owns regulated bus lines.",
@@ -10504,7 +10504,7 @@
    "name": "Bia",
    "fund": "I",
    "website": "https://bia.app",
-   "logo": "logos/bia.png",
+   "logo": "logos/circles/bia.webp",
    "fields": {
     "description": {
      "value": "Colombian electricity retailer for businesses that installs a smart meter and gives customers consumption analytics, a single invoice for all their sites and clean-energy options; it is also building distributed solar generation and an energy-software spin-off, Olibia.",
@@ -10713,7 +10713,7 @@
    "name": "Robbin",
    "fund": "I",
    "website": "https://robbin.com.br",
-   "logo": "logos/robbin.svg",
+   "logo": "logos/robbin.png",
    "fields": {
     "description": {
      "value": "Brazilian fintech that gives manufacturers a co-branded Pix virtual card and an AI credit assistant so their small retail customers can buy in instalments while the manufacturer is paid upfront and Robbin carries the risk.",
@@ -10873,7 +10873,7 @@
    "name": "Trybe",
    "fund": "I",
    "website": "https://betrybe.com",
-   "logo": "logos/trybe.png",
+   "logo": "logos/circles/trybe.webp",
    "fields": {
     "description": {
      "value": "Brazilian technology-skills school that began as an income-share developer bootcamp and now sells AI courses, workshops and corporate training, including a programme for lawyers with OAB state sections.",
@@ -11147,7 +11147,7 @@
    "name": "Destaxa",
    "fund": "I",
    "website": "https://destaxa.com.br",
-   "logo": "logos/destaxa.png",
+   "logo": "logos/circles/destaxa.webp",
    "fields": {
     "description": {
      "value": "Brazilian payment orchestrator for physical stores: one integration connects a shop's point-of-sale software to every acquirer and Pix provider and routes each transaction by lowest cost.",
@@ -11320,7 +11320,7 @@
    "name": "Patagon AI",
    "fund": "II",
    "website": "https://patagon.ai",
-   "logo": "logos/patagon.png",
+   "logo": "logos/circles/patagon.webp",
    "fields": {
     "description": {
      "value": "AI sales agents on WhatsApp that answer, qualify and book the leads generated by a company's ads, tie each sale back to the ad that started it and charge per qualified meeting.",
@@ -11549,7 +11549,7 @@
    "name": "Backchannel",
    "fund": "II",
    "website": "https://backchannel.com.br",
-   "logo": "logos/backchannel.png",
+   "logo": "logos/circles/backchannel.webp",
    "fields": {
     "description": {
      "value": "Brazilian private B2B marketplace where large brands sell surplus inventory to vetted small and mid-sized retailers, with AI matching and pricing and a 12% take rate.",
@@ -11734,7 +11734,7 @@
    "name": "Igual",
    "fund": "I",
    "website": "https://igual.com",
-   "logo": "logos/igual.svg",
+   "logo": "logos/igual.png",
    "fields": {
     "description": {
      "value": "Curitiba legal-tech company that sells software and AI to digital labor-law firms, to manage case flow, generate client demand and settle cases faster.",
@@ -11846,7 +11846,7 @@
    "name": "180° Insurance",
    "fund": "I",
    "website": "https://180s.com.br",
-   "logo": "logos/180.svg",
+   "logo": "logos/180.png",
    "fields": {
     "description": {
      "value": "Brazilian insurer (Susep-authorised) that designs and underwrites embedded insurance for fintechs, lenders, retailers and platforms, connected by one API.",
@@ -12085,7 +12085,7 @@
    "name": "Henry",
    "fund": "I",
    "website": "https://soyhenry.com",
-   "logo": "logos/henry.svg",
+   "logo": "logos/henry.png",
    "fields": {
     "description": {
      "value": "Online school for tech and AI careers across Latin America that began with no-upfront-cost bootcamps (pay after getting a job) and now also sells AI talent and training to companies.",
@@ -12316,7 +12316,7 @@
    "name": "Salu",
    "fund": "I",
    "website": "https://salu.com.vc",
-   "logo": "logos/salu.svg",
+   "logo": "logos/salu.png",
    "fields": {
     "description": {
      "value": "Brazilian HR-tech that digitises occupational health and safety: online booking and tracking of exams, reports and legal programmes, with eSocial filing; acquired by Senior Sistemas in 2026.",
@@ -12504,7 +12504,7 @@
    "name": "Vaas",
    "fund": "I",
    "website": "https://getvaas.com",
-   "logo": "logos/vaas.jpeg",
+   "logo": "logos/circles/vaas.webp",
    "fields": {
     "description": {
      "value": "Software that digitises the operations of private credit in Latin America: asset onboarding, collateral verification, servicing and reporting for lenders and borrowers of asset-backed debt.",
@@ -12664,7 +12664,7 @@
    "name": "Refer",
    "fund": "II",
    "website": "https://cardinalrefer.com",
-   "logo": "logos/refer.png",
+   "logo": "logos/circles/refer.webp",
    "fields": {
     "description": {
      "value": "US startup whose AI career agent, Lia, matches tech candidates with jobs and makes warm introductions to hiring managers; candidates pay 20% of their first month's salary only if hired and employers use it free.",
@@ -12808,7 +12808,7 @@
    "name": "Malga",
    "fund": "I",
    "website": "https://malga.io",
-   "logo": "logos/malga.svg",
+   "logo": "logos/malga.png",
    "fields": {
     "description": {
      "value": "Malga is a Brazilian payments infrastructure company that lets digital businesses connect to many acquirers, anti-fraud tools, wallets and banks through one API, route each payment to the best option, and increasingly build their own payment products on top.",
@@ -13041,7 +13041,7 @@
    "name": "tapi",
    "fund": "I",
    "website": "https://tapi.la",
-   "logo": "logos/tapi.svg",
+   "logo": "logos/tapi.png",
    "fields": {
     "description": {
      "value": "Payments network for Latin America that lets banks, fintechs and large platforms offer bill payments, cash in and out, mobile top-ups and gift cards through a single integration.",
@@ -13245,7 +13245,7 @@
    "name": "Cayena",
    "fund": "I",
    "website": "https://cayena.com",
-   "logo": "logos/cayena.png",
+   "logo": "logos/circles/cayena.webp",
    "fields": {
     "description": {
      "value": "Brazilian B2B marketplace where restaurants, bars, hotels and small food businesses buy supplies from many pre-qualified suppliers, with next-day delivery and pay-later credit.",
@@ -13478,7 +13478,7 @@
    "name": "Quansa",
    "fund": "I",
    "website": "https://quansa.io",
-   "logo": "logos/quansa.png",
+   "logo": "logos/circles/quansa.webp",
    "fields": {
     "description": {
      "value": "Platform that lets employers pay frontline workers instantly for shifts, tips, commissions and bonuses, linked to attendance and performance, to cut absenteeism and turnover.",
@@ -13660,7 +13660,7 @@
    "name": "Sanii",
    "fund": "I",
    "website": "https://sanii.com.br",
-   "logo": "logos/sanii.png",
+   "logo": "logos/circles/sanii.webp",
    "fields": {
     "description": {
      "value": "Brazilian home-care company that selects, trains and places caregivers, nursing technicians and physiotherapists with older people at home, using AI to match them to families.",
@@ -13840,7 +13840,7 @@
    "name": "Vendah",
    "fund": "I",
    "website": "https://vendah.com.br",
-   "logo": "logos/vendah.png",
+   "logo": "logos/circles/vendah.webp",
    "fields": {
     "description": {
      "value": "Brazilian marketplace where individual resellers buy beauty products from popular brands, pay in instalments without a credit card and sell to their own networks and on social media.",
@@ -14022,7 +14022,7 @@
    "name": "Jitter",
    "fund": "I",
    "website": "https://jitter.video",
-   "logo": "logos/jitter.png",
+   "logo": "logos/circles/jitter.webp",
    "fields": {
     "description": {
      "value": "Web-based motion design tool that lets designers turn static designs into animations and videos, with AI to generate effects and batch variations, for creative and product teams.",
@@ -14168,7 +14168,7 @@
    "name": "Norma",
    "fund": "II",
    "website": "https://www.norma.com.br/",
-   "logo": "logos/norma.svg",
+   "logo": "logos/norma.png",
    "fields": {
     "description": {
      "value": "Brazilian AI platform for tax intelligence that cross-checks a company's tax documents against Brazilian tax rules to flag savings and risks, and helps reconcile the new IBS/CBS tax assessment.",
@@ -14281,7 +14281,7 @@
    "name": "Caveo",
    "fund": "II",
    "website": "https://caveo.com.br",
-   "logo": "logos/caveo.png",
+   "logo": "logos/circles/caveo.webp",
    "fields": {
     "description": {
      "value": "Brazilian accounting and financial platform for doctors working as PJ: company opening, invoices, taxes, accounting and a PJ account in one app, with an AI assistant on WhatsApp.",
@@ -14471,7 +14471,7 @@
    "name": "Level AI",
    "fund": "I",
    "website": "https://levelai.com.br/",
-   "logo": "logos/level-ai.png",
+   "logo": "logos/circles/level-ai.webp",
    "fields": {
     "description": {
      "value": "Brazilian healthcare AI company that reads clinical data and reports and turns them into actions with measurable financial return for hospitals, health insurers, clinics and diagnostic networks (formerly NeuralMed).",
@@ -14663,7 +14663,7 @@
    "name": "Jusfy",
    "fund": "I",
    "website": "https://jusfy.com.br",
-   "logo": "logos/jusfy.png",
+   "logo": "logos/circles/jusfy.webp",
    "fields": {
     "description": {
      "value": "Brazilian legal-tech platform that gives lawyers one subscription with calculators, asset searches, case management, an AI assistant (JusGPT) and payments for their daily work.",
@@ -14892,7 +14892,7 @@
    "name": "Elevva",
    "fund": "I",
    "website": "https://elevva.co",
-   "logo": "logos/elevva.webp",
+   "logo": "logos/circles/elevva.webp",
    "fields": {
     "description": {
      "value": "Argentine company that acquires and partners with e-commerce brands in Latin America and offers pymes regional expansion, multichannel software, logistics, working capital and sourcing in China.",
@@ -15083,7 +15083,7 @@
    "name": "BotCity",
    "fund": "I",
    "website": "https://botcity.dev",
-   "logo": "logos/botcity.png",
+   "logo": "logos/circles/botcity.webp",
    "fields": {
     "description": {
      "value": "Brazilian software company, from Campinas, whose platform runs, monitors and governs Python automations and AI-generated scripts inside companies, after starting as a developer-first RPA tool.",
@@ -15276,7 +15276,7 @@
    "name": "Hyperplane",
    "fund": "I",
    "website": "https://hyperplane.ai",
-   "logo": "logos/hyperplane.jpeg",
+   "logo": "logos/circles/hyperplane.webp",
    "fields": {
     "description": {
      "value": "Silicon Valley startup, founded by Brazilians, that built foundation models for banks to predict credit risk and customer behaviour from their own data; acquired by Nubank in June 2024.",
@@ -15471,7 +15471,7 @@
    "name": "Doji",
    "fund": "I",
    "website": "https://doji.co",
-   "logo": "logos/doji.svg",
+   "logo": "logos/doji.png",
    "fields": {
     "description": {
      "value": "Brazilian startup, born in the UK, that runs a trade-in platform for used smartphones: stores scan and value the old phone, and Doji sells it to registered buyers for a commission.",
@@ -15704,7 +15704,7 @@
    "name": "Mecanizou",
    "fund": "I",
    "website": "https://mecanizou.com",
-   "logo": "logos/mecanizou.svg",
+   "logo": "logos/mecanizou.png",
    "fields": {
     "description": {
      "value": "Brazilian B2B auto-parts marketplace that lets mechanic workshops find, compare and order the right part for a car by licence plate, with fast delivery from many suppliers.",
@@ -15868,7 +15868,7 @@
    "name": "Osana Salud",
    "fund": "I",
    "website": "https://osanasalud.com",
-   "logo": "logos/osana.png",
+   "logo": "logos/circles/osana.webp",
    "fields": {
     "description": {
      "value": "Argentine healthtech that sells a SaaS platform and APIs to health insurers, funds and providers to run digital care: appointments, video consultation, e-prescription, billing and patient follow-up.",
@@ -16036,7 +16036,7 @@
    "name": "Suridata",
    "fund": "I",
    "website": "https://suridata.com.br",
-   "logo": "logos/suridata.jpeg",
+   "logo": "logos/circles/suridata.webp",
    "fields": {
     "description": {
      "value": "Brazilian health-data company that helps brokers, employers, operators and hospitals audit and manage corporate health plans, using independent claims analysis and clinical review to negotiate price adjustments.",
@@ -16137,7 +16137,7 @@
    "name": "Brendi",
    "fund": "II",
    "website": "https://brendi.com.br",
-   "logo": "logos/brendi.png",
+   "logo": "logos/circles/brendi.webp",
    "fields": {
     "description": {
      "value": "Brazilian software that lets restaurants and delivery businesses take and grow orders on their own WhatsApp channel, with an AI attendant, digital menu, loyalty and marketing tools, without marketplace commissions.",
@@ -16302,7 +16302,7 @@
    "name": "Avra",
    "fund": "II",
    "website": "https://avra.ai",
-   "logo": "logos/avra.svg",
+   "logo": "logos/avra.png",
    "fields": {
     "description": {
      "value": "Brazilian AI lab with a foundation model that reads a company's relational database and predicts outcomes such as default, churn and fraud, sold to banks, telecoms and marketplaces by API and batch.",
@@ -16455,7 +16455,7 @@
    "name": "Musa",
    "fund": "I",
    "website": "https://musa.co",
-   "logo": "logos/musa.png",
+   "logo": "logos/circles/musa.webp",
    "fields": {
     "description": {
      "value": "Brazilian waste-management company that runs collection, transport and final destination for businesses through one digital platform and contract, using an asset-light network of audited partners.",
@@ -16589,7 +16589,7 @@
    "name": "Attach Media Partners",
    "fund": "I",
    "website": "https://www.attachmp.com",
-   "logo": "logos/amp.png",
+   "logo": "logos/circles/amp.webp",
    "fields": {
     "description": {
      "value": "Mobile games company that acquires, partners with and runs mature free-to-play games, rebuilding monetisation, user acquisition and live operations; formerly Super Company.",
@@ -16670,7 +16670,7 @@
    "name": "Assis",
    "fund": "I",
    "website": "https://assis.co",
-   "logo": "logos/assis.svg",
+   "logo": "logos/assis.png",
    "fields": {
     "description": {
      "value": "Brazilian software company whose AI assistant prepares meetings, records conversations in the CRM and drafts follow-ups for investment-advisory firms; it began as a WhatsApp assistant for self-employed professionals.",
@@ -16834,7 +16834,7 @@
    "name": "Zivo",
    "fund": "I",
    "website": "https://zivo.ai",
-   "logo": "logos/zivo.png",
+   "logo": "logos/circles/zivo.webp",
    "fields": {
     "description": {
      "value": "Brazilian company, formerly Comp, that co-builds companies' HR functions with HR experts, AI engineers and custom software, covering 11 HR areas from recruiting to offboarding.",
@@ -17013,7 +17013,7 @@
    "name": "Aravita",
    "fund": "I",
    "website": "https://aravita.com",
-   "logo": "logos/aravita.png",
+   "logo": "logos/circles/aravita.webp",
    "fields": {
     "description": {
      "value": "Brazilian AI platform that forecasts demand and manages ordering and stock of fresh fruit, vegetables and greens for supermarkets and distributors, to cut waste and stock-outs.",
@@ -17186,7 +17186,7 @@
    "name": "Capa",
    "fund": "II",
    "website": "https://capa.fi",
-   "logo": "logos/capa.png",
+   "logo": "logos/circles/capa.webp",
    "fields": {
     "description": {
      "value": "Latin American payments company that offers cross-border payments and 24/7 FX through stablecoin rails and a single API, with Mexican peso rails and market making for non-USD stablecoins.",
@@ -17331,7 +17331,7 @@
    "name": "Arcca Franquias",
    "fund": "I",
    "website": "https://arcca.io",
-   "logo": "logos/arcca.png",
+   "logo": "logos/circles/arcca.webp",
    "fields": {
     "description": {
      "value": "Rio de Janeiro holding that takes restaurant brands (Tapí, Amélie, Juliette, Nema) into franchising and offers its own franchise-management software (Nola, Supfy) to franchisors and franchisees.",
@@ -17466,7 +17466,7 @@
    "name": "Hashdex",
    "fund": "I",
    "website": "https://hashdex.com",
-   "logo": "logos/hashdex.svg",
+   "logo": "logos/hashdex.png",
    "fields": {
     "description": {
      "value": "Global crypto asset manager that packages the crypto market into regulated index funds and ETFs (Brazil, United States and others), built on the Nasdaq Crypto Index it co-developed with Nasdaq.",
@@ -17666,7 +17666,7 @@
    "name": "idwall",
    "fund": "I",
    "website": "https://idwall.co",
-   "logo": "logos/idwall.svg",
+   "logo": "logos/idwall.png",
    "fields": {
     "description": {
      "value": "Brazilian identity verification, risk management and digital onboarding platform, using biometrics, document validation and background checks to help companies prevent fraud.",
@@ -17895,7 +17895,7 @@
    "name": "Isa Health",
    "fund": "I",
    "website": "https://isalab.com.br",
-   "logo": "logos/isasaude.png",
+   "logo": "logos/circles/isasaude.webp",
    "fields": {
     "description": {
      "value": "Brazilian \"hospital at home\" company (formerly ISA Lab, home lab tests and vaccines) that sends a network of nurses and clinicians to patients' homes for exams, urgent care, rehabilitation, infusions and palliative care, paid mainly by health insurers.",
@@ -18091,7 +18091,7 @@
    "name": "Lexter",
    "fund": "I",
    "website": "https://lexter.ai",
-   "logo": "logos/lexter.svg",
+   "logo": "logos/lexter.png",
    "fields": {
     "description": {
      "value": "Brazilian legal AI company whose virtual specialists (Laura for legal work, Lia for client contact on WhatsApp) draft petitions and contracts, research case law and run client service for law firms.",
@@ -18268,7 +18268,7 @@
    "name": "Winnin",
    "fund": "I",
    "website": "https://winnin.com",
-   "logo": "logos/winnin.svg",
+   "logo": "logos/winnin.png",
    "fields": {
     "description": {
      "value": "Brazilian-born AI platform that reads billions of public videos (YouTube, TikTok, Instagram and others) to show large brands what audiences care about, with a \"Share of Attention\" metric and an AI copilot, sold as a subscription.",
@@ -18448,7 +18448,7 @@
    "name": "Alude",
    "fund": "I",
    "website": "https://alude.com.br",
-   "logo": "logos/alude.svg",
+   "logo": "logos/alude.png",
    "fields": {
     "description": {
      "value": "Brazilian software platform that lets real estate agencies and independent brokers run rentals digitally: tenant and owner credit checks, rental management and payouts, e-signature, insurance issuing and lead capture, sold by subscription.",
@@ -18599,7 +18599,7 @@
    "name": "Kolors",
    "fund": "I",
    "website": "https://kolors.com.mx",
-   "logo": "logos/kolors.svg",
+   "logo": "logos/kolors.png",
    "fields": {
     "description": {
      "value": "Mexican platform that runs bus transport without owning buses, partnering with local operators. It started with intercity routes for passengers and now also sells employee transport to companies.",
@@ -18770,7 +18770,7 @@
    "name": "Cannect",
    "fund": "I",
    "website": "https://cannect.com.br",
-   "logo": "logos/cannect.svg",
+   "logo": "logos/cannect.png",
    "fields": {
     "description": {
      "value": "Brazilian healthtech that started as a medical-cannabis marketplace (teleconsultation, prescription, Anvisa import approval, delivery and follow-up) and now also runs a digital pharmacy for chronic-disease medicines after buying Pill in 2026.",
@@ -18970,7 +18970,7 @@
    "name": "Gabriel",
    "fund": "I",
    "website": "https://gabriel.com.br",
-   "logo": "logos/gabriel.svg",
+   "logo": "logos/gabriel.png",
    "fields": {
     "description": {
      "value": "Brazilian private security network: smart street-facing cameras (\"Camaleões\") installed on condominiums, homes and shops, linked to a 24-hour intelligence center and to the police, reading licence plates and sending real-time alerts for stolen vehicles.",
@@ -19202,7 +19202,7 @@
    "name": "Menta",
    "fund": "I",
    "website": "https://menta.global",
-   "logo": "logos/menta.png",
+   "logo": "logos/circles/menta.webp",
    "fields": {
     "description": {
      "value": "Argentine infrastructure company that lets banks, retailers, consumer-goods firms and fintechs with a network of merchants offer their own white-label payment acceptance and financial services through SmartPOS terminals with an app store.",
@@ -19398,7 +19398,7 @@
    "name": "Neofin",
    "fund": "I",
    "website": "https://neofin.com.br",
-   "logo": "logos/neofin.png",
+   "logo": "logos/circles/neofin.webp",
    "fields": {
     "description": {
      "value": "Brazilian fintech that automates accounts receivable for companies that sell on credit: a multichannel collection ruler (e-mail, WhatsApp, SMS), ERP and bank integrations and an AI agent that negotiates with debtors on WhatsApp.",
@@ -19585,7 +19585,7 @@
    "name": "Decade",
    "fund": "II",
    "website": "https://decade.com/",
-   "logo": "logos/decade.svg",
+   "logo": "logos/decade.png",
    "fields": {
     "description": {
      "value": "Brazilian wealth-advisory company that combines a proprietary investing AI with human advisors, using Open Finance to consolidate a client's assets and monitor them around the clock.",
@@ -19749,7 +19749,7 @@
    "name": "Flow",
    "fund": "II",
    "website": "https://flowcredi.com.br/",
-   "logo": "logos/flow.svg",
+   "logo": "logos/flow.png",
    "fields": {
     "description": {
      "value": "Brazilian marketplace for credit backed by property (home equity), real-estate financing and vehicle-backed loans, comparing offers from more than a dozen banks and credit funds for consumers and companies.",
@@ -19922,7 +19922,7 @@
    "name": "Aro",
    "fund": "II",
    "website": "https://aro.ia.br/",
-   "logo": "logos/aro.png",
+   "logo": "logos/circles/aro.webp",
    "fields": {
     "description": {
      "value": "Brazilian fintech with an AI agent that guides people, mainly in income classes C and D, through credit: it finds the offers they can really get from partner lenders and follows the loan to the end. It is paid by lenders, not by users.",
@@ -20086,7 +20086,7 @@
    "name": "Fly Media",
    "fund": "II",
    "website": "https://flymedia.ai/",
-   "logo": "logos/flymedia.jpeg",
+   "logo": "logos/circles/flymedia.webp",
    "fields": {
     "description": {
      "value": "AI-native media company that creates synthetic influencers and characters as global, multilingual intellectual properties, run across platforms by a small team and monetised through brands, licensing and communities.",
@@ -20225,7 +20225,7 @@
    "name": "Inner AI",
    "fund": "II",
    "website": "https://www.innerai.com/",
-   "logo": "logos/inner-ai.png",
+   "logo": "logos/circles/inner-ai.webp",
    "fields": {
     "description": {
      "value": "Brazilian AI platform that gives professionals and companies access to more than 50 AI models in one subscription, and, through Squad.com, a team of autonomous AI agents for small businesses.",
@@ -20408,7 +20408,7 @@
    "name": "Bond",
    "fund": "II",
    "website": "https://bond.com.br/",
-   "logo": "logos/bond.svg",
+   "logo": "logos/bond.png",
    "fields": {
     "description": {
      "value": "Brazilian AI accounting startup. It began as a full-service accounting firm for mid-sized companies and now offers to run the operations of existing accounting offices, with software doing routine work and accountants reviewing.",
@@ -20551,7 +20551,7 @@
    "name": "Maggu",
    "fund": "II",
    "website": "https://maggu.ai/",
-   "logo": "logos/maggu.png",
+   "logo": "logos/circles/maggu.webp",
    "fields": {
     "description": {
      "value": "Brazilian startup that gives pharmacy counter staff an AI copilot integrated into the pharmacy system, which suggests product use, care and complementary items in real time.",
@@ -20727,7 +20727,7 @@
    "name": "Legiti",
    "fund": "I",
    "website": "https://kaszek.com/company/legiti/",
-   "logo": "logos/legiti.png",
+   "logo": "logos/circles/legiti.webp",
    "fields": {
     "description": {
      "value": "Brazilian antifraud platform that uses machine learning to block fraudulent e-commerce purchases while approving legitimate ones, reducing chargebacks.",
@@ -20904,7 +20904,7 @@
    "name": "Core AI",
    "fund": "II",
    "website": "https://coreai.com.br/",
-   "logo": "logos/coreai.jpeg",
+   "logo": "logos/circles/coreai.webp",
    "fields": {
     "description": {
      "value": "Brazilian company that builds AI-driven credit operations for software companies, marketplaces and other businesses: risk models, pricing, collections and funding access, delivered through banking-as-a-service providers.",
@@ -21081,7 +21081,7 @@
    "name": "Datamint",
    "fund": "II",
    "website": "https://datamint.com.br/",
-   "logo": "logos/datamint.png",
+   "logo": "logos/circles/datamint.webp",
    "fields": {
     "description": {
      "value": "Brazilian deep-tech company with an AI platform that gives industrial operators a single view of each critical asset and recommends auditable maintenance, parts and logistics decisions.",
@@ -21211,7 +21211,7 @@
    "name": "Palomma",
    "fund": "II",
    "website": "https://www.palomma.com/es",
-   "logo": "logos/palomma.png",
+   "logo": "logos/circles/palomma.webp",
    "fields": {
     "description": {
      "value": "Colombian fintech building an AI-native bank for real estate in Latin America: it collects and disburses rent for real estate agencies, offers landlords rent guarantees and advances, and runs AI agents for property management.",
@@ -21398,7 +21398,7 @@
    "name": "Oasis",
    "fund": "II",
    "website": "https://joinoasis.com/",
-   "logo": "logos/oasis.png",
+   "logo": "logos/circles/oasis.webp",
    "fields": {
     "description": {
      "value": "New York software company that sells a shared workspace where people and AI agents work as teammates, with shared memory, roles, permissions, approvals and budgets.",
@@ -21498,7 +21498,7 @@
    "name": "Akash",
    "fund": "II",
    "website": "https://akash.earth/",
-   "logo": "logos/akash.svg",
+   "logo": "logos/akash.png",
    "fields": {
     "description": {
      "value": "Latin American company building AI superintelligence platforms (its product is SERAPH) for security, intelligence and defense institutions.",
@@ -21583,7 +21583,7 @@
    "name": "Asteras",
    "fund": "II",
    "website": "https://asteraslab.com/",
-   "logo": "logos/asteras.svg",
+   "logo": "logos/asteras.png",
    "fields": {
     "description": {
      "value": "AI lab that trains, deploys and keeps improving custom models for the work that a company's AI agents do, using the customer's own data, traces and feedback.",
@@ -21674,7 +21674,7 @@
    "name": "Cartsy",
    "fund": "II",
    "website": "https://cartsy.com/",
-   "logo": "logos/cartsy.png",
+   "logo": "logos/circles/cartsy.webp",
    "fields": {
     "description": {
      "value": "Shopping assistant that lives in Instagram direct messages: the user shares a post, reel or story and it identifies the products in it and shows where to buy them, with prices from several stores. It is free to use and links to the retailer.",
@@ -21766,7 +21766,7 @@
    "name": "Hedix",
    "fund": "II",
    "website": "https://hedix.com.br/",
-   "logo": "logos/hedix.svg",
+   "logo": "logos/hedix.png",
    "fields": {
     "description": {
      "value": "Pre-launch Brazilian platform with a waitlist that lets people take a position on future events through contracts offered by the broker Genial; Hedix is a technology company and says it is not itself authorised by the central bank or the securities regulator.",
@@ -21858,7 +21858,7 @@
    "name": "Kapso",
    "fund": "II",
    "website": "https://kapso.ai/",
-   "logo": "logos/kapso.png",
+   "logo": "logos/circles/kapso.webp",
    "fields": {
     "description": {
      "value": "Platform that lets any developer or AI agent add the official WhatsApp Business API to a product, through an API, SDKs, a CLI and a visual workflow builder. It earns from usage and, since July 2026, as a Meta Business Solution Provider that handles billing.",
@@ -22036,7 +22036,7 @@
    "name": "Kayro",
    "fund": "II",
    "website": "https://usekayro.ai/",
-   "logo": "logos/kayro.svg",
+   "logo": "logos/kayro.png",
    "fields": {
     "description": {
      "value": "Brazilian AI company that automates the operational work of sales teams at manufacturers, distributors and wholesalers: turning WhatsApp lists and PDF or Excel orders into quotes and entered orders, and telling each salesperson what to do at each point of sale.",
@@ -22149,7 +22149,7 @@
    "name": "Manor",
    "fund": "II",
    "website": "https://manor.com.br/",
-   "logo": "logos/manor.png",
+   "logo": "logos/circles/manor.webp",
    "fields": {
     "description": {
      "value": "Brazilian AI platform that follows tax laws and court and administrative decisions every day and shows each company where its operation has tax risk or money on the table, including a comparison with the tax reform; sold to companies, accounting firms, law firms and individuals.",
@@ -22243,7 +22243,7 @@
    "name": "Nash",
    "fund": "II",
    "website": "https://nashadm.com.br/",
-   "logo": "logos/nash.png",
+   "logo": "logos/circles/nash.webp",
    "fields": {
     "description": {
      "value": "Brazilian fiduciary administrator for structured funds (FIPs, and later FIDCs, FICs and FIFs), combining proprietary software and an experienced regulatory team so fund managers can focus on investing.",
@@ -22389,7 +22389,7 @@
    "name": "Sempre+",
    "fund": "II",
    "website": "https://sempre-mais.com/",
-   "logo": "logos/sempre.svg",
+   "logo": "logos/sempre.png",
    "fields": {
     "description": {
      "value": "Pediatric guidance and teleconsultation service that runs entirely inside WhatsApp: a free AI assistant (Dra. Med) answers parents at any hour and hands the case to a registered pediatrician, by text or video, when needed.",
@@ -22496,7 +22496,7 @@
    "name": "Strattum",
    "fund": "II",
    "website": "https://strattum.ai/",
-   "logo": "logos/strattum.svg",
+   "logo": "logos/strattum.png",
    "fields": {
     "description": {
      "value": "Enterprise AI infrastructure startup that connects and organises a large company's scattered data (ERPs, CRMs, data lakes, spreadsheets, documents) into a governed context layer, a 'company brain', that AI models and agents can use at lower token cost.",
@@ -22640,7 +22640,7 @@
    "name": "Taicor",
    "fund": "II",
    "website": "https://taicor.ai/",
-   "logo": "logos/taicor.jpeg",
+   "logo": "logos/circles/taicor.webp",
    "fields": {
     "description": {
      "value": "Rio de Janeiro company that builds and runs AI agents for businesses, plugged into the email, calendar, CRM and databases a team already uses and driven by natural-language conversation, deployed in days.",
@@ -22768,7 +22768,7 @@
    "name": "Backline",
    "fund": "II",
    "website": "https://backline.inc/",
-   "logo": "logos/backline.svg",
+   "logo": "logos/backline.png",
    "fields": {
     "description": {
      "value": "Early-stage security company that says it protects businesses against AI-powered attacks, calling itself an 'Iron Dome' and the first and final line of defence; services are sold by enquiry.",
@@ -22847,7 +22847,7 @@
    "name": "Khal",
    "fund": "II",
    "website": "https://khal.ai/",
-   "logo": "logos/khal.svg",
+   "logo": "logos/khal.png",
    "fields": {
     "description": {
      "value": "Brazilian platform for building and running AI agents across customer service, sales and retention in large companies, made by Namastex Labs, a generative-AI research lab from Uberlândia.",
@@ -22988,7 +22988,7 @@
    "name": "Fina",
    "fund": "II",
    "website": "https://www.finapartner.com/",
-   "logo": "logos/fina.png",
+   "logo": "logos/circles/fina.webp",
    "fields": {
     "description": {
      "value": "Venezuelan cloud administrative system for small and medium businesses (sales, inventory, accounts, reports in bolivars and dollars), with Fina Presta, a loan for the businesses that use it.",
@@ -23167,7 +23167,7 @@
    "name": "Quantum",
    "fund": "II",
    "website": "https://www.linkedin.com/company/qntco/",
-   "logo": "logos/quantum.jpeg",
+   "logo": "logos/circles/quantum.webp",
    "fields": {
     "description": {
      "value": "Technology group for Brazilian grocery retail formed in 2026 by joining the supermarket-software companies Bluesoft and VR Software, which aims to apply AI and agents to stock, pricing and store operations.",
@@ -23261,7 +23261,7 @@
    "name": "Glue",
    "fund": "II",
    "website": "https://useglue.ai/",
-   "logo": "logos/glue.png",
+   "logo": "logos/circles/glue.webp",
    "fields": {
     "description": {
      "value": "Stealth-stage Brazilian startup building 'The Finance Agentic Layer': AI agents for the finance and accounting back office. Its site is an under-construction page.",
