@@ -146,10 +146,10 @@ Supporting work that comes with it:
 - A Lens sets per-dot targets with a pull that ramps up over the transition. Each dot keeps a share of the Float drift while grouped. Returning to Float pulls dots back to their positions before the switch, then releases them.
 - On touch, a tap on empty canvas applies a brief push at that point instead of a cursor.
 - Clicking a dot pauses only that dot, which stays where it is. Closing the card resumes it.
-- The values the owner chose in the prototype are the defaults. They live in one config object:
+- The values the owner chose live in one config object, `site/src/engine/config.ts` (`physics` and `dot`). **That file is the source of truth; the block below is only the starting point** (the prototype verdicts). The owner has since retuned some values in the dev tuning panel (collideStrength 0.45, cursorForce 0.6, cursorRadius 175 at the time of ticket 01), so read the file for current numbers:
 
   ```ts
-  // from the Float prototype verdicts (desktop, ~1500 px wide)
+  // STARTING VALUES from the Float prototype verdicts (desktop, ~1500 px wide); current ones: config.ts
   const physics = {
     drift: 0.06, wander: 0.15, damping: 0.255,
     collidePad: 4, collideStrength: 0.65,
