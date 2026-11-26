@@ -661,7 +661,7 @@
    "name": "Tempo",
    "fund": "II",
    "website": "https://seutempo.com",
-   "logo": "logos/tempo.jpeg",
+   "logo": "logos/circles/tempo.webp",
    "fields": {
     "description": {
      "value": "A personal assistant service on WhatsApp where human assistants, helped by AI, pay bills, book appointments, buy tickets and run daily errands for affluent Brazilian families on a monthly subscription.",
@@ -2885,7 +2885,7 @@
    "name": "Carbonext",
    "fund": "I",
    "website": "https://carbonext.com.br",
-   "logo": "logos/carbonext.webp",
+   "logo": "logos/circles/carbonext.webp",
    "fields": {
     "description": {
      "value": "Brazilian developer of forest carbon-credit projects, mainly REDD+ in the Amazon, that sells the credits to companies and individuals and helps companies measure and offset their emissions.",
@@ -9672,7 +9672,7 @@
    "name": "Vetto",
    "fund": "II",
    "website": "https://www.vetto.ai/talent",
-   "logo": "logos/vetto.jpeg",
+   "logo": "logos/circles/vetto.webp",
    "fields": {
     "description": {
      "value": "AI data company that designs expert-written training tasks, feedback loops and benchmarks for frontier AI labs, using a paid network of remote specialists. It began as the Brazilian student-careers platform Start Carreiras.",
@@ -10713,7 +10713,7 @@
    "name": "Robbin",
    "fund": "I",
    "website": "https://robbin.com.br",
-   "logo": "logos/robbin.jpg",
+   "logo": "logos/circles/robbin.webp",
    "fields": {
     "description": {
      "value": "Brazilian fintech that gives manufacturers a co-branded Pix virtual card and an AI credit assistant so their small retail customers can buy in instalments while the manufacturer is paid upfront and Robbin carries the risk.",
@@ -11734,7 +11734,7 @@
    "name": "Igual",
    "fund": "I",
    "website": "https://igual.com",
-   "logo": "logos/igual.jpeg",
+   "logo": "logos/circles/igual.webp",
    "fields": {
     "description": {
      "value": "Curitiba legal-tech company that sells software and AI to digital labor-law firms, to manage case flow, generate client demand and settle cases faster.",

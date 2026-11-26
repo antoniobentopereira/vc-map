@@ -2,7 +2,7 @@ name,website,fund,is_highlight,is_exit,logo,logo_background,logo_origin,logo_sou
 NG.CASH,https://ng.cash,I,TRUE,FALSE,site/logos/ng-cash.png,#000000,company-site,https://cdn.prod.website-files.com/677d2671cb3b8b73c5c62129/67b87b450971fd19e0318082_NG.CASH%20FavIcon%20(1).png,2026-11-19,"0.0938,0.2285,0.8105,0.5391"
 CredAluga,https://credaluga.com.br,II,FALSE,FALSE,site/logos/credaluga.png,#ffffff,company-site,https://credaluga.com.br/wp-content/uploads/2024/06/FAVICON-300x300.png,2026-11-19,"-0.305,-0.305,1.61,1.61"
 Flieber,https://flieber.com,I,FALSE,FALSE,site/logos/flieber.png,#ffffff,company-site,https://www.flieber.com/hubfs/flieber-2026/flieber-logo.svg,2026-11-25,
-Tempo,https://seutempo.com,II,FALSE,FALSE,site/logos/tempo.jpeg,,manual,https://www.seutempo.com/images/Tempo_Horizontal.svg,2026-11-25,
+Tempo,https://seutempo.com,II,FALSE,FALSE,site/logos/tempo.jpeg,#ffffff,manual,https://www.seutempo.com/images/Tempo_Horizontal.svg,2026-11-25,"0.0671,0.029,0.8685,0.9878"
 Gatekeeper,https://gatekeeperx.com,II,FALSE,FALSE,site/logos/gatekeeper.png,#ffffff,manual,https://colombiafintech.co/wp-content/uploads/2025/12/gatekeeper-x-logo.png,2026-11-25,"0.0418,0.3472,0.9112,0.2778"
 Nomo,https://nomo.com.br,I,FALSE,TRUE,site/logos/nomo.png,#ffe7f1,company-site,https://nomo.com.br/favicon.svg?v=20251223,2026-11-20,"0.0614,0.0767,0.8508,0.8508"
 Kanastra,https://kanastra.com.br,I,TRUE,FALSE,site/logos/kanastra.png,#193c32,company-site,https://kanastra.com.br/favicon.svg,2026-11-25,"-0.08,-0.08,1.16,1.16"
@@ -13,7 +13,7 @@ Flash,https://flashapp.com.br,I,TRUE,FALSE,site/logos/flash.png,#ffffff,company-
 Syntage,https://syntage.com,I,FALSE,FALSE,site/logos/syntage.png,#000000,company-site,https://syntage.com/_astro/syntage-logo-white.Bv5rm5bv.svg,2026-11-20,
 Unxpose,https://unxpose.com/en/,I,FALSE,FALSE,site/logos/unxpose.png,#0a50a0,company-site,https://framerusercontent.com/images/rRvyLKjbSgqG9ls14w33X2VSlnM.png,2026-11-20,"-0.035,-0.035,1.07,1.07"
 Iniciador,https://iniciador.com.br,II,TRUE,FALSE,site/logos/iniciador.png,#000000,company-site,https://iniciador.com.br/apple-icon.png?apple-icon.0rxpxrel559y3.png,2026-11-20,
-Carbonext,https://carbonext.com.br,I,FALSE,FALSE,site/logos/carbonext.webp,,manual,https://s3.us-east-1.amazonaws.com/static.carbonext.com.br/logo_carbonext_nature_and_future_bco_logo_black_slogan_100f16d657.svg,2026-11-19,
+Carbonext,https://carbonext.com.br,I,FALSE,FALSE,site/logos/carbonext.webp,#ffffff,manual,https://s3.us-east-1.amazonaws.com/static.carbonext.com.br/logo_carbonext_nature_and_future_bco_logo_black_slogan_100f16d657.svg,2026-11-19,
 Better Drinks,https://betterdrinks.com,I,FALSE,FALSE,site/logos/better-drinks.png,#000000,company-site,https://static.wixstatic.com/media/2c6550_b4077e08fe804e4a97a537ac8818db30%7Emv2.png/v1/fill/w_180%2Ch_180%2Clg_1%2Cusm_0.66_1.00_0.01/2c6550_b4077e08fe804e4a97a537ac8818db30%7Emv2.png,2026-11-20,"-0.095,-0.095,1.19,1.19"
 Cubbo,https://cubbo.com,I,FALSE,FALSE,site/logos/cubbo.png,#0741dd,company-site,https://cdn.prod.website-files.com/69ba6dbd9a8876017f2ef742/69ba6f7ec40532cde90117b5_Favicon%20256x256.png,2026-11-20,
 Tractian,https://tractian.com,I,TRUE,FALSE,site/logos/tractian.png,#185df6,company-site,https://tractian.com/icon.svg?b06b8c1ac747b123,2026-11-18,"-0.03,-0.03,1.06,1.06"
@@ -47,17 +47,17 @@ Skelt,https://skelt.com.br,I,FALSE,TRUE,site/logos/skelt.png,#ffffff,manual,http
 Loopi,https://loopipay.com,I,FALSE,FALSE,site/logos/loopi.jpeg,#000000,manual,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTI2CZEHV4haeq9QWnpr0oSx2O3vT-m6pyLMZ8XidlnidscRZ8xU3B_Nc&s=10,2026-11-24,
 Elvenworks,https://elven.works,I,FALSE,FALSE,site/logos/elvenworks.png,#ffffff,company-site,https://elven.works/assets/img/logo-elven.png,2026-11-24,
 Dr. Jones,https://drjones.com.br,I,FALSE,TRUE,site/logos/drjones.png,#ffffff,manual,https://lojasolar.vtexassets.com/arquivos/ids/233313-auto-262.5?width=auto&height=262.5&aspect=true,2026-11-24,
-Vetto,https://www.vetto.ai/talent,II,TRUE,FALSE,site/logos/vetto.jpeg,,manual,https://www.vetto.ai/companies/assets/icon-white.svg,2026-11-24,
+Vetto,https://www.vetto.ai/talent,II,TRUE,FALSE,site/logos/vetto.jpeg,#2f194a,manual,https://www.vetto.ai/companies/assets/icon-white.svg,2026-11-24,"0.165,0.1269,0.675,0.7837"
 Omni Saúde,https://omnisaude.app,II,FALSE,FALSE,site/logos/omni-saude.png,#fcfcfc,company-site,https://framerusercontent.com/images/7jQ34bIReu42sOWzCz6tUKnlY.png,2026-11-24,"0.1723,0.2921,0.6573,0.4064"
 deco,https://www.decocms.com/,II,FALSE,FALSE,site/logos/deco.jpeg,#d0ec1b,manual,https://media.licdn.com/dms/image/v2/D4E0BAQGioPXf55OlGw/company-logo_200_200/B4EZYbzjYTGgAM-/0/1744223221742/getdeco_logo?e=2147483647&v=beta&t=fN5KfjVy0ZApRsz-FkXOyEJgwM-ePEx0s2DwHbUPjk8,2026-11-24,"0.0518,0.0453,0.879,0.897"
 Buser,https://buser.com.br,I,TRUE,FALSE,site/logos/buser.png,#ffffff,company-site,https://buser.com.br/apple-touch-icon.png,2026-11-24,"-0.075,-0.075,1.15,1.15"
 Bia,https://bia.app,I,FALSE,FALSE,site/logos/bia.png,#000000,company-site,https://bia.app/assets-landing/logos/bia-logo.png,2026-11-24,
-Robbin,https://robbin.com.br,I,FALSE,FALSE,site/logos/robbin.jpg,,manual,https://robbin.com.br/favicon.svg,2026-11-24,
+Robbin,https://robbin.com.br,I,FALSE,FALSE,site/logos/robbin.jpg,#ffffff,manual,https://robbin.com.br/favicon.svg,2026-11-24,"0.2438,0.0015,0.518,0.9896"
 Trybe,https://betrybe.com,I,FALSE,FALSE,site/logos/trybe.png,#ffffff,manual,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmEb6-7RKspD5bmd0NF5RcsueFsP0Yx_iWui1uvwnA&s,2026-11-24,"-0.02,-0.02,1.04,1.04"
 Destaxa,https://destaxa.com.br,I,FALSE,FALSE,site/logos/destaxa.png,#ffffff,manual,https://play-lh.googleusercontent.com/t3vbCWDLWFHFgbMkKcl6GK6fSrVTW1WCWHzn0TDQQxtIVhJ_UxkETfAQPlqRmy22TJG_98EzZC2WFWJVH9LN,2026-11-24,"-0.08,-0.08,1.16,1.16"
 Patagon AI,https://patagon.ai,II,FALSE,FALSE,site/logos/patagon.png,#000000,manual,https://cdn.prod.website-files.com/66720261788977c9cce4348c/6a4688db5f3bff7be9df8854_patagon-ai-logo-cream-horizontal.png,2026-11-24,
 Backchannel,https://backchannel.com.br,II,FALSE,FALSE,site/logos/backchannel.png,#ffffff,company-site,https://backchannel.com.br/apple-touch-icon.png,2026-11-24,"-0.275,-0.275,1.55,1.55"
-Igual,https://igual.com,I,FALSE,FALSE,site/logos/igual.jpeg,,manual,https://www.igual.com/assets/igual-logo.svg,2026-11-25,
+Igual,https://igual.com,I,FALSE,FALSE,site/logos/igual.jpeg,#ffffff,manual,https://www.igual.com/assets/igual-logo.svg,2026-11-25,"-0.07,-0.07,1.14,1.14"
 180° Insurance,https://180s.com.br,I,TRUE,FALSE,site/logos/180.png,#000000,manual,https://180s.com.br/wp-content/uploads/2025/12/logo-branco-180.svg,2026-11-24,
 Henry,https://soyhenry.com,I,FALSE,FALSE,site/logos/henry.png,#ffffff,company-site,https://soyhenry.com/images/inspo/header/henry-logo.svg?dpl=dpl_7gFNB7EXCDjm8X6ZrN64q3G2TUw2,2026-11-24,
 Salu,https://salu.com.vc,I,FALSE,TRUE,site/logos/salu.png,#ffffff,company-site,https://salu.com.vc/icon.svg?icon.2ux1xpcq7xge7.svg,2026-11-24,"0.2334,0.2052,0.5421,0.625"
