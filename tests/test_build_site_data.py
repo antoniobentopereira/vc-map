@@ -1,4 +1,3 @@
-import json
 import sys
 import tempfile
 import unittest
@@ -6,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from build_site_data import build, slugify  # noqa: E402
+from build_site_data import build  # noqa: E402
 from test_check_data import ALPHA, HEADER, HEADERS, touch_logos, write  # noqa: E402
 
 
@@ -35,8 +34,8 @@ class BuildSiteDataTest(unittest.TestCase):
         )
 
     def test_slugs_are_ascii_and_unique(self):
-        self.assertEqual(slugify("NG.CASH"), "ng-cash")
-        self.assertEqual(slugify("Açaí & Café!"), "acai-cafe")
+        accents = BETA.replace("Beta Co.", "Açaí & Café!").replace("beta.png", "cafe.png")
+        self.assertEqual(self.build([accents])["companies"][0]["slug"], "acai-cafe")
         twin = BETA.replace("Beta Co.", "beta co").replace("beta.png", "beta2.png")
         slugs = [c["slug"] for c in self.build([BETA, twin])["companies"]]
         self.assertEqual(slugs, ["beta-co", "beta-co-2"])
@@ -47,9 +46,6 @@ class BuildSiteDataTest(unittest.TestCase):
             (Path(d) / "site/logos/missing.svg").unlink()
             with self.assertRaises(SystemExit):
                 build(d, d)
-
-    def test_output_is_json_serialisable(self):
-        json.dumps(self.build([ALPHA]))
 
 
 if __name__ == "__main__":

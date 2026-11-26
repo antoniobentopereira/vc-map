@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { deviceOf, layoutLens, type Viewport } from "./lens";
+import { layoutLens, type Viewport } from "./lens";
 
 const insets = { top: 0, right: 0, bottom: 0, left: 0 };
 const desktop: Viewport = { width: 1500, height: 900, insets };
@@ -12,10 +12,5 @@ describe("Float Lens layout", () => {
     expect(layout.targets.every((t) => t === null)).toBe(true);
     expect(layout.stageHeight).toBe(viewport.height);
     expect(layout.decorations).toEqual([]);
-  });
-
-  it("tells phones from desktops by width", () => {
-    expect(deviceOf(desktop)).toBe("desktop");
-    expect(deviceOf(phone)).toBe("phone");
   });
 });

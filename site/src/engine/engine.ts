@@ -75,7 +75,9 @@ export class Engine {
     canvas.addEventListener("pointerleave", () => (this.pointer = null));
     // A tap on empty canvas gives a brief push at that point, so touch has a reaction too.
     canvas.addEventListener("pointerdown", (e) => {
-      if (e.pointerType !== "mouse") {
+      if (e.pointerType === "mouse") return;
+      const hit = this.app.renderer.events.rootBoundary.hitTest(e.offsetX, e.offsetY);
+      if (!hit || hit.parent !== this.dots) {
         this.pointer = { x: e.offsetX, y: e.offsetY };
         setTimeout(() => (this.pointer = null), 350);
       }
@@ -212,7 +214,8 @@ export class Engine {
       n.mask.clear().circle(0, 0, r).fill(0xffffff);
       n.disc.clear().circle(0, 0, r).fill(0xffffff);
       n.view.hitArea = new Circle(0, 0, r);
-      if (n !== this.paused) this.drawRing(n);
+      if (n === this.paused) n.ring.clear().circle(0, 0, r).stroke({ width: 2, color: tokens.yellow, alpha: 1, alignment: 0 });
+      else this.drawRing(n);
     }
   }
 
