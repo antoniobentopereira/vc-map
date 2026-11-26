@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
   import { NOT_AVAILABLE, type Field } from "./card-data";
 
   let { field, number = false, block = false }: { field: Field | undefined; number?: boolean; block?: boolean } = $props();
@@ -18,7 +19,7 @@
       onclick={() => (open = !open)}
     >{#if field.basis === "estimated" && number}≈ {/if}{field.value}</button>
     {#if open}
-      <span class="tip" role="tooltip">
+      <span class="tip" role="tooltip" transition:fade={{ duration: 120 }}>
         <span><b>Basis</b> {field.basis}</span>
         <span><b>Confidence</b> {field.confidence}</span>
         <a href={field.source} target="_blank" rel="noopener noreferrer"><b>Source</b> open ↗</a>

@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { Field } from "./card-data";
   import Fact from "./Fact.svelte";
+  import { fade, scale } from "svelte/transition";
+  import { cubicOut } from "svelte/easing";
 
   type CardCompany = { slug: string; name: string; website: string; logo: string; fund: string; fields: Record<string, Field | undefined> };
   let { company, logoUrl, onClose, onOpen }: {
@@ -19,8 +21,8 @@
 {#if company}
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-<div class="backdrop" onclick={(e) => e.target === e.currentTarget && onClose()}>
-  <div class="card" role="dialog" aria-modal="true" aria-labelledby="card-title">
+<div class="backdrop" transition:fade={{ duration: 160 }} onclick={(e) => e.target === e.currentTarget && onClose()}>
+  <div class="card" in:scale={{ start: 0.96, duration: 200, easing: cubicOut }} out:scale={{ start: 0.98, duration: 120 }} role="dialog" aria-modal="true" aria-labelledby="card-title">
     <button class="close" bind:this={closeBtn} aria-label="Close" onclick={onClose}>×</button>
     <header>
       <img src={logoUrl(company.logo)} alt="" />
@@ -66,9 +68,12 @@
     position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; border-radius: 999px; cursor: pointer;
     background: none; border: 1px solid var(--line); color: inherit; font: inherit; font-size: 20px; line-height: 1;
   }
+  .close { transition: border-color 0.15s; }
   .close:hover { border-color: var(--brown); }
   .open {
     width: 100%; background: var(--brown); color: var(--cream); border: 0; border-radius: 999px; padding: 9px 14px;
-    font: inherit; font-weight: 600; font-size: 14px; cursor: pointer;
+    font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; transition: transform 0.15s, opacity 0.15s;
   }
+  .open:hover { opacity: 0.88; }
+  .open:active { transform: scale(0.98); }
 </style>

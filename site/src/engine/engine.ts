@@ -223,7 +223,21 @@ export class Engine {
 
   /** Ball titles fade in once the dots have mostly arrived (immediately when only re-laying out). */
   private drawTitles(decorations: Decoration[], relayout: boolean) {
-    for (const old of this.titles.removeChildren()) old.destroy();
+    const olds = this.titles.removeChildren();
+    if (olds.length) {
+      // Old titles fade out on their own layer instead of vanishing.
+      const layer = new Container();
+      layer.addChild(...olds);
+      this.titles.parent?.addChild(layer);
+      const t0 = performance.now();
+      const out = () => {
+        const a = 1 - clamp((performance.now() - t0) / 180, 0, 1);
+        layer.alpha = a;
+        if (a > 0) requestAnimationFrame(out);
+        else layer.destroy({ children: true });
+      };
+      out();
+    }
     const start = performance.now() + (relayout ? -Infinity : physics.transitionMs * 0.5);
     for (const d of decorations) {
       const text = new Text({

@@ -2,6 +2,8 @@
   import { LENSES, VIEWS } from "./shell-data";
   import type { Insets } from "../engine/lens";
   import About from "./About.svelte";
+  import { fly } from "svelte/transition";
+  import { cubicOut } from "svelte/easing";
 
   let { activeLens, onLens, onInsets }: {
     activeLens: string;
@@ -14,6 +16,31 @@
   let menuWrap: HTMLElement;
   let menuOpen = $state(false);
   let aboutOpen = $state(false);
+
+  // One shared indicator slides under whichever pill is active, matching its size.
+  let pillsEl: HTMLElement;
+  let pillEls: Record<string, HTMLElement> = {};
+  let ind = $state({ x: 0, y: 0, w: 0, h: 0, show: false, anim: false });
+  const activeBuilt = $derived(LENSES.some((l) => l.built && l.id === activeLens));
+  $effect(() => {
+    const id = activeLens;
+    const place = () => {
+      const el = pillEls[id];
+      if (!el || !activeBuilt) return void (ind.show = false);
+      ind.x = el.offsetLeft; ind.y = el.offsetTop; ind.w = el.offsetWidth; ind.h = el.offsetHeight; ind.show = true;
+    };
+    place();
+    // Animate only after the first placement, and not while the bar itself is resizing.
+    requestAnimationFrame(() => (ind.anim = true));
+    const observer = new ResizeObserver(() => {
+      ind.anim = false;
+      place();
+      requestAnimationFrame(() => (ind.anim = true));
+    });
+    observer.observe(pillsEl);
+    for (const el of Object.values(pillEls)) observer.observe(el);
+    return () => observer.disconnect();
+  });
 
   // Report the bars' heights to the engine whenever they change (resize, wrapping text, fonts).
   $effect(() => {
@@ -48,7 +75,7 @@
         onclick={() => (menuOpen = !menuOpen)}
       >Views ▾</button>
       {#if menuOpen}
-        <div class="menu" id="views-menu">
+        <div class="menu" id="views-menu" transition:fly={{ y: -6, duration: 140, easing: cubicOut }}>
           {#each VIEWS as view (view.id)}
             <button class="menu-item" disabled={!view.built} title={view.built ? undefined : "Coming soon"}>
               <span>{view.label}</span>
@@ -71,11 +98,18 @@
 {#if aboutOpen}<About onClose={() => (aboutOpen = false)} />{/if}
 
 <div class="bottom" bind:this={bottomBars}>
-  <nav class="pills" aria-label="Lenses">
+  <nav class="pills" aria-label="Lenses" bind:this={pillsEl}>
+    <span
+      class="indicator"
+      class:anim={ind.anim}
+      aria-hidden="true"
+      style="transform: translate({ind.x}px, {ind.y}px); width: {ind.w}px; height: {ind.h}px; opacity: {ind.show ? 1 : 0};"
+    ></span>
     {#each LENSES as lens (lens.id)}
       <button
         class="pill"
         class:on={lens.built && lens.id === activeLens}
+        bind:this={pillEls[lens.id]}
         disabled={!lens.built}
         aria-current={lens.id === activeLens ? "true" : undefined}
         title={lens.built ? undefined : "Coming soon"}
@@ -103,7 +137,9 @@
   .btn {
     background: var(--cream); border: 1px solid var(--line); border-radius: 999px;
     padding: 7px 14px; cursor: pointer; font-size: 14px; white-space: nowrap;
+    transition: border-color 0.15s, transform 0.15s, opacity 0.15s;
   }
+  .btn:active:not(:disabled) { transform: scale(0.96); }
   .btn:hover:not(:disabled) { border-color: var(--brown); }
   .btn.icon { width: 34px; padding: 7px 0; }
   .btn.play { background: var(--brown); color: var(--cream); border-color: var(--brown); font-weight: 600; }
@@ -118,7 +154,7 @@
   }
   .menu-item {
     display: flex; align-items: center; justify-content: space-between; width: 100%; box-sizing: border-box; text-align: left;
-    background: none; border: 0; border-radius: 9px; padding: 8px 10px; cursor: pointer; font-size: 14px;
+    background: none; border: 0; border-radius: 9px; padding: 8px 10px; cursor: pointer; font-size: 14px; transition: background 0.15s;
   }
   .menu-item:hover:not(:disabled) { background: rgba(70, 37, 0, 0.06); }
   .toggle { opacity: 0.45; cursor: not-allowed; box-sizing: border-box; }
@@ -127,13 +163,15 @@
 
   .bottom { bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding-bottom: 10px; }
   .pills {
-    max-width: calc(100vw - 32px); display: flex; gap: 4px; padding: 5px; overflow-x: auto; scrollbar-width: none;
+    position: relative; max-width: calc(100vw - 32px); display: flex; gap: 4px; padding: 5px; overflow-x: auto; scrollbar-width: none;
     background: var(--cream); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 6px 24px rgba(70, 37, 0, 0.08);
   }
   .pills::-webkit-scrollbar { display: none; }
-  .pill { border: 0; background: none; border-radius: 999px; padding: 8px 14px; cursor: pointer; font-size: 14px; white-space: nowrap; }
+  .pill { border: 0; background: none; position: relative; border-radius: 999px; padding: 8px 14px; cursor: pointer; font-size: 14px; white-space: nowrap; transition: background 0.2s, color 0.25s; }
+  .indicator { position: absolute; left: 0; top: 0; border-radius: 999px; background: var(--brown); pointer-events: none; }
+  .indicator.anim { transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s; }
   .pill:hover:not(:disabled):not(.on) { background: rgba(70, 37, 0, 0.06); }
-  .on { background: var(--brown) !important; color: var(--cream) !important; }
+  .on { color: var(--cream) !important; }
 
   .foot { font-size: 11px; color: var(--soft); text-align: center; padding: 0 16px; pointer-events: none; }
   .desktop-note::before { content: "·"; margin: 0 6px 0 4px; }

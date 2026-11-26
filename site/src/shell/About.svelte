@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fade, scale } from "svelte/transition";
+  import { cubicOut } from "svelte/easing";
   let { onClose }: { onClose: () => void } = $props();
   let closeBtn: HTMLButtonElement;
   $effect(() => closeBtn.focus());
@@ -7,8 +9,8 @@
 <svelte:window onkeydown={(e) => e.key === "Escape" && onClose()} />
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-<div class="backdrop" onclick={(e) => e.target === e.currentTarget && onClose()}>
-  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="about-title">
+<div class="backdrop" transition:fade={{ duration: 160 }} onclick={(e) => e.target === e.currentTarget && onClose()}>
+  <div class="panel" in:scale={{ start: 0.96, duration: 200, easing: cubicOut }} out:scale={{ start: 0.98, duration: 120 }} role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button class="close" bind:this={closeBtn} aria-label="Close" onclick={onClose}>×</button>
     <h2 id="about-title">About VC Map</h2>
 
@@ -58,6 +60,7 @@
     position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; border-radius: 999px; cursor: pointer;
     background: none; border: 1px solid var(--line); color: inherit; font: inherit; font-size: 20px; line-height: 1;
   }
+  .close { transition: border-color 0.15s; }
   .close:hover { border-color: var(--brown); }
   .est-text { text-decoration: underline dotted; text-decoration-color: var(--soft); text-underline-offset: 3px; }
   .est-shape { display: inline-block; border: 1.5px dashed var(--soft); border-radius: 999px; padding: 0 8px; }

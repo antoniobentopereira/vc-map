@@ -1,5 +1,7 @@
 <script lang="ts">
   import Fact from "./Fact.svelte";
+  import { fly } from "svelte/transition";
+  import { cubicOut } from "svelte/easing";
   import { NOT_AVAILABLE } from "./card-data";
   import { timeline, type ProfileCompany } from "./profile-data";
 
@@ -28,7 +30,7 @@
 </script>
 
 {#if company}
-<div class="page" role="region" aria-label="{company.name} profile">
+<div class="page" in:fly={{ y: 14, duration: 220, easing: cubicOut }} out:fly={{ y: 8, duration: 140 }} role="region" aria-label="{company.name} profile">
   <article>
     <button class="back" bind:this={back} onclick={onBack}>← Back to the dots</button>
 
@@ -134,6 +136,7 @@
     position: sticky; top: 12px; z-index: 1; background: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; cursor: pointer;
     font: inherit; font-size: 14px; color: inherit;
   }
+  .back { transition: border-color 0.15s; }
   .back:hover { border-color: var(--brown); }
   header { display: flex; align-items: center; gap: 16px; margin: 22px 0 10px; }
   img { width: 72px; height: 72px; border-radius: 50%; border: 1px solid var(--line); object-fit: contain; background: #fff; flex: none; }

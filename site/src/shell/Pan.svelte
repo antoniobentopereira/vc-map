@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
   // Thin translucent chevrons at the stage's side edges: they appear only when the stage extends past that edge.
   let { host }: { host: HTMLElement } = $props();
 
@@ -26,12 +27,12 @@
 </script>
 
 {#if canLeft}
-  <button class="chev left" aria-label="Pan left" onclick={() => pan(-1)}>
+  <button class="chev left" transition:fade={{ duration: 200 }} aria-label="Pan left" onclick={() => pan(-1)}>
     <svg viewBox="0 0 24 48" aria-hidden="true"><path d="M18 6 6 24l12 18" /></svg>
   </button>
 {/if}
 {#if canRight}
-  <button class="chev right" aria-label="Pan right" onclick={() => pan(1)}>
+  <button class="chev right" transition:fade={{ duration: 200 }} aria-label="Pan right" onclick={() => pan(1)}>
     <svg viewBox="0 0 24 48" aria-hidden="true"><path d="M6 6l12 18L6 42" /></svg>
   </button>
 {/if}
