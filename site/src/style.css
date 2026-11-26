@@ -18,6 +18,8 @@ body {
 #stage {
   position: fixed;
   inset: 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* only a grouped Lens on a phone is taller than the screen; Float never scrolls */
 }
 #stage canvas {
   display: block;

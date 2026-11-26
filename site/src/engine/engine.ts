@@ -4,9 +4,10 @@
 import { Application, Assets, Circle, Container, Graphics, Rectangle, Sprite, Text, Texture } from "pixi.js";
 import { forceCollide, forceSimulation, type Simulation, type SimulationNodeDatum } from "d3-force";
 import { dot, physics, tokens } from "./config";
+import { drawIcon } from "./icons";
 import { deviceOf, layoutLens, type Decoration, type Insets, type LensId, type Point, type Viewport } from "./lens";
 
-export type EngineCompany = { slug: string; name: string; logoUrl: string; fund: string };
+export type EngineCompany = { slug: string; name: string; logoUrl: string; fund: string; sector: string };
 
 type Node = SimulationNodeDatum & {
   company: EngineCompany;
@@ -38,6 +39,8 @@ export class Engine {
   private radius: number = dot.radiusDesktop;
   private dots = new Container();
   private titles = new Container(); // Lens decorations, above the dots
+  private host!: HTMLElement;
+  private shrinkTimer = 0;
 
   /** Called when a Logo dot is clicked (the dot has already been paused). */
   onDotClick: (slug: string) => void = () => {};
@@ -51,7 +54,10 @@ export class Engine {
       resolution: Math.min(2, window.devicePixelRatio || 1),
       autoDensity: true,
     });
+    this.host = host;
     host.appendChild(this.app.canvas);
+    // Pixi blocks touch scrolling on its canvas; allow vertical panning so a tall stage can scroll on phones.
+    this.app.canvas.style.touchAction = "pan-y";
     this.app.stage.addChild(this.dots, this.titles);
 
     this.sim = forceSimulation<Node>([])
@@ -144,7 +150,6 @@ export class Engine {
   /** Size of the visible area and the space the shell's bars take at its edges. */
   setViewport(width: number, height: number, insets: Insets) {
     this.viewport = { width, height, insets };
-    this.app.renderer.resize(width, height);
     if (this.updateRadius() && this.nodes.length) this.redraw();
     this.setLens(this.lens, true);
   }
@@ -180,7 +185,7 @@ export class Engine {
   setLens(lens: LensId, relayout = false) {
     if (lens === this.lens && !relayout) return;
     const layout = layoutLens(lens, this.nodes.map((n) => n.company), this.viewport);
-    this.stageHeightPx = layout.stageHeight;
+    this.setStageHeight(layout.stageHeight, !relayout);
     if (!relayout) {
       this.lensStart = performance.now();
       if (this.lens === "float") for (const n of this.nodes) n.home = { x: n.x!, y: n.y! };
@@ -197,6 +202,22 @@ export class Engine {
     this.drawTitles(layout.decorations, relayout);
   }
 
+  /**
+   * Grow or shrink the canvas (and with it the scroll range). When leaving a grouped Lens the shrink waits
+   * until the dots are back, so they are not squashed against the new bottom edge on the way.
+   */
+  private setStageHeight(height: number, delayShrink: boolean) {
+    clearTimeout(this.shrinkTimer);
+    const apply = (h: number) => {
+      this.stageHeightPx = h;
+      this.app.renderer.resize(this.viewport.width, h);
+    };
+    if (delayShrink && height < this.stageHeightPx) {
+      this.host.scrollTo({ top: 0, behavior: "smooth" });
+      this.shrinkTimer = window.setTimeout(() => apply(height), physics.transitionMs * 1.6 + physics.staggerMs);
+    } else apply(height);
+  }
+
   /** Ball titles fade in once the dots have mostly arrived (immediately when only re-laying out). */
   private drawTitles(decorations: Decoration[], relayout: boolean) {
     for (const old of this.titles.removeChildren()) old.destroy();
@@ -209,11 +230,20 @@ export class Engine {
       text.anchor.set(0.5, 1);
       text.position.set(d.x, d.y);
       text.alpha = 0;
-      this.titles.addChild(text);
+      const parts: Container[] = [text];
+      if (d.icon) {
+        const icon = new Graphics();
+        drawIcon(icon, d.icon, tokens.brown);
+        icon.position.set(d.x, d.y - 33);
+        icon.alpha = 0;
+        parts.push(icon);
+      }
+      this.titles.addChild(...parts);
       const fade = () => {
         if (text.destroyed) return;
-        text.alpha = clamp((performance.now() - start) / 400, 0, 1);
-        if (text.alpha < 1) requestAnimationFrame(fade);
+        const alpha = clamp((performance.now() - start) / 400, 0, 1);
+        for (const part of parts) part.alpha = alpha;
+        if (alpha < 1) requestAnimationFrame(fade);
       };
       fade();
     }
@@ -340,10 +370,10 @@ export class Engine {
 
   /** Soft walls inset from the shell's bars: a gentle push one radius early, a hard clamp at the edge. */
   private walls() {
-    const { width, height, insets } = this.viewport;
+    const { width, insets } = this.viewport;
     const r = this.radius;
     const L = insets.left + r, T = insets.top + r;
-    const R = width - insets.right - r, B = height - insets.bottom - r;
+    const R = width - insets.right - r, B = this.stageHeightPx - insets.bottom - r;
     const k = 0.01;
     for (const n of this.nodes) {
       if (n.x! < L + r) n.vx! += (L + r - n.x!) * k;
