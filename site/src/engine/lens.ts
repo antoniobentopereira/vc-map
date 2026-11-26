@@ -88,6 +88,7 @@ function layoutSector(keys: string[], viewport: Viewport): LensLayout {
   const known: readonly string[] = SECTORS.map((s) => s.name);
   const groups = [...known.filter((k) => keys.includes(k)), ...new Set(keys.filter((k) => !known.includes(k)))];
   const members = new Map(groups.map((g) => [g, keys.flatMap((k, i) => (k === g ? [i] : []))]));
+  groups.sort((a, b) => members.get(b)!.length - members.get(a)!.length); // biggest first (stable, so ties keep Sector order)
   /** Width a ball and its title need side by side (the 15px semibold title is often wider than the ball). */
   const blockWidth = (g: string, scale: number) =>
     Math.max(2 * ballRadius(members.get(g)!.length, scale), `${g} · ${members.get(g)!.length}`.length * 7.8 + 6);
@@ -109,7 +110,7 @@ function layoutSector(keys: string[], viewport: Viewport): LensLayout {
   } else {
     // One row, biggest Sector on the left. If that is wider than the screen the stage extends to
     // the right and the view pans. The balls share one center line, the tallest one with its title centered vertically.
-    const row = [...groups].sort((a, b) => members.get(b)!.length - members.get(a)!.length); // biggest first (stable)
+    const row = groups;
     const widths = row.map((g) => blockWidth(g, 1));
     const rowWidth = widths.reduce((sum, w) => sum + w, 0) + gap * (groups.length - 1) + SIDE_MARGIN * 2;
     stageW = Math.max(W, rowWidth);

@@ -104,8 +104,10 @@ describe("Sector Lens layout", () => {
     expect(byX).toEqual([...byX].sort((a, b) => b - a));
   });
 
-  it("stacks the phone balls in one column", () => {
+  it("stacks the phone balls in one column, biggest on top", () => {
     const { balls } = layoutLens("sector", companies, phone);
+    const byY = [...balls].sort((a, b) => a.y - b.y).map((b) => b.radius);
+    expect(byY).toEqual([...byY].sort((a, b) => b - a));
     expect(new Set(balls.map((b) => b.x)).size).toBe(1);
   });
 });
