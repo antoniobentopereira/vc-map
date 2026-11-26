@@ -88,6 +88,16 @@ describe("Sector Lens layout", () => {
     expect(layoutLens("float", companies, desktop).stageWidth).toBe(desktop.width);
   });
 
+  it("lines the desktop balls up in one row, centered vertically in the free area", () => {
+    const { balls } = layoutLens("sector", companies, desktop);
+    expect(new Set(balls.map((b) => b.y)).size).toBe(1);
+    const free = desktop.height - bars.top - bars.bottom;
+    const tallest = Math.max(...balls.map((b) => b.radius));
+    const blockTop = balls[0].y - tallest - 54;
+    const blockBottom = balls[0].y + tallest;
+    expect(bars.top + free / 2).toBeCloseTo((blockTop + blockBottom) / 2, 0);
+  });
+
   it("stacks the phone balls in one column", () => {
     const { balls } = layoutLens("sector", companies, phone);
     expect(new Set(balls.map((b) => b.x)).size).toBe(1);

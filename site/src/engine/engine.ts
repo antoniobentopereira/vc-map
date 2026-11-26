@@ -383,8 +383,16 @@ export class Engine {
       if (n.x! > R - r) n.vx! -= (n.x! - R + r) * k;
       if (n.y! < T + r) n.vy! += (T + r - n.y!) * k;
       if (n.y! > B - r) n.vy! -= (n.y! - B + r) * k;
-      if (n.x! < L || n.x! > R) (n.x = clamp(n.x!, L, R)), (n.vx! *= -0.3);
-      if (n.y! < T || n.y! > B) (n.y = clamp(n.y!, T, B)), (n.vy! *= -0.3);
+      // Bounce only a dot still moving outward; reversing one already heading back in (a strong Lens pull)
+      // would throw it into the wall again every tick and leave it stuck there.
+      if (n.x! < L || n.x! > R) {
+        if ((n.x! < L && n.vx! < 0) || (n.x! > R && n.vx! > 0)) n.vx! *= -0.3;
+        n.x = clamp(n.x!, L, R);
+      }
+      if (n.y! < T || n.y! > B) {
+        if ((n.y! < T && n.vy! < 0) || (n.y! > B && n.vy! > 0)) n.vy! *= -0.3;
+        n.y = clamp(n.y!, T, B);
+      }
     }
   }
 }
