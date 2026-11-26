@@ -9,7 +9,7 @@ Stage 4, Visualization v1 (definition of done in `docs/stages.md`). Stages 1 to 
 1. Done: Float prototype on branch `prototype/float` (never merged); verdicts in its `site/prototype-float/README.md`. Spec written: `.scratch/visualization-v1/spec.md` (v1 = Float + Sector Lens + shell + Company card and profile). Next: `/to-tickets`.
 2. Sub-sector to Sector mapping in `data/sectors.csv`: Claude proposes, owner reviews.
 3. `tools/logo-studio/` (replaces `tools/logo-viewer/`), then all logos confirmed (ADR 0015).
-4. Real `site/`: data-to-JSON script, engine, Float, shell, Company card and profile, sync command.
+4. Real `site/`: done so far: Vite project, first data-to-JSON script, engine and Float on raw logos (ticket 01). Still to do: shell, Company card and profile, sync command.
 
 ## Decisions (one line each)
 - Stack: Vite + TypeScript, Svelte, PixiJS, d3-force, Matter.js (games only), GSAP, d3-geo. Breaks mysite's rules on purpose (ADR 0014).

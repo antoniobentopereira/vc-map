@@ -1,0 +1,22 @@
+:root {
+  --cream: #faf6e4;
+  --brown: #462500;
+  --yellow: #fbcf00;
+  --font: "Bricolage Grotesque", system-ui, sans-serif;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: var(--font);
+  overflow: hidden;
+}
+#stage {
+  position: fixed;
+  inset: 0;
+}
+#stage canvas {
+  display: block;
+}

@@ -1,0 +1,784 @@
+{
+ "companies": [
+  {
+   "slug": "ng-cash",
+   "name": "NG.CASH",
+   "fund": "I",
+   "logo": "logos/ng-cash.png"
+  },
+  {
+   "slug": "credaluga",
+   "name": "CredAluga",
+   "fund": "II",
+   "logo": "logos/credaluga.png"
+  },
+  {
+   "slug": "flieber",
+   "name": "Flieber",
+   "fund": "I",
+   "logo": "logos/flieber.svg"
+  },
+  {
+   "slug": "tempo",
+   "name": "Tempo",
+   "fund": "II",
+   "logo": "logos/tempo.svg"
+  },
+  {
+   "slug": "gatekeeper",
+   "name": "Gatekeeper",
+   "fund": "II",
+   "logo": "logos/gatekeeper.png"
+  },
+  {
+   "slug": "nomo",
+   "name": "Nomo",
+   "fund": "I",
+   "logo": "logos/nomo.svg"
+  },
+  {
+   "slug": "kanastra",
+   "name": "Kanastra",
+   "fund": "I",
+   "logo": "logos/kanastra.svg"
+  },
+  {
+   "slug": "dolado",
+   "name": "Dolado",
+   "fund": "I",
+   "logo": "logos/dolado.png"
+  },
+  {
+   "slug": "ume",
+   "name": "Ume",
+   "fund": "I",
+   "logo": "logos/ume.svg"
+  },
+  {
+   "slug": "nexa",
+   "name": "Nexa",
+   "fund": "II",
+   "logo": "logos/nexa.svg"
+  },
+  {
+   "slug": "flash",
+   "name": "Flash",
+   "fund": "I",
+   "logo": "logos/flash.svg"
+  },
+  {
+   "slug": "syntage",
+   "name": "Syntage",
+   "fund": "I",
+   "logo": "logos/syntage.svg"
+  },
+  {
+   "slug": "unxpose",
+   "name": "Unxpose",
+   "fund": "I",
+   "logo": "logos/unxpose.png"
+  },
+  {
+   "slug": "iniciador",
+   "name": "Iniciador",
+   "fund": "II",
+   "logo": "logos/iniciador.png"
+  },
+  {
+   "slug": "carbonext",
+   "name": "Carbonext",
+   "fund": "I",
+   "logo": "logos/carbonext.svg"
+  },
+  {
+   "slug": "better-drinks",
+   "name": "Better Drinks",
+   "fund": "I",
+   "logo": "logos/better-drinks.png"
+  },
+  {
+   "slug": "cubbo",
+   "name": "Cubbo",
+   "fund": "I",
+   "logo": "logos/cubbo.png"
+  },
+  {
+   "slug": "tractian",
+   "name": "Tractian",
+   "fund": "I",
+   "logo": "logos/tractian.svg"
+  },
+  {
+   "slug": "frizata",
+   "name": "Frizata",
+   "fund": "I",
+   "logo": "logos/frizata.svg"
+  },
+  {
+   "slug": "lerian",
+   "name": "Lerian",
+   "fund": "II",
+   "logo": "logos/lerian.png"
+  },
+  {
+   "slug": "crown",
+   "name": "Crown",
+   "fund": "II",
+   "logo": "logos/crown.png"
+  },
+  {
+   "slug": "newtail",
+   "name": "Newtail",
+   "fund": "I",
+   "logo": "logos/newtail.svg"
+  },
+  {
+   "slug": "pier",
+   "name": "Pier",
+   "fund": "I",
+   "logo": "logos/pier.png"
+  },
+  {
+   "slug": "iorq",
+   "name": "IORQ",
+   "fund": "II",
+   "logo": "logos/iorq.png"
+  },
+  {
+   "slug": "the-coffee",
+   "name": "The Coffee",
+   "fund": "I",
+   "logo": "logos/the_coffee.webp"
+  },
+  {
+   "slug": "bhub",
+   "name": "BHub",
+   "fund": "I",
+   "logo": "logos/bhub.png"
+  },
+  {
+   "slug": "stark-bank",
+   "name": "Stark Bank",
+   "fund": "I",
+   "logo": "logos/starkbank.png"
+  },
+  {
+   "slug": "jota",
+   "name": "Jota",
+   "fund": "II",
+   "logo": "logos/jota.svg"
+  },
+  {
+   "slug": "nomad",
+   "name": "Nomad",
+   "fund": "I",
+   "logo": "logos/nomad.png"
+  },
+  {
+   "slug": "kovi",
+   "name": "Kovi",
+   "fund": "I",
+   "logo": "logos/kovi.jpeg"
+  },
+  {
+   "slug": "nekt",
+   "name": "Nekt",
+   "fund": "II",
+   "logo": "logos/nekt.png"
+  },
+  {
+   "slug": "liti",
+   "name": "Liti",
+   "fund": "I",
+   "logo": "logos/liti.png"
+  },
+  {
+   "slug": "alchemy",
+   "name": "Alchemy",
+   "fund": "I",
+   "logo": "logos/alchemy.svg"
+  },
+  {
+   "slug": "null-platform",
+   "name": "Null Platform",
+   "fund": "I",
+   "logo": "logos/null-platform.png"
+  },
+  {
+   "slug": "comunicain",
+   "name": "ComunicaIn",
+   "fund": "I",
+   "logo": "logos/comunicain.svg"
+  },
+  {
+   "slug": "kamino",
+   "name": "Kamino",
+   "fund": "I",
+   "logo": "logos/kamino.png"
+  },
+  {
+   "slug": "ximple",
+   "name": "Ximple",
+   "fund": "II",
+   "logo": "logos/ximple.svg"
+  },
+  {
+   "slug": "zax",
+   "name": "ZAX",
+   "fund": "I",
+   "logo": "logos/zax.png"
+  },
+  {
+   "slug": "yuno",
+   "name": "Yuno",
+   "fund": "I",
+   "logo": "logos/yuno.png"
+  },
+  {
+   "slug": "baze",
+   "name": "Baze",
+   "fund": "II",
+   "logo": "logos/baze.jpeg"
+  },
+  {
+   "slug": "pomelo",
+   "name": "Pomelo",
+   "fund": "I",
+   "logo": "logos/pomelo.png"
+  },
+  {
+   "slug": "lemon-energia",
+   "name": "Lemon Energia",
+   "fund": "I",
+   "logo": "logos/lemonenergia.png"
+  },
+  {
+   "slug": "morado",
+   "name": "Morado",
+   "fund": "I",
+   "logo": "logos/morado.png"
+  },
+  {
+   "slug": "stay",
+   "name": "Stay",
+   "fund": "II",
+   "logo": "logos/stay.svg"
+  },
+  {
+   "slug": "skelt",
+   "name": "Skelt",
+   "fund": "I",
+   "logo": "logos/skelt.png"
+  },
+  {
+   "slug": "loopi",
+   "name": "Loopi",
+   "fund": "I",
+   "logo": "logos/loopi.jpeg"
+  },
+  {
+   "slug": "elvenworks",
+   "name": "Elvenworks",
+   "fund": "I",
+   "logo": "logos/elvenworks.png"
+  },
+  {
+   "slug": "dr-jones",
+   "name": "Dr. Jones",
+   "fund": "I",
+   "logo": "logos/drjones.png"
+  },
+  {
+   "slug": "vetto",
+   "name": "Vetto",
+   "fund": "II",
+   "logo": "logos/vetto.svg"
+  },
+  {
+   "slug": "omni-saude",
+   "name": "Omni Saúde",
+   "fund": "II",
+   "logo": "logos/omni-saude.png"
+  },
+  {
+   "slug": "deco",
+   "name": "deco",
+   "fund": "II",
+   "logo": "logos/deco.jpeg"
+  },
+  {
+   "slug": "buser",
+   "name": "Buser",
+   "fund": "I",
+   "logo": "logos/buser.png"
+  },
+  {
+   "slug": "bia",
+   "name": "Bia",
+   "fund": "I",
+   "logo": "logos/bia.png"
+  },
+  {
+   "slug": "robbin",
+   "name": "Robbin",
+   "fund": "I",
+   "logo": "logos/robbin.svg"
+  },
+  {
+   "slug": "trybe",
+   "name": "Trybe",
+   "fund": "I",
+   "logo": "logos/trybe.png"
+  },
+  {
+   "slug": "destaxa",
+   "name": "Destaxa",
+   "fund": "I",
+   "logo": "logos/destaxa.png"
+  },
+  {
+   "slug": "patagon-ai",
+   "name": "Patagon AI",
+   "fund": "II",
+   "logo": "logos/patagon.png"
+  },
+  {
+   "slug": "backchannel",
+   "name": "Backchannel",
+   "fund": "II",
+   "logo": "logos/backchannel.png"
+  },
+  {
+   "slug": "igual",
+   "name": "Igual",
+   "fund": "I",
+   "logo": "logos/igual.svg"
+  },
+  {
+   "slug": "180-insurance",
+   "name": "180° Insurance",
+   "fund": "I",
+   "logo": "logos/180.svg"
+  },
+  {
+   "slug": "henry",
+   "name": "Henry",
+   "fund": "I",
+   "logo": "logos/henry.svg"
+  },
+  {
+   "slug": "salu",
+   "name": "Salu",
+   "fund": "I",
+   "logo": "logos/salu.svg"
+  },
+  {
+   "slug": "vaas",
+   "name": "Vaas",
+   "fund": "I",
+   "logo": "logos/vaas.jpeg"
+  },
+  {
+   "slug": "refer",
+   "name": "Refer",
+   "fund": "II",
+   "logo": "logos/refer.png"
+  },
+  {
+   "slug": "malga",
+   "name": "Malga",
+   "fund": "I",
+   "logo": "logos/malga.svg"
+  },
+  {
+   "slug": "tapi",
+   "name": "tapi",
+   "fund": "I",
+   "logo": "logos/tapi.svg"
+  },
+  {
+   "slug": "cayena",
+   "name": "Cayena",
+   "fund": "I",
+   "logo": "logos/cayena.png"
+  },
+  {
+   "slug": "quansa",
+   "name": "Quansa",
+   "fund": "I",
+   "logo": "logos/quansa.png"
+  },
+  {
+   "slug": "sanii",
+   "name": "Sanii",
+   "fund": "I",
+   "logo": "logos/sanii.png"
+  },
+  {
+   "slug": "vendah",
+   "name": "Vendah",
+   "fund": "I",
+   "logo": "logos/vendah.png"
+  },
+  {
+   "slug": "jitter",
+   "name": "Jitter",
+   "fund": "I",
+   "logo": "logos/jitter.png"
+  },
+  {
+   "slug": "norma",
+   "name": "Norma",
+   "fund": "II",
+   "logo": "logos/norma.svg"
+  },
+  {
+   "slug": "caveo",
+   "name": "Caveo",
+   "fund": "II",
+   "logo": "logos/caveo.png"
+  },
+  {
+   "slug": "level-ai",
+   "name": "Level AI",
+   "fund": "I",
+   "logo": "logos/level-ai.png"
+  },
+  {
+   "slug": "jusfy",
+   "name": "Jusfy",
+   "fund": "I",
+   "logo": "logos/jusfy.png"
+  },
+  {
+   "slug": "elevva",
+   "name": "Elevva",
+   "fund": "I",
+   "logo": "logos/elevva.webp"
+  },
+  {
+   "slug": "botcity",
+   "name": "BotCity",
+   "fund": "I",
+   "logo": "logos/botcity.png"
+  },
+  {
+   "slug": "hyperplane",
+   "name": "Hyperplane",
+   "fund": "I",
+   "logo": "logos/hyperplane.jpeg"
+  },
+  {
+   "slug": "doji",
+   "name": "Doji",
+   "fund": "I",
+   "logo": "logos/doji.svg"
+  },
+  {
+   "slug": "mecanizou",
+   "name": "Mecanizou",
+   "fund": "I",
+   "logo": "logos/mecanizou.svg"
+  },
+  {
+   "slug": "osana-salud",
+   "name": "Osana Salud",
+   "fund": "I",
+   "logo": "logos/osana.png"
+  },
+  {
+   "slug": "suridata",
+   "name": "Suridata",
+   "fund": "I",
+   "logo": "logos/suridata.jpeg"
+  },
+  {
+   "slug": "brendi",
+   "name": "Brendi",
+   "fund": "II",
+   "logo": "logos/brendi.png"
+  },
+  {
+   "slug": "avra",
+   "name": "Avra",
+   "fund": "II",
+   "logo": "logos/avra.svg"
+  },
+  {
+   "slug": "musa",
+   "name": "Musa",
+   "fund": "I",
+   "logo": "logos/musa.png"
+  },
+  {
+   "slug": "attach-media-partners",
+   "name": "Attach Media Partners",
+   "fund": "I",
+   "logo": "logos/amp.png"
+  },
+  {
+   "slug": "assis",
+   "name": "Assis",
+   "fund": "I",
+   "logo": "logos/assis.svg"
+  },
+  {
+   "slug": "zivo",
+   "name": "Zivo",
+   "fund": "I",
+   "logo": "logos/zivo.png"
+  },
+  {
+   "slug": "aravita",
+   "name": "Aravita",
+   "fund": "I",
+   "logo": "logos/aravita.png"
+  },
+  {
+   "slug": "capa",
+   "name": "Capa",
+   "fund": "II",
+   "logo": "logos/capa.png"
+  },
+  {
+   "slug": "arcca-franquias",
+   "name": "Arcca Franquias",
+   "fund": "I",
+   "logo": "logos/arcca.png"
+  },
+  {
+   "slug": "hashdex",
+   "name": "Hashdex",
+   "fund": "I",
+   "logo": "logos/hashdex.svg"
+  },
+  {
+   "slug": "idwall",
+   "name": "idwall",
+   "fund": "I",
+   "logo": "logos/idwall.svg"
+  },
+  {
+   "slug": "isa-health",
+   "name": "Isa Health",
+   "fund": "I",
+   "logo": "logos/isasaude.png"
+  },
+  {
+   "slug": "lexter",
+   "name": "Lexter",
+   "fund": "I",
+   "logo": "logos/lexter.svg"
+  },
+  {
+   "slug": "winnin",
+   "name": "Winnin",
+   "fund": "I",
+   "logo": "logos/winnin.svg"
+  },
+  {
+   "slug": "alude",
+   "name": "Alude",
+   "fund": "I",
+   "logo": "logos/alude.svg"
+  },
+  {
+   "slug": "kolors",
+   "name": "Kolors",
+   "fund": "I",
+   "logo": "logos/kolors.svg"
+  },
+  {
+   "slug": "cannect",
+   "name": "Cannect",
+   "fund": "I",
+   "logo": "logos/cannect.svg"
+  },
+  {
+   "slug": "gabriel",
+   "name": "Gabriel",
+   "fund": "I",
+   "logo": "logos/gabriel.svg"
+  },
+  {
+   "slug": "menta",
+   "name": "Menta",
+   "fund": "I",
+   "logo": "logos/menta.png"
+  },
+  {
+   "slug": "neofin",
+   "name": "Neofin",
+   "fund": "I",
+   "logo": "logos/neofin.png"
+  },
+  {
+   "slug": "decade",
+   "name": "Decade",
+   "fund": "II",
+   "logo": "logos/decade.svg"
+  },
+  {
+   "slug": "flow",
+   "name": "Flow",
+   "fund": "II",
+   "logo": "logos/flow.svg"
+  },
+  {
+   "slug": "aro",
+   "name": "Aro",
+   "fund": "II",
+   "logo": "logos/aro.png"
+  },
+  {
+   "slug": "fly-media",
+   "name": "Fly Media",
+   "fund": "II",
+   "logo": "logos/flymedia.jpeg"
+  },
+  {
+   "slug": "inner-ai",
+   "name": "Inner AI",
+   "fund": "II",
+   "logo": "logos/inner-ai.png"
+  },
+  {
+   "slug": "bond",
+   "name": "Bond",
+   "fund": "II",
+   "logo": "logos/bond.svg"
+  },
+  {
+   "slug": "maggu",
+   "name": "Maggu",
+   "fund": "II",
+   "logo": "logos/maggu.png"
+  },
+  {
+   "slug": "legiti",
+   "name": "Legiti",
+   "fund": "I",
+   "logo": "logos/legiti.png"
+  },
+  {
+   "slug": "core-ai",
+   "name": "Core AI",
+   "fund": "II",
+   "logo": "logos/coreai.jpeg"
+  },
+  {
+   "slug": "datamint",
+   "name": "Datamint",
+   "fund": "II",
+   "logo": "logos/datamint.png"
+  },
+  {
+   "slug": "palomma",
+   "name": "Palomma",
+   "fund": "II",
+   "logo": "logos/palomma.png"
+  },
+  {
+   "slug": "oasis",
+   "name": "Oasis",
+   "fund": "II",
+   "logo": "logos/oasis.png"
+  },
+  {
+   "slug": "akash",
+   "name": "Akash",
+   "fund": "II",
+   "logo": "logos/akash.svg"
+  },
+  {
+   "slug": "asteras",
+   "name": "Asteras",
+   "fund": "II",
+   "logo": "logos/asteras.svg"
+  },
+  {
+   "slug": "cartsy",
+   "name": "Cartsy",
+   "fund": "II",
+   "logo": "logos/cartsy.png"
+  },
+  {
+   "slug": "hedix",
+   "name": "Hedix",
+   "fund": "II",
+   "logo": "logos/hedix.svg"
+  },
+  {
+   "slug": "kapso",
+   "name": "Kapso",
+   "fund": "II",
+   "logo": "logos/kapso.png"
+  },
+  {
+   "slug": "kayro",
+   "name": "Kayro",
+   "fund": "II",
+   "logo": "logos/kayro.svg"
+  },
+  {
+   "slug": "manor",
+   "name": "Manor",
+   "fund": "II",
+   "logo": "logos/manor.png"
+  },
+  {
+   "slug": "nash",
+   "name": "Nash",
+   "fund": "II",
+   "logo": "logos/nash.png"
+  },
+  {
+   "slug": "sempre",
+   "name": "Sempre+",
+   "fund": "II",
+   "logo": "logos/sempre.svg"
+  },
+  {
+   "slug": "strattum",
+   "name": "Strattum",
+   "fund": "II",
+   "logo": "logos/strattum.svg"
+  },
+  {
+   "slug": "taicor",
+   "name": "Taicor",
+   "fund": "II",
+   "logo": "logos/taicor.jpeg"
+  },
+  {
+   "slug": "backline",
+   "name": "Backline",
+   "fund": "II",
+   "logo": "logos/backline.svg"
+  },
+  {
+   "slug": "khal",
+   "name": "Khal",
+   "fund": "II",
+   "logo": "logos/khal.svg"
+  },
+  {
+   "slug": "fina",
+   "name": "Fina",
+   "fund": "II",
+   "logo": "logos/fina.png"
+  },
+  {
+   "slug": "quantum",
+   "name": "Quantum",
+   "fund": "II",
+   "logo": "logos/quantum.jpeg"
+  },
+  {
+   "slug": "glue",
+   "name": "Glue",
+   "fund": "II",
+   "logo": "logos/glue.png"
+  }
+ ]
+}

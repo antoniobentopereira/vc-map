@@ -6,7 +6,7 @@ Spec: `.scratch/visualization-v1/spec.md`
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done
 
 - [ ] `site/` is a Vite + TypeScript project (ADR 0014). The dev server starts with one command, and the build produces a static folder with relative paths only (ADR 0001).
 - [ ] Vitest is set up and runs from the site's package scripts.

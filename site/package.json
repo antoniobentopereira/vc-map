@@ -1,0 +1,22 @@
+{
+  "name": "vc-map-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data": "python ../scripts/build_site_data.py",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "d3-force": "^3.0.1",
+    "pixi.js": "^8.23.0"
+  },
+  "devDependencies": {
+    "@types/d3-force": "^3.0.10",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.2"
+  }
+}
