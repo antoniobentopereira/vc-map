@@ -109,3 +109,25 @@ _Avoid_: Database
 **Visualization**:
 The static site built on the Dataset. The output of the visual part.
 _Avoid_: Dashboard, app
+
+## Visualization
+
+**Logo dot**:
+One Portfolio company's mark on the canvas, shown as its Original logo. Every Lens moves the same Logo dots; none are created or destroyed when switching Lens.
+_Avoid_: Dot, bubble, node
+
+**Lens**:
+One way of arranging every Logo dot on the canvas, such as by Sector or by Status. Switching Lens moves the dots from their current place to their new one.
+_Avoid_: Layout, view, mode
+
+**Company card**:
+A small centered summary of one Portfolio company, opened by clicking its Logo dot, which stops moving while the card is open. It leads to the Company profile.
+_Avoid_: Popup, tooltip, modal
+
+**Company profile**:
+A page holding everything the Dataset knows about one Portfolio company.
+_Avoid_: Company page, full card, detail view
+
+**View**:
+A page of the Visualization that shows something other than one Logo dot per Portfolio company, such as the Norte Timeline (Rounds), the Investors views or the Quiz.
+_Avoid_: Lens, screen, page

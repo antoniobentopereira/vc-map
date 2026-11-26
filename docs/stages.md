@@ -11,8 +11,12 @@ Every field in `docs/data-model.md` is filled or recorded as missing: the Claims
 ## 3. Scale-up
 Remaining companies are researched one at a time, in Batches whose size the owner names (ADR 0011). Everything is gathered by agents. LinkedIn is read through Linked API only as the recipe's last step (ADR 0010); what is still not found is recorded as missing, and Norte's participation as `UNKNOWN`. Each Batch passes the check script and the owner spot-checks a sample. Done when every company in the Roster is covered. The owner may add new fields along the way.
 
-## 4. Visualization v1 (starts after a couple of Batches)
-Definition of done is set when this stage starts, since the owner expects the data work to shape it. Fixed constraints: static `site/` folder, works at 320px by tap, unofficial notice, visibly different colour for Estimated Claims, works when copied into `mysite/public/vc-map/`.
+## 4. Visualization v1
+Built in this order: a throwaway prototype of the feel (Float drift, one Lens switch, two or three shell layouts), then the Sub-sector to Sector mapping (owner reviews), then `tools/logo-studio/` and all 130 logo circles (ADR 0015), then the real `site/` (ADR 0014).
+
+Done when: the Float Lens runs with all 130 circle logos; the full navigation shell lists every Lens and View in IDEAS.md, with unbuilt ones greyed out, a disabled Receipts toggle and Play; clicking a Logo dot pauses it and opens the Company card (name, logo, Sector, short description, year founded, Fund); "Open full card" leads to a first-version Company profile showing everything in the Dataset (similar to the profile viewer, to be deepened after v1); every Lens, View and profile has a hash URL; the About panel and footer notice are in place, with a small note beside the notice saying the site works best on a desktop; and an explicit sync command copies the build into `mysite/public/vc-map/`.
+
+Fixed constraints: static build output (ADR 0001, 0014); desktop-first, but the Float Lens, the Company card, the navigation shell and the simple Lenses work at 320px by tap, showing all 130 Logo dots at no less than a 14px radius (23px on desktop); on phones Float stays one fixed screen while grouped Lenses become a vertically scrollable stage; physics runs at a fixed 60 Hz step; shell layout and physics values come from the Float prototype's verdicts (`site/prototype-float/README.md` on branch `prototype/float`); unofficial notice; Estimated Claims visibly different everywhere, by one consistent convention explained in the About panel; works when copied into `mysite/public/vc-map/`.
 
 ## Later, out of v1
 Deep Founder profiles (education, past roles, other companies): own plan and own ADR.
