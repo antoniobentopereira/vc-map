@@ -4,7 +4,7 @@ Python standard library only; tests use `unittest`.
 
 - **Tests:** `python -m unittest discover -s tests`
 - **Data check:** `python scripts/check_data.py`
-- **Site tests (Vitest):** `cd site && npm run test` (types: `npm run typecheck`; build: `npm run build`; data file: `npm run data`). Node lives in `C:\Program Files
+- **Site tests (Vitest):** `cd site && npm run test` (types: `npm run typecheck`; build: `npm run build`; data file: `npm run data`; release: `npm run build` then `npm run sync`, which copies `dist/` into `../mysite/public/vc-map/`). Node lives in `C:\Program Files
 odejs`; PowerShell needs `npm.cmd`.
 - A pre-commit hook in `.githooks/` runs both. A fresh clone enables it once with `git config core.hooksPath .githooks`.
 

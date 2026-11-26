@@ -3,7 +3,7 @@
 Where the project stands. Short and current: update at the end of each working session. If this disagrees with the repo, the repo wins and this file gets fixed. Concepts live in `IDEAS.md`, terms in `GLOSSARY.md`, decisions in `docs/adr/`, stages in `docs/stages.md`.
 
 ## Phase
-Stage 4, Visualization v1 (definition of done in `docs/stages.md`). Stages 1 to 3 (Roster, Pilot, Scale-up) are done: every Roster company has been researched (see `researched_on` in `data/companies.csv`).
+Stage 4, Visualization v1 (definition of done in `docs/stages.md`). v1 is built and synced into `mysite/public/vc-map/` (2026-11-26); waiting on the owner's visual sign-off at ~1500px and 320px, then commit and deploy mysite. Stages 1 to 3 (Roster, Pilot, Scale-up) are done: every Roster company has been researched (see `researched_on` in `data/companies.csv`).
 
 ## Next
 1. Done: Float prototype on branch `prototype/float` (never merged); verdicts in its `site/prototype-float/README.md`. Spec written: `.scratch/visualization-v1/spec.md` (v1 = Float + Sector Lens + shell + Company card and profile). Next: `/to-tickets`.
@@ -33,5 +33,6 @@ Stage 4, Visualization v1 (definition of done in `docs/stages.md`). Stages 1 to 
 - `logo_background` is moving from `dark`/`light`/`both` to hex; both accepted until all logos are confirmed.
 
 ## Log (newest first)
+- 2026-11-26: v1 release: `npm run sync` (in `site/`) copies `site/dist/` to `mysite/public/vc-map/`; tests, data check and build pass; subpath serving checked. Next phase: rework the Company profile design, then Receipts mode and further Lenses.
 - 2026-11-25: Float prototype judged (shell A with C's menu, physics values, 23/14px dots); ADR 0014 and stage 4 updated with its lessons.
 - 2026-11-25: Visualization planning session. ADRs 0014 and 0015, ADR 0001 updated, glossary gained Logo dot, Lens, View, Company card, Company profile; stage 4 definition of done set.

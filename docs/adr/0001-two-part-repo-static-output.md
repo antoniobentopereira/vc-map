@@ -4,4 +4,4 @@
 
 `site/` is the Visualization's source project (ADR 0014). Building it produces `site/dist/`, which is fully self-contained (own index.html, relative paths, logos included, no backend, no secrets). The only link between the two parts is one generated JSON file inside `site/`, built from `data/`.
 
-`site/dist/` is copied to `mysite/public/vc-map/` by an explicit sync command the owner runs. It is never synced automatically on save or build. Until that command exists, the copy is done by hand.
+`site/dist/` is copied to `mysite/public/vc-map/` by an explicit sync command the owner runs. It is never synced automatically on save or build. The command is `npm run sync` in `site/`.
