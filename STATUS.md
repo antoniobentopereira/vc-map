@@ -8,7 +8,7 @@ Stage 4, Visualization v1 (definition of done in `docs/stages.md`). Stages 1 to 
 ## Next
 1. Done: Float prototype on branch `prototype/float` (never merged); verdicts in its `site/prototype-float/README.md`. Spec written: `.scratch/visualization-v1/spec.md` (v1 = Float + Sector Lens + shell + Company card and profile). Next: `/to-tickets`.
 2. Sub-sector to Sector mapping in `data/sectors.csv`: Claude proposes, owner reviews.
-3. `tools/logo-studio/` (replaces `tools/logo-viewer/`), then all logos confirmed (ADR 0015).
+3. `tools/logo-studio/` is built (replaced `tools/logo-viewer/`); next, the owner confirms every logo in it (ADR 0015).
 4. Real `site/`: done so far: Vite project, first data-to-JSON script, engine and Float on raw logos (ticket 01). Still to do: shell, Company card and profile, sync command.
 
 5. Revisit the design of the Company profile page (`site/src/shell/Profile.svelte`): v1 is functional, not designed. Owner wants to rework it.

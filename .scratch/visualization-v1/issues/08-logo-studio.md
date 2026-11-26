@@ -6,13 +6,13 @@ Spec: `.scratch/visualization-v1/spec.md`
 
 **Blocked by:** 07
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] It starts with one command as a local server page.
-- [ ] **Crop:** drag a box over the raw logo to strip away padding and borders.
-- [ ] **Fill:** use the eyedropper on the logo, or pick a preset (white, cream, Norte brown, black). The first suggestion comes from the old legibility word: `dark` suggests a dark fill, and `light` or `both` suggest white.
-- [ ] **Preview:** the circle on the cream surface with its ring, at the real desktop and phone dot sizes, updating live.
-- [ ] **Confirm:** writes `logo_crop` and `logo_background` (hex) to `companies.csv` atomically, touching no other column, and renders the circle through the renderer.
-- [ ] A filter shows only the logos not yet confirmed.
-- [ ] The save path is tested the same way as the logo viewer's CSV write.
-- [ ] `tools/logo-viewer/` is removed, and its README is replaced by the studio's.
+- [x] It starts with one command as a local server page.
+- [x] **Crop:** drag a box over the raw logo to strip away padding and borders.
+- [x] **Fill:** use the eyedropper on the logo, or pick a preset (white, cream, Norte brown, black). The first suggestion comes from the old legibility word: `dark` suggests a dark fill, and `light` or `both` suggest white.
+- [x] **Preview:** the circle on the cream surface with its ring, at the real desktop and phone dot sizes, updating live.
+- [x] **Confirm:** writes `logo_crop` and `logo_background` (hex) to `companies.csv` atomically, touching no other column, and renders the circle through the renderer.
+- [x] A filter shows only the logos not yet confirmed.
+- [x] The save path is tested the same way as the logo viewer's CSV write.
+- [x] `tools/logo-viewer/` is removed, and its README is replaced by the studio's.

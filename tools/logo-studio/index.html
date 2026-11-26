@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo studio</title>
+<style>
+  :root { --bg:#f4f4f5; --fg:#18181b; --muted:#71717a; --card:#fff; --line:#e4e4e7; --accent:#2563eb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px system-ui, sans-serif; background:var(--bg); color:var(--fg); display:grid; grid-template-columns:240px 1fr; height:100vh; }
+  aside { border-right:1px solid var(--line); overflow:auto; background:var(--card); }
+  aside header { position:sticky; top:0; background:var(--card); padding:12px; border-bottom:1px solid var(--line); display:grid; gap:6px; }
+  .muted { color:var(--muted); font-weight:400; }
+  aside button { display:flex; justify-content:space-between; width:100%; padding:8px 12px; border:0; background:none; text-align:left; font:inherit; cursor:pointer; color:inherit; }
+  aside button.sel { background:#dbeafe; } aside button .ok { color:#16a34a; }
+  main { overflow:auto; padding:16px; display:grid; gap:16px; align-content:start; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 16px; }
+  h2 { margin:0 0 8px; font-size:14px; }
+  #stage { position:relative; display:inline-block; line-height:0; user-select:none; touch-action:none; cursor:crosshair;
+           background:repeating-conic-gradient(#e4e4e7 0 25%, #fff 0 50%) 0 0/16px 16px; }
+  #stage img { max-width:min(100%, 640px); max-height:360px; min-width:160px; min-height:160px; object-fit:contain; display:block; }
+  #box { position:absolute; border:2px solid var(--accent); background:rgba(37,99,235,.15); pointer-events:none; }
+  .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .swatch { width:32px; height:32px; border-radius:50%; border:2px solid var(--line); cursor:pointer; padding:0; }
+  .swatch.sel { border-color:var(--accent); }
+  #pick { cursor:crosshair; border:1px solid var(--line); max-width:100%; }
+  .surface { background:#faf6e4; padding:16px; border-radius:8px; display:flex; gap:32px; align-items:center; }
+  .surface canvas { display:block; }
+  button.primary { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:8px 16px; font:inherit; cursor:pointer; }
+  button.plain { border:1px solid var(--line); background:var(--card); border-radius:6px; padding:6px 10px; font:inherit; cursor:pointer; color:inherit; }
+  .err { color:#dc2626; }
+</style>
+</head>
+<body>
+<aside>
+  <header>
+    <strong>Logo studio</strong>
+    <span class="muted" id="count"></span>
+    <label><input type="checkbox" id="onlyTodo"> Only not confirmed</label>
+  </header>
+  <nav id="list"></nav>
+</aside>
+<main id="main"><p class="muted">Loading…</p></main>
+<script>
+// Same constants and rules as scripts/logo_circle.py, for the live preview only; the saved circle is rendered there.
+const WIDE_RATIO = 1.25, SAFE_RADIUS = 0.85;
+const DESKTOP = 24, PHONE = 14, RING = 'rgba(70,37,0,0.3)';
+const PRESETS = { White:'#ffffff', Cream:'#faf6e4', 'Norte brown':'#462500', Black:'#000000' };
+const HEX = /^#[0-9a-f]{6}$/i;
+
+let logos = [], current = null, state = null; // state: {crop:[x,y,w,h], fill}
+const $ = id => document.getElementById(id);
+const confirmed = l => HEX.test(l.background);
+
+const parseCrop = t => t ? t.split(',').map(Number) : [0, 0, 1, 1];
+const fmt = n => String(Math.round(n * 10000) / 10000);
+const isWhole = c => c[0] === 0 && c[1] === 0 && c[2] === 1 && c[3] === 1;
+const cropText = c => isWhole(c) ? '' : c.map(fmt).join(',');
+const suggest = l => HEX.test(l.background) ? l.background : l.background === 'dark' ? '#000000' : '#ffffff';
+
+function drawCircle(canvas, img, crop, fill, radiusCss) {
+  const dpr = devicePixelRatio || 1, d = radiusCss * 2;
+  canvas.width = canvas.height = Math.round(d * dpr);
+  canvas.style.width = canvas.style.height = d + 'px';
+  const c = canvas.getContext('2d'), S = canvas.width;
+  c.clearRect(0, 0, S, S);
+  c.save(); c.beginPath(); c.arc(S / 2, S / 2, S / 2, 0, Math.PI * 2); c.clip();
+  c.fillStyle = fill; c.fillRect(0, 0, S, S);
+  const sx = Math.round(crop[0] * img.naturalWidth), sy = Math.round(crop[1] * img.naturalHeight);
+  const sw = Math.max(1, Math.round(crop[2] * img.naturalWidth)), sh = Math.max(1, Math.round(crop[3] * img.naturalHeight));
+  const ratio = sw / sh;
+  const scale = Math.max(ratio, 1 / ratio) >= WIDE_RATIO ? SAFE_RADIUS * S / Math.hypot(sw, sh) : S / Math.min(sw, sh);
+  c.imageSmoothingQuality = 'high';
+  c.drawImage(img, sx, sy, sw, sh, (S - sw * scale) / 2, (S - sh * scale) / 2, sw * scale, sh * scale);
+  c.restore();
+  c.beginPath(); c.arc(S / 2, S / 2, S / 2 - 0.5 * dpr, 0, Math.PI * 2); c.lineWidth = dpr; c.strokeStyle = RING; c.stroke();
+}
+
+function renderList() {
+  const list = $('list'); list.replaceChildren();
+  for (const l of logos) {
+    if ($('onlyTodo').checked && confirmed(l) && l !== current) continue;
+    const b = document.createElement('button');
+    b.className = l === current ? 'sel' : '';
+    const name = document.createElement('span'), ok = document.createElement('span');
+    ok.className = 'ok'; name.textContent = l.name; ok.textContent = confirmed(l) ? '✓' : '';
+    b.append(name, ok);
+    b.onclick = () => select(l);
+    list.append(b);
+  }
+  $('count').textContent = `${logos.filter(confirmed).length} / ${logos.length} confirmed`;
+}
+
+function select(l) {
+  current = l;
+  state = { crop: parseCrop(l.crop), fill: suggest(l) };
+  renderList();
+  const main = $('main');
+  main.innerHTML = `
+    <h1 style="margin:0;font-size:18px" id="title"></h1>
+    <section><h2>1. Crop <span class="muted">drag a box over the mark; double-click to reset</span></h2>
+      <div id="stage"><img id="raw" alt=""><div id="box"></div></div></section>
+    <section><h2>2. Fill <span class="muted">a preset, or click the cropped logo to sample a color</span></h2>
+      <div class="row" id="presets"></div>
+      <div class="row" style="margin-top:8px"><canvas id="pick"></canvas>
+        <label>Color <input type="color" id="color"></label><code id="hex"></code></div></section>
+    <section><h2>3. Preview <span class="muted">cream surface, ring, desktop and phone dot sizes</span></h2>
+      <div class="surface"><canvas id="pv-big"></canvas><canvas id="pv-desk"></canvas><canvas id="pv-phone"></canvas></div></section>
+    <section><h2>4. Confirm</h2>
+      <div class="row"><button class="primary" id="confirm">Confirm and next</button>
+        <button class="plain" id="skip">Skip</button><span id="msg"></span></div></section>`;
+  $('title').textContent = l.name;
+  const img = $('raw');
+  img.onload = () => { refresh(); layoutBox(); };
+  img.src = '/' + l.logo;
+  setupCrop(img);
+  for (const [label, hex] of Object.entries(PRESETS)) {
+    const b = document.createElement('button'); b.className = 'swatch'; b.style.background = hex; b.title = `${label} ${hex}`;
+    b.onclick = () => setFill(hex); b.dataset.hex = hex; $('presets').append(b);
+  }
+  $('color').oninput = e => setFill(e.target.value);
+  $('pick').onclick = e => {
+    const cv = $('pick'), r = cv.getBoundingClientRect();
+    const x = Math.floor((e.clientX - r.left) * cv.width / r.width), y = Math.floor((e.clientY - r.top) * cv.height / r.height);
+    const [R, G, B, A] = cv.getContext('2d', { willReadFrequently: true }).getImageData(x, y, 1, 1).data;
+    if (A > 0) setFill('#' + [R, G, B].map(v => v.toString(16).padStart(2, '0')).join(''));
+  };
+  $('confirm').onclick = confirm;
+  $('skip').onclick = next;
+}
+
+function setFill(hex) { state.fill = hex.toLowerCase(); refresh(); }
+
+function refresh() {
+  const img = $('raw'); if (!img || !img.naturalWidth) return;
+  $('hex').textContent = state.fill; $('color').value = state.fill;
+  document.querySelectorAll('.swatch').forEach(s => s.classList.toggle('sel', s.dataset.hex === state.fill));
+  // Sampling canvas: the cropped logo with no fill, so a click reads the mark's own color.
+  const cv = $('pick'), [x, y, w, h] = state.crop;
+  const sw = Math.max(1, Math.round(w * img.naturalWidth)), sh = Math.max(1, Math.round(h * img.naturalHeight));
+  const k = Math.min(1, 360 / Math.max(sw, sh));
+  cv.width = Math.max(1, Math.round(sw * k)); cv.height = Math.max(1, Math.round(sh * k));
+  cv.getContext('2d').drawImage(img, Math.round(x * img.naturalWidth), Math.round(y * img.naturalHeight), sw, sh, 0, 0, cv.width, cv.height);
+  cv.style.background = 'repeating-conic-gradient(#e4e4e7 0 25%, #fff 0 50%) 0 0/16px 16px';
+  drawCircle($('pv-big'), img, state.crop, state.fill, 80);
+  drawCircle($('pv-desk'), img, state.crop, state.fill, DESKTOP);
+  drawCircle($('pv-phone'), img, state.crop, state.fill, PHONE);
+}
+
+function layoutBox() {
+  const img = $('raw'), box = $('box'); if (!img) return;
+  const [x, y, w, h] = state.crop, W = img.clientWidth, H = img.clientHeight;
+  Object.assign(box.style, { display: isWhole(state.crop) ? 'none' : 'block', left: x * W + 'px', top: y * H + 'px', width: w * W + 'px', height: h * H + 'px' });
+}
+
+function setupCrop(img) {
+  const stage = $('stage'); let start = null;
+  const pt = e => { const r = img.getBoundingClientRect();
+    return [Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), Math.min(1, Math.max(0, (e.clientY - r.top) / r.height))]; };
+  stage.onpointerdown = e => { start = pt(e); stage.setPointerCapture(e.pointerId); };
+  stage.onpointermove = e => {
+    if (!start) return;
+    const [x, y] = pt(e), x0 = Math.min(start[0], x), y0 = Math.min(start[1], y);
+    const w = Math.abs(x - start[0]), h = Math.abs(y - start[1]);
+    if (w > 0.01 && h > 0.01) { state.crop = [x0, y0, w, h]; layoutBox(); refresh(); }
+  };
+  stage.onpointerup = () => { start = null; };
+  stage.ondblclick = () => { state.crop = [0, 0, 1, 1]; layoutBox(); refresh(); };
+}
+
+async function confirm() {
+  const msg = $('msg'); msg.className = ''; msg.textContent = 'Saving…';
+  try {
+    const r = await fetch('/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: current.name, crop: cropText(state.crop), background: state.fill }) });
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || 'save failed');
+    current.crop = cropText(state.crop); current.background = state.fill;
+    next();
+  } catch (e) { msg.className = 'err'; msg.textContent = e.message; }
+}
+
+function next() {
+  const i = logos.indexOf(current);
+  const rest = [...logos.slice(i + 1), ...logos.slice(0, i)];
+  const target = rest.find(l => !confirmed(l)) || rest[0];
+  if (target) select(target); else renderList();
+}
+
+$('onlyTodo').onchange = renderList;
+addEventListener('resize', () => { layoutBox(); refresh(); });
+fetch('/api/logos').then(r => r.json()).then(d => {
+  logos = d; renderList();
+  const first = logos.find(l => !confirmed(l)) || logos[0];
+  if (first) select(first); else $('main').textContent = 'No logos.';
+});
+</script>
+</body>
+</html>
