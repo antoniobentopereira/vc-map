@@ -6,7 +6,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-from check_data import (  # noqa: E402
+from check_data import (
+    ALLOWED_LOGO_BACKGROUNDS,  # noqa: E402
     ALLOWED_BUSINESS_MODELS,
     ALLOWED_FIELDS,
     ALLOWED_NORTE,
@@ -17,8 +18,8 @@ from check_data import (  # noqa: E402
 )
 
 ROOT = Path(__file__).resolve().parent.parent
-HEADER = "name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_on"
-ALPHA = "Alpha,https://alpha.com,I,FALSE,FALSE,site/logos/alpha.svg,company-site,https://alpha.com/logo.svg,"
+HEADER = "name,website,fund,is_highlight,is_exit,logo,logo_background,logo_origin,logo_source,researched_on"
+ALPHA = "Alpha,https://alpha.com,I,FALSE,FALSE,site/logos/alpha.svg,,company-site,https://alpha.com/logo.svg,"
 HEADERS = {
     "claims": "company,field,value,source_url,basis,confidence,note",
     "rounds": "company,year,type,reported_amount,reported_currency,size_usd,co_investors,"
@@ -72,6 +73,14 @@ class CompaniesTest(Assertions):
     def test_real_shape_passes(self):
         self.assertEqual(self.check(ALPHA), [])
 
+    def test_logo_background_values(self):
+        for value in ("dark", "light", "both", ""):
+            self.assertEqual(self.check(ALPHA.replace(".svg,,company-site", f".svg,{value},company-site")), [])
+        self.assertOneError(self.check(ALPHA.replace(".svg,,company-site", ".svg,grey,company-site")), "logo_background 'grey'")
+
+    def test_logo_background_without_logo_is_an_error(self):
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,dark,,,"), "logo is empty")
+
     def test_missing_logo_file(self):
         with tempfile.TemporaryDirectory() as d:
             write(d, "companies.csv", [HEADER, ALPHA])
@@ -79,45 +88,45 @@ class CompaniesTest(Assertions):
         self.assertOneError(errors, "logo file 'site/logos/alpha.svg' does not exist")
 
     def test_empty_logo_is_valid_and_listed_for_follow_up(self):
-        self.assertEqual(self.check("Alpha,https://a.com,I,FALSE,FALSE,,,,"), [])
+        self.assertEqual(self.check("Alpha,https://a.com,I,FALSE,FALSE,,,,,"), [])
         self.assertEqual(follow_up_companies([{"name": "Alpha", "logo": ""}, {"name": "B", "logo": "x"}]), ["Alpha"])
 
     def test_set_logo_needs_valid_origin(self):
-        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,,https://a.com/l.svg,"), "logo_origin")
-        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,norte,https://a.com/l.svg,"), "logo_origin 'norte'")
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,,,https://a.com/l.svg,"), "logo_origin")
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,,norte,https://a.com/l.svg,"), "logo_origin 'norte'")
 
     def test_set_logo_needs_valid_source_url(self):
-        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,,"), "logo_source")
-        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,not a url,"), "logo_source")
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,,manual,,"), "logo_source")
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,,manual,not a url,"), "logo_source")
 
     def test_norte_source_is_an_error(self):
         self.assertOneError(
-            self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,https://www.norte.ventures/x.svg,"),
+            self.check("Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,,manual,https://www.norte.ventures/x.svg,"),
             "norte.ventures",
         )
 
     def test_documented_norte_exception_is_allowed_only_for_listed_companies(self):
-        line = "{},https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,https://www.norte.ventures/x.svg,"
+        line = "{},https://a.com,I,FALSE,FALSE,site/logos/a.svg,,manual,https://www.norte.ventures/x.svg,"
         self.assertEqual(self.check(line.format("Glue")), [])
         self.assertOneError(self.check(line.format("Other")), "norte.ventures")
 
     def test_empty_logo_with_leftover_origin_or_source_is_an_error(self):
-        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,manual,,"), "logo is empty")
-        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,,https://a.com/l.svg,"), "logo is empty")
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,,manual,,"), "logo is empty")
+        self.assertOneError(self.check("Alpha,https://a.com,I,FALSE,FALSE,,,,https://a.com/l.svg,"), "logo is empty")
 
     def test_duplicate_company(self):
-        errors = self.check(ALPHA, "alpha,https://b.com,II,FALSE,FALSE,site/logos/alpha.svg,manual,https://a.com/p,")
+        errors = self.check(ALPHA, "alpha,https://b.com,II,FALSE,FALSE,site/logos/alpha.svg,,manual,https://a.com/p,")
         self.assertOneError(errors, "duplicate of line 2")
 
     def test_invalid_website(self):
-        self.assertOneError(self.check("Alpha,alpha,I,FALSE,FALSE,site/logos/alpha.svg,manual,https://a.com/p,"), "website")
+        self.assertOneError(self.check("Alpha,alpha,I,FALSE,FALSE,site/logos/alpha.svg,,manual,https://a.com/p,"), "website")
 
     def test_bad_fund_and_flag(self):
-        errors = self.check("Alpha,https://a.com,III,yes,FALSE,site/logos/alpha.svg,manual,https://a.com/p,")
+        errors = self.check("Alpha,https://a.com,III,yes,FALSE,site/logos/alpha.svg,,manual,https://a.com/p,")
         self.assertEqual(len(errors), 2, errors)
 
     def test_researched_on_is_empty_or_a_past_date(self):
-        base = "Alpha,https://a.com,I,FALSE,FALSE,,,,{}"
+        base = "Alpha,https://a.com,I,FALSE,FALSE,,,,,{}"
         self.assertEqual(self.check(base.format("2026-11-18")), [])
         self.assertOneError(self.check(base.format("18/11/2026")), "researched_on '18/11/2026'")
         self.assertOneError(self.check(base.format("2026-02-30")), "researched_on '2026-02-30'")
@@ -390,6 +399,7 @@ class DocsMatchCodeTest(unittest.TestCase):
             "claim fields": ALLOWED_FIELDS,
             "round types": ROUND_TYPES,
             "status values": ALLOWED_STATUS,
+            "logo backgrounds": ALLOWED_LOGO_BACKGROUNDS,
             "business models": ALLOWED_BUSINESS_MODELS,
             "Norte participation values": ALLOWED_NORTE,
         }.items():

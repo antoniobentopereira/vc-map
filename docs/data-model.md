@@ -12,6 +12,8 @@ The Dataset is a set of CSV files in `data/`, edited by hand. `python scripts/ch
 
 ## companies.csv
 
+`logo_background` says which page background the logo is legible on: `dark`, `light` or `both`. Empty means not reviewed yet. It is set by `tools/logo-viewer` (never by hand or research) and is cleared whenever the logo file is replaced. A logo that is empty cannot have one.
+
 `researched_on` is the date (`2026-11-18`) a company was last fully researched. If it is set, a field with no row means "not publicly available as of that date". If it is empty, the company has not been researched yet.
 
 Renamed companies: Norte's portfolio page may still link an old domain. Zivo was Comp (`trycomp.io`) and Attach Media Partners was Supercompany (`supercompany.io`); each is one company, listed once under its current name.

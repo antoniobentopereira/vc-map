@@ -126,17 +126,17 @@ class WriteCsvTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "companies.csv"
             path.write_text(
-                "name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_on\n"
-                "Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,manual,https://a.com/l.svg,2026-11-18\n",
+                "name,website,fund,is_highlight,is_exit,logo,logo_background,logo_origin,logo_source,researched_on\n"
+                "Alpha,https://a.com,I,FALSE,FALSE,site/logos/a.svg,dark,manual,https://a.com/l.svg,2026-11-18\n",
                 encoding="utf-8",
             )
             write_csv([Company("Alpha", "https://a.com", "II", True, False),
                        Company("Beta", "https://b.com", "I", False, False)], path)
             lines = path.read_text(encoding="utf-8").splitlines()
         self.assertEqual(lines, [
-            "name,website,fund,is_highlight,is_exit,logo,logo_origin,logo_source,researched_on",
-            "Alpha,https://a.com,II,TRUE,FALSE,site/logos/a.svg,manual,https://a.com/l.svg,2026-11-18",
-            "Beta,https://b.com,I,FALSE,FALSE,,,,",
+            "name,website,fund,is_highlight,is_exit,logo,logo_background,logo_origin,logo_source,researched_on",
+            "Alpha,https://a.com,II,TRUE,FALSE,site/logos/a.svg,dark,manual,https://a.com/l.svg,2026-11-18",
+            "Beta,https://b.com,I,FALSE,FALSE,,,,,",
         ])
 
 

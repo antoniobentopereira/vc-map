@@ -21,7 +21,7 @@ EXTENSIONS = {
     "image/gif": "gif",
 }
 MIN_PNG_SIZE = 128
-COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_origin", "logo_source", "researched_on"]
+COLUMNS = ["name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_background", "logo_origin", "logo_source", "researched_on"]
 KEPT_ORIGINS = ("manual", "web-search")
 
 
@@ -158,11 +158,11 @@ def resolve_row(row, root, fetch):
             logo_path.unlink()
         (root / "site" / "logos").mkdir(parents=True, exist_ok=True)
         (root / "site" / "logos" / logo.filename).write_bytes(logo.data)
-        row.update(logo=f"site/logos/{logo.filename}", logo_origin="company-site", logo_source=logo.source)
+        row.update(logo=f"site/logos/{logo.filename}", logo_background="", logo_origin="company-site", logo_source=logo.source)
     else:
         if logo_path and logo_path.is_file():
             logo_path.unlink()
-        row.update(logo="", logo_origin="", logo_source="")
+        row.update(logo="", logo_background="", logo_origin="", logo_source="")
 
 
 def main():

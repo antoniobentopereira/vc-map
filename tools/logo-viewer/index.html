@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo viewer</title>
+<style>
+  :root { --bg:#f4f4f5; --fg:#18181b; --muted:#71717a; --card:#fff; --line:#e4e4e7; --accent:#2563eb; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#18181b; --fg:#f4f4f5; --muted:#a1a1aa; --card:#27272a; --line:#3f3f46; --accent:#60a5fa; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px system-ui, sans-serif; background:var(--bg); color:var(--fg); }
+  header { position:sticky; top:0; z-index:2; display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+           padding:12px 16px; background:var(--bg); border-bottom:1px solid var(--line); }
+  header .count { color:var(--muted); }
+  label { display:flex; gap:6px; align-items:center; cursor:pointer; }
+  main { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .card.done { border-color: var(--accent); }
+  .pair { display:grid; grid-template-columns:1fr 1fr; }
+  .pair div { height:110px; display:flex; align-items:center; justify-content:center; padding:12px; }
+  .pair .dark { background:#000; } .pair .light { background:#fff; }
+  .pair img { max-width:100%; max-height:100%; object-fit:contain; }
+  .name { padding:8px 12px 0; font-weight:600; }
+  .choices { display:flex; gap:12px; padding:8px 12px 12px; }
+  .choices label { color:var(--muted); } .choices input:checked + span { color:var(--fg); font-weight:600; }
+  .err { color:#dc2626; padding:0 12px 8px; }
+</style>
+</head>
+<body>
+<header>
+  <strong>Logo viewer</strong>
+  <span class="count" id="count"></span>
+  <label><input type="checkbox" id="onlyTodo"> Only not reviewed</label>
+  <span class="count">Pick the background the logo is legible on: dark, light, or both.</span>
+</header>
+<main id="grid"></main>
+<script>
+let logos = [];
+const grid = document.getElementById('grid'), count = document.getElementById('count'), onlyTodo = document.getElementById('onlyTodo');
+
+function updateCount() {
+  const done = logos.filter(l => l.background).length;
+  count.textContent = `${done} / ${logos.length} reviewed`;
+}
+
+async function save(logo, value, card) {
+  const prev = logo.background;
+  card.querySelector('.err')?.remove();
+  try {
+    const r = await fetch('/api/background', { method:'POST', headers:{'Content-Type':'application/json'},
+                                               body: JSON.stringify({ name: logo.name, value }) });
+    if (!(await r.json()).ok) throw new Error();
+    logo.background = value;
+    card.classList.toggle('done', !!value);
+  } catch {
+    card.querySelectorAll('input').forEach(i => i.checked = i.value === prev);
+    const e = document.createElement('div'); e.className = 'err'; e.textContent = 'Save failed'; card.append(e);
+  }
+  updateCount();
+}
+
+function render() {
+  grid.replaceChildren();
+  for (const logo of logos) {
+    if (onlyTodo.checked && logo.background) continue;
+    const card = document.createElement('div');
+    card.className = 'card' + (logo.background ? ' done' : '');
+    const name = document.createElement('div'); name.className = 'name'; name.textContent = logo.name;
+    const pair = document.createElement('div'); pair.className = 'pair';
+    for (const kind of ['dark', 'light']) {
+      const box = document.createElement('div'); box.className = kind;
+      const img = document.createElement('img'); img.src = '/' + logo.logo; img.alt = `${logo.name} on ${kind}`; img.loading = 'lazy';
+      box.append(img); pair.append(box);
+    }
+    const choices = document.createElement('div'); choices.className = 'choices';
+    for (const v of ['dark', 'light', 'both']) {
+      const l = document.createElement('label');
+      const i = document.createElement('input'); i.type = 'radio'; i.name = 'bg-' + logo.name; i.value = v;
+      i.checked = logo.background === v;
+      i.addEventListener('change', () => save(logo, v, card));
+      const s = document.createElement('span'); s.textContent = v;
+      l.append(i, s); choices.append(l);
+    }
+    card.append(pair, name, choices);
+    grid.append(card);
+  }
+}
+
+onlyTodo.addEventListener('change', render);
+fetch('/api/logos').then(r => r.json()).then(d => { logos = d; updateCount(); render(); });
+</script>
+</body>
+</html>

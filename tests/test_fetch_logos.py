@@ -105,7 +105,7 @@ class FindLogoTest(unittest.TestCase):
 
 
 def row(**kw):
-    base = {"name": "Alpha", "logo": "site/logos/alpha.svg", "logo_origin": "", "logo_source": ""}
+    base = {"name": "Alpha", "logo": "site/logos/alpha.svg", "logo_background": "dark", "logo_origin": "", "logo_source": ""}
     return {**base, **kw}
 
 

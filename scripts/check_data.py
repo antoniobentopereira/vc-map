@@ -16,7 +16,7 @@ CLAIMS_CSV = DATA / "claims.csv"
 
 ROOT = DATA.parent
 COMPANY_COLUMNS = [
-    "name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_origin", "logo_source", "researched_on",
+    "name", "website", "fund", "is_highlight", "is_exit", "logo", "logo_background", "logo_origin", "logo_source", "researched_on",
 ]
 CLAIM_COLUMNS = ["company", "field", "value", "source_url", "basis", "confidence", "note"]
 SECTOR_COLUMNS = ["sub_sector", "sector"]
@@ -62,6 +62,8 @@ ALLOWED_FUNDS = ["I", "II"]
 ALLOWED_FLAGS = ["TRUE", "FALSE"]
 ALLOWED_NORTE = ["TRUE", "FALSE", "UNKNOWN"]
 ALLOWED_LOGO_ORIGINS = ["company-site", "web-search", "manual"]
+# Which page background the logo is legible on (set by tools/logo-viewer); empty means not reviewed yet.
+ALLOWED_LOGO_BACKGROUNDS = ["dark", "light", "both"]
 # Documented exception (ADR 0004): no Original logo was found anywhere public, so these companies
 # keep the recolored logo from the Firm's portfolio page. Add a name here only with an ADR note.
 NORTE_LOGO_EXCEPTIONS = {"glue"}
@@ -97,10 +99,14 @@ def _check_logo(row, where, root):
     """An empty logo is valid (manual follow-up); a set logo needs a recorded origin and source."""
     logo, origin, source = row["logo"], row["logo_origin"], row["logo_source"]
     if not logo:
-        if origin or source:
-            return [f"{where}: logo is empty but logo_origin/logo_source are set (clear them)"]
+        if origin or source or row["logo_background"]:
+            return [f"{where}: logo is empty but logo_origin/logo_source/logo_background are set (clear them)"]
         return []
     errors = []
+    if row["logo_background"] and row["logo_background"] not in ALLOWED_LOGO_BACKGROUNDS:
+        errors.append(
+            f"{where}: logo_background '{row['logo_background']}' must be one of {', '.join(ALLOWED_LOGO_BACKGROUNDS)} or empty"
+        )
     if not (Path(root) / logo).is_file():
         errors.append(f"{where}: logo file '{logo}' does not exist")
     if origin not in ALLOWED_LOGO_ORIGINS:
