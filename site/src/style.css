@@ -20,3 +20,20 @@ body {
 #stage canvas {
   display: block;
 }
+
+/* TEMPORARY tuning panel (dev only) */
+#tune { position: fixed; left: 10px; bottom: 10px; z-index: 9; font: 12px ui-monospace, Consolas, monospace; color: #fff; }
+#tune.gone { display: none; }
+#tune button { background: #111; color: #fff; border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; font: inherit; }
+.tune-panel { position: absolute; bottom: 38px; left: 0; width: min(340px, calc(100vw - 20px)); max-height: calc(100vh - 70px); overflow: auto; background: rgba(17, 17, 17, 0.94); border-radius: 12px; padding: 10px 12px; }
+.tune-head { color: var(--yellow); margin-bottom: 6px; }
+.tune-fps { color: #aaa; margin-left: 8px; }
+.tune-panel label { display: grid; grid-template-columns: 130px 1fr 52px; gap: 6px; align-items: center; margin: 3px 0; }
+.tune-panel input { width: 100%; }
+.tune-panel output { text-align: right; }
+.tune-actions { display: flex; gap: 6px; margin: 8px 0 4px; }
+.tune-actions button { background: #333; }
+.tune-json { color: #8f8; font-size: 10px; margin: 6px 0 0; white-space: pre-wrap; }
+.tune-tip { position: fixed; max-width: 260px; background: #fff; color: #111; border-radius: 8px; padding: 6px 9px; font: 12px/1.35 ui-monospace, Consolas, monospace; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35); pointer-events: none; z-index: 10; }
+.tune-tip[hidden] { display: none; }
+.tune-panel label span { cursor: help; }

@@ -18,3 +18,6 @@ new ResizeObserver(() => engine.setViewport(host.clientWidth, host.clientHeight,
 
 // Placeholder until the Company card exists: a clicked dot stays paused for a moment.
 engine.onDotClick = () => setTimeout(() => engine.resume(), 1500);
+
+// TEMPORARY: physics sliders, dev server only. Delete src/tune.ts and this line when tuning is done.
+if (import.meta.env.DEV) (await import("./tune")).mountTune(engine);

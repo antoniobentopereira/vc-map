@@ -1,7 +1,7 @@
 // The engine: PixiJS stage + a d3-force simulation that never cools. Plain TypeScript, no Svelte.
 // Float = random-walk drift + soft collisions + cursor push + soft walls. A Lens sets per-dot
 // targets the simulation pulls toward (none for Float).
-import { Application, Assets, Circle, Container, Graphics, Sprite, Texture } from "pixi.js";
+import { Application, Assets, Circle, Container, Graphics, Rectangle, Sprite, Texture } from "pixi.js";
 import { forceCollide, forceSimulation, type Simulation, type SimulationNodeDatum } from "d3-force";
 import { dot, physics, tokens } from "./config";
 import { deviceOf, layoutLens, type Insets, type LensId, type Point, type Viewport } from "./lens";
@@ -15,11 +15,10 @@ type Node = SimulationNodeDatum & {
   target?: Point;
   delay: number;
   view: Container;
-  sprite: Sprite;
-  disc: Graphics;
-  mask: Graphics;
+  art: Sprite; // the logo already clipped to a circle (baked once, so every dot is one cheap sprite)
   ring: Graphics;
-  texture: Texture;
+  source: Texture; // the raw logo
+  baked?: Texture;
 };
 
 const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
@@ -109,13 +108,10 @@ export class Engine {
     const { width, height } = this.viewport;
     this.nodes = companies.map((company, i) => {
       const view = new Container();
-      const disc = new Graphics();
-      const sprite = new Sprite(textures[i]);
-      sprite.anchor.set(0.5);
-      const mask = new Graphics();
+      const art = new Sprite();
+      art.anchor.set(0.5);
       const ring = new Graphics();
-      view.addChild(disc, sprite, mask, ring);
-      sprite.mask = mask;
+      view.addChild(art, ring);
       view.eventMode = "static";
       view.cursor = "pointer";
       const node: Node = {
@@ -125,11 +121,9 @@ export class Engine {
         y: Math.random() * height,
         delay: 0,
         view,
-        sprite,
-        disc,
-        mask,
+        art,
         ring,
-        texture: textures[i],
+        source: textures[i],
       };
       view.on("pointertap", (e) => {
         e.stopPropagation();
@@ -150,11 +144,35 @@ export class Engine {
   setViewport(width: number, height: number, insets: Insets) {
     this.viewport = { width, height, insets };
     this.app.renderer.resize(width, height);
+    if (this.updateRadius() && this.nodes.length) this.redraw();
+    this.setLens(this.lens, true);
+  }
+
+  /** Re-read the config object after it was changed (the tuning panel does this). */
+  applyConfig() {
+    this.sim.velocityDecay(physics.damping);
+    this.updateRadius();
+    if (this.nodes.length) this.redraw();
+  }
+
+  /** Frames per second the renderer is reaching. */
+  fps() {
+    return this.app.ticker.FPS;
+  }
+
+  private updateRadius() {
     const radius = deviceOf(this.viewport) === "phone" ? dot.radiusPhone : dot.radiusDesktop;
     const changed = radius !== this.radius;
     this.radius = radius;
-    if (changed && this.nodes.length) this.redraw();
-    this.setLens(this.lens, true);
+    this.refreshCollide();
+    return changed;
+  }
+
+  /** d3's collide force caches each node's radius when its radius function is set, so set it again. */
+  private refreshCollide() {
+    (this.sim?.force("collide") as ReturnType<typeof forceCollide<Node>> | undefined)
+      ?.radius(() => this.radius + physics.collidePad)
+      .strength(physics.collideStrength);
   }
 
   /** Switch Lens. Float releases the dots back to where they were; a grouped Lens pulls them to targets. */
@@ -204,19 +222,43 @@ export class Engine {
 
   // ---- drawing ---------------------------------------------------------------------------
 
+  /**
+   * Bake every logo into a circle texture. A mask per dot would break the GPU batch 130 times a frame
+   * (the cause of the lag); one pre-clipped sprite per dot batches into a few draw calls.
+   */
   private redraw() {
     const r = this.radius;
+    const resolution = Math.min(2, window.devicePixelRatio || 1);
     for (const n of this.nodes) {
-      const { width: tw, height: th } = n.texture;
-      // Squarish marks cover the circle; wide wordmarks are fitted inside it so they stay readable.
-      const aspect = Math.max(tw, th) / Math.min(tw, th);
-      n.sprite.scale.set(aspect < 1.25 ? (2 * r) / Math.min(tw, th) : (1.7 * r) / Math.max(tw, th));
-      n.mask.clear().circle(0, 0, r).fill(0xffffff);
-      n.disc.clear().circle(0, 0, r).fill(0xffffff);
+      n.baked?.destroy(true);
+      n.baked = this.bake(n.source, r, resolution);
+      n.art.texture = n.baked;
       n.view.hitArea = new Circle(0, 0, r);
       if (n === this.paused) n.ring.clear().circle(0, 0, r).stroke({ width: 2, color: tokens.yellow, alpha: 1, alignment: 0 });
       else this.drawRing(n);
     }
+  }
+
+  private bake(source: Texture, r: number, resolution: number) {
+    const { width: tw, height: th } = source;
+    // Squarish marks cover the circle; wide wordmarks are fitted inside it so they stay readable.
+    const aspect = Math.max(tw, th) / Math.min(tw, th);
+    const sprite = new Sprite(source);
+    sprite.anchor.set(0.5);
+    sprite.scale.set(aspect < 1.25 ? (2 * r) / Math.min(tw, th) : (1.7 * r) / Math.max(tw, th));
+    const disc = new Graphics().circle(0, 0, r).fill(0xffffff);
+    const mask = new Graphics().circle(0, 0, r).fill(0xffffff);
+    sprite.mask = mask;
+    const holder = new Container();
+    holder.addChild(disc, sprite, mask);
+    const texture = this.app.renderer.generateTexture({
+      target: holder,
+      frame: new Rectangle(-r, -r, 2 * r, 2 * r),
+      resolution,
+      antialias: true,
+    });
+    holder.destroy({ children: true });
+    return texture;
   }
 
   /** The ring is drawn by the renderer, never baked into the image. */
