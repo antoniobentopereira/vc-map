@@ -6,7 +6,7 @@ Where the project stands. Short and current: update at the end of each working s
 Stage 4, Visualization v1 (definition of done in `docs/stages.md`). Stages 1 to 3 (Roster, Pilot, Scale-up) are done: every Roster company has been researched (see `researched_on` in `data/companies.csv`).
 
 ## Next
-1. Done: Float prototype on branch `prototype/float` (never merged); verdicts in its `site/prototype-float/README.md`. Next: `/to-spec` and `/to-tickets` for v1.
+1. Done: Float prototype on branch `prototype/float` (never merged); verdicts in its `site/prototype-float/README.md`. Spec written: `.scratch/visualization-v1/spec.md` (v1 = Float + Sector Lens + shell + Company card and profile). Next: `/to-tickets`.
 2. Sub-sector to Sector mapping in `data/sectors.csv`: Claude proposes, owner reviews.
 3. `tools/logo-studio/` (replaces `tools/logo-viewer/`), then all logos confirmed (ADR 0015).
 4. Real `site/`: data-to-JSON script, engine, Float, shell, Company card and profile, sync command.
