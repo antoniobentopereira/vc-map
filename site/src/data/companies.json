@@ -4,781 +4,3381 @@
    "slug": "ng-cash",
    "name": "NG.CASH",
    "fund": "I",
-   "logo": "logos/ng-cash.png"
+   "logo": "logos/ng-cash.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian digital account for teenagers and young adults, with Pix, a prepaid Mastercard, savings and an allowance feature in one app.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://ng.cash"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://forbes.com.br/forbes-money/2022/08/fintech-ng-cash-recebe-aporte-historico-de-us-10-milhoes/"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://ng.cash"
+    }
+   }
   },
   {
    "slug": "credaluga",
    "name": "CredAluga",
    "fund": "II",
-   "logo": "logos/credaluga.png"
+   "logo": "logos/credaluga.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian fintech that sells rental guarantees through real estate agencies, replacing the traditional guarantor (fiador) with a fully digital product.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://credaluga.com.br"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.bloomberglinea.com.br/startups/credaluga-capta-r-25-mi-para-melhorar-analise-de-inquilinos-para-imobiliarias/"
+    },
+    "sector": {
+     "value": "Insurance",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://credaluga.com.br"
+    }
+   }
   },
   {
    "slug": "flieber",
    "name": "Flieber",
    "fund": "I",
-   "logo": "logos/flieber.svg"
+   "logo": "logos/flieber.svg",
+   "fields": {
+    "description": {
+     "value": "Software for multichannel commerce brands that connects sales channels, forecasts demand and recommends inventory replenishment, usable in its app, Slack, Google Sheets or through AI tools.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://flieber.com"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://techcrunch.com/2021/09/22/inventory-optimization-startup-flieber-bags-12m-aims-to-help-retailers-avoid-out-of-stock-overstock-moments/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://flieber.com"
+    }
+   }
   },
   {
    "slug": "tempo",
    "name": "Tempo",
    "fund": "II",
-   "logo": "logos/tempo.svg"
+   "logo": "logos/tempo.svg",
+   "fields": {
+    "description": {
+     "value": "A personal assistant service on WhatsApp where human assistants, helped by AI, pay bills, book appointments, buy tickets and run daily errands for affluent Brazilian families on a monthly subscription.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/tempo-conclui-rodada-e-levanta-us-45m-para-seu-assistente-pessoal-no-whatsapp/"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/a-tempo-quer-massificar-os-assistentes-pessoais-com-ai-claro/"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/tempo-conclui-rodada-e-levanta-us-45m-para-seu-assistente-pessoal-no-whatsapp/"
+    }
+   }
   },
   {
    "slug": "gatekeeper",
    "name": "Gatekeeper",
    "fund": "II",
-   "logo": "logos/gatekeeper.png"
+   "logo": "logos/gatekeeper.png",
+   "fields": {
+    "description": {
+     "value": "An AI-native platform that lets banks, fintechs and online merchants detect and stop fraud and money laundering in real time, while approving more legitimate customers.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.gatekeeperx.com/company"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://enter.co/startups/entrevista-como-sabe-un-banco-que-no-le-estan-robando-la-ia-que-toma-la-decision-en-solo-100-milisegundos"
+    },
+    "sector": {
+     "value": "Security & Fraud",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.gatekeeperx.com/company"
+    }
+   }
   },
   {
    "slug": "nomo",
    "name": "Nomo",
    "fund": "I",
-   "logo": "logos/nomo.svg"
+   "logo": "logos/nomo.svg",
+   "fields": {
+    "description": {
+     "value": "A telecom technology company that started as a 100% digital mobile operator in Brazil and now sells digital platforms (apps, plans, billing and portability) to mobile and broadband operators.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.mobiletime.com.br/noticias/23/04/2025/wave/"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startupi.com.br/2021/11/operadora-movel-digital-recebe-aporte-de-r-14-milhoes-liderado-pela-iporanga-ventures/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.mobiletime.com.br/noticias/23/04/2025/wave/"
+    }
+   }
   },
   {
    "slug": "kanastra",
    "name": "Kanastra",
    "fund": "I",
-   "logo": "logos/kanastra.svg"
+   "logo": "logos/kanastra.svg",
+   "fields": {
+    "description": {
+     "value": "A technology and back-office platform for Brazil's private credit market, running fund administration and custody, securitisation and banking services for FIDCs and other structured products.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/kanastra-faz-serie-b-de-r-170-milhoes-com-fidelity-e-ifc/"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/fidelity-e-ifc-investem-r-170-milhoes-na-kanastra/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/kanastra-faz-serie-b-de-r-170-milhoes-com-fidelity-e-ifc/"
+    }
+   }
   },
   {
    "slug": "dolado",
    "name": "Dolado",
    "fund": "I",
-   "logo": "logos/dolado.png"
+   "logo": "logos/dolado.png",
+   "fields": {
+    "description": {
+     "value": "A Brazilian commerce-technology company that started by digitising and restocking small shops and now runs an ecosystem that helps brands and sellers grow on marketplaces, with sales programmes, management software and logistics.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/company/dolado"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/startups/a-startup-que-quer-digitalizar-os-pequenos-negocios-da-periferia-sem-cobrar-nada"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/company/dolado"
+    }
+   }
   },
   {
    "slug": "ume",
    "name": "Ume",
    "fund": "I",
-   "logo": "logos/ume.svg"
+   "logo": "logos/ume.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian credit-infrastructure company that lets retailers and other businesses offer their own consumer credit under their own brand, covering funding, risk models, Pix payments and AI-run collections.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.ume.com.br"
+    },
+    "year_founded": {
+     "value": 2017,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.ume.com.br/sobre"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.ume.com.br/sobre"
+    }
+   }
   },
   {
    "slug": "nexa",
    "name": "Nexa",
    "fund": "II",
-   "logo": "logos/nexa.svg"
+   "logo": "logos/nexa.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian fintech whose platform lets investment advisers and family offices create tailor-made investment products from fractions of fixed-income and credit assets, using tokenisation and AI.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://nexafinance.com.br"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/nexa-finance-faz-rodada-para-escalar-plataforma-de-alternativos/"
+    },
+    "sector": {
+     "value": "Wealth & Investing",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://nexafinance.com.br"
+    }
+   }
   },
   {
    "slug": "flash",
    "name": "Flash",
    "fund": "I",
-   "logo": "logos/flash.svg"
+   "logo": "logos/flash.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian company that offers employers a single platform for flexible employee benefits, HR management and corporate expenses, with a card and app that let workers choose how to spend their benefits budget.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://flashapp.com.br"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/32223020000118"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://flashapp.com.br"
+    }
+   }
   },
   {
    "slug": "syntage",
    "name": "Syntage",
    "fund": "I",
-   "logo": "logos/syntage.svg"
+   "logo": "logos/syntage.svg",
+   "fields": {
+    "description": {
+     "value": "Mexican business-data platform that gives lenders and fintechs API access, with customer consent, to small businesses' tax, financial and company data, for credit-risk analysis, factoring and KYB/KYC.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://syntage.com"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://syntage.com/en/blog/somos-syntage/"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://syntage.com"
+    }
+   }
   },
   {
    "slug": "unxpose",
    "name": "Unxpose",
    "fund": "I",
-   "logo": "logos/unxpose.png"
+   "logo": "logos/unxpose.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian cybersecurity company with a self-service platform that scans a company's domains, websites, servers and cloud accounts, finds weaknesses and guides their fix, without installing agents.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://unxpose.com/en/"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/41183306000108"
+    },
+    "sector": {
+     "value": "Security & Fraud",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://unxpose.com/en/"
+    }
+   }
   },
   {
    "slug": "iniciador",
    "name": "Iniciador",
    "fund": "II",
-   "logo": "logos/iniciador.png"
+   "logo": "logos/iniciador.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian infrastructure company for Open Finance and Pix: it runs the regulatory side of Open Finance for banks and fintechs and lets them initiate Pix payments, including the new Pix modes (biometrics, tap to pay, recurring), earning a fee per successful transaction.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://iniciador.com.br/en/about"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/a-rodada-da-iniciador-uma-infra-do-pix-que-mostra-o-potencial-do-open-finance/"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://iniciador.com.br/en/about"
+    }
+   }
   },
   {
    "slug": "carbonext",
    "name": "Carbonext",
    "fund": "I",
-   "logo": "logos/carbonext.svg"
+   "logo": "logos/carbonext.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian developer of forest carbon-credit projects, mainly REDD+ in the Amazon, that sells the credits to companies and individuals and helps companies measure and offset their emissions.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://carbonext.com.br"
+    },
+    "year_founded": {
+     "value": 2010,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.carbonext.com.br/en/about/"
+    },
+    "sector": {
+     "value": "Energy & Infrastructure",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://carbonext.com.br"
+    }
+   }
   },
   {
    "slug": "better-drinks",
    "name": "Better Drinks",
    "fund": "I",
-   "logo": "logos/better-drinks.png"
+   "logo": "logos/better-drinks.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian beverage group that holds niche brands (Praya beer, Mamba canned water, Baer-Mate mate soft drinks), now backed by Heineken's production and distribution through Heineken SPIN.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://betterdrinks.com"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/startups/uma-terceira-via-surgiu-no-mercado-de-bebidas/"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://betterdrinks.com"
+    }
+   }
   },
   {
    "slug": "cubbo",
    "name": "Cubbo",
    "fund": "I",
-   "logo": "logos/cubbo.png"
+   "logo": "logos/cubbo.png",
+   "fields": {
+    "description": {
+     "value": "E-commerce logistics company that runs urban warehouses and its own software to store, pack and deliver online brands' orders in Mexico and Brazil, with pick-up points, B2B distribution and cross-border import services.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://cubbo.com"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://elreferente.es/inversiones/cubbo-levanta-ronda-inversion-semilla-4m"
+    },
+    "sector": {
+     "value": "Mobility & Logistics",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://cubbo.com"
+    }
+   }
   },
   {
    "slug": "tractian",
    "name": "Tractian",
    "fund": "I",
-   "logo": "logos/tractian.svg"
+   "logo": "logos/tractian.svg",
+   "fields": {
+    "description": {
+     "value": "Industrial AI company whose sensors and software watch the health of factory machines, diagnosing problems early so plants avoid unplanned downtime.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://tractian.com/en/about"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.ycombinator.com/companies/tractian"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://tractian.com/en/about"
+    }
+   }
   },
   {
    "slug": "frizata",
    "name": "Frizata",
    "fund": "I",
-   "logo": "logos/frizata.svg"
+   "logo": "logos/frizata.svg",
+   "fields": {
+    "description": {
+     "value": "Argentine frozen-food company that makes flexitarian ready meals in its own factory and sells them directly to consumers online with home delivery; it has also sold in Brazil, Chile and the United States and now focuses on Argentina.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/frizata-a-marca-d2c-para-os-vegetarianos-flexiveis/"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/frizata-a-marca-d2c-para-os-vegetarianos-flexiveis/"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/frizata-a-marca-d2c-para-os-vegetarianos-flexiveis/"
+    }
+   }
   },
   {
    "slug": "lerian",
    "name": "Lerian",
    "fund": "II",
-   "logo": "logos/lerian.png"
+   "logo": "logos/lerian.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian maker of open-source financial infrastructure: Midaz, a ledger for core banking, plus modules for onboarding, risk, reporting and reconciliation, sold to fintechs and financial institutions, earning from hosting, features and services.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://lerian.studio/"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/fintech/para-ex-dock-futuro-do-core-bancario-e-open-source/"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://lerian.studio/sobre"
+    }
+   }
   },
   {
    "slug": "crown",
    "name": "Crown",
    "fund": "II",
-   "logo": "logos/crown.png"
+   "logo": "logos/crown.png",
+   "fields": {
+    "description": {
+     "value": "Crown issues BRLV, a Brazilian real stablecoin fully backed by federal government bonds and held in a bankruptcy-remote structure, and sells institutions FX, savings and settlement services built on it.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://brl.xyz/a-crown/"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/92ij"
+    },
+    "sector": {
+     "value": "Wealth & Investing",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://brl.xyz/a-crown/"
+    }
+   }
   },
   {
    "slug": "newtail",
    "name": "Newtail",
    "fund": "I",
-   "logo": "logos/newtail.svg"
+   "logo": "logos/newtail.svg",
+   "fields": {
+    "description": {
+     "value": "Newtail was a Rio de Janeiro retail media platform that let e-commerce retailers sell ad space (sponsored products, banners, video) to brands; VTEX bought it in January 2025.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/vtex-faz-primeiro-ma-em-retail-media-e-quer-consolidar-o-mercado"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://www.baguete.com.br/noticias/vtex-compra-newtail"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://braziljournal.com/vtex-faz-primeiro-ma-em-retail-media-e-quer-consolidar-o-mercado"
+    }
+   }
   },
   {
    "slug": "pier",
    "name": "Pier",
    "fund": "I",
-   "logo": "logos/pier.png"
+   "logo": "logos/pier.png",
+   "fields": {
+    "description": {
+     "value": "Pier is a São Paulo digital insurer selling cell-phone and car insurance online, with AI-driven underwriting and instant claims payouts; in 2025 it had revenue above R$250 million.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://pier.digital"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://finsidersbrasil.com.br/noticias-sobre-fintechs/pier-levanta-r-108-milhoes-e-vai-pedir-licenca-definitiva-na-susep"
+    },
+    "sector": {
+     "value": "Insurance",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://pier.digital"
+    }
+   }
   },
   {
    "slug": "iorq",
    "name": "IORQ",
    "fund": "II",
-   "logo": "logos/iorq.png"
+   "logo": "logos/iorq.png",
+   "fields": {
+    "description": {
+     "value": "IORQ is a São Paulo credit platform that originates and funds corporate credit through its own managed funds and gives companies white-label tools to run credit and embedded finance, founded by iFood and Nomad co-founder Patrick Sigrist.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://iorq.com.br"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://www.bloomberglinea.com.br/startups/apos-ifood-e-nomad-patrick-sigrist-tem-novo-alvo-mudar-como-se-faz-credito-no-pais/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/nova-fintech-de-patrick-sigrist-capta-r-35m-para-reinventar-o-credito-b2b/"
+    }
+   }
   },
   {
    "slug": "the-coffee",
    "name": "The Coffee",
    "fund": "I",
-   "logo": "logos/the_coffee.webp"
+   "logo": "logos/the_coffee.webp",
+   "fields": {
+    "description": {
+     "value": "The Coffee is a Curitiba-born chain of tiny, minimalist, cashless coffee shops inspired by Japan, sold mostly through franchises in Brazil and abroad.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://thecoffee.jp"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://thecoffee.jp"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://thecoffee.jp"
+    }
+   }
   },
   {
    "slug": "bhub",
    "name": "BHub",
    "fund": "I",
-   "logo": "logos/bhub.png"
+   "logo": "logos/bhub.png",
+   "fields": {
+    "description": {
+     "value": "BHub is a São Paulo back-office-as-a-service company that offers accounting, tax and financial management by subscription and grows by buying accounting firms.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://bhub.ai"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/bhub-capta-us-10m-para-levar-ia-ao-mercado-de-contabilidade/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://bhub.ai"
+    }
+   }
   },
   {
    "slug": "stark-bank",
    "name": "Stark Bank",
    "fund": "I",
-   "logo": "logos/starkbank.png"
+   "logo": "logos/starkbank.png",
+   "fields": {
+    "description": {
+     "value": "Stark Bank is a São Paulo payment institution and bank-like platform for mid-sized and large companies, offering accounts, Pix, cards, collections, credit and digital fixed income through its own infrastructure and APIs.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://starkbank.com"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/startups/stark-bank-capta-us-45-milhoes-em-1o-aporte-do-fundo-de-jeff-bezos-no-pais/"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://starkbank.com"
+    }
+   }
   },
   {
    "slug": "jota",
    "name": "Jota",
    "fund": "II",
-   "logo": "logos/jota.svg"
+   "logo": "logos/jota.svg",
+   "fields": {
+    "description": {
+     "value": "AI financial assistant for small businesses and self-employed people that runs inside WhatsApp and its own app, handling payments, charges and money management by text, voice or photo.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://jota.ai"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://finsidersbrasil.com.br/gente-em-fintechs/jota-assistente-financeiro-com-ia-anuncia-liderancas-em-tecnologia-financas-e-rh/"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/jota-levanta-us-30m-em-1o-aporte-da-haun-ventures-no-brasil/"
+    }
+   }
   },
   {
    "slug": "nomad",
    "name": "Nomad",
    "fund": "I",
-   "logo": "logos/nomad.png"
+   "logo": "logos/nomad.png",
+   "fields": {
+    "description": {
+     "value": "Nomad is a São Paulo fintech that gives Brazilians a US-dollar or euro account, an international card, a Brazilian credit card and a global investing platform.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://nomadglobal.com"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://finsidersbrasil.com.br/noticias-sobre-fintechs/nomad-capta-us-20-milhoes-e-preve-120-mil-clientes-no-brasil/"
+    },
+    "sector": {
+     "value": "Wealth & Investing",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://nomadglobal.com"
+    }
+   }
   },
   {
    "slug": "kovi",
    "name": "Kovi",
    "fund": "I",
-   "logo": "logos/kovi.jpeg"
+   "logo": "logos/kovi.jpeg",
+   "fields": {
+    "description": {
+     "value": "Kovi rents cars to ride-hailing drivers in Brazil and Mexico, with taxes, maintenance, protection and assistance included and no credit check; Moove bought it in 2025.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://kovi.com.br/sobre-nos"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/a-kovi-quer-ser-a-localiza-dos-ubers-e-ja-encontrou-capital/"
+    },
+    "sector": {
+     "value": "Mobility & Logistics",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://kovi.com.br/sobre-nos"
+    }
+   }
   },
   {
    "slug": "nekt",
    "name": "Nekt",
    "fund": "II",
-   "logo": "logos/nekt.png"
+   "logo": "logos/nekt.png",
+   "fields": {
+    "description": {
+     "value": "Nekt is a Brazilian data platform that connects a company's data sources, organises them in its own cloud and serves them to analysts, BI tools and AI agents, aimed at growing mid-sized companies.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://nekt.ai"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/nekt-capta-r-5m-para-ser-a-databricks-brasileira/"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://nekt.ai"
+    }
+   }
   },
   {
    "slug": "liti",
    "name": "Liti",
    "fund": "I",
-   "logo": "logos/liti.png"
+   "logo": "logos/liti.png",
+   "fields": {
+    "description": {
+     "value": "Liti is a Brazilian online clinic that follows overweight and obese patients with doctors, dietitians and an app, including prescription of GLP-1 weight-loss medication.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://liti.com.br"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.infomoney.com.br/negocios/startup-liti-quer-ampliar-luta-contra-obesidade-e-recebe-r-21-milhoes-para-isso/"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://liti.com.br"
+    }
+   }
   },
   {
    "slug": "alchemy",
    "name": "Alchemy",
    "fund": "I",
-   "logo": "logos/alchemy.svg"
+   "logo": "logos/alchemy.svg",
+   "fields": {
+    "description": {
+     "value": "Alchemy sells an AI-native ERP for accounting and finance to fast-growing technology and service companies, in which agents capture, classify, post and reconcile documents and executives can operate it from Claude, ChatGPT or Gemini.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://usealchemy.io/"
+    },
+    "year_founded": {
+     "value": 2026,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/in/fernando-ribeiro-1a017124"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://usealchemy.io/"
+    }
+   }
   },
   {
    "slug": "null-platform",
    "name": "Null Platform",
    "fund": "I",
-   "logo": "logos/null-platform.png"
+   "logo": "logos/null-platform.png",
+   "fields": {
+    "description": {
+     "value": "nullplatform is an internal developer platform for large companies that lets developers and AI agents deploy through self-service while platform, security and finance teams enforce governance.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://nullplatform.io"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.iprofesional.com/tecnologia/417183-exlideres-de-mercado-libre-crean-plataforma-para-mejorar-impacto-de-tecnologia-en-negocios"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://nullplatform.io"
+    }
+   }
   },
   {
    "slug": "comunicain",
    "name": "ComunicaIn",
    "fund": "I",
-   "logo": "logos/comunicain.svg"
+   "logo": "logos/comunicain.svg",
+   "fields": {
+    "description": {
+     "value": "Comunica.In sells large companies a platform, and now an AI agent, to plan, send and measure internal communication to all employees.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://comunica.in"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/comunica-in-levanta-r-10-mi-em-rodada-liderada-pela-valor-capital/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://comunica.in"
+    }
+   }
   },
   {
    "slug": "kamino",
    "name": "Kamino",
    "fund": "I",
-   "logo": "logos/kamino.png"
+   "logo": "logos/kamino.png",
+   "fields": {
+    "description": {
+     "value": "Kamino is a Brazilian financial-management platform for mid-sized companies, combining payments, collection, automatic bank reconciliation, reporting, a business account and cards, with an AI financial agent.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://kamino.com.br"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/fintech/kamino-capta-r-54m-para-ser-o-centro-operacional-dos-cfos"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://kamino.com.br"
+    }
+   }
   },
   {
    "slug": "ximple",
    "name": "Ximple",
    "fund": "II",
-   "logo": "logos/ximple.svg"
+   "logo": "logos/ximple.svg",
+   "fields": {
+    "description": {
+     "value": "Ximple is a Mexican digital lender that gives direct and catalogue sellers working-capital loans and a payout card, and lets them distribute credit to their customers.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://ximple.co"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.contxto.com/en/mexico/mexican-fintech-ximple-raises-2-7m-to-launch-credit-platform/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://ximple.co"
+    }
+   }
   },
   {
    "slug": "zax",
    "name": "ZAX",
    "fund": "I",
-   "logo": "logos/zax.png"
+   "logo": "logos/zax.png",
+   "fields": {
+    "description": {
+     "value": "ZAX is a São Paulo marketplace where small shop owners and resellers buy clothing and accessories at wholesale prices straight from suppliers in the Brás, Bom Retiro and other fashion districts, with freight and payment handled on the platform.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://zaxapp.com.br"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://exame.com/insight/zax-startup-que-digitaliza-o-atacado-do-bras-capta-r-32-milhoes/p/"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://zaxapp.com.br"
+    }
+   }
   },
   {
    "slug": "yuno",
    "name": "Yuno",
    "fund": "I",
-   "logo": "logos/yuno.png"
+   "logo": "logos/yuno.png",
+   "fields": {
+    "description": {
+     "value": "Yuno is a payments orchestration platform: one API that lets large merchants, banks and wallets accept payments, payouts, fraud checks and stablecoins across more than 1,000 payment methods in 190+ countries, with smart routing and AI agents to raise approval rates.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://y.uno"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.y.uno/en/about"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://y.uno"
+    }
+   }
   },
   {
    "slug": "baze",
    "name": "Baze",
    "fund": "II",
-   "logo": "logos/baze.jpeg"
+   "logo": "logos/baze.jpeg",
+   "fields": {
+    "description": {
+     "value": "Baze offers the \"Linha Baze\", a revolving credit line in Brazil secured by the customer's property or vehicle: opened once, reused as it is repaid, at rates from CDI plus 0.7% a month, entirely through an app.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.suabaze.com"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/58418665000108"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://www.suabaze.com/linha-baze"
+    }
+   }
   },
   {
    "slug": "pomelo",
    "name": "Pomelo",
    "fund": "I",
-   "logo": "logos/pomelo.png"
+   "logo": "logos/pomelo.png",
+   "fields": {
+    "description": {
+     "value": "Pomelo is an Argentine payments-infrastructure company that lets banks, fintechs and large companies issue and process prepaid, debit and credit cards across Latin America through one API, including its own network licences (BIN sponsorship).",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://pomelo.la"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://techcrunch.com/2021/05/12/argentinas-pomelo-raises-9m-to-build-a-new-payments-infrastructure-for-latam-fintechs"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://pomelo.la"
+    }
+   }
   },
   {
    "slug": "lemon-energia",
    "name": "Lemon Energia",
    "fund": "I",
-   "logo": "logos/lemonenergia.png"
+   "logo": "logos/lemonenergia.png",
+   "fields": {
+    "description": {
+     "value": "Lemon connects clean-energy plants (mostly solar) to small businesses, condominiums and households in Brazil: customers receive energy credits on their grid bill, save on electricity and need no installation or upfront cost.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://lemon.energy"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://kaszek.com/company/lemon-energy/"
+    },
+    "sector": {
+     "value": "Energy & Infrastructure",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://lemon.energy"
+    }
+   }
   },
   {
    "slug": "morado",
    "name": "Morado",
    "fund": "I",
-   "logo": "logos/morado.png"
+   "logo": "logos/morado.png",
+   "fields": {
+    "description": {
+     "value": "Morado is a Colombian fintech that sells beauty products and credit to hair salons, barbershops and nail studios, financing their supplier purchases at 30, 60 or 90 days through an app and WhatsApp.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://moradocolombia.com"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://forbes.co/30-promesas-2023/morado"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://moradocolombia.com"
+    }
+   }
   },
   {
    "slug": "stay",
    "name": "Stay",
    "fund": "II",
-   "logo": "logos/stay.svg"
+   "logo": "logos/stay.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian fintech that offers companies private pension plans and other financial-wellbeing benefits for their employees, with onboarding and plan management done through WhatsApp.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://stay.com.br"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/stay-levanta-r-15m-para-expandir-em-previdencia-corporativa/"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://stay.com.br"
+    }
+   }
   },
   {
    "slug": "skelt",
    "name": "Skelt",
    "fund": "I",
-   "logo": "logos/skelt.png"
+   "logo": "logos/skelt.png",
+   "fields": {
+    "description": {
+     "value": "Skelt is a Curitiba cosmetics group, known for Brazil's leading self-tanning brand Skelt and for the affordable dermocosmetics brand Creamy, sold online, in its own stores and through pharmacies.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://skelt.com.br"
+    },
+    "year_founded": {
+     "value": 2017,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/a-skelt-dominou-os-autobronzeadores-agora-e-a-vez-dos-dermocosmeticos/"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://skelt.com.br"
+    }
+   }
   },
   {
    "slug": "loopi",
    "name": "Loopi",
    "fund": "I",
-   "logo": "logos/loopi.jpeg"
+   "logo": "logos/loopi.jpeg",
+   "fields": {
+    "description": {
+     "value": "Loopi is a São Paulo fintech that gives medium-sized companies their own platform to offer early payment of supplier invoices (receivables anticipation), with invoice validation, digital assignment and accounting handled by Loopi; it began as a social-commerce app and a crypto on-ramp.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://loopi.finance"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startupi.com.br/startup-que-aposta-em-vendas-pelas-redes-sociais-recebe-aporte-de-us-5-milhoes/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://loopi.finance"
+    }
+   }
   },
   {
    "slug": "elvenworks",
    "name": "Elvenworks",
    "fund": "I",
-   "logo": "logos/elvenworks.png"
+   "logo": "logos/elvenworks.png",
+   "fields": {
+    "description": {
+     "value": "Elven (Elvenworks) is a Brazilian reliability company that sells an observability and incident-management platform, plus SRE, DevOps and FinOps consulting and a 24x7 operations centre, billed in reais with data kept in Brazil.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://elven.works"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://elven.works/sobre.html"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://elven.works"
+    }
+   }
   },
   {
    "slug": "dr-jones",
    "name": "Dr. Jones",
    "fund": "I",
-   "logo": "logos/drjones.png"
+   "logo": "logos/drjones.png",
+   "fields": {
+    "description": {
+     "value": "Dr. Jones is a Brazilian men's grooming brand (razors by subscription, shampoo, shaving foam, face scrub and body gels), sold online and, since 2023, through retailers; Grupo Boticário bought it in 2022.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/boticario-compra-a-dr-jones-fortalecendo-seu-portfolio-masculino/"
+    },
+    "year_founded": {
+     "value": 2013,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/boticario-compra-a-dr-jones-fortalecendo-seu-portfolio-masculino/"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://braziljournal.com/boticario-compra-a-dr-jones-fortalecendo-seu-portfolio-masculino/"
+    }
+   }
   },
   {
    "slug": "vetto",
    "name": "Vetto",
    "fund": "II",
-   "logo": "logos/vetto.svg"
+   "logo": "logos/vetto.svg",
+   "fields": {
+    "description": {
+     "value": "AI data company that designs expert-written training tasks, feedback loops and benchmarks for frontier AI labs, using a paid network of remote specialists. It began as the Brazilian student-careers platform Start Carreiras.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.vetto.ai/"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/start-carreiras-capta-r-13-milhoes"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.vetto.ai/"
+    }
+   }
   },
   {
    "slug": "omni-saude",
    "name": "Omni Saúde",
    "fund": "II",
-   "logo": "logos/omni-saude.png"
+   "logo": "logos/omni-saude.png",
+   "fields": {
+    "description": {
+     "value": "Digital prescription-drug benefit for companies: employees buy medicines at any pharmacy in Brazil through an app, with AI prescription checks and Pix payment, and employers get a health-management dashboard.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://omnisaude.app"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/healthtechs/omni-saude-faz-3a-rodada-em-15-meses-e-soma-r-16m-em-aportes/"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://omnisaude.app"
+    }
+   }
   },
   {
    "slug": "deco",
    "name": "deco",
    "fund": "II",
-   "logo": "logos/deco.jpeg"
+   "logo": "logos/deco.jpeg",
+   "fields": {
+    "description": {
+     "value": "Operates online stores and apps for retailers using senior engineers, AI agents and its own software, charging for the results it delivers. Started as the deco.cx website builder for developers.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.decocms.com/"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/deco-cx-capta-us-22-milhoes"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.decocms.com/"
+    }
+   }
   },
   {
    "slug": "buser",
    "name": "Buser",
    "fund": "I",
-   "logo": "logos/buser.png"
+   "logo": "logos/buser.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian app for intercity bus travel: it pools travellers to charter executive buses, resells tickets from over 150 bus companies and now owns regulated bus lines.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.buser.com.br/sobre"
+    },
+    "year_founded": {
+     "value": 2017,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.buser.com.br/sobre"
+    },
+    "sector": {
+     "value": "Mobility & Logistics",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.buser.com.br/sobre"
+    }
+   }
   },
   {
    "slug": "bia",
    "name": "Bia",
    "fund": "I",
-   "logo": "logos/bia.png"
+   "logo": "logos/bia.png",
+   "fields": {
+    "description": {
+     "value": "Colombian electricity retailer for businesses that installs a smart meter and gives customers consumption analytics, a single invoice for all their sites and clean-energy options; it is also building distributed solar generation and an energy-software spin-off, Olibia.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://bia.app"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://forbes.co/2024/11/26/emprendedores/bia-energy-obtiene-us85-millones-atrayendo-socios-verdes"
+    },
+    "sector": {
+     "value": "Energy & Infrastructure",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://bia.app"
+    }
+   }
   },
   {
    "slug": "robbin",
    "name": "Robbin",
    "fund": "I",
-   "logo": "logos/robbin.svg"
+   "logo": "logos/robbin.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian fintech that gives manufacturers a co-branded Pix virtual card and an AI credit assistant so their small retail customers can buy in instalments while the manufacturer is paid upfront and Robbin carries the risk.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://robbin.com.br"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/fintech/fintech-robbin-capta-us-8m-com-canary-atlantico-e-caravela/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://robbin.com.br"
+    }
+   }
   },
   {
    "slug": "trybe",
    "name": "Trybe",
    "fund": "I",
-   "logo": "logos/trybe.png"
+   "logo": "logos/trybe.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian technology-skills school that began as an income-share developer bootcamp and now sells AI courses, workshops and corporate training, including a programme for lawyers with OAB state sections.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://betrybe.com"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://betrybe.com"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://betrybe.com"
+    }
+   }
   },
   {
    "slug": "destaxa",
    "name": "Destaxa",
    "fund": "I",
-   "logo": "logos/destaxa.png"
+   "logo": "logos/destaxa.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian payment orchestrator for physical stores: one integration connects a shop's point-of-sale software to every acquirer and Pix provider and routes each transaction by lowest cost.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://destaxa.com.br/sobre"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://destaxa.com.br/sobre"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://destaxa.com.br/sobre"
+    }
+   }
   },
   {
    "slug": "patagon-ai",
    "name": "Patagon AI",
    "fund": "II",
-   "logo": "logos/patagon.png"
+   "logo": "logos/patagon.png",
+   "fields": {
+    "description": {
+     "value": "AI sales agents on WhatsApp that answer, qualify and book the leads generated by a company's ads, tie each sale back to the ad that started it and charge per qualified meeting.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://patagon.ai"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.baguete.com.br/noticias/patagonai-capta-r-15-mi-com-fundo-europeu"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://patagon.ai"
+    }
+   }
   },
   {
    "slug": "backchannel",
    "name": "Backchannel",
    "fund": "II",
-   "logo": "logos/backchannel.png"
+   "logo": "logos/backchannel.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian private B2B marketplace where large brands sell surplus inventory to vetted small and mid-sized retailers, with AI matching and pricing and a 12% take rate.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/backchannel-capta-r-25m-para-ajudar-marcas-a-desencalhar-estoques/"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/estoque-encalhado-a-backchannel-quer-resolver-seu-problema"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/backchannel-capta-r-25m-para-ajudar-marcas-a-desencalhar-estoques/"
+    }
+   }
   },
   {
    "slug": "igual",
    "name": "Igual",
    "fund": "I",
-   "logo": "logos/igual.svg"
+   "logo": "logos/igual.svg",
+   "fields": {
+    "description": {
+     "value": "Curitiba legal-tech company that sells software and AI to digital labor-law firms, to manage case flow, generate client demand and settle cases faster.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.igual.com/"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://techindex.law.stanford.edu/companies/igual"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.igual.com/"
+    }
+   }
   },
   {
    "slug": "180-insurance",
    "name": "180° Insurance",
    "fund": "I",
-   "logo": "logos/180.svg"
+   "logo": "logos/180.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian insurer (Susep-authorised) that designs and underwrites embedded insurance for fintechs, lenders, retailers and platforms, connected by one API.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://180s.com.br"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/startups/180-seguros-capta-r-177-milhoes-para-escalar-seu-insurance-as-a-service/"
+    },
+    "sector": {
+     "value": "Insurance",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://180s.com.br"
+    }
+   }
   },
   {
    "slug": "henry",
    "name": "Henry",
    "fund": "I",
-   "logo": "logos/henry.svg"
+   "logo": "logos/henry.svg",
+   "fields": {
+    "description": {
+     "value": "Online school for tech and AI careers across Latin America that began with no-upfront-cost bootcamps (pay after getting a job) and now also sells AI talent and training to companies.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.soyhenry.com"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.ycombinator.com/companies/henry"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.soyhenry.com"
+    }
+   }
   },
   {
    "slug": "salu",
    "name": "Salu",
    "fund": "I",
-   "logo": "logos/salu.svg"
+   "logo": "logos/salu.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian HR-tech that digitises occupational health and safety: online booking and tracking of exams, reports and legal programmes, with eSocial filing; acquired by Senior Sistemas in 2026.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://salu.com.vc"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/senior-sistemas-compra-a-salu-por-r-3187m/"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://salu.com.vc"
+    }
+   }
   },
   {
    "slug": "vaas",
    "name": "Vaas",
    "fund": "I",
-   "logo": "logos/vaas.jpeg"
+   "logo": "logos/vaas.jpeg",
+   "fields": {
+    "description": {
+     "value": "Software that digitises the operations of private credit in Latin America: asset onboarding, collateral verification, servicing and reporting for lenders and borrowers of asset-backed debt.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.getvaas.com/en/about-us"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.valoraanalitik.com/?p=314469"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.getvaas.com/en/about-us"
+    }
+   }
   },
   {
    "slug": "refer",
    "name": "Refer",
    "fund": "II",
-   "logo": "logos/refer.png"
+   "logo": "logos/refer.png",
+   "fields": {
+    "description": {
+     "value": "US startup whose AI career agent, Lia, matches tech candidates with jobs and makes warm introductions to hiring managers; candidates pay 20% of their first month's salary only if hired and employers use it free.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://cardinalrefer.com"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://ecosistemastartup.com/?p=94425"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://cardinalrefer.com"
+    }
+   }
   },
   {
    "slug": "malga",
    "name": "Malga",
    "fund": "I",
-   "logo": "logos/malga.svg"
+   "logo": "logos/malga.svg",
+   "fields": {
+    "description": {
+     "value": "Malga is a Brazilian payments infrastructure company that lets digital businesses connect to many acquirers, anti-fraud tools, wallets and banks through one API, route each payment to the best option, and increasingly build their own payment products on top.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/malga-marketplace-de-pagamentos-do-ecommerce-faz-serie-a-com-cvc-da-totvs/"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/noticias/plug-vira-malga-e-se-posiciona-como-infraestrutura-inteligente-de-pagamentos/"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://malga.io"
+    }
+   }
   },
   {
    "slug": "tapi",
    "name": "tapi",
    "fund": "I",
-   "logo": "logos/tapi.svg"
+   "logo": "logos/tapi.svg",
+   "fields": {
+    "description": {
+     "value": "Payments network for Latin America that lets banks, fintechs and large platforms offer bill payments, cash in and out, mobile top-ups and gift cards through a single integration.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://tapi.la"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://tapi.la"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://tapi.la"
+    }
+   }
   },
   {
    "slug": "cayena",
    "name": "Cayena",
    "fund": "I",
-   "logo": "logos/cayena.png"
+   "logo": "logos/cayena.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian B2B marketplace where restaurants, bars, hotels and small food businesses buy supplies from many pre-qualified suppliers, with next-day delivery and pay-later credit.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/com-serie-b-de-r-300m-cayena-faz-uma-das-maiores-rodadas-do-ano/"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.bloomberglinea.com/2021/09/13/picus-capital-invests-in-cayenas-35m-series-a-bets-the-startup-can-digitize-the-wholesale-food-business/"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/com-serie-b-de-r-300m-cayena-faz-uma-das-maiores-rodadas-do-ano/"
+    }
+   }
   },
   {
    "slug": "quansa",
    "name": "Quansa",
    "fund": "I",
-   "logo": "logos/quansa.png"
+   "logo": "logos/quansa.png",
+   "fields": {
+    "description": {
+     "value": "Platform that lets employers pay frontline workers instantly for shifts, tips, commissions and bonuses, linked to attendance and performance, to cut absenteeism and turnover.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://quansa.com.br"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/blog/home/startup-que-acaba-de-chegar-ao-brasil-e-a-nova-aposta-da-sequoia-na-america-latina/"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://quansa.com.br"
+    }
+   }
   },
   {
    "slug": "sanii",
    "name": "Sanii",
    "fund": "I",
-   "logo": "logos/sanii.png"
+   "logo": "logos/sanii.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian home-care company that selects, trains and places caregivers, nursing technicians and physiotherapists with older people at home, using AI to match them to families.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.infomoney.com.br/business/sanii-a-healthtech-que-recebeu-r-13-milhoes-para-cuidar-de-idosos/"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/healthtechs/sanii-capta-r-8m-com-valor-capital-para-melhorar-a-qualidade-de-vida-dos-idosos/"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.infomoney.com.br/business/sanii-a-healthtech-que-recebeu-r-13-milhoes-para-cuidar-de-idosos/"
+    }
+   }
   },
   {
    "slug": "vendah",
    "name": "Vendah",
    "fund": "I",
-   "logo": "logos/vendah.png"
+   "logo": "logos/vendah.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian marketplace where individual resellers buy beauty products from popular brands, pay in instalments without a credit card and sell to their own networks and on social media.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://vendah.com.br"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.ycombinator.com/companies/vendah"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.ycombinator.com/companies/vendah"
+    }
+   }
   },
   {
    "slug": "jitter",
    "name": "Jitter",
    "fund": "I",
-   "logo": "logos/jitter.png"
+   "logo": "logos/jitter.png",
+   "fields": {
+    "description": {
+     "value": "Web-based motion design tool that lets designers turn static designs into animations and videos, with AI to generate effects and batch variations, for creative and product teams.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://jitter.video"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.ycombinator.com/companies/jitter"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://jitter.video"
+    }
+   }
   },
   {
    "slug": "norma",
    "name": "Norma",
    "fund": "II",
-   "logo": "logos/norma.svg"
+   "logo": "logos/norma.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian AI platform for tax intelligence that cross-checks a company's tax documents against Brazilian tax rules to flag savings and risks, and helps reconcile the new IBS/CBS tax assessment.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.norma.com.br/"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://www.linkedin.com/in/andremgcorrea/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://www.norma.com.br/"
+    }
+   }
   },
   {
    "slug": "caveo",
    "name": "Caveo",
    "fund": "II",
-   "logo": "logos/caveo.png"
+   "logo": "logos/caveo.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian accounting and financial platform for doctors working as PJ: company opening, invoices, taxes, accounting and a PJ account in one app, with an AI assistant on WhatsApp.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/caveo-o-contador-dos-medicos-atrai-fundadores-da-sulamerica/"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/caveo-faz-rodada-com-a-kortex-atraindo-fleury-sabin-e-bradesco-seguros/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://caveo.com.br"
+    }
+   }
   },
   {
    "slug": "level-ai",
    "name": "Level AI",
    "fund": "I",
-   "logo": "logos/level-ai.png"
+   "logo": "logos/level-ai.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian healthcare AI company that reads clinical data and reports and turns them into actions with measurable financial return for hospitals, health insurers, clinics and diagnostic networks (formerly NeuralMed).",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://levelai.com.br/"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/neuralmed-recebe-aporte-de-r-10-milhoes"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/startups/neuralmed-renova-pitch-e-renasce-com-novo-nome/es/"
+    }
+   }
   },
   {
    "slug": "jusfy",
    "name": "Jusfy",
    "fund": "I",
-   "logo": "logos/jusfy.png"
+   "logo": "logos/jusfy.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian legal-tech platform that gives lawyers one subscription with calculators, asset searches, case management, an AI assistant (JusGPT) and payments for their daily work.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/jusfy-levanta-serie-a-de-us-15m-liderada-pela-quona/"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/40573276000183"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://jusfy.com.br"
+    }
+   }
   },
   {
    "slug": "elevva",
    "name": "Elevva",
    "fund": "I",
-   "logo": "logos/elevva.webp"
+   "logo": "logos/elevva.webp",
+   "fields": {
+    "description": {
+     "value": "Argentine company that acquires and partners with e-commerce brands in Latin America and offers pymes regional expansion, multichannel software, logistics, working capital and sourcing in China.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.forbesargentina.com/innovacion/tres-argentinos-levantaron-30-millones-dolares-inversiones-mejorar-e-commerce-latinoamerica-n15879/amp"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://elevva.co/quienes-somos"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://elevva.co"
+    }
+   }
   },
   {
    "slug": "botcity",
    "name": "BotCity",
    "fund": "I",
-   "logo": "logos/botcity.png"
+   "logo": "logos/botcity.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian software company, from Campinas, whose platform runs, monitors and governs Python automations and AI-generated scripts inside companies, after starting as a developer-first RPA tool.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/botcity-levanta-r-65m-em-serie-a-no-vale-do-silicio/"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://forbes.com.br/forbes-tech/2021/12/eatopia-botcity-astella-garden-brands-muito-mais/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://botcity.dev"
+    }
+   }
   },
   {
    "slug": "hyperplane",
    "name": "Hyperplane",
    "fund": "I",
-   "logo": "logos/hyperplane.jpeg"
+   "logo": "logos/hyperplane.jpeg",
+   "fields": {
+    "description": {
+     "value": "Silicon Valley startup, founded by Brazilians, that built foundation models for banks to predict credit risk and customer behaviour from their own data; acquired by Nubank in June 2024.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://international.nubank.com.br/company/nubank-acquires-hyperplane-to-accelerate-ai-first-strategy/"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://international.nubank.com.br/company/nubank-acquires-hyperplane-to-accelerate-ai-first-strategy/"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://hyperplane.ai"
+    }
+   }
   },
   {
    "slug": "doji",
    "name": "Doji",
    "fund": "I",
-   "logo": "logos/doji.svg"
+   "logo": "logos/doji.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian startup, born in the UK, that runs a trade-in platform for used smartphones: stores scan and value the old phone, and Doji sells it to registered buyers for a commission.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/doji-levanta-mais-r-3-milhoes"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://startupi.com.br/startup-capta-us-3-milhoes-para-transformar-o-mercado-global-de-produtos-usados/"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://doji.com.br"
+    }
+   }
   },
   {
    "slug": "mecanizou",
    "name": "Mecanizou",
    "fund": "I",
-   "logo": "logos/mecanizou.svg"
+   "logo": "logos/mecanizou.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian B2B auto-parts marketplace that lets mechanic workshops find, compare and order the right part for a car by licence plate, with fast delivery from many suppliers.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/mecanizou-levanta-us-145-mi-para-levar-tecnologia-ao-setor-de-autopecas/"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://convergenciadigital.com.br/inovacao/mecanizou-se-apoia-em-ia-para-fazer-match-de-pecas-automotivas/"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://mecanizou.com"
+    }
+   }
   },
   {
    "slug": "osana-salud",
    "name": "Osana Salud",
    "fund": "I",
-   "logo": "logos/osana.png"
+   "logo": "logos/osana.png",
+   "fields": {
+    "description": {
+     "value": "Argentine healthtech that sells a SaaS platform and APIs to health insurers, funds and providers to run digital care: appointments, video consultation, e-prescription, billing and patient follow-up.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.lavca.org/general-catalyst-leads-usd20m-series-a-for-argentine-healthtech-osana-salud/"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.lavca.org/general-catalyst-leads-usd20m-series-a-for-argentine-healthtech-osana-salud/"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://osanasalud.com"
+    }
+   }
   },
   {
    "slug": "suridata",
    "name": "Suridata",
    "fund": "I",
-   "logo": "logos/suridata.jpeg"
+   "logo": "logos/suridata.jpeg",
+   "fields": {
+    "description": {
+     "value": "Brazilian health-data company that helps brokers, employers, operators and hospitals audit and manage corporate health plans, using independent claims analysis and clinical review to negotiate price adjustments.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.suridata.com.br"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/31937540000120"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.suridata.com.br"
+    }
+   }
   },
   {
    "slug": "brendi",
    "name": "Brendi",
    "fund": "II",
-   "logo": "logos/brendi.png"
+   "logo": "logos/brendi.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian software that lets restaurants and delivery businesses take and grow orders on their own WhatsApp channel, with an AI attendant, digital menu, loyalty and marketing tools, without marketplace commissions.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://brendi.com.br/sobre-nos"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.baguete.com.br/noticias/brendi-contrata-head-de-contas-estrategicas"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://brendi.com.br/sobre-nos"
+    }
+   }
   },
   {
    "slug": "avra",
    "name": "Avra",
    "fund": "II",
-   "logo": "logos/avra.svg"
+   "logo": "logos/avra.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian AI lab with a foundation model that reads a company's relational database and predicts outcomes such as default, churn and fraud, sold to banks, telecoms and marketplaces by API and batch.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://avra.ai/about"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startupi.com.br/avra-startup-de-ia-para-pmes-levanta-us-2-milhoes/"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://avra.ai/about"
+    }
+   }
   },
   {
    "slug": "musa",
    "name": "Musa",
    "fund": "I",
-   "logo": "logos/musa.png"
+   "logo": "logos/musa.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian waste-management company that runs collection, transport and final destination for businesses through one digital platform and contract, using an asset-light network of audited partners.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://musa.co"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/39775189000120"
+    },
+    "sector": {
+     "value": "Energy & Infrastructure",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://musa.co"
+    }
+   }
   },
   {
    "slug": "attach-media-partners",
    "name": "Attach Media Partners",
    "fund": "I",
-   "logo": "logos/amp.png"
+   "logo": "logos/amp.png",
+   "fields": {
+    "description": {
+     "value": "Mobile games company that acquires, partners with and runs mature free-to-play games, rebuilding monetisation, user acquisition and live operations; formerly Super Company.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.attachmp.com"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://www.linkedin.com/company/attachmediapartners"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.attachmp.com"
+    }
+   }
   },
   {
    "slug": "assis",
    "name": "Assis",
    "fund": "I",
-   "logo": "logos/assis.svg"
+   "logo": "logos/assis.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian software company whose AI assistant prepares meetings, records conversations in the CRM and drafts follow-ups for investment-advisory firms; it began as a WhatsApp assistant for self-employed professionals.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://assis.co"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/46829971000140"
+    },
+    "sector": {
+     "value": "Wealth & Investing",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://assis.co"
+    }
+   }
   },
   {
    "slug": "zivo",
    "name": "Zivo",
    "fund": "I",
-   "logo": "logos/zivo.png"
+   "logo": "logos/zivo.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian company, formerly Comp, that co-builds companies' HR functions with HR experts, AI engineers and custom software, covering 11 HR areas from recruiting to offboarding.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://zivo.ai"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/venture-capital/startup-comp-capta-r-14-mi-com-banco-de-dados-sobre-salarios/"
+    },
+    "sector": {
+     "value": "Work, Benefits & Education",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://zivo.ai"
+    }
+   }
   },
   {
    "slug": "aravita",
    "name": "Aravita",
    "fund": "I",
-   "logo": "logos/aravita.png"
+   "logo": "logos/aravita.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian AI platform that forecasts demand and manages ordering and stock of fresh fruit, vegetables and greens for supermarkets and distributors, to cut waste and stock-outs.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://aravita.com"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.baguete.com.br/noticias/31/03/2023/aravita-recebe-aporte-de-r-12-milhoes"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://aravita.com"
+    }
+   }
   },
   {
    "slug": "capa",
    "name": "Capa",
    "fund": "II",
-   "logo": "logos/capa.png"
+   "logo": "logos/capa.png",
+   "fields": {
+    "description": {
+     "value": "Latin American payments company that offers cross-border payments and 24/7 FX through stablecoin rails and a single API, with Mexican peso rails and market making for non-USD stablecoins.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://capa.fi"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://capa.fi"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://capa.fi"
+    }
+   }
   },
   {
    "slug": "arcca-franquias",
    "name": "Arcca Franquias",
    "fund": "I",
-   "logo": "logos/arcca.png"
+   "logo": "logos/arcca.png",
+   "fields": {
+    "description": {
+     "value": "Rio de Janeiro holding that takes restaurant brands (Tapí, Amélie, Juliette, Nema) into franchising and offers its own franchise-management software (Nola, Supfy) to franchisors and franchisees.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://arcca.io/sobre-nos/"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://arcca.io/sobre-nos/"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://arcca.io"
+    }
+   }
   },
   {
    "slug": "hashdex",
    "name": "Hashdex",
    "fund": "I",
-   "logo": "logos/hashdex.svg"
+   "logo": "logos/hashdex.svg",
+   "fields": {
+    "description": {
+     "value": "Global crypto asset manager that packages the crypto market into regulated index funds and ETFs (Brazil, United States and others), built on the Nasdaq Crypto Index it co-developed with Nasdaq.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://hashdex.com"
+    },
+    "year_founded": {
+     "value": 2018,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.infomoney.com.br/mercados/conheca-a-historia-da-hashdex-empresa-que-criou-o-primeiro-etf-de-criptoativos-da-b3/"
+    },
+    "sector": {
+     "value": "Wealth & Investing",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://hashdex.com"
+    }
+   }
   },
   {
    "slug": "idwall",
    "name": "idwall",
    "fund": "I",
-   "logo": "logos/idwall.svg"
+   "logo": "logos/idwall.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian identity verification, risk management and digital onboarding platform, using biometrics, document validation and background checks to help companies prevent fraud.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.bloomberglinea.com.br/startups/serasa-volta-as-compras-e-adquire-idwall-startup-de-verificacao-de-identidade/"
+    },
+    "year_founded": {
+     "value": 2016,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.bloomberglinea.com.br/startups/serasa-volta-as-compras-e-adquire-idwall-startup-de-verificacao-de-identidade/"
+    },
+    "sector": {
+     "value": "Security & Fraud",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://serasaexperian.com.br/sala-de-imprensa/prevencao-a-fraude/serasa-experian-reforca-lideranca-no-ecossistema-antifraude-com-aquisicao-da-idwall-e-avanca-em-identidade-digital"
+    }
+   }
   },
   {
    "slug": "isa-health",
    "name": "Isa Health",
    "fund": "I",
-   "logo": "logos/isasaude.png"
+   "logo": "logos/isasaude.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian \"hospital at home\" company (formerly ISA Lab, home lab tests and vaccines) that sends a network of nurses and clinicians to patients' homes for exams, urgent care, rehabilitation, infusions and palliative care, paid mainly by health insurers.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.bloomberglinea.com.br/startups/isa-saude-capta-r-160-mi-para-plano-de-tornar-o-lar-o-melhor-hospital-que-existe/"
+    },
+    "year_founded": {
+     "value": 2017,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/a-isa-lab-esta-reinventando-os-exames-e-as-vacinas-a-domicilio"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.bloomberglinea.com.br/startups/isa-saude-capta-r-160-mi-para-plano-de-tornar-o-lar-o-melhor-hospital-que-existe/"
+    }
+   }
   },
   {
    "slug": "lexter",
    "name": "Lexter",
    "fund": "I",
-   "logo": "logos/lexter.svg"
+   "logo": "logos/lexter.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian legal AI company whose virtual specialists (Laura for legal work, Lia for client contact on WhatsApp) draft petitions and contracts, research case law and run client service for law firms.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://lexter.ai"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.ycombinator.com/companies/lexter-ai"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://lexter.ai"
+    }
+   }
   },
   {
    "slug": "winnin",
    "name": "Winnin",
    "fund": "I",
-   "logo": "logos/winnin.svg"
+   "logo": "logos/winnin.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian-born AI platform that reads billions of public videos (YouTube, TikTok, Instagram and others) to show large brands what audiences care about, with a \"Share of Attention\" metric and an AI copilot, sold as a subscription.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://winnin.com"
+    },
+    "year_founded": {
+     "value": 2014,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/blog/home/o-empreendedor-que-fez-coca-cola-e-ab-inbev-virarem-socias-em-uma-startup/"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://winnin.com"
+    }
+   }
   },
   {
    "slug": "alude",
    "name": "Alude",
    "fund": "I",
-   "logo": "logos/alude.svg"
+   "logo": "logos/alude.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian software platform that lets real estate agencies and independent brokers run rentals digitally: tenant and owner credit checks, rental management and payouts, e-signature, insurance issuing and lead capture, sold by subscription.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://alude.com.br"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.contxto.com/en/brazil/alude-real-estate-platform-brazil/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://alude.com.br"
+    }
+   }
   },
   {
    "slug": "kolors",
    "name": "Kolors",
    "fund": "I",
-   "logo": "logos/kolors.svg"
+   "logo": "logos/kolors.svg",
+   "fields": {
+    "description": {
+     "value": "Mexican platform that runs bus transport without owning buses, partnering with local operators. It started with intercity routes for passengers and now also sells employee transport to companies.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://ecosistemastartup.com/kolors-transporte-de-personal-en-50-ciudades-y-plan-latam/"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://prnewswire.com/news-releases/kolors-announces-26-million-in-funding-to-transform-intercity-bus-networks-through-technology--data-301561099.html"
+    },
+    "sector": {
+     "value": "Mobility & Logistics",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://ecosistemastartup.com/kolors-transporte-de-personal-en-50-ciudades-y-plan-latam/"
+    }
+   }
   },
   {
    "slug": "cannect",
    "name": "Cannect",
    "fund": "I",
-   "logo": "logos/cannect.svg"
+   "logo": "logos/cannect.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian healthtech that started as a medical-cannabis marketplace (teleconsultation, prescription, Anvisa import approval, delivery and follow-up) and now also runs a digital pharmacy for chronic-disease medicines after buying Pill in 2026.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://cannect.com.br"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/cannect-levanta-r-5m-para-furar-a-bolha-da-cannabis-medicinal/"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://cannect.com.br"
+    }
+   }
   },
   {
    "slug": "gabriel",
    "name": "Gabriel",
    "fund": "I",
-   "logo": "logos/gabriel.svg"
+   "logo": "logos/gabriel.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian private security network: smart street-facing cameras (\"Camaleões\") installed on condominiums, homes and shops, linked to a 24-hour intelligence center and to the police, reading licence plates and sending real-time alerts for stolen vehicles.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://gabriel.com.br"
+    },
+    "year_founded": {
+     "value": 2020,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startupi.com.br/2021/10/startup-capta-r-66-milhoes-para-reconstruir-seguranca-publica-com-cameras-inteligentes/"
+    },
+    "sector": {
+     "value": "Security & Fraud",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://gabriel.com.br"
+    }
+   }
   },
   {
    "slug": "menta",
    "name": "Menta",
    "fund": "I",
-   "logo": "logos/menta.png"
+   "logo": "logos/menta.png",
+   "fields": {
+    "description": {
+     "value": "Argentine infrastructure company that lets banks, retailers, consumer-goods firms and fintechs with a network of merchants offer their own white-label payment acceptance and financial services through SmartPOS terminals with an app store.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.forbesargentina.com/negocios/su-solucion-pagos-empodera-grandes-empresas-latam-ya-facturan-us-23-millones-n50183"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.forbesargentina.com/negocios/su-solucion-pagos-empodera-grandes-empresas-latam-ya-facturan-us-23-millones-n50183"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://www.forbesargentina.com/negocios/su-solucion-pagos-empodera-grandes-empresas-latam-ya-facturan-us-23-millones-n50183"
+    }
+   }
   },
   {
    "slug": "neofin",
    "name": "Neofin",
    "fund": "I",
-   "logo": "logos/neofin.png"
+   "logo": "logos/neofin.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian fintech that automates accounts receivable for companies that sell on credit: a multichannel collection ruler (e-mail, WhatsApp, SMS), ERP and bank integrations and an AI agent that negotiates with debtors on WhatsApp.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofin.com.br/"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://finsidersbrasil.com.br/giro-noticias/neofin-que-automatiza-cobranca-com-ia-levanta-r-35-milhoes/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://neofin.com.br/"
+    }
+   }
   },
   {
    "slug": "decade",
    "name": "Decade",
    "fund": "II",
-   "logo": "logos/decade.svg"
+   "logo": "logos/decade.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian wealth-advisory company that combines a proprietary investing AI with human advisors, using Open Finance to consolidate a client's assets and monitor them around the clock.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://decade.com/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.bloomberglinea.com.br/negocios/ex-executivos-do-nubank-lancam-consultoria-de-gestao-de-patrimonio-baseada-em-ia/"
+    },
+    "sector": {
+     "value": "Wealth & Investing",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://decade.com/"
+    }
+   }
   },
   {
    "slug": "flow",
    "name": "Flow",
    "fund": "II",
-   "logo": "logos/flow.svg"
+   "logo": "logos/flow.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian marketplace for credit backed by property (home equity), real-estate financing and vehicle-backed loans, comparing offers from more than a dozen banks and credit funds for consumers and companies.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://flowcredi.com.br/"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/fintech-levanta-r-35m-para-impulsionar-mercado-de-home-equity/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://flowcredi.com.br/"
+    }
+   }
   },
   {
    "slug": "aro",
    "name": "Aro",
    "fund": "II",
-   "logo": "logos/aro.png"
+   "logo": "logos/aro.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian fintech with an AI agent that guides people, mainly in income classes C and D, through credit: it finds the offers they can really get from partner lenders and follows the loan to the end. It is paid by lenders, not by users.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/startups/a-tese-da-fintech-de-agente-para-credito-que-atraiu-onevc-e-17sigma/"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://neofeed.com.br/startups/a-tese-da-fintech-de-agente-para-credito-que-atraiu-onevc-e-17sigma/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://neofeed.com.br/startups/a-tese-da-fintech-de-agente-para-credito-que-atraiu-onevc-e-17sigma/"
+    }
+   }
   },
   {
    "slug": "fly-media",
    "name": "Fly Media",
    "fund": "II",
-   "logo": "logos/flymedia.jpeg"
+   "logo": "logos/flymedia.jpeg",
+   "fields": {
+    "description": {
+     "value": "AI-native media company that creates synthetic influencers and characters as global, multilingual intellectual properties, run across platforms by a small team and monetised through brands, licensing and communities.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://forbes.com.br/forbes-tech/2025/12/com-aporte-de-r-20-milhoes-flymedia-lanca-fabrica-de-influenciadores-feitos-por-ia/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://forbes.com.br/forbes-tech/2025/12/com-aporte-de-r-20-milhoes-flymedia-lanca-fabrica-de-influenciadores-feitos-por-ia/"
+    },
+    "sector": {
+     "value": "Consumer Brands & Media",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://forbes.com.br/forbes-tech/2025/12/com-aporte-de-r-20-milhoes-flymedia-lanca-fabrica-de-influenciadores-feitos-por-ia/"
+    }
+   }
   },
   {
    "slug": "inner-ai",
    "name": "Inner AI",
    "fund": "II",
-   "logo": "logos/inner-ai.png"
+   "logo": "logos/inner-ai.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian AI platform that gives professionals and companies access to more than 50 AI models in one subscription, and, through Squad.com, a team of autonomous AI agents for small businesses.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/inner-ai-capta-r-30-milhoes"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/inner-ai-capta-r-30-milhoes"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/inner-ai-capta-r-30-milhoes"
+    }
+   }
   },
   {
    "slug": "bond",
    "name": "Bond",
    "fund": "II",
-   "logo": "logos/bond.svg"
+   "logo": "logos/bond.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian AI accounting startup. It began as a full-service accounting firm for mid-sized companies and now offers to run the operations of existing accounting offices, with software doing routine work and accountants reviewing.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/o-nome-da-startup-e-bond-ai-bond-para-pmes/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/o-nome-da-startup-e-bond-ai-bond-para-pmes/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://bond.com.br/"
+    }
+   }
   },
   {
    "slug": "maggu",
    "name": "Maggu",
    "fund": "II",
-   "logo": "logos/maggu.png"
+   "logo": "logos/maggu.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian startup that gives pharmacy counter staff an AI copilot integrated into the pharmacy system, which suggests product use, care and complementary items in real time.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/maggu-levanta-us-22m-para-levar-ia-ao-balcao-das-farmacias/"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.baguete.com.br/noticias/maggu-ai-capta-r-22-milhoes"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/rodada-de-investimento/maggu-levanta-us-22m-para-levar-ia-ao-balcao-das-farmacias/"
+    }
+   }
   },
   {
    "slug": "legiti",
    "name": "Legiti",
    "fund": "I",
-   "logo": "logos/legiti.png"
+   "logo": "logos/legiti.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian antifraud platform that uses machine learning to block fraudulent e-commerce purchases while approving legitimate ones, reducing chargebacks.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.kaszek.com/company/legiti"
+    },
+    "year_founded": {
+     "value": 2019,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.kaszek.com/company/legiti"
+    },
+    "sector": {
+     "value": "Security & Fraud",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://www.kaszek.com/company/legiti"
+    }
+   }
   },
   {
    "slug": "core-ai",
    "name": "Core AI",
    "fund": "II",
-   "logo": "logos/coreai.jpeg"
+   "logo": "logos/coreai.jpeg",
+   "fields": {
+    "description": {
+     "value": "Brazilian company that builds AI-driven credit operations for software companies, marketplaces and other businesses: risk models, pricing, collections and funding access, delivered through banking-as-a-service providers.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/core-ai-levanta-rodada-para-o-last-mile-do-credito-junto-com-os-baas/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://braziljournal.com/core-ai-levanta-rodada-para-o-last-mile-do-credito-junto-com-os-baas/"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://coreai.com.br/"
+    }
+   }
   },
   {
    "slug": "datamint",
    "name": "Datamint",
    "fund": "II",
-   "logo": "logos/datamint.png"
+   "logo": "logos/datamint.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian deep-tech company with an AI platform that gives industrial operators a single view of each critical asset and recommends auditable maintenance, parts and logistics decisions.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/sujeira-no-painel-mato-ao-redor-a-datamint-tem-uma-ai-que-apita/"
+    },
+    "year_founded": {
+     "value": 2021,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://braziljournal.com/sujeira-no-painel-mato-ao-redor-a-datamint-tem-uma-ai-que-apita/"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://datamint.com.br/"
+    }
+   }
   },
   {
    "slug": "palomma",
    "name": "Palomma",
    "fund": "II",
-   "logo": "logos/palomma.png"
+   "logo": "logos/palomma.png",
+   "fields": {
+    "description": {
+     "value": "Colombian fintech building an AI-native bank for real estate in Latin America: it collects and disburses rent for real estate agencies, offers landlords rent guarantees and advances, and runs AI agents for property management.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.ycombinator.com/companies/palomma"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.ycombinator.com/companies/palomma"
+    },
+    "sector": {
+     "value": "Payments & Banking",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.palomma.com/es"
+    }
+   }
   },
   {
    "slug": "oasis",
    "name": "Oasis",
    "fund": "II",
-   "logo": "logos/oasis.png"
+   "logo": "logos/oasis.png",
+   "fields": {
+    "description": {
+     "value": "New York software company that sells a shared workspace where people and AI agents work as teammates, with shared memory, roles, permissions, approvals and budgets.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://joinoasis.com/"
+    },
+    "year_founded": {
+     "value": 2026,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://joinoasis.com/blog"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://joinoasis.com/"
+    }
+   }
   },
   {
    "slug": "akash",
    "name": "Akash",
    "fund": "II",
-   "logo": "logos/akash.svg"
+   "logo": "logos/akash.svg",
+   "fields": {
+    "description": {
+     "value": "Latin American company building AI superintelligence platforms (its product is SERAPH) for security, intelligence and defense institutions.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://akash.si/en"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://www.linkedin.com/in/maximonajera"
+    },
+    "sector": {
+     "value": "Security & Fraud",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://akash.si/en"
+    }
+   }
   },
   {
    "slug": "asteras",
    "name": "Asteras",
    "fund": "II",
-   "logo": "logos/asteras.svg"
+   "logo": "logos/asteras.svg",
+   "fields": {
+    "description": {
+     "value": "AI lab that trains, deploys and keeps improving custom models for the work that a company's AI agents do, using the customer's own data, traces and feedback.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://asteraslab.com/"
+    },
+    "year_founded": {
+     "value": 2026,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/in/brunolerner"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://asteraslab.com/"
+    }
+   }
   },
   {
    "slug": "cartsy",
    "name": "Cartsy",
    "fund": "II",
-   "logo": "logos/cartsy.png"
+   "logo": "logos/cartsy.png",
+   "fields": {
+    "description": {
+     "value": "Shopping assistant that lives in Instagram direct messages: the user shares a post, reel or story and it identifies the products in it and shows where to buy them, with prices from several stores. It is free to use and links to the retailer.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://cartsy.com/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://www.linkedin.com/in/rauldagir"
+    },
+    "sector": {
+     "value": "Commerce & Marketplaces",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://cartsy.com/"
+    }
+   }
   },
   {
    "slug": "hedix",
    "name": "Hedix",
    "fund": "II",
-   "logo": "logos/hedix.svg"
+   "logo": "logos/hedix.svg",
+   "fields": {
+    "description": {
+     "value": "Pre-launch Brazilian platform with a waitlist that lets people take a position on future events through contracts offered by the broker Genial; Hedix is a technology company and says it is not itself authorised by the central bank or the securities regulator.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://hedix.com.br/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/63022244000195"
+    },
+    "sector": {
+     "value": "Wealth & Investing",
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://hedix.com.br/"
+    }
+   }
   },
   {
    "slug": "kapso",
    "name": "Kapso",
    "fund": "II",
-   "logo": "logos/kapso.png"
+   "logo": "logos/kapso.png",
+   "fields": {
+    "description": {
+     "value": "Platform that lets any developer or AI agent add the official WhatsApp Business API to a product, through an API, SDKs, a CLI and a visual workflow builder. It earns from usage and, since July 2026, as a Meta Business Solution Provider that handles billing.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://kapso.ai/"
+    },
+    "year_founded": {
+     "value": 2024,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/in/andres-matte"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://kapso.ai/"
+    }
+   }
   },
   {
    "slug": "kayro",
    "name": "Kayro",
    "fund": "II",
-   "logo": "logos/kayro.svg"
+   "logo": "logos/kayro.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian AI company that automates the operational work of sales teams at manufacturers, distributors and wholesalers: turning WhatsApp lists and PDF or Excel orders into quotes and entered orders, and telling each salesperson what to do at each point of sale.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://usekayro.ai/"
+    },
+    "year_founded": {
+     "value": 2026,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/in/antonio-matarazzo-affonso-ferreira-93486a255"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://usekayro.ai/"
+    }
+   }
   },
   {
    "slug": "manor",
    "name": "Manor",
    "fund": "II",
-   "logo": "logos/manor.png"
+   "logo": "logos/manor.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian AI platform that follows tax laws and court and administrative decisions every day and shows each company where its operation has tax risk or money on the table, including a comparison with the tax reform; sold to companies, accounting firms, law firms and individuals.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://manor.com.br/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/62490945000196"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://manor.com.br/"
+    }
+   }
   },
   {
    "slug": "nash",
    "name": "Nash",
    "fund": "II",
-   "logo": "logos/nash.png"
+   "logo": "logos/nash.png",
+   "fields": {
+    "description": {
+     "value": "Brazilian fiduciary administrator for structured funds (FIPs, and later FIDCs, FICs and FIFs), combining proprietary software and an experienced regulatory team so fund managers can focus on investing.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://nashadm.com.br/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://brasilapi.com.br/api/cnpj/v1/63756841000143"
+    },
+    "sector": {
+     "value": "Lending & Credit",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://nashadm.com.br/"
+    }
+   }
   },
   {
    "slug": "sempre",
    "name": "Sempre+",
    "fund": "II",
-   "logo": "logos/sempre.svg"
+   "logo": "logos/sempre.svg",
+   "fields": {
+    "description": {
+     "value": "Pediatric guidance and teleconsultation service that runs entirely inside WhatsApp: a free AI assistant (Dra. Med) answers parents at any hour and hands the case to a registered pediatrician, by text or video, when needed.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://sempre-mais.com/sobre"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/in/bruna-keiserman"
+    },
+    "sector": {
+     "value": "Health",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://sempre-mais.com/sobre"
+    }
+   }
   },
   {
    "slug": "strattum",
    "name": "Strattum",
    "fund": "II",
-   "logo": "logos/strattum.svg"
+   "logo": "logos/strattum.svg",
+   "fields": {
+    "description": {
+     "value": "Enterprise AI infrastructure startup that connects and organises a large company's scattered data (ERPs, CRMs, data lakes, spreadsheets, documents) into a governed context layer, a 'company brain', that AI models and agents can use at lower token cost.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/inteligencia-artificial/com-us-32m-no-bolso-strattum-comeca-a-testar-mercado-internacional/"
+    },
+    "year_founded": {
+     "value": 2026,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://startups.com.br/negocios/inteligencia-artificial/com-us-32m-no-bolso-strattum-comeca-a-testar-mercado-internacional/"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://startups.com.br/negocios/inteligencia-artificial/com-us-32m-no-bolso-strattum-comeca-a-testar-mercado-internacional/"
+    }
+   }
   },
   {
    "slug": "taicor",
    "name": "Taicor",
    "fund": "II",
-   "logo": "logos/taicor.jpeg"
+   "logo": "logos/taicor.jpeg",
+   "fields": {
+    "description": {
+     "value": "Rio de Janeiro company that builds and runs AI agents for businesses, plugged into the email, calendar, CRM and databases a team already uses and driven by natural-language conversation, deployed in days.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://taicor.ai/"
+    },
+    "year_founded": {
+     "value": 2026,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://www.linkedin.com/in/joaolisboa"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.taicor.ai/termos"
+    }
+   }
   },
   {
    "slug": "backline",
    "name": "Backline",
    "fund": "II",
-   "logo": "logos/backline.svg"
+   "logo": "logos/backline.svg",
+   "fields": {
+    "description": {
+     "value": "Early-stage security company that says it protects businesses against AI-powered attacks, calling itself an 'Iron Dome' and the first and final line of defence; services are sold by enquiry.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://backline.inc/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://rdap.org/domain/backline.inc"
+    },
+    "sector": {
+     "value": "Security & Fraud",
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://backline.inc/"
+    }
+   }
   },
   {
    "slug": "khal",
    "name": "Khal",
    "fund": "II",
-   "logo": "logos/khal.svg"
+   "logo": "logos/khal.svg",
+   "fields": {
+    "description": {
+     "value": "Brazilian platform for building and running AI agents across customer service, sales and retention in large companies, made by Namastex Labs, a generative-AI research lab from Uberlândia.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://khal.ai/"
+    },
+    "year_founded": {
+     "value": 2022,
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://khal.ai/en/about"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://khal.ai/"
+    }
+   }
   },
   {
    "slug": "fina",
    "name": "Fina",
    "fund": "II",
-   "logo": "logos/fina.png"
+   "logo": "logos/fina.png",
+   "fields": {
+    "description": {
+     "value": "Venezuelan cloud administrative system for small and medium businesses (sales, inventory, accounts, reports in bolivars and dollars), with Fina Presta, a loan for the businesses that use it.",
+     "basis": "reported",
+     "confidence": "high",
+     "source": "https://www.finapartner.com/"
+    },
+    "year_founded": {
+     "value": 2023,
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://www.finapartner.com/nuestra-historia/"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.finapartner.com/"
+    }
+   }
   },
   {
    "slug": "quantum",
    "name": "Quantum",
    "fund": "II",
-   "logo": "logos/quantum.jpeg"
+   "logo": "logos/quantum.jpeg",
+   "fields": {
+    "description": {
+     "value": "Technology group for Brazilian grocery retail formed in 2026 by joining the supermarket-software companies Bluesoft and VR Software, which aims to apply AI and agents to stock, pricing and store operations.",
+     "basis": "reported",
+     "confidence": "medium",
+     "source": "https://centraldovarejo.com.br/quantum-estreia-no-brasil-e-promete-r-1-bi-em-tecnologia-para-supermercados-ia-no-varejo/"
+    },
+    "year_founded": {
+     "value": 2026,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/company/qntco"
+    },
+    "sector": {
+     "value": "Business Software",
+     "basis": "estimated",
+     "confidence": "high",
+     "source": "https://centraldovarejo.com.br/quantum-estreia-no-brasil-e-promete-r-1-bi-em-tecnologia-para-supermercados-ia-no-varejo/"
+    }
+   }
   },
   {
    "slug": "glue",
    "name": "Glue",
    "fund": "II",
-   "logo": "logos/glue.png"
+   "logo": "logos/glue.png",
+   "fields": {
+    "description": {
+     "value": "Stealth-stage Brazilian startup building 'The Finance Agentic Layer': AI agents for the finance and accounting back office. Its site is an under-construction page.",
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://useglue.ai/"
+    },
+    "year_founded": {
+     "value": 2025,
+     "basis": "estimated",
+     "confidence": "medium",
+     "source": "https://www.linkedin.com/in/mateus-parra-sgarbosa"
+    },
+    "sector": {
+     "value": "AI Platforms & Agents",
+     "basis": "estimated",
+     "confidence": "low",
+     "source": "https://useglue.ai/"
+    }
+   }
   }
  ]
 }

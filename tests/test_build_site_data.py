@@ -40,6 +40,45 @@ class BuildSiteDataTest(unittest.TestCase):
         slugs = [c["slug"] for c in self.build([BETA, twin])["companies"]]
         self.assertEqual(slugs, ["beta-co", "beta-co-2"])
 
+    def build_with(self, companies, claims, sectors=()):
+        with tempfile.TemporaryDirectory() as d:
+            make_data(d, companies)
+            write(d, "claims.csv", [HEADERS["claims"], *claims])
+            write(d, "sectors.csv", [HEADERS["sectors"], *sectors])
+            return build(d, d)["companies"][0]
+
+    def test_card_fields_carry_value_basis_confidence_and_source(self):
+        company = self.build_with(
+            [ALPHA],
+            [
+                "Alpha,description,Makes alphas.,https://alpha.com/about,reported,high,",
+                "Alpha,year_founded,2019,https://alpha.com/about,estimated,low,Registry date.",
+            ],
+        )
+        self.assertEqual(
+            company["fields"]["description"],
+            {"value": "Makes alphas.", "basis": "reported", "confidence": "high", "source": "https://alpha.com/about"},
+        )
+        self.assertEqual(
+            company["fields"]["year_founded"],
+            {"value": 2019, "basis": "estimated", "confidence": "low", "source": "https://alpha.com/about"},
+        )
+
+    def test_sector_comes_from_the_mapping_and_keeps_the_sub_sector_claim_provenance(self):
+        company = self.build_with(
+            [ALPHA],
+            ["Alpha,sub_sector,Fraud scoring,https://alpha.com/about,estimated,medium,Guess."],
+            ["Fraud scoring,Security & Fraud"],
+        )
+        self.assertEqual(
+            company["fields"]["sector"],
+            {"value": "Security & Fraud", "basis": "estimated", "confidence": "medium", "source": "https://alpha.com/about"},
+        )
+
+    def test_missing_fields_are_absent(self):
+        company = self.build_with([ALPHA], [])
+        self.assertEqual(company["fields"], {})
+
     def test_refuses_to_build_when_the_check_fails(self):
         with tempfile.TemporaryDirectory() as d:
             make_data(d, [ALPHA.replace("site/logos/alpha.svg", "site/logos/missing.svg")])

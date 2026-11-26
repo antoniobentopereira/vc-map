@@ -3,6 +3,7 @@ import { Engine } from "./engine/engine";
 import data from "./data/companies.json";
 import { mount } from "svelte";
 import Shell from "./shell/Shell.svelte";
+import Card from "./shell/Card.svelte";
 import type { Insets, LensId } from "./engine/lens";
 import { hashOf, parseHash, type Route } from "./routes";
 import { LENSES, VIEWS } from "./shell/shell-data";
@@ -26,7 +27,12 @@ const known = {
   views: VIEWS.filter((v) => v.built).map((v) => v.id),
   companies: data.companies.map((c) => c.slug),
 };
+const closeCard = () => {
+  nav.card = null;
+  engine.resume();
+};
 const apply = (route: Route) => {
+  if (nav.card) closeCard();
   // Views and Company profiles arrive with their own tickets; until then the dots keep floating.
   if (route.kind === "lens") {
     nav.lens = route.id;
@@ -58,6 +64,19 @@ mount(Shell, {
   },
 });
 
+// The Company card (closeCard is above): a clicked dot pauses and the card opens; closing it lets the dot drift again.
+const cardCompany = () => data.companies.find((c) => c.slug === nav.card);
+mount(Card, {
+  target: document.getElementById("card")!,
+  props: {
+    get company() {
+      return cardCompany();
+    },
+    logoUrl,
+    onClose: closeCard,
+  },
+});
+
 new ResizeObserver(fit).observe(host);
 
 await document.fonts.load('600 15px "Bricolage Grotesque"').catch(() => {});
@@ -71,8 +90,7 @@ fit();
   apply(route);
 }
 
-// Placeholder until the Company card exists: a clicked dot stays paused for a moment.
-engine.onDotClick = () => setTimeout(() => engine.resume(), 1500);
+engine.onDotClick = (slug) => (nav.card = slug);
 
 // TEMPORARY: physics sliders, dev server only. Delete src/tune.ts and this line when tuning is done.
 if (import.meta.env.DEV) (await import("./tune")).mountTune(engine);
