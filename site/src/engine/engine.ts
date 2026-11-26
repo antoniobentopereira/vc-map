@@ -36,6 +36,7 @@ export class Engine {
   private paused: Node | null = null;
   private viewport: Viewport = { width: 1, height: 1, insets: { top: 0, right: 0, bottom: 0, left: 0 } };
   private stageHeightPx = 1;
+  private stageWidthPx = 1;
   private radius: number = dot.radiusDesktop;
   private dots = new Container();
   private titles = new Container(); // Lens decorations, above the dots
@@ -185,7 +186,7 @@ export class Engine {
   setLens(lens: LensId, relayout = false) {
     if (lens === this.lens && !relayout) return;
     const layout = layoutLens(lens, this.nodes.map((n) => n.company), this.viewport);
-    this.setStageHeight(layout.stageHeight, !relayout);
+    this.setStageSize(layout.stageWidth, layout.stageHeight, !relayout);
     if (!relayout) {
       this.lensStart = performance.now();
       if (this.lens === "float") for (const n of this.nodes) n.home = { x: n.x!, y: n.y! };
@@ -206,16 +207,18 @@ export class Engine {
    * Grow or shrink the canvas (and with it the scroll range). When leaving a grouped Lens the shrink waits
    * until the dots are back, so they are not squashed against the new bottom edge on the way.
    */
-  private setStageHeight(height: number, delayShrink: boolean) {
+  private setStageSize(width: number, height: number, delayShrink: boolean) {
     clearTimeout(this.shrinkTimer);
-    const apply = (h: number) => {
-      this.stageHeightPx = h;
-      this.app.renderer.resize(this.viewport.width, h);
+    const apply = () => {
+      this.stageWidthPx = width;
+      this.stageHeightPx = height;
+      this.app.renderer.resize(width, height);
+      this.host.dispatchEvent(new Event("stagesize")); // the shell's pan arrows listen for this
     };
-    if (delayShrink && height < this.stageHeightPx) {
-      this.host.scrollTo({ top: 0, behavior: "smooth" });
-      this.shrinkTimer = window.setTimeout(() => apply(height), physics.transitionMs * 1.6 + physics.staggerMs);
-    } else apply(height);
+    if (delayShrink && (height < this.stageHeightPx || width < this.stageWidthPx)) {
+      this.host.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      this.shrinkTimer = window.setTimeout(apply, physics.transitionMs * 1.6 + physics.staggerMs);
+    } else apply();
   }
 
   /** Ball titles fade in once the dots have mostly arrived (immediately when only re-laying out). */
@@ -370,10 +373,10 @@ export class Engine {
 
   /** Soft walls inset from the shell's bars: a gentle push one radius early, a hard clamp at the edge. */
   private walls() {
-    const { width, insets } = this.viewport;
+    const { insets } = this.viewport;
     const r = this.radius;
     const L = insets.left + r, T = insets.top + r;
-    const R = width - insets.right - r, B = this.stageHeightPx - insets.bottom - r;
+    const R = this.stageWidthPx - insets.right - r, B = this.stageHeightPx - insets.bottom - r;
     const k = 0.01;
     for (const n of this.nodes) {
       if (n.x! < L + r) n.vx! += (L + r - n.x!) * k;

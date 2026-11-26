@@ -6,6 +6,7 @@ import Shell from "./shell/Shell.svelte";
 import Card from "./shell/Card.svelte";
 import Profile from "./shell/Profile.svelte";
 import Roster from "./shell/Roster.svelte";
+import Pan from "./shell/Pan.svelte";
 import type { Insets, LensId } from "./engine/lens";
 import { hashOf, parseHash, type Route } from "./routes";
 import { LENSES, VIEWS } from "./shell/shell-data";
@@ -92,6 +93,7 @@ mount(Profile, {
     onBack: () => go({ kind: "lens", id: nav.lens }),
   },
 });
+mount(Pan, { target: document.getElementById("pan")!, props: { host } });
 mount(Roster, { target: document.getElementById("roster")!, props: { companies: data.companies } });
 
 // A shared profile link shows at once, without waiting for the engine.

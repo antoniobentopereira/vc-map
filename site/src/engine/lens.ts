@@ -18,6 +18,8 @@ export type LensLayout = {
   targets: (Point | null)[];
   /** Height of the stage in px. Float never scrolls, so it equals the viewport. */
   stageHeight: number;
+  /** Width of the stage in px: the viewport, except a wide Lens may extend past the right edge (the view then pans). */
+  stageWidth: number;
   decorations: Decoration[];
   balls: Ball[];
 };
@@ -28,7 +30,7 @@ export const deviceOf = (viewport: Viewport): Device => (viewport.width < PHONE_
 export function layoutLens(lens: LensId, companies: LensCompany[], viewport: Viewport): LensLayout {
   switch (lens) {
     case "float":
-      return { targets: Array<null>(companies.length).fill(null), stageHeight: viewport.height, decorations: [], balls: [] };
+      return { targets: Array<null>(companies.length).fill(null), stageHeight: viewport.height, stageWidth: viewport.width, decorations: [], balls: [] };
     case "fund":
       return layoutBalls(companies.map((c) => c.fund), (key) => `Fund ${key}`, viewport);
     case "sector":
@@ -62,11 +64,13 @@ function layoutBalls(keys: string[], title: (key: string) => string, viewport: V
     decorations.push({ text: `${title(g)} · ${ids.length}`, x: cx, y: cy - ballRadius - 10 });
     balls.push({ key: g, x: cx, y: cy, radius: ballRadius });
   });
-  return { targets, stageHeight: height, decorations, balls };
+  return { targets, stageHeight: height, stageWidth: width, decorations, balls };
 }
 
 /** Space a ball's icon and title take above it. */
 const TITLE_BLOCK = 54;
+/** Empty space kept at each side of a packed stage. */
+const SIDE_MARGIN = 24;
 const GOLDEN_ANGLE = 2.39996;
 
 /**
@@ -80,7 +84,7 @@ function layoutSector(keys: string[], viewport: Viewport): LensLayout {
   const phone = deviceOf(viewport) === "phone";
   const radius = phone ? dot.radiusPhone : dot.radiusDesktop;
   const cell = radius + physics.collidePad;
-  const gap = cell;
+  const gap = phone ? cell : cell * 1.4;
   const known: readonly string[] = SECTORS.map((s) => s.name);
   const groups = [...known.filter((k) => keys.includes(k)), ...new Set(keys.filter((k) => !known.includes(k)))];
   const members = new Map(groups.map((g) => [g, keys.flatMap((k, i) => (k === g ? [i] : []))]));
@@ -93,6 +97,7 @@ function layoutSector(keys: string[], viewport: Viewport): LensLayout {
   let centers = new Map<string, Point>();
   let scale = 1;
   let contentHeight: number;
+  let stageW = W;
   if (phone) {
     let y = 0;
     for (const g of groups) {
@@ -103,20 +108,19 @@ function layoutSector(keys: string[], viewport: Viewport): LensLayout {
     contentHeight = y - gap;
   } else {
     const order = [...groups].sort((a, b) => members.get(b)!.length - members.get(a)!.length);
-    // Pack tightly, shrinking the balls only if they must be; too small a screen falls back to a taller stage.
+    // Balls keep their full size; if they don't fit the screen the stage grows to the right and the view pans.
+    const items = order.map((g) => ({ key: g, r: ballRadius(members.get(g)!.length, 1), w: blockWidth(g, 1) }));
     let packed: Map<string, Point> | null = null;
-    for (scale = 1; scale >= 0.5 && !packed; scale -= 0.04) {
-      packed = pack(order.map((g) => ({ key: g, r: ballRadius(members.get(g)!.length, scale), w: blockWidth(g, scale) })), W, H, gap);
-    }
-    scale = packed ? scale + 0.04 : 1;
-    packed ??= stackAll(order.map((g) => ({ key: g, r: ballRadius(members.get(g)!.length, 1) })), W, gap);
+    for (stageW = W; stageW <= W * 3 && !(packed = pack(items, stageW - SIDE_MARGIN * 2, H, gap)); stageW += 100);
+    packed ??= stackAll(items, W, gap);
+    if (!packed) stageW = W;
     centers = packed;
-    // Center what was packed within the free area.
+    // Center what was packed within the stage.
     const top = Math.min(...[...centers].map(([g, c]) => c.y - ballRadius(members.get(g)!.length, scale) - TITLE_BLOCK));
     const bottom = Math.max(...[...centers].map(([g, c]) => c.y + ballRadius(members.get(g)!.length, scale)));
     const left = Math.min(...[...centers].map(([g, c]) => c.x - blockWidth(g, scale) / 2));
     const right = Math.max(...[...centers].map(([g, c]) => c.x + blockWidth(g, scale) / 2));
-    const dx = (W - (right - left)) / 2 - left;
+    const dx = (stageW - (right - left)) / 2 - left;
     const dy = Math.max(0, (H - (bottom - top)) / 2) - top;
     for (const [g, c] of centers) centers.set(g, { x: c.x + dx, y: c.y + dy });
     contentHeight = Math.max(bottom - top, 0);
@@ -139,7 +143,7 @@ function layoutSector(keys: string[], viewport: Viewport): LensLayout {
     decorations.push({ text: `${g} · ${ids.length}`, x: cx, y: cy - r - 8, icon: SECTORS.find((s) => s.name === g)?.icon });
   }
   const stageHeight = phone ? Math.max(height, insets.top + contentHeight + insets.bottom + gap) : Math.max(height, insets.top + contentHeight + insets.bottom);
-  return { targets, stageHeight, decorations, balls };
+  return { targets, stageHeight, stageWidth: stageW + insets.left + insets.right, decorations, balls };
 }
 
 type Item = { key: string; r: number; w: number };
@@ -149,7 +153,7 @@ type Item = { key: string; r: number; w: number };
  * Returns null when they don't all fit in width x height.
  */
 function pack(items: Item[], width: number, height: number, gap: number): Map<string, Point> | null {
-  const STEP = 10;
+  const STEP = 16;
   const placed: (Item & Point)[] = [];
   const titleRect = (i: Item & Point) => ({ x0: i.x - i.w / 2, x1: i.x + i.w / 2, y0: i.y - i.r - TITLE_BLOCK, y1: i.y - i.r });
   const hits = (a: Item & Point, b: Item & Point) => {

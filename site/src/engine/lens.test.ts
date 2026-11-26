@@ -52,11 +52,11 @@ describe("Sector Lens layout", () => {
   });
 
   it.each([desktop, phone])("keeps balls apart from one another and from the bars", (viewport) => {
-    const { balls, stageHeight } = layoutLens("sector", companies, viewport);
+    const { balls, stageHeight, stageWidth } = layoutLens("sector", companies, viewport);
     for (const [i, a] of balls.entries()) {
       for (const b of balls.slice(i + 1)) expect(dist(a, b)).toBeGreaterThan(a.radius + b.radius);
       expect(a.x - a.radius).toBeGreaterThanOrEqual(viewport.insets.left);
-      expect(a.x + a.radius).toBeLessThanOrEqual(viewport.width - viewport.insets.right);
+      expect(a.x + a.radius).toBeLessThanOrEqual(stageWidth - viewport.insets.right);
       expect(a.y + a.radius).toBeLessThanOrEqual(stageHeight - viewport.insets.bottom);
     }
   });
@@ -77,6 +77,15 @@ describe("Sector Lens layout", () => {
   it("fits one screen on desktop and grows taller than the screen on a phone", () => {
     expect(layoutLens("sector", companies, desktop).stageHeight).toBe(desktop.height);
     expect(layoutLens("sector", companies, phone).stageHeight).toBeGreaterThan(phone.height);
+  });
+
+  it("keeps full-size balls on desktop and lets a narrow screen extend the stage to the right", () => {
+    const wide = layoutLens("sector", companies, desktop);
+    const narrow = layoutLens("sector", companies, { ...desktop, width: 1000 });
+    expect(narrow.stageWidth).toBeGreaterThan(1000);
+    expect(narrow.stageHeight).toBe(desktop.height);
+    expect(narrow.balls.map((b) => b.radius)).toEqual(wide.balls.map((b) => b.radius));
+    expect(layoutLens("float", companies, desktop).stageWidth).toBe(desktop.width);
   });
 
   it("stacks the phone balls in one column", () => {
