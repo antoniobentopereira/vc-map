@@ -1,6 +1,7 @@
 <script lang="ts">
   import { LENSES, VIEWS } from "./shell-data";
   import type { Insets } from "../engine/lens";
+  import About from "./About.svelte";
 
   let { activeLens, onLens, onInsets }: {
     activeLens: string;
@@ -12,6 +13,7 @@
   let bottomBars: HTMLElement;
   let menuWrap: HTMLElement;
   let menuOpen = $state(false);
+  let aboutOpen = $state(false);
 
   // Report the bars' heights to the engine whenever they change (resize, wrapping text, fonts).
   $effect(() => {
@@ -62,10 +64,11 @@
       {/if}
     </div>
     <button class="btn play" disabled title="Quiz coming soon">▶ Play</button>
-    <!-- Opens the About panel in ticket 03. -->
-    <button class="btn icon" aria-label="About this project" title="About">?</button>
+    <button class="btn icon" aria-label="About this project" title="About" onclick={() => (aboutOpen = true)}>?</button>
   </div>
 </header>
+
+{#if aboutOpen}<About onClose={() => (aboutOpen = false)} />{/if}
 
 <div class="bottom" bind:this={bottomBars}>
   <nav class="pills" aria-label="Lenses">
